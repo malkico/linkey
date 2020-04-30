@@ -1,6 +1,6 @@
 {
   "name": "linkey",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "make your link a search engine",
   "private": true,
   "scripts": {
