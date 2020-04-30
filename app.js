@@ -4,9 +4,10 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var sassMiddleware = require('node-sass-middleware');
+var exphbs  = require('express-handlebars');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var followerRouter = require('./routes/follower');
 
 var app = express();
 
@@ -17,8 +18,11 @@ app.use('/fontawesome', express.static(__dirname + '/node_modules/@fortawesome/f
 
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'twig');
+// app.set('views', path.join(__dirname, 'views'));
+app.engine('hbs', exphbs(
+  { extname: "hbs", defaultLayout: "",partialsDir  : [path.join(__dirname, 'views'),]}
+  ))
+app.set('view engine', 'hbs');
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -33,7 +37,11 @@ app.use(sassMiddleware({
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/u', followerRouter);
+
+app.get("/b", function(req,res,next){
+  res.render("test");
+})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

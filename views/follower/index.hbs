@@ -1,6 +1,4 @@
-{% extends 'layout.twig' %}
-
-{% block body %}
+{{> "follower/layout"}}
 <div id='follower'>
   <div class='bg-c-dark pb-3'>
     <ul class="nav nav-pills justify-content-end">
@@ -49,9 +47,9 @@
       <div class="links col-12">
 
         <div class="list-group-flush">
-          {% for i in 0..0 %}
+          {{#each links }}
           <a href="#" class="text-dark">
-          <div class="list-group-item d-flex">
+          <div class="list-group-item d-flex border-1">
 
             <p class="mb-0 "><i class="fab fa-instagram fa-2x mr-4 blue p-3 white-text rounded " aria-hidden="true"></i>
               <div class="my-auto">
@@ -73,7 +71,7 @@
             </p>
           </div>
           </a>
-          {% endfor %}
+          {{/each}}
         </div>
 
       </div>
@@ -169,4 +167,20 @@
   </footer>
   <!-- Footer -->
 
-  {% endblock %}
+
+
+
+
+  <script>
+    /* ****************************** make the footer always on the bottom */
+    
+    const bodyHeight = $("body").height();
+    const footerPosTop = $("footer").offset().top;
+
+    if(bodyHeight > footerPosTop)
+      $(".links").css("margin-bottom", (bodyHeight - footerPosTop) + "px")
+  </script>
+
+</body>
+
+</html>

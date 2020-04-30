@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "devstart": "nodemon -e js,json,twig ./bin/www",
+    "devstart": "nodemon -e js,json,hbs ./bin/www",
     "sassbootstrap": "sass public/stylesheets/custom:public/stylesheets/min --watch  --style compressed",
     "serverstart": "SET DEBUG = express-locallibrary-tutorial: * & npm run devstart"
   },
@@ -21,12 +21,12 @@
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
+    "express-handlebars": "^4.0.4",
     "http-errors": "~1.6.3",
     "jquery": "^3.5.0",
     "morgan": "~1.9.1",
     "node-sass-middleware": "0.11.0",
-    "popper.js": "^1.16.1",
-    "twig": "~0.10.3"
+    "popper.js": "^1.16.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.3"
