@@ -32,7 +32,16 @@ $theme-colors: (
 
 @import "../../../node_modules/bootstrap/scss/bootstrap";
 
-    $c-placeholder : $chatelet-2-hex;
+html,body
+{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
+}
+
+$c-placeholder : $chatelet-2-hex;
 
     .search {
         input::placeholder {

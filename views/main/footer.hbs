@@ -1,0 +1,123 @@
+
+  <section class="call-to-action text-white text-center bg-dark pt-5 pb-5" id='getstarted'>
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-9 mx-auto">
+          <h2 class="mb-4">Create your own search engine now!</h2>
+        </div>
+        <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+          <form>
+            <div class="form-row">
+              <div class="col-12 mb-md-0 ">
+                <input type="email" class="form-control form-control-lg" placeholder="First name">
+              </div>
+              <div class="col-12  mt-1">
+                <input type="email" class="form-control form-control-lg" placeholder="Email">
+              </div>
+              <div class="col-12  mt-1">
+                <button type="submit" class="btn btn-block btn-lg btn-primary">Sign up!</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer bg-light pt-5 pb-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
+          <ul class="list-inline mb-2">
+            <li class="list-inline-item">
+              <a href="mailto:hichamlmalki@gmail.com">Contact</a>
+            </li>
+            <li class="list-inline-item">⋅</li>
+            <li class="list-inline-item">
+              <a href="#">Terms of Use</a>
+            </li>
+            <li class="list-inline-item">⋅</li>
+            <li class="list-inline-item">
+              <a href="#">Privacy Policy</a>
+            </li>
+          </ul>
+          <p class="text-muted small mb-4 mb-lg-0">
+
+            Made with <i class="fa fa-heart pulse"></i> by <a href="https://instagram.com/malki_hi" class='text-dark'><strong>
+                    malki_co</strong></a> </span>
+              <span class="col-12 text-lg-left"><u></u> © 2020 Copyright</span>
+
+          </p>
+        </div>
+        <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
+          <ul class="list-inline mb-0">
+            <li class="list-inline-item mr-3">
+              <a href="#">
+                <i class="fab fa-facebook fa-2x fa-fw"></i>
+              </a>
+            </li>
+            <li class="list-inline-item mr-3">
+              <a href="#">
+                <i class="fab fa-twitter-square fa-2x fa-fw"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <i class="fab fa-instagram fa-2x fa-fw"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+  </script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> -->
+  <!--
+    <script src="/jquery/jquery.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="/popper.js/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="/bootstrap/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    -->
+  <script>
+    /* ****************************** make the footer always on the bottom */
+    $(function () {
+      const howitworksTop = $("#howitworks").offset().top;
+      const pricingTop =    $("#pricing").offset().top ;
+      const getstartedTop = $("#getstarted").offset().top ;
+
+      const scrolTo = function(goto){
+         const navHeight = parseInt($(".navbar").css("height"));      
+          $('html, body').animate({ scrollTop: goto - navHeight}, 1000);
+      }
+
+      $('.howitworks-btn').click(function (e) {
+          e.preventDefault();
+          scrolTo(howitworksTop);
+      });
+
+      $('.pricing-btn').click(function (e) {
+          e.preventDefault();
+          scrolTo(pricingTop);
+      });
+      $('.getstarted-btn').click(function (e) {
+          e.preventDefault();
+          scrolTo(getstartedTop);
+      });
+
+    });
+  </script>
+
+
+</body>
+
+</html>
