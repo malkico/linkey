@@ -8,6 +8,7 @@ var exphbs  = require('express-handlebars');
 
 var indexRouter = require('./routes/index');
 var followerRouter = require('./routes/follower');
+const influencerRouter = require("./routes/influencer")
 
 var app = express();
 
@@ -38,6 +39,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/u', followerRouter);
+app.use("/dashboard/",influencerRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

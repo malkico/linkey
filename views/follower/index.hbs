@@ -1,21 +1,23 @@
 {{> "follower/header"}}
 <div id='follower'>
-  <div class='bg-c-dark pb-3'>
-    <ul class="nav nav-pills justify-content-end">
+  <div class='bg-c-dark pb-3 row d-flex justify-content-end'>
+    <div class="max-with d-flex justify-content-end col-12">
+    <ul class="nav nav-pills  ">
       <li class="nav-item d-none">
         <a class="nav-link active" href="#">LINKEY</a>
       </li>
       <li class="nav-item bg-dark rounded-left">
-        <a class="nav-link active small text-white bg-dark " href="#">CREATE MY OWN SEARCH ENGINE</a>
+        <a class="nav-link active small text-white bg-dark " href="/">CREATE MY OWN SEARCH ENGINE</a>
       </li>
     </ul>
-    <div class="influencer">
+    </div>
+    <div class="influencer col-12 max-with">
       <div class='my-hr border border-c-light'></div>
-      <div class="social-media float-right mr-1">
-        <i class="text-c-light"> Contact us</i>
-        <i class="fab fa-instagram "></i>
-        <i class="fab fa-twitter "></i>
-        <i class="fab fa-facebook"></i>
+      <div class="social-media float-right mr-2">
+        <i class="text-c-light"> Find us</i>
+        <a href="https://instagram.com"><i class="fab fa-instagram "></i></a>
+        <a href="https://twitter.com"><i class="fab fa-twitter "></i></a>
+        <a href="https://facebook.com"><i class="fab fa-facebook"></i></a>
       </div>
       <div class="row ">
         <div class='photo offset-1 bg-c-dark pl-2 pr-1'>
@@ -29,7 +31,7 @@
   </div>
   <!-- Search form -->
   <div class='search'>
-    <form class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-4 bg-dark p-1 pt-2 pb-2">
+    <form class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-4 bg-dark p-1 pt-2 pb-2 mb-4 max-with">
       <input
         class="form-control form-control-sm mr-3 w-75 border-white   border-1 border-top-0 border-right-0 border-left-0 text-dark"
         type="text" placeholder="TAPE KEY HERE" aria-label="Search" autofocus>
@@ -44,24 +46,25 @@
     <div class="row">
 
       <!--Grid column-->
-      <div class="links col-12">
+      <div class="links col-12 offset-sm-1 col-sm-10">
 
-        <div class="list-group-flush">
+        <div class="list-group-flush ">
           {{#each links }}
           <a href="#" class="text-dark">
-          <div class=" alink list-group-item d-flex pr-0 pl-0 ">
-
+          <div class=" alink list-group-item d-flex pr-0 pl-0 row pt-0">
+            <div class="d-flex offset-1 col-10 border-bottom pb-2 max-with">
             <p class="mb-0 "><i class="fab fa-instagram fa-2x mr-4 blue p-3 white-text rounded " aria-hidden="true"></i>
               <div class="my-auto">
                 <h6 class="mb-0"> THIS IS MILAN'S PLAN FOR CAR-FREE STREETS AFTER THE CORONAVIRUS LOCKDOWN<h6>
-                    <span class="badge badge-c-dark">KEY: 451</span>
+                    <span class="badge badge-c-dark small ">KEY: 451</span>
               </div>
             </p>
+            </div>
           </div>
           </a>
           <a href="#" class="text-dark">
-          <div class=" alink list-group-item d-flex  pr-0 pl-0">
-
+          <div class=" alink list-group-item d-flex pr-0 pl-0 row pt-0">
+            <div class="d-flex offset-1 col-10 border-bottom pb-2 max-with">
             <p class="mb-0 "><i class="fab fa-slack-hash fa-2x mr-4 blue p-3 white-text rounded "
                 aria-hidden="true"></i>
               <div class="my-auto">
@@ -69,6 +72,7 @@
                     <span class="badge badge-c-dark">KEY: 451</span>
               </div>
             </p>
+          </div>
           </div>
           </a>
           {{/each}}
@@ -83,13 +87,13 @@
   </div>
 
   <!-- ------------------------- ADS ---->
-  <div class="ads bg-white w-100 text-center">
+  <div class="ads bg-white w-100 text-center max-with">
     <p class="bg-dark mr-4 ml-4 mt-0 text-white">
-      <span class="float-right mr-1">Ads<span>
+      <span class="float-right mr-1 small">Ads<span>
     </p>
   </div>
   <!-- Footer -->
-  <footer class="page-footer font-small mdb-color bg-c-dark text-white">
+  <footer class="page-footer font-small mdb-color bg-c-dark text-white small">
 
     <!-- Footer Links -->
     <div class="text-center text-md-left mr-4 ml-4">
@@ -137,22 +141,22 @@
               <ul class="list-unstyled list-inline mb-0">
                 <li class="list-inline-item">
                     <a class="btn-floating btn-sm rgba-white-slight mx-1 text-white" href="https://www.facebook.com/kadem.sahir " >
-                      <i class="fab fa-facebook-f"></i>
+                      <i class="fab fa-facebook-f small"></i>
                     </a>
                 </li>
                 <li class="list-inline-item">
                   <a class="btn-floating btn-sm rgba-white-slight mx-1 text-white" href="https://www.instagram.com/malki_hi">
-                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-instagram small"></i>
                   </a>
                 </li>
                 <li class="list-inline-item">
                   <a class="btn-floating btn-sm rgba-white-slight mx-1 text-white" href="mailto:hichamLmalki@gmail.com">
-                    <i class="fas fa-at"></i>
+                    <i class="fas fa-at small"></i>
                   </a>
                 </li>
                 <li class="list-inline-item">
                   <a class="btn-floating btn-sm rgba-white-slight mx-1 text-white"  href="https://www.linkedin.com/in/malki-hicham-032ba570/" >
-                    <i class="fab fa-linkedin-in"></i>
+                    <i class="fab fa-linkedin-in small"></i>
                     
                   </a>
 

@@ -1,0 +1,47 @@
+{{> "account/header"}}
+
+    <div class="d-flex justify-content-center   ">
+      <div class="  m-3">
+<div class="alert alert-danger" role="alert">
+  We have sent a password reset link to your mailbox if it exists.
+</div>
+    <form class="bg-white border  p-3 ">
+
+  <div class="form-group p-1 pt-3">
+    <h3 > Log in </h3> 
+    <hr class="pb-2"/>
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+    <small id="emailHelp" class="form-text text-muted d-none">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1">
+  </div>
+  <button type="submit" class="btn btn-primary w-100 mt-2">LOG IN</button>
+  <div class="pt-3 text-center">
+    <a class="form-check-label" href="/reset-password"> I forgot my password</a >
+  </div>
+</form>
+<div class="bg-white mt-2 border  p-3 mb-4">
+  <p class="text-dark mb-0">
+    Do not have an account yet ? <a href="/sign-up">Sign up</a>
+  </p>
+  </div>
+</div>
+</div>
+  </div>
+{{> "account/footer"}}
+
+<script>
+  /* ****************************** make the footer always on the bottom */
+  $(function () {
+
+  });
+</script>
+
+
+
+</body>
+
+</html>

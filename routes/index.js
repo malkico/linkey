@@ -6,16 +6,25 @@ router.get('/', function(req, res, next) {
   res.render('main', { title: 'Express' });
 });
 
-router.get('/sign-in', function(req, res, next) {
-  res.render('main/sign-in', { first_name: 'hicham', mail: 'hichamlmalki@gmail.com' });
-});
 
 router.get('/terms-of-use', function(req, res, next) {
   res.render('main/terms-of-use');
 });
 
-router.get('/privacy-polivcy', function(req, res, next) {
-  res.render('main/privacy-polivcy');
+router.get('/privacy-policy', function(req, res, next) {
+  res.render('main/privacy-policy');
 });
+
+router.get('/sign-up', function(req, res, next) {
+  res.render('account/sign-up', { first_name: 'hicham', mail: 'hichamlmalki@gmail.com' });
+});
+
+router.get("/log-in", function(req, res, next){
+    res.render("account/log-in")
+})
+
+router.get("/reset-password", function(req, res, next){
+    res.render("account/reset-password")
+})
 
 module.exports = router;

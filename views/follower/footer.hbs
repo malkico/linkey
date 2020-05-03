@@ -15,32 +15,33 @@
     -->
   <script>
     /* ****************************** make the footer always on the bottom */
-  $(function() {
-    const bodyHeight = $("body").height();
-    const footerPosTop = $("footer").offset().top;
+    $(function () {
+      const bodyHeight = $("body").height();
+      const footerPosTop = $("footer").offset().top;
 
-    if(bodyHeight > footerPosTop)
-      $(".links").css("margin-bottom", (bodyHeight - footerPosTop) + "px");
+      if (bodyHeight > footerPosTop)
+        $(".links").css("margin-bottom", (bodyHeight - footerPosTop) + "px");
 
-  /* ***************************** hide ads and header on keyboeard is show up */
-  var _originalSize = $(window).width() + $(window).height()
-  $(window).resize(function(){
-    if($(window).width() + $(window).height() != _originalSize){
-      console.log("keyboard show up");
-    $(".ads").hide();
-    $(".influencer").hide();
-    
-    }else{
-      console.log("keyboard closed");
-    $(".ads").show();
-    $(".influencer").show();
-    }
-  });
+      /* ***************************** hide ads and header on keyboeard is show up */
+      /* 
+      var _originalSize = $(window).width() + $(window).height()
+      $(window).resize(function () {
+        if ($(window).width() + $(window).height() != _originalSize) {
+          console.log("keyboard show up");
+          $(".ads").hide();
+          $(".influencer").hide();
+
+        } else {
+          console.log("keyboard closed");
+          $(".ads").show();
+          $(".influencer").show();
+        }
+      }); */
 
     });
   </script>
 
 
-</body>
+  </body>
 
-</html>
+  </html>

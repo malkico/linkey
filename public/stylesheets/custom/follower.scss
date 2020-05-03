@@ -1,5 +1,9 @@
 
 #follower {
+    .max-with{
+    max-width: 50rem;
+    margin: 0 auto;
+    }
     .influencer {
         position: relative;
 
@@ -67,7 +71,7 @@
 
     .search{
         input{
-            font-size:1rem;
+            font-size:0.8rem;
         }
     }
 
@@ -88,6 +92,8 @@
 }
 
 .alink{
-        border-bottom-width: 1px !important;
-    margin: 0rem 2rem 0rem;
+    // margin: 0rem 2rem 0rem;
+    h6{
+    font-size: 0.8rem;
+    }
 }

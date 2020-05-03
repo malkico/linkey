@@ -39,6 +39,7 @@ html,body
     margin: 0px;
     padding: 0px;
     overflow-x: hidden; 
+    scroll-behavior: smooth;
 }
 
 $c-placeholder : $chatelet-2-hex;
