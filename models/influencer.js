@@ -1,57 +1,61 @@
 const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 
+const influencerCong = require("./config/influencerConf")
 const InfluencerSchema = new Schema({
-    login: {
-        type: String,
-        required: true,
-        unique: true,
-        min: 3,
-        max: 30
-    },
     subscriber:{
         type: Schema.Types.ObjectId,
         ref: 'Subscriber',
-        required: true
+        unique: "This email is already taken.",
+        required: [true,'Are you sure that you already enter your email and your first name !']
+    },
+    login: {
+        type: String,
+        required: [true,'The login is required'],
+        unique: 'this login is already taken',
+        minlength:  [3,'The login is shorter than the minimum allowed length (3)'],
+        maxlength: [30,'The login is longer than the maximum allowed length (30)']
     },
     password: {
         type: String,
-        required: true,
-        min: 8,
-        max: 30
+        required: [true,'The password is required'],
+        minlength:  [8,'The password is shorter than the minimum allowed length (8)'],
+        maxlength: [30,'The password  is longer than the maximum allowed length (30)']
     },
     last_name: {
         type: String,
-        required: true,
-        min: 2,
-        max: 50
+        required: false,
+        minlength:  [2,'The last name is shorter than the minimum allowed length (2)'],
+        maxlength: [50,'The last name  is longer than the maximum allowed length (50)']
     },
     registration_date: {
         type: Date,
-        required: true,
+        required: [true,'An error was generated when assigning a registration date, please check the date and time on your device.'],
         default: Date.now
     },
     niche: {
         type: String,
-        required: true,
-        enum: ['Humor & Memes', 'Fashion & Style', 'Fitness', 'Quotes & Texts', 'Luxury & Motivation', 'Cars', 'Motorcycles', 'Nature', 'Food & Nutrition', 'Animals', 'Models', 'Ambassadors & Influencers', 'Music & Singers', 'Art', 'Technology', 'Gaming', 'Entrepreneurship', 'Architecture & Interior', 'Fan Accounts', 'Celebrity', 'Policy', 'Makeup', 'Hair', 'Nails', 'Sports', 'Love & Romance', 'Travel', 'Dogs', 'Cats', 'other']
+        index: true,
+        required: [true,"You must choose your niche, if you did not find the right niche, you can choose other, and please contact us"],
+        enum: {
+            values: influencerCong.niches,
+            message : "If you didn't find the right niche, you can choose other, and please contact us"
+        }
     },
-    social_media: [{
+    social_medias: [{
         type: Schema.Types.ObjectId,
         ref: 'SocialMedia',
-        required: true
+        required: [true,"You should link your account with at least one social network"],  
     }],
-    link: [{
+    links: [{
         type: Schema.Types.ObjectId,
         ref: 'Link',
         required: false
     }]
 
-}).index(
-    { niche: true }
-).index(
-    { _id : true, "link.key" : true },{ unique : true}
-).pre('validate', function validate(next) {
+}) /*.index(
+    { _id : true, "link.key" : true },{ unique : 'This key is already taken'}
+)  /* .pre('validate', function validate(next) {
     var unique = [];
 
     for (var i = 0, l = this.link.length; i < l; i++) {
@@ -64,7 +68,7 @@ const InfluencerSchema = new Schema({
         unique.push(key);
     }
     next();
-})
+}) */
 
-
-module.exports = mongoose.Model("Influencer", InfluencerSchema)
+InfluencerSchema.plugin(require('mongoose-beautiful-unique-validation'))
+module.exports = mongoose.model("Influencer", InfluencerSchema)
