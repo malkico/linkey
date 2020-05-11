@@ -9,7 +9,7 @@ router.get('/', indexController.getController);
 router.post('/', indexController.postController);
 router.use("/",indexController.errorController)
 
-
+/* SIGN UP page */
 router.get('/sign-up', signUpController.getController) 
 router.post("/sign-up", signUpController.postController)
 router.use("/sign-up", signUpController.errorController)

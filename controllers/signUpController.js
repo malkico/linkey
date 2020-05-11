@@ -80,24 +80,23 @@ const postController = [
     check('niche').escape(),
     check('password').escape(),
 
-    /* *********** middlware to check the influencer model ***************/
+    /* *********** middlware to check the subscriber model ***************/
     (req, res, next) => {
-        const errors = {}
+        console.log("middlware to check the subscriber model")
         console.log(res.locals.subscriber)
-        res.locals.subscriber.validate().catch(err => {
-            errors = err.errors
+        res.locals.subscriber.validate().then(() => {
+            next()
+        }).catch(err => {
+            const errors = err.errors
             Object.keys(errors).forEach((key) => {
                 res.locals.myErrors[errors[key].path] = errors[key].message
                 console.log("%s => %s ", errors[key].path, errors[key].message)
             })
-            console.log(" errors lenght 1 : ", Object.keys(errors).length)
+
+            next(new Error("There are some errors in your email and first name "))
         })
 
-        console.log(" errors lenght 2 : ")
-        if (Object.keys(errors).length)
-            next(new Error("There are some errors in your email and first name "))
-        else
-            next()
+        console.log(" errors lenght 222 : ")
 
     },
     // check and find the subscriber in database
