@@ -73,7 +73,7 @@ const postController = [
     /* ********************** middleware to find an influencer with this email */
     (req, res, next) => {
         console.log("find an influencer")
-        const findOne = Influencer.aggregate([{
+        Influencer.aggregate([{
                     $lookup: {
                         from: 'subscribers',
                         localField: 'subscriber',

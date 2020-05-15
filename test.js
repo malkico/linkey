@@ -1,43 +1,18 @@
 const async = require("async");
 
-const async1  = () => { async.series([
-    function(callback) {
-        setTimeout(function() {
-            console.log("function 1")
-            callback(null, 'one');
+async.series({
+    one: function (callback) {
+        setTimeout(function () {
+            console.log("one")
+            callback(null, true);
         }, 200);
     },
-    function(callback) {
-        setTimeout(function() {
-            console.log("function 2")
-            callback(null, 'two');
+    two: function (callback) {
+        setTimeout(function () {
+            console.log("twi")
+            callback(null, true);
         }, 100);
     }
-],// optional callback
-function(err, results) {
-    // the results array will equal ['one','two'] even though
-    // the second function had a shorter timeout.
-    console.log(results)
+}, function (err, results) {
+    // results is now equal to: {one: 1, two: 2}
 });
-}
-const async2 = () => { async.parallel( {"one": function(callback){
-    console.log("the END")
-    callback(null, "heey")
-}
-}, (req, res) => {
-    console.log("the really end")
-}) }
-
-
-async.series( [
-    function(callback){
-        async1()
-        callback(null, "async1")
-    },
-    function(callback){
-        async2()
-        callback(null,"async2")
-    }
-],(err, results) => {
-    console.log(results)
-})

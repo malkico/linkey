@@ -8,8 +8,10 @@ const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
 const exphbs = require('express-handlebars');
 const registerHelper = require("./config/registerHelper")
-
+const dotenv = require("dotenv");
+dotenv.config();
 const Handlebars = require('handlebars')
+const auth = require("./middlwares/auth")
 const {
   allowInsecurePrototypeAccess
 } = require('@handlebars/allow-prototype-access')
@@ -17,7 +19,7 @@ const {
 
 
 
-const indexRouter = require('./routes/index');
+const indexRouter = require('./routes/main');
 const followerRouter = require('./routes/follower');
 const influencerRouter = require("./routes/influencer")
 
@@ -43,7 +45,7 @@ app.use('/popper.js', express.static(__dirname + '/node_modules/popper.js/dist/u
 app.use('/fontawesome', express.static(__dirname + '/node_modules/@fortawesome/fontawesome-free'));
 
 app.set('trust proxy', 1) // trust first proxy
-// app.use(cookieParser());
+app.use(cookieParser());
 app.use(cookieSession({
   name: 'session',
   keys: ['key1', 'key2']
@@ -93,7 +95,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/u', followerRouter);
-app.use("/dashboard/", influencerRouter)
+app.use("/dashboard/",auth, influencerRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

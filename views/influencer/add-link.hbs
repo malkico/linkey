@@ -9,37 +9,62 @@
 
   <!-- Demo content -->
   <h3 class="display-4 text-white">Add a link</h3>
+  {{#if result}}
+  <div class="col-lg-6 alert alert-{{ternaryIf success 'success' 'danger'}} " role="alert">
+    {{result}}
+    <!-- We have sent a password reset link to your mailbox if it exists. -->
+  </div>
+  {{/if}}
 
   <div class="card mb-4 py-3 border-left-success col-lg-6">
+
     <div class="card-body">
       <form method="POST">
         <div class="form-group">
-          <label for="link">Link</label>
-          <input name="link" value="" type="text" class="form-control" id="link">
+          <label for="url">URL</label>
+          <input name="url" value="{{link.url}}" class="{{ternaryIf myErrors.url 'is-invalid' ''}} form-control"
+            placeholder="https://example.com/" id="url" type="url" autocomplete="on" aria-describedby="urlHelp">
+          {{#if myErrors.url }}
+          <small id="urlHelp" class="form-text text-danger">{{ myErrors.url }}</small>
+          {{/if}}
         </div>
         <div class="form-group">
           <label for="title">Title</label>
-          <input name="title" value="" type="text" class="form-control" id="title">
+          <input name="title" value="{{link.title}}" class="{{ternaryIf myErrors.title 'is-invalid' ''}} form-control"
+            type="text" id="title" autocomplete="on" aria-describedby="titleHelp">
+          {{#if myErrors.title }}
+          <small id="urlHelp" class="form-text text-danger">{{ myErrors.title }}</small>
+          {{/if}}
         </div>
         <div class="form-group">
           <label for="key">Key</label>
-          <input type="text" value="642" class="form-control" id="key">
+          <input name="key" value="{{link.key}}" class="{{ternaryIf myErrors.key 'is-invalid' ''}} form-control"
+            id="key" type="number" autocomplete="on" aria-describedby="keyHelp">
+          {{#if myErrors.key }}
+          <small id="urlHelp" class="form-text text-danger">{{ myErrors.key }}</small>
+          {{/if}}
         </div>
         <div class="form-group">
-          <label for="exampleFormControlSelect1">Type of link</label>
-          <select class="form-control" id="exampleFormControlSelect1">
-              {{#each link_type}}
-            <option>{{this}}</option>
+          <label for="link_type">Type of link</label>
+          <select name="link_type" class="{{ternaryIf myErrors.link_type 'is-invalid' ''}} form-control"
+            aria-describedby="typeHelp" id="link_type">
+            <option></option>
+            {{#each link_type}}
+            <option {{ ternaryIf (iff ../link.link_type '==' this) 'selected' ''}}>{{this}}</option>
             {{/each }}
           </select>
+          {{#if myErrors.type }}
+          <small id="typeHelp" class="form-text text-danger">{{ myErrors.type }}</small>
+          {{/if}}
         </div>
         <div class="form-group d-none">
           <label for="exampleFormControlTextarea1">Description</label>
           <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
         </div>
         <div class="custom-control custom-switch mr-3 mb-3">
-            <input type="checkbox" class="custom-control-input" id="customSwitch1">
-            <label class="custom-control-label" for="customSwitch1">Make it on my main page</label>
+          <input name="main" {{ternaryIf link.main 'checked' ''}} type="checkbox" class="custom-control-input"
+            id="main">
+          <label class="custom-control-label" for="main">Make it on my main page</label>
         </div>
         <div class="form-group row">
           <div class="col-sm-10">

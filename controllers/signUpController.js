@@ -1,8 +1,8 @@
 const Subscriber = require("../models/subscriber")
 const Influencer = require("../models/influencer")
 const influencerCong = require("../models/config/influencerConf")
-const specialFunctions = require("../config/specialFunctions")
-
+const specialFns = require("../config/specialFunctions")
+const bcrypt = require("bcrypt")
 const {
     check,
     validationResult
@@ -23,12 +23,12 @@ const postController = [
         next()
     },
     /* ************************************** middlwares to check all my fields  */
-    check("subscriber_id").trim().custom(specialFunctions.checkSpecialChars),
+    check("subscriber_id").trim().custom(specialFns.checkSpecialChars),
     // check("first_name").trim().custom(specialFunctions.checkSpecialChars),
     // check("email").normalizeEmail().isEmail().withMessage("Please enter a valid email."),
-    check("niche").trim().custom(specialFunctions.checkSpecialChars),
-    check("password").custom(specialFunctions.checkSpecialChars),
-    check("password").custom(specialFunctions.checkPassword),
+    check("niche").trim().custom(specialFns.checkSpecialChars),
+    check("password").custom(specialFns.checkSpecialChars),
+    check("password").custom(specialFns.checkPassword),
     check("confirm_password", "Please enter a valid password").trim(),
     check("confirm_password").custom((value, {
             req
@@ -122,10 +122,30 @@ const postController = [
         })
 
     },
+    /* ********************** middleware to hashing my password */
+    (req, res, next) => {
+        console.log("password to hash : %s", res.locals.influencer.password)
+        bcrypt.hash(res.locals.influencer.password,10)
+        .then((hashed) => {
+            res.locals.hashed_pass = hashed
+            next()
+        })
+        .catch((err) => {
+            const msg = 'An error was generated while hashing the password'
+            console.log("%s => %s",msg, err)
+            res.locals.myErrors["password"] = msg
+            next(new Error(msg))
+        })
+        
+    },
     /* *************** middlware to check ans save the influencer ********/
     (req, res, next) => {
         console.log(res.locals.influencer)
-        res.locals.influencer.save((err) => {
+        let influencerToSave = res.locals.influencer
+        console.log("hashed password => %s",res.locals.hashed_pass)
+        influencerToSave.password = res.locals.hashed_pass
+        console.log("influencerToSave => %s",influencerToSave)
+        influencerToSave.save((err) => {
             if (err) {
                 if (err.errors) {
                     Object.keys(err.errors).forEach((key) => {

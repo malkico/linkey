@@ -3,6 +3,7 @@ var router = express.Router();
 
 const indexController = require("../controllers/indexController")
 const signUpController = require("../controllers/signUpController")
+const loginCtrl = require("../controllers/loginController")
 
 /* GET home page. */
 router.get('/', indexController.getController);
@@ -23,9 +24,9 @@ router.get('/privacy-policy', function(req, res, next) {
 });
 
 
-router.get("/log-in", function(req, res, next){
-    res.render("account/log-in")
-})
+router.get("/log-in", loginCtrl.getPage)
+router.post("/log-in", loginCtrl.loginIn)
+router.use("/log-in",loginCtrl.error)
 
 router.get("/reset-password", function(req, res, next){
     res.render("account/reset-password")

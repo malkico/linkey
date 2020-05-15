@@ -19,14 +19,14 @@ const InfluencerSchema = new Schema({
     password: {
         type: String,
         required: [true,'The password is required'],
-        minlength:  [8,'The password is shorter than the minimum allowed length (8)'],
-        maxlength: [30,'The password  is longer than the maximum allowed length (30)']
+        minlength:  [10,'The password is shorter than the minimum allowed length (10)'],
+        maxlength: [80,'The password is longer than the maximum allowed length (80)']
     },
     last_name: {
         type: String,
         required: false,
         minlength:  [2,'The last name is shorter than the minimum allowed length (2)'],
-        maxlength: [50,'The last name  is longer than the maximum allowed length (50)']
+        maxlength: [50,'The last name is longer than the maximum allowed length (50)']
     },
     registration_date: {
         type: Date,

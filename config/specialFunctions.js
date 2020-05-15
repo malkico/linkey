@@ -1,11 +1,12 @@
-var passwordValidator = require('password-validator');
-var schemaPassword = new passwordValidator();
-var passwordValidator = require('password-validator');
+const passwordValidator = require('password-validator');
+const schemaPassword = new passwordValidator();
 
 schemaPassword
-    .has().uppercase() // Must have uppercase letters
-    .has().lowercase() // Must have lowercase letters
-    .has().digits() // Must have digits
+    // .has().uppercase() // Must have uppercase letters
+    // .has().lowercase() // Must have lowercase letters
+    // .has().digits() // Must have digits
+    .is().min(4)                                    // Minimum length 8
+    .is().max(30)                                  // Maximum length 100
     .has().not().spaces() // Should not have spaces
     .is().not().oneOf(['Passw0rd', 'Password123']); // Blacklist these values
 
@@ -22,6 +23,12 @@ exports.checkPassword = value => {
     })
     errors.forEach(err => {
         switch (err) {
+            case "min":
+                throw new Error("The password is shorter than the minimum allowed length (4)")
+                break;
+            case "max":
+                throw new Error("The password is longer than the maximum allowed length (30)")
+                break;
             case "uppercase":
                 throw new Error("Must include at least one upper case letter")
                 break;
@@ -35,8 +42,17 @@ exports.checkPassword = value => {
                 throw new Error("It does not allow blank spaces")
                 break;
             default:
-                throw new Error('Please enter a valid password %s', err)
+                throw new Error('Please enter a valid password')
         }
     })
     return true;
+}
+
+exports.catchErrorsDB = (err,myErrors) => {
+    if (err.errors) {
+        Object.keys(err.errors).forEach((key) => {
+            myErrors[err.errors[key].path] = err.errors[key].message
+            console.log("%s => %s ", err.errors[key].path, err.errors[key].message)
+        })
+    } 
 }
