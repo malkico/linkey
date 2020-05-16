@@ -2,6 +2,8 @@ const linkConf = require("../models/config/linkConf")
 const Link = require('../models/link')
 const Influencer = require("../models/influencer")
 const async = require("async")
+const ObjectId = require('mongoose').Types.ObjectId; 
+
 const {
     check,
     validationResult
@@ -70,6 +72,37 @@ exports.post = [
     (req, res, next) => {
         console.log("save the new link")
         async.series({
+            checkTheKey: function (callback) {
+                Influencer.aggregate([{
+                        $lookup: {
+                            from: "links",
+                            localField: "links",
+                            foreignField: "_id",
+                            as: "links",
+                        }
+                    }, {
+                        $match: {
+                            _id: ObjectId(res.locals.influencer._id),
+                            "links.key": res.locals.link.key
+                        }
+                    }]
+
+                ).then((result) => {
+                    console.log("%s - %s ",res.locals.influencer._id, res.locals.link.key)
+                    console.log("check a key: "+result)
+                    if (Object.keys(result).length) {
+                        res.locals.result = "Please enter another key"
+                        res.locals.myErrors.key = "Duplicated key!"
+                        res.render(page)
+                        return
+                    } else
+                        callback(null, true)
+
+                }).catch(err => {
+                    res.locals.result = "Error! Cannot check the key"
+                    callback(err, null)
+                })
+            },
             alink: function (callback) {
                 res.locals.link.save()
                     .then(newLink => {
@@ -95,6 +128,8 @@ exports.post = [
                         $push: {
                             links: res.locals.link
                         }
+                    }, {
+                        runValidators: true
                     })
                     .then(influencerUpdated => {
                         if (!Object.keys(influencerUpdated).length) {
@@ -116,7 +151,7 @@ exports.post = [
                 res.render(page)
                 return
 
-            } else if (results.alink && results.toInfluencer){
+            } else if (results.alink && results.toInfluencer) {
                 res.locals.result = "link successfully added"
                 res.locals.success = true
                 next()

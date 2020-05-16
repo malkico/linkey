@@ -44,6 +44,7 @@
           <small id="urlHelp" class="form-text text-danger">{{ myErrors.key }}</small>
           {{/if}}
         </div>
+        {{!--
         <div class="form-group">
           <label for="link_type">Type of link</label>
           <select name="link_type" class="{{ternaryIf myErrors.link_type 'is-invalid' ''}} form-control"
@@ -53,10 +54,11 @@
             <option {{ ternaryIf (iff ../link.link_type '==' this) 'selected' ''}}>{{this}}</option>
             {{/each }}
           </select>
-          {{#if myErrors.type }}
-          <small id="typeHelp" class="form-text text-danger">{{ myErrors.type }}</small>
+          {{#if myErrors.link_type }}
+          <small id="typeHelp" class="form-text text-danger">{{ myErrors.link_type }}</small>
           {{/if}}
         </div>
+         --}}
         <div class="form-group d-none">
           <label for="exampleFormControlTextarea1">Description</label>
           <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>

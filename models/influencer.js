@@ -53,9 +53,8 @@ const InfluencerSchema = new Schema({
         required: false
     }]
 
-}) /*.index(
-    { _id : true, "link.key" : true },{ unique : 'This key is already taken'}
-)  /* .pre('validate', function validate(next) {
+}) 
+ /* .pre('validate', function validate(next) {
     var unique = [];
 
     for (var i = 0, l = this.link.length; i < l; i++) {

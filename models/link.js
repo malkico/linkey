@@ -57,11 +57,12 @@ let LinkSchema = new Schema({
     },
     link_type : {
         type: String,
-        required: [true,"If you didn't find the right type, you can choose Web page"],
-        enum : {
+        /* required: [true,"If you didn't find the right type, you can choose Web page"], */
+        required: false,
+        /* enum : {
             values: linkConf.link_type,
             message : "If you didn't find the right type, you can choose Web page, and please contact us"
-        }
+        } */
     },
     date_added: {
         type: Date,
