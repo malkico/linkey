@@ -101,3 +101,17 @@ label{
   }
 } 
 */
+
+.social-media{
+  .remove{
+    color: red;
+    cursor: pointer;
+    margin-left: auto;
+  }
+  .links{
+    a{
+    max-width: 90%;
+      line-height: 1rem;
+    }
+  }
+}

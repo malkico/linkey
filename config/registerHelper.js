@@ -82,10 +82,15 @@ exports.iff = (v1, op, v2) => {
     return result
 }
 
-exports.get = (value) => {
-    return value.toString()
+exports.get = (obj, param) => {
+    console.log(obj+" - "+ param)
+    return obj[param]
 }
 
 exports.objIsEmpty = (value) => {
     return Object.keys(value).length
 }
+
+exports.json = (obj) => {
+    return JSON.stringify(obj);
+};

@@ -25,6 +25,7 @@ exports.post = [
         res.locals.link_type = linkConf.link_type
         next()
     },
+
     /* *********************** middlewares to check my fields **********/
     check("url").trim().isURL().withMessage("Please enter a valid url"),
     check("title").trim().custom(specialFncs.checkSpecialChars),
@@ -146,12 +147,12 @@ exports.post = [
             }
         }, (err, results) => {
             if (err) {
-                specialFncs.catchErrorsDB(err, res.locals.myErrors)
+                specialFncs.catchErrorsDB(err.errors, res.locals.myErrors)
                 console.log("%s \n %s", err, res.locals.result)
                 res.render(page)
                 return
 
-            } else if (results.alink && results.toInfluencer) {
+            } else if (results.alink && results.toInfluencer && results.checkTheKey) {
                 res.locals.result = "link successfully added"
                 res.locals.success = true
                 next()

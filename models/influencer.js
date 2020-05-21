@@ -19,7 +19,7 @@ const InfluencerSchema = new Schema({
     password: {
         type: String,
         required: [true,'The password is required'],
-        minlength:  [10,'The password is shorter than the minimum allowed length (10)'],
+        minlength:  [30,'The password is shorter than the minimum allowed length (30)'],
         maxlength: [80,'The password is longer than the maximum allowed length (80)']
     },
     last_name: {
@@ -42,10 +42,10 @@ const InfluencerSchema = new Schema({
             message : "If you didn't find the right niche, you can choose other, and please contact us"
         }
     },
-    social_medias: [{
+    contacts: [{
         type: Schema.Types.ObjectId,
-        ref: 'SocialMedia',
-        required: [true,"You should link your account with at least one social network"],  
+        ref: 'Contact',
+        required: [true,"You should link your account with at least one contact information"],  
     }],
     links: [{
         type: Schema.Types.ObjectId,

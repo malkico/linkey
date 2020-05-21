@@ -75,7 +75,8 @@ app.engine('hbs', exphbs({
     ternaryIf: registerHelper.ternaryIf,
     iff: registerHelper.iff,
     get: registerHelper.get,
-    objIsEmpty: registerHelper.objIsEmpty
+    objIsEmpty: registerHelper.objIsEmpty,
+    json: registerHelper.json
   }
 }))
 app.set('view engine', 'hbs');

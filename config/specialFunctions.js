@@ -48,11 +48,11 @@ exports.checkPassword = value => {
     return true;
 }
 
-exports.catchErrorsDB = (err,myErrors) => {
-    if (err.errors) {
-        Object.keys(err.errors).forEach((key) => {
-            myErrors[err.errors[key].path] = err.errors[key].message
-            console.log("%s => %s ", err.errors[key].path, err.errors[key].message)
+exports.catchErrors = (errors,myErrors) => {
+    if (errors) {
+        Object.keys(errors).forEach((key) => {
+            myErrors[errors[key].path] = errors[key].message
+            console.log("%s => %s ", errors[key].path, errors[key].message)
         })
     } 
 }
