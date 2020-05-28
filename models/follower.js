@@ -5,15 +5,11 @@ const FollowerSchema = Schema({
     ip_adress : {
         type: String,
         required: true,
-        min: 7,
-        max: 15
+        unique : "This ip adress is duplicated"
+        /* minlength: 7,
+        maxnlength: 15 */
     },
-    session : {
-        type: String,
-        required: true,
-        max: 80
-    },
-    subscriber: {
+    subscriber: { 
         type: Schema.Types.ObjectId,
         ref: 'Subscriber',
         required: false
@@ -22,4 +18,6 @@ const FollowerSchema = Schema({
 
 })
 
-module.exports = mongoose.Model("Follower", FollowerSchema)
+FollowerSchema.plugin(require('mongoose-beautiful-unique-validation'))
+
+module.exports = mongoose.model("Follower", FollowerSchema)

@@ -108,6 +108,11 @@
         $("#URL").attr("placeholder", "Your email")
         $(".preURL").parent().show()
         $(".preURL").html('@')
+      } else if (which === "Whatsapp") {
+        $(".preURL").parent().hide()
+        $("#URL").attr("placeholder", "Your number")
+        $(".preURL").parent().show()
+        $(".preURL").html('Num°')
       } else if (typeof (preURL[which]) !== "undefined") {
         $(".preURL").parent().show()
         // $(".web_site").html(webSite[which])

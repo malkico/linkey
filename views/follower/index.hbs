@@ -1,41 +1,44 @@
 {{> "follower/header"}}
 <div id='follower'>
-  <div class='bg-c-dark pb-3 row d-flex justify-content-end'>
+  <div class='bg-c-dark row d-flex justify-content-end'>
     <div class="max-with d-flex justify-content-end col-12">
-    <ul class="nav nav-pills  ">
-      <li class="nav-item d-none">
-        <a class="nav-link active" href="#">LINKEY</a>
-      </li>
-      <li class="nav-item bg-dark rounded-left">
-        <a class="nav-link active small text-white bg-dark " href="/">CREATE MY OWN SEARCH ENGINE</a>
-      </li>
-    </ul>
+      <ul class="nav nav-pills  ">
+        <li class="nav-item d-none">
+          <a class="nav-link active" href="#">LINKEY</a>
+        </li>
+        <li class="nav-item bg-dark rounded-left">
+          <a class="nav-link active small text-white bg-dark " href="/">CREATE MY OWN SEARCH ENGINE</a>
+        </li>
+      </ul>
     </div>
-    <div class="influencer col-12 max-with">
-      <div class='my-hr border border-c-light'></div>
-      <div class="social-media float-right mr-2">
-        <i class="text-c-light"> Find us</i>
-        <a href="https://instagram.com"><i class="fab fa-instagram "></i></a>
-        <a href="https://twitter.com"><i class="fab fa-twitter "></i></a>
-        <a href="https://facebook.com"><i class="fab fa-facebook"></i></a>
-      </div>
-      <div class="row ">
-        <div class='photo offset-1 bg-c-dark pl-2 pr-1'>
-          <img class="img-fluid rounded-circle border border-custom" alt=""
-            src='https://hypeauditor.com/uploads/h/0/4/3/3f47564e5f62da17e68ada1df830f742.jpg?p=fczNAO9t1MDFeTFZwuYadTmaDNt%2FuRvBL8YIp%2Bu3lTLQKhord2anZmNsgc2zH64ttvNIcW6MBvwjqpvogVjmqMzcQh7DcVG2LAU4LeZ%2BfPC5k1y8fOjJZVZSmKD4%2BdsILKMNPqa%2F9YLBsMN3zUEAd2pVpPtLHnKDyCUQcXvY0Aop878yKdQEHhMmnfvXOGxhhBGlzvUfdGTpvYdBlY3YPaQKDw0o%2Blb78wAHwaRA2OuR71AvdOPlAdryUxT07tX4VmONqYJvF81F%2FxzOzyZupCPO5yO7V0a9Cqwwk%2B1SjaE%3D'>
+    <div class="influencer mb-2 col-12 max-with">
+      <div class='my-hr border border-c-light d-none'></div>
+      <div class=" mb-0 pb-1 d-flex justify-content-center">
+        <div class="d-flex  usernames pb-2">
+          <div class='photo bg-c-dark pl-2 pr-1'>
+            <img class="img-fluid rounded-circle border border-custom" alt=""
+              src='https://www.svgrepo.com/show/44183/male-user.svg'>
+          </div>
+          <span class="login my-auto bg-c-dark text-c-light pr-2"><span>...</span><br />
+            <small class='text-c-light'>@...</small></span>
         </div>
-        <span class="login my-auto bg-c-dark text-c-light pr-2">Kylie 🤍 <br />
-          <small class='text-c-light'>@kyliejenner</small></span>
+      </div>
+      <div class="social-media">
+        <i class="text-c-light"> Find us</i>
+        {{#each influencer.contacts}}
+        <a href="{{this.full_URL}}"><i class="{{this.icone}}"></i></a>
+        {{/each}}
       </div>
     </div>
   </div>
   <!-- Search form -->
   <div class='search'>
-    <form class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-4 bg-dark p-1 pt-2 pb-2 mb-4 max-with">
+    <form action="?search"
+      class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-4 bg-dark p-1 pt-2 pb-2 mb-4 max-with">
       <input
         class="form-control form-control-sm mr-3 w-75 border-white   border-1 border-top-0 border-right-0 border-left-0 text-dark"
-        type="text" placeholder="TAPE KEY HERE" aria-label="Search" autofocus>
-      <i class="fas fa-search text-white" aria-hidden="true"></i>
+        type="text" placeholder="TAPE KEY OR SOME KEYWORDS" aria-label="Search" autofocus>
+      <i type="submit" class="fas fa-search text-white" aria-hidden="true"></i>
     </form>
   </div>
 
@@ -46,39 +49,40 @@
     <div class="row">
 
       <!--Grid column-->
+      <div class="spinner-border mb-5 searching" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      <div class="result col-12">
+        <p class="text-center">Default message.</p>
+      </div>
+
       <div class="links col-12 offset-sm-1 col-sm-10">
 
         <div class="list-group-flush ">
-          {{#each links }}
-          <a href="#" class="text-dark">
-          <div class=" alink list-group-item d-flex pr-0 pl-0 row pt-0">
-            <div class="d-flex offset-1 col-10 border-bottom pb-2 max-with">
-            <p class="mb-0 "><i class="fab fa-instagram fa-2x mr-4 blue p-3 white-text rounded " aria-hidden="true"></i>
-              <div class="my-auto">
-                <h6 class="mb-0"> THIS IS MILAN'S PLAN FOR CAR-FREE STREETS AFTER THE CORONAVIRUS LOCKDOWN<h6>
-                    <span class="badge badge-c-dark small ">KEY: 451</span>
+          {{#each influencer.links }}
+          {{#if this.main }}
+          <a href="{{this.url}}" class="text-dark all-links" data-id="{{this._id}}">
+            <div class=" alink list-group-item d-flex pr-0 pl-0 row pt-0">
+              <div class="d-flex offset-1 col-10 border-bottom pb-2 max-with">
+                <p class="mb-0 "><i class="fab fa-slack-hash fa-2x mr-4" aria-hidden="true"></i>
+                  <div class="my-auto">
+                    <h6 class="mb-0"> {{this.title}}<h6>
+                        <span class="badge badge-c-dark">KEY: {{this.key}}</span>
+                  </div>
+                  <div class="spinner-border ml-2 " role="status">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+
+                </p>
               </div>
-            </p>
             </div>
-          </div>
           </a>
-          <a href="#" class="text-dark">
-          <div class=" alink list-group-item d-flex pr-0 pl-0 row pt-0">
-            <div class="d-flex offset-1 col-10 border-bottom pb-2 max-with">
-            <p class="mb-0 "><i class="fab fa-slack-hash fa-2x mr-4 blue p-3 white-text rounded "
-                aria-hidden="true"></i>
-              <div class="my-auto">
-                <h6 class="mb-0"> SUBSCRIBE<h6>
-                    <span class="badge badge-c-dark">KEY: 451</span>
-              </div>
-            </p>
-          </div>
-          </div>
-          </a>
+          {{/if}}
           {{/each}}
         </div>
 
       </div>
+      <div class="customize"></div>
       <!--Grid column-->
 
       <!--Grid column-->
@@ -122,7 +126,8 @@
             <!--Copyright-->
             <p class="row">
               <span class="col-12">
-                Made with <i class="fa fa-heart pulse"></i> by <a href="https://instagram.com/malki_hi" class='text-dark'><strong>
+                Made with <i class="fa fa-heart pulse"></i> by <a href="https://instagram.com/malki_hi"
+                  class='text-dark'><strong>
                     malki_co</strong></a> </span>
               <span class="col-12"><u><a class="text-white" href="/">LINKEY</a></u> © 2020 Copyright</span>
             </p>
@@ -140,12 +145,14 @@
             <div class=" ">
               <ul class="list-unstyled list-inline mb-0">
                 <li class="list-inline-item">
-                    <a class="btn-floating btn-sm rgba-white-slight mx-1 text-white" href="https://www.facebook.com/kadem.sahir " >
-                      <i class="fab fa-facebook-f small"></i>
-                    </a>
+                  <a class="btn-floating btn-sm rgba-white-slight mx-1 text-white"
+                    href="https://www.facebook.com/kadem.sahir ">
+                    <i class="fab fa-facebook-f small"></i>
+                  </a>
                 </li>
                 <li class="list-inline-item">
-                  <a class="btn-floating btn-sm rgba-white-slight mx-1 text-white" href="https://www.instagram.com/malki_hi">
+                  <a class="btn-floating btn-sm rgba-white-slight mx-1 text-white"
+                    href="https://www.instagram.com/malki_hi">
                     <i class="fab fa-instagram small"></i>
                   </a>
                 </li>
@@ -155,9 +162,10 @@
                   </a>
                 </li>
                 <li class="list-inline-item">
-                  <a class="btn-floating btn-sm rgba-white-slight mx-1 text-white"  href="https://www.linkedin.com/in/malki-hicham-032ba570/" >
+                  <a class="btn-floating btn-sm rgba-white-slight mx-1 text-white"
+                    href="https://www.linkedin.com/in/malki-hicham-032ba570/">
                     <i class="fab fa-linkedin-in small"></i>
-                    
+
                   </a>
 
                 </li>
@@ -176,4 +184,193 @@
   </footer>
   <!-- Footer -->
 
-{{> "follower/footer"}}
+  {{> "follower/footer"}}
+  <!-- ---------------------- Scraping from instagram ------>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    $(() => {
+      const socket = io.connect('127.0.0.1:3000');
+      $.get("https://www.instagram.com/{{influencer_insta.URL}}/?__a=1")
+        .done(function (data) {
+          // getting the url
+          if (Object.keys(data).length) {
+            const full_name = data["graphql"]["user"]["full_name"];
+            const username = data["graphql"]["user"]["username"];
+            const photoURL = data["graphql"]["user"]["profile_pic_url_hd"];
+            $(".login span").text(full_name)
+            $(".login small").text(username)
+            $(".photo img").attr("src", photoURL)
+          }
+        })
+
+      // ++++++++++++++++++++ Cookie follower_id 
+      window.getCookie = function (name) {
+        var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+        if (match) return match[2];
+      }
+      console.log("follower cookie => %s", getCookie("follower_id"))
+
+      /* **************************** SEARCH ENGINE ************************/
+
+      // +++++++++++++++++  GET influencer links 
+      const links = JSON.parse('{{{json influencer.links}}}')
+      const link_filtered = (url, title, key, _id) => {
+        return "<a href='" + url + "' class='text-dark filtred' data-id='" + _id + "'>" +
+          "<div class='alink list-group-item d-flex pr-0 pl-0 row pt-0'>" +
+          "<div class='d-flex offset-1 col-10 border-bottom pb-2 max-with'>" +
+          "<p class='mb-0'><i class='fab fa-slack-hash fa-2x mr-4' aria-hidden='true'></i>" +
+          "<div class='my-auto'>" +
+          "<h6 class='mb-0'> " + title + "<h6>" +
+          "<span class='badge badge-c-dark'>KEY: " + key + "</span>" +
+          "</div>" +
+          " <div class='spinner-border ml-2 ' role='status'>" +
+          " <span class='sr-only'>Loading...</span>" +
+          " </div>" +
+          "</p>" +
+          "</div>" +
+          "</div>" +
+          "</a>"
+      }
+
+      // ++++++++++++ Looking for KEY and keyword on title
+      const conditions = (link, keywords) => {
+
+        const array_keywords = keywords.replace(/ +/g, " ").trim().split(" ")
+        console.log("looking for %s => %s", typeof (array_keywords), array_keywords.join())
+        let allFilter = false
+        array_keywords.forEach(k => {
+          if (link.title.toLowerCase().includes(k.toLowerCase())) {
+            allFilter = true;
+          }
+        })
+        return (link.key == parseInt(keywords, 10) || allFilter)
+      }
+
+      // ++++++++++++++++ make keywords on bold style
+      const boldingKeyword = (title, keywords) => {
+        const array_keywords = keywords.replace(/ +/g, " ").trim().split(" ")
+        array_keywords.forEach(k => {
+          if (k !== "")
+            title = title.replace(new RegExp(k, "gi"), "aa1a" + k + "bb2b")
+        })
+
+        title = title.replace(/aa1a/gi, "<span style='background-color: grey; color: #fff'>")
+        title = title.replace(/bb2b/gi, "</span>")
+        return title
+      }
+
+      // +++++++++++++++++++++  research function
+      const research = (val) => {
+        const founds = links.filter(link => conditions(link, val))
+        $(".all-links").fadeOut()
+        $('.filtred').remove()
+        founds.forEach(v => {
+          $(".links .list-group-flush").append(link_filtered(v.url, boldingKeyword(v.title, val),
+            v.key, v._id))
+        })
+        return founds
+      }
+
+      // +++++++++++++++++++++ research logic
+      const logicSearch = () => {
+        const form = $('.search form')
+        $(".links").hide()
+        $(".searching").fadeIn()
+        // customize_footer()
+        socket.emit("search", {
+            keyword: form.find("input").val(),
+            follower_id: getCookie("follower_id"),
+            influencer_id: "{{influencer._id}}"
+          },
+          (data) => {
+            const founds = research(form.find("input").val())
+            let promise2, promise3
+            const promise1 = new Promise((resolve, reject) => {
+              $(".searching").fadeOut(() => {
+                resolve(true)
+              })
+            })
+
+            if (!data.confirm || !founds.length) {
+              if (!data.confirm)
+                $(".result p").text(data.message)
+              else if (!founds.length)
+                $(".result p").text("Can't find nothing!")
+
+              promise2 = new Promise((resolve, reject) => {
+                $(".links").hide(() => {
+                  resolve(true)
+                })
+              })
+              promise3 = new Promise((resolve, reject) => {
+
+                $(".result").show(() => {
+                  console.log("hide result callback")
+                  resolve(true)
+                })
+              })
+
+
+              console.log("showing the error message")
+            } else if (data.confirm) {
+              $("form input").data("id", data.search_id)
+              promise2 = new Promise((resolve, reject) => {
+                $(".links").show(() => {
+                  resolve(true)
+                })
+              })
+              promise3 = new Promise((resolve, reject) => {
+
+                $(".result").hide(() => {
+                  console.log("hide result callback")
+                  resolve(true)
+                })
+              })
+
+              console.log("showing the links")
+            }
+
+            Promise.all([promise1, promise2, promise3]).then(() => {
+              customize_footer()
+
+            })
+
+          })
+        // research(form.find("input").val())
+      }
+
+      // +++++++++++++++++++++ Strart research
+      $(".search form").submit(function (e) {
+        e.preventDefault()
+        logicSearch()
+      })
+      $(".search form .fa-search").click(function (e) {
+        console.log("click to research")
+        logicSearch()
+      })
+      // console.log("links => %s",JSON.stringify(links))
+
+      // +++++++++++++++++++++++++++++ Save the click
+      $("body").delegate('.links a', 'click', function (e) {
+        e.preventDefault()
+        $(this).find(".spinner-border").show()
+
+        socket.emit('click', {
+          link_id: $(this).data("id"),
+          follower_id: getCookie("follower_id"),
+          search_id: $("form input").data("id")
+        }, data => {
+          if (data.confirm) {
+            console.log("redirect to the link ...")
+          } else {
+            console.log(data.message)
+          }
+
+          location.href = $(this).attr("href")
+        });
+      })
+    })
+  </script>
+  </body>
+
+  </html>

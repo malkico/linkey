@@ -4,9 +4,23 @@
     max-width: 50rem;
     margin: 0 auto;
     }
+    .spinner-border.searching{
+        width: 5rem;
+        height: 5rem;
+        margin: 0 auto;
+        display: none;
+    }
+
+    .result{
+        display: none;
+    }
     .influencer {
         position: relative;
 
+        .usernames{
+            border-bottom: 1px solid #dee2e6 ;
+            width: max-content;
+        }
         .photo {
             z-index: 2;
             position: relative;
@@ -36,36 +50,83 @@
     }
 
     .social-media {
-        position: relative;
-        top: 2.2rem;
         font-size: 0.8rem;
-
-        i.fab {
-            border-radius: 50%;
+        width: fit-content;
+        margin: 0 auto;
+        svg{
+        color: white;
+            border-radius: 25%;
             padding: 0.2rem;
+            font-size: 1.2rem;
+            margin: 0rem 0.1rem 0rem;
+            width: auto;
+            margin-top: 0.1rem;
         }
-
         .fa:hover {
             opacity: 0.7;
         }
 
-        .fa-instagram {
+        [class*="instagram"] {
             background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
             background: -webkit-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
             background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
             filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f09433', endColorstr='#bc1888', GradientType=1);
-            color: white;
         }
 
-        .fa-facebook {
+        [class*="facebook"] {
             background: #3B5998;
-            color: white;
         }
 
-        .fa-twitter {
+        [class*="twitter"] {
             background: #55ACEE;
-            color: white;
         }
+        [class*="snapchat"] {
+            color : black !important;
+            background: yellow;
+        }
+        [class*="tiktok"] {
+            background: #000;
+        }
+        [class*="linkedin"] {
+            background: #0e76a8 ;
+        }
+        [class*="github"] {
+            background: #24292e;
+        }
+        [class*="behance"] {
+            background: #000;
+        }
+        [class*="twitch"] {
+            background: #6441a5 ;
+        }
+        // Email
+        [class*="at-icone"] {
+            background:#000;
+        }
+        [class*="whatsapp"] {
+            background: #25D366;
+        }
+        // Blog
+        [class*="blog"] {
+            background:#f57d00;
+        }
+        // Store
+        [class*="store"] {
+            background:#96bf49;
+        }
+        // Portfolio
+        [class*="user"] {
+            background:#747474;
+        }
+        // Personal/Company Website
+        [class*="webSite"] {
+            background: #000;
+        }
+        // Other
+        [class*="other"] {
+            background: green;
+        }
+        
 
     }
 
@@ -95,5 +156,11 @@
     // margin: 0rem 2rem 0rem;
     h6{
     font-size: 0.8rem;
+    }
+
+    .spinner-border{
+        width: 1rem;
+        height: 1rem;
+        display: none;
     }
 }

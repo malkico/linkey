@@ -2,25 +2,20 @@ const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 
 const ClickSchema = Schema({
-    date: {
-        type: Date,
-        required : true,
-        default : Date.now
-    } ,
     follower: {
         type: Schema.Types.ObjectId,
         ref: 'Follower',
-        required: true
+        required: [true,'The follower id is required'],
     },
-    Influencer: {
+    link: {
         type: Schema.Types.ObjectId,
-        ref: 'Influencer',
-        required: true
+        ref: 'Link',
+        required: [true,'The link id is required'],
     },
-    search: {
-        type: Schema.Types.ObjectId,
-        ref: 'Search',
-        required: false
+    date: {
+        type: Date,
+        required: [true,'An error was generated when assigning a registration date, please check the date and time on your device.'],
+        default : Date.now
     }
 })
 

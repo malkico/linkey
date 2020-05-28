@@ -38,6 +38,10 @@ const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'Erreur de connexion MongoDB:'));
 
 const app = express();
+var http = require("http").Server(app);
+var io = require("socket.io")(http);
+http.listen(3000, "127.0.0.1");
+
 
 app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist'));
 app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist'));
@@ -113,6 +117,12 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+const socketCtrl = require("./sockets/get")
+io.on("connection", function (socket) {
+    // console.log("un nouveau client est connecté");
+    socketCtrl(socket)
+})
 
 /// mongoose.connection.close();
 

@@ -11,12 +11,14 @@ const async = require("async")
 const ObjectId = require("mongoose").Types.ObjectId
 
 const initialPage = (req, res, next) => {
+    console.log("initiale the page")
     res.locals.preURL = contactConf.preURL
     res.locals.icone = contactConf.icone
     next()
 }
 
 const getMyContactList = (req, res, next) => {
+    console.log("getMyContactList")
     Influencer.findById(res.locals.influencer._id).sort({}).populate("contacts")
         .then(result => {
             if (result) {
@@ -43,7 +45,7 @@ const getMyContactList = (req, res, next) => {
 
         }).catch(err => {
             res.locals.result = "An error was produced while retrieving your contact list, if the problem still exists please contact us"
-            console.log(err)
+            console.log("%s <= Error",err)
             res.render(page)
             return
         })
@@ -62,11 +64,12 @@ exports.post = [
     initialPage,
 
     /* *********************** middlewares to check my fields **********/
-    check("which").trim().custom(specialFncs.checkSpecialChars),
+    check("which").trim(),
     check("URL").trim().custom(specialFncs.checkSpecialChars),
 
     /* ********************** middleware to initialise all my form with req.body. fields */
     (req, res, next) => {
+        console.log("initialise all my form ")
         res.locals.contact = new Contact({
             ...req.body
         })
@@ -75,17 +78,24 @@ exports.post = [
 
     /* ********************** middleware to check if there are any errors found on the form */
     (req, res, next) => {
+        console.log("check if there are any errors")
         res.locals.myErrors = {}
         res.locals.result = null
         const errors = validationResult(req).array()
-        specialFncs.catchErrors(errors, res.locals.myErrors)
 
-        if (errors.length) {
+        errors.forEach(err => {
+            res.locals.myErrors[err.param] = err.msg
+        });
+
+        if (errors.lenght) {
+            res.locals.result = "Please check for errors produced"
             res.render(page)
+            console.log(res.locals.result)
             return
         } else
             next()
-    },
+        
+            },
 
     /* ***************** middlwares to escape all my fields ****************/
     check("URL").escape(),
@@ -123,6 +133,7 @@ exports.post = [
                 }).then(result => {
                     if (Object.keys(result).length){
                         res.locals.contacts.push(res.locals.contact)
+                        console.log("filter my contact list on <select>")
                         const newWhich = res.locals.which.filter( v => { return v !== res.locals.contact.which})
                         console.log("newWhich => %s",newWhich)
                         res.locals.which = newWhich

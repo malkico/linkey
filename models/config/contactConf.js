@@ -9,6 +9,7 @@ exports.which = ['Instagram',
     'Behance',
     'Twitch',
     'Email',
+    'Whatsapp',
     'Blog',
     'Store',
     'Portfolio',
@@ -27,24 +28,27 @@ exports.preURL = {
     'Github': 'https://github.com/',
     'Behance': 'https://www.behance.net/',
     'Twitch': 'https://www.twitch.tv/',
-    'Email': 'mailto:'
+    'Email': 'mailto:',
+    'Whatsapp' : 'tel:'
 }
 
 exports.icone = {
     'Instagram': 'fab fa-instagram',
-    'Facebook' : 'fab fa-facebook-f',
+    'Facebook' : 'fab fa-facebook',
     'Twitter' : 'fab fa-twitter',
     'Snapchat' : 'fab fa-snapchat-ghost',
     'Tiktok' : 'fab fa-tiktok',
     'Youtube' : 'fab fa-youtube',
     'Linkedin' : 'fab fa-linkedin-in',
     'Github' : 'fab fa-github',
-    'Behance' : 'fab fa-behance-square',
+    'Behance' : 'fab fa-behance',
     'Twitch' : 'fab fa-twitch',
-    'Email' : 'fas fa-at',
+    'Email' : 'fas fa-at at-icone',
+    'Whatsapp' : 'fab fa-whatsapp',
     'Blog' : 'fab fa-blogger-b',
-    'Store' : 'fas fa-store-alt',
+    'Store' : 'fas fa-store',
     'Portfolio' : 'fas fa-user-circle',
-    'Personal/Company Website' : 'fab fa-wordpress-simple',
-    'Other' : 'fas fa-feather',
+    // 'Personal/Company Website' : 'fab fa-wordpress-simple',
+    'Personal/Company Website' : 'fas fa-globe webSite',
+    'Other' : 'fas fa-feather other'
 }

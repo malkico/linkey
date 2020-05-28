@@ -3,7 +3,7 @@ const router = express.Router()
 
 const addLinkCtrl = require("../controllers/addLinkcontroller")
 const dashboardCtrl = require("../controllers/dashboardController")
-const socialMediaCtrl = require("../controllers/socialMediaController")
+const socialMediaCtrl = require("../controllers/contactController")
 
 router.get("/",dashboardCtrl.get)
 router.get("/add-link",addLinkCtrl.get)

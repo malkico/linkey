@@ -1,11 +1,7 @@
 const express = require("express")
 const router = express.Router()
+const followerCtrl = require("../controllers/followerController")
 
-router.get("/", function(req,res,next){
-    res.render("follower/index", {
-        title : 'a follower title',
-        links : [457,4,854,7987,445,6464]
-    })
-})
+router.get("/:login", followerCtrl.get)
 
 module.exports = router

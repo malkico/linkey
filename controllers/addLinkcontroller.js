@@ -141,13 +141,13 @@ exports.post = [
                             callback(null, true)
                     })
                     .catch(err => {
-                        res.locals.result = "Can't update you links, Please try again later"
+                        res.locals.result = "Can't update your links, Please try again later"
                         callback(err, null)
                     })
             }
         }, (err, results) => {
             if (err) {
-                specialFncs.catchErrorsDB(err.errors, res.locals.myErrors)
+                specialFncs.catchErrors(err.errors, res.locals.myErrors)
                 console.log("%s \n %s", err, res.locals.result)
                 res.render(page)
                 return

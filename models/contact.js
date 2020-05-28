@@ -22,7 +22,15 @@ let ContactSchema = new Schema({
 })
 
 ContactSchema.virtual("full_URL").get(function () {
-    return contactConf.preURL[this.which]+this.URL
+    let preURL = ""
+    if(contactConf.preURL[this.which] !== "undefined")
+        preURL = contactConf.preURL[this.which]
+    return preURL+this.URL
+})
+
+ContactSchema.virtual("icone").get( function () {
+
+    return contactConf.icone[this.which]
 })
 
 module.exports = mongoose.model("Contact", ContactSchema)
