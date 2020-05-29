@@ -7,7 +7,9 @@
     "start": "node ./bin/www",
     "devstart": "nodemon -e js,json,hbs ./bin/www --trace-sync-io",
     "sassbootstrap": "sass public/stylesheets/custom:public/stylesheets/min --watch  --style compressed",
-    "serverstart": "SET DEBUG = express-locallibrary-tutorial: * & npm run devstart"
+    "serverstart": "SET DEBUG = express-locallibrary-tutorial: * & npm run devstart",
+	"build": "webpack"
+
   },
   "keywords": [
     "instagram",
@@ -52,6 +54,8 @@
   },
   "devDependencies": {
     "eslint": "^7.1.0",
-    "nodemon": "^2.0.3"
+    "nodemon": "^2.0.3",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
   }
 }

@@ -1,4 +1,4 @@
-const mongoose = require("mongoose")
+// const mongoose = require("mongoose")
 const Click = require("../models/click")
 const asynnc = require("async")
 const Search = require("../models/search")
@@ -52,9 +52,10 @@ module.exports = (data, callback) => {
                         return
                     }
                 }).catch(err => {
+                    console.log('err : %s',err)
                     callback({message: "An error occurred while pushing click id to search"})
                 })
-            } ele            
+            } else            
                 async_cb(null, true)
 
         }

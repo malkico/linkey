@@ -2,7 +2,6 @@ const requestIp = require('request-ip');
 const Influencer = require("../models/influencer")
 const Visit = require("../models/visit")
 const Follower = require("../models/follower")
-const contactConf = require("../models/config/contactConf")
 const main_page = 'main'
 const follower_page = "follower/index"
 
@@ -57,8 +56,7 @@ exports.get = [
                 console.log("follower not saved!")
                 res.render(follower_page)
             } else {
-                res.cookie("follower_id", result._id.toString())
-                res.cookie("test", "test allah")
+                res.cookie("follower_id", result._id.toString(),{SameSite : "Strict"})
                 res.locals.follower = result
                 console.log("This follower => %s",result)
                 next()
@@ -92,13 +90,13 @@ exports.get = [
     },
 
     /* ********************** The last middleware ****************** */
-    function (req, res, next) {
+    function (req, res) {
         // console.log("influencer => %s",res.locals.influencer)
         res.render(follower_page)
     }
 ]
 
-exports.error = (err, req, res, next) => {
+exports.error = (err, req, res) => {
     console.log("%s <= render from error middleware")
     res.render(main_page)
 }

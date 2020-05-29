@@ -54,7 +54,7 @@ const getMyContactList = (req, res, next) => {
 exports.get = [
     initialPage,
     getMyContactList,
-    (req, res, next) => {
+    (req, res) => {
         res.render(page)
     }
 ]
@@ -166,7 +166,7 @@ exports.post = [
     },
 
     /* ************************** The LAST middleware ***************/
-    (req, res, next) => {
+    (req, res) => {
         res.locals.result = "A new contact added succesfuly"
         res.locals.success = true
         res.render(page)
@@ -176,7 +176,7 @@ exports.post = [
 
 exports.error = [
     initialPage,
-    (req, res, next) => {
+    (err, req, res) => {
         console.log(err)
         console.log("A error middleware")
         res.render(page)
@@ -184,7 +184,7 @@ exports.error = [
     }
 ]
 
-exports.delete = (req, res, next) => {
+exports.delete = (req, res) => {
     console.log("deleting a contact information...")
     const idContact = req.body.id
     console.log("id = %s",idContact)
@@ -241,7 +241,7 @@ exports.delete = (req, res, next) => {
             res.status(202).json({
                 message: message
             })
-        } else {
+        } else if(results) {
             message = "Contact deleted!"
             console.log(message)
             res.status(200).json({

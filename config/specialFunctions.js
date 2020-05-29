@@ -11,6 +11,7 @@ schemaPassword
     .is().not().oneOf(['Passw0rd', 'Password123']); // Blacklist these values
 
 exports.checkSpecialChars = (field) => {
+    // eslint-disable-next-line no-useless-escape
     if (/[\<\>\/\\\'\"]/.exec(field))
         throw new Error("It does not allow special characters like < > ' \" \\ /")
 
@@ -23,24 +24,18 @@ exports.checkPassword = value => {
     })
     errors.forEach(err => {
         switch (err) {
-            case "min":
+            case "min": 
                 throw new Error("The password is shorter than the minimum allowed length (4)")
-                break;
             case "max":
                 throw new Error("The password is longer than the maximum allowed length (30)")
-                break;
             case "uppercase":
                 throw new Error("Must include at least one upper case letter")
-                break;
             case "lowercase":
                 throw new Error("Must include at least one lower case letter")
-                break;
             case "digits":
                 throw new Error("Must include at least one numeric character")
-                break;
             case "spaces":
                 throw new Error("It does not allow blank spaces")
-                break;
             default:
                 throw new Error('Please enter a valid password')
         }

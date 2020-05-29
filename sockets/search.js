@@ -1,4 +1,3 @@
-const mongoose = require("mongoose")
 const Search = require("../models/search")
 const specialFuncts = require("../config/specialFunctions")
 
@@ -32,6 +31,7 @@ module.exports = (data, callback) => {
                 }
             }).catch(err => {
                 callback({message : "An error producing while saving search kewords"})
+                console.log("err => %s", err)
                 return
             })
 
