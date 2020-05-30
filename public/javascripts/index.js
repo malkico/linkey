@@ -3,6 +3,27 @@ const folower_file = require("./follower")
 const a = 1
 a = 2; */
 
+const async = require("async");
+
+async.parallel([
+    function(callback) {
+        setTimeout(function() {
+            callback(null, 'one');
+        }, 200);
+    },
+    function(callback) {
+        setTimeout(function() {
+            callback(null, 'two');
+        }, 100);
+    }
+],
+// optional callback
+function() {
+    // the results array will equal ['one','two'] even though
+    // the second function had a shorter timeout.
+    console.log("async fixed")
+});
+
 // ++++++++++++++++++++ Cookie follower_id 
 const getCookie = (name) => {
     var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
@@ -203,4 +224,6 @@ $(() => {
             location.href = $(this).attr("href")
         });
     })
+
+
 })

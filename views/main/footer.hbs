@@ -63,10 +63,10 @@
           </li>
         </ul>
         <p class="text-muted small mb-4 mb-lg-0">
-
-          Made with <i class="fa fa-heart pulse"></i> by <a href="https://instagram.com/malki_hi"
-            class='text-dark'><strong>
-              malki_co</strong></a> </span>
+              <span class="col-12">
+          Made with <i class="fa fa-heart pulse"></i> by <strong><a href="https://instagram.com/malki_hi"
+            class='text-dark'>
+              malki_co</a></strong> </span>
           <span class="col-12 text-lg-left"><u></u> © 2020 Copyright</span>
 
         </p>
@@ -102,4 +102,28 @@
 </script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
   integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+</script>
+<script>
+
+  $( () => {
+
+      $("#navbarNav ul li a[href^='#']").on('click', function(e) {
+
+      e.preventDefault();
+      let url = $('body').find($(this).attr('href')).offset().top;
+       $(this).parent().height()
+      $('html, body').animate({
+        scrollTop : url - $("#navbarNav").parent().height()
+      },300);
+      $(this).parent().addClass('active');
+      $(this).parent().siblings().removeClass('active');
+      
+
+      console.log("scrol height %s",$("#navbarNav").parent().height())
+      return false;	
+
+
+    });
+  })
+
 </script>
