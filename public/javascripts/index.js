@@ -3,36 +3,18 @@ const folower_file = require("./follower")
 const a = 1
 a = 2; */
 
-const async = require("async");
-
-async.parallel([
-    function(callback) {
-        setTimeout(function() {
-            callback(null, 'one');
-        }, 200);
-    },
-    function(callback) {
-        setTimeout(function() {
-            callback(null, 'two');
-        }, 100);
-    }
-],
-// optional callback
-function() {
-    // the results array will equal ['one','two'] even though
-    // the second function had a shorter timeout.
-    console.log("async fixed")
-});
-
 // ++++++++++++++++++++ Cookie follower_id 
 const getCookie = (name) => {
     var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
     if (match) return match[2];
 }
-console.log("follower cookie => %s", getCookie("follower_id"))
+
+// console.log("follower cookie => %s", getCookie("follower_id"))
+console.log("i18n_lang cookie => %s", getCookie("i18n_lang_2"))
 
 $(() => {
 
+    // *************************** customize_footer ***************
     folower_file.customize_footer()
 
     // ***************************** hide ads and header on keyboeard is show up 
@@ -127,9 +109,11 @@ $(() => {
     }
 
     // +++++++++++++++++++++ research logic
+    $(".customize").css("height", $("body").height() + "px")
     const logicSearch = () => {
+        $(".customize").removeClass("d-none")
         const form = $('.search form')
-        $(".links").hide()
+        // $(".links").hide()
         $(".searching").fadeIn()
         // customize_footerrrr()
         socket.emit("search", {
@@ -139,8 +123,8 @@ $(() => {
             },
             (data) => {
                 const founds = research(form.find("input").val())
-                let promise2, promise3
-                const promise1 = new Promise((resolve) => {
+                let fixLinksPromise, fixResultPromise
+                const hideSearchingPromise = new Promise(resolve => {
                     $(".searching").fadeOut(() => {
                         resolve(true)
                     })
@@ -152,43 +136,45 @@ $(() => {
                     else if (!founds.length)
                         $(".result p").text("Can't find nothing!")
 
-                    promise2 = new Promise((resolve) => {
-                        $(".links").hide(() => {
+                fixLinksPromise = new Promise(resolve => {
+                        $(".links").fadeOut(() => {
+                            resolve(true)
+                        })
+
+                    })
+                fixResultPromise = new Promise(resolve => {
+                        $(".result").fadeIn(() => {
                             resolve(true)
                         })
                     })
-                    promise3 = new Promise((resolve) => {
-
-                        $(".result").show(() => {
-                            console.log("hide result callback")
-                            resolve(true)
-                        })
-                    })
-
 
                     console.log("showing the error message")
                 } else if (data.confirm) {
                     $("form input").data("id", data.search_id)
-                    promise2 = new Promise((resolve) => {
-                        $(".links").show(() => {
+                    fixLinksPromise = new Promise(resolve => {
+                        $(".links").fadeIn(() => {
                             resolve(true)
                         })
                     })
-                    promise3 = new Promise((resolve) => {
-
-                        $(".result").hide(() => {
-                            console.log("hide result callback")
+                    fixResultPromise = new Promise(resolve => {
+                        $(".result").fadeOut(( ) => {
                             resolve(true)
                         })
+
                     })
 
                     console.log("showing the links")
                 }
 
-                Promise.all([promise1, promise2, promise3]).then(() => {
-                    folower_file.customize_footer()
-
-                })
+                Promise.all([hideSearchingPromise,
+                    fixResultPromise,
+                    fixLinksPromise])
+                    .then((results) => {
+                        if(results){
+                            folower_file.customize_footer()
+                        }
+                    }
+                )
 
             })
         // research(form.find("input").val())
@@ -208,7 +194,7 @@ $(() => {
     // +++++++++++++++++++++++++++++ Save the click
     $("body").delegate('.links a', 'click', function (e) {
         e.preventDefault()
-        $(this).find(".spinner-border").show()
+        $(this).find(".spinner-border").fadeIn()
 
         socket.emit('click', {
             link_id: $(this).data("id"),

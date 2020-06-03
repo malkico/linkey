@@ -2,7 +2,6 @@ const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
-const session = require('express-session')
 const cookieSession = require('cookie-session')
 const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
@@ -12,6 +11,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 const Handlebars = require('handlebars')
 const auth = require("./middlwares/auth")
+const changeLang = require("./middlwares/changeLang")
 const {
   allowInsecurePrototypeAccess
 } = require('@handlebars/allow-prototype-access')
@@ -38,6 +38,7 @@ const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'Erreur de connexion MongoDB:'));
 
 const app = express();
+
 var http = require("http").Server(app);
 var io = require("socket.io")(http);
 http.listen(3000, "127.0.0.1");
@@ -54,6 +55,27 @@ app.use(cookieSession({
   name: 'session',
   keys: ['key1', 'key2']
 }))
+
+const i18n = require("i18n");
+i18n.configure({
+    locales:['en', 'es', 'fr', 'ar'],
+    defaultLocale: 'en',
+    queryParameter: 'switch_lang',
+    // fallbacks : "en",
+    cookie: 'i18n_lang',
+    updateFiles: true, // default true :: if I use some word don't exist on my files local, it will create automatically
+    syncFiles: true, // default false
+    autoReload: true, // defeaul false
+    directory: __dirname + '/locales',
+    objectNotation: true,
+    api: {
+      '__': 't',  //now req.__ becomes req.t
+      '__n': 'tn' //and req.__n can be called as req.tn
+    },
+
+});
+app.use(i18n.init); 
+app.use(changeLang)
 
 /* 
 app.use(session({
@@ -80,7 +102,8 @@ app.engine('hbs', exphbs({
     iff: registerHelper.iff,
     get: registerHelper.get,
     objIsEmpty: registerHelper.objIsEmpty,
-    json: registerHelper.json
+    json: registerHelper.json,
+    t: registerHelper.t
   }
 }))
 app.set('view engine', 'hbs');
@@ -97,7 +120,6 @@ app.use(sassMiddleware({
   sourceMap: true
 }));
 app.use(express.static(path.join(__dirname, 'public')));
-
 app.use('/', indexRouter);
 app.use('/u', followerRouter);
 app.use("/dashboard/",auth, influencerRouter)
@@ -108,7 +130,7 @@ app.use(function (req, res, next) {
 });
 
 // error handler
-app.use(function (err, req, res, next) {  
+app.use(function (err, req, res) {  
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};

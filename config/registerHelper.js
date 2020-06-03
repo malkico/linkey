@@ -38,6 +38,7 @@ exports.ternaryIf = (condition, v1, v2) => {
 }
 
 exports.iff = (v1, op, v2) => {
+    let result
     switch(op){
         case '==':
             result = v1 == v2
@@ -94,3 +95,9 @@ exports.objIsEmpty = (value) => {
 exports.json = (obj) => {
     return JSON.stringify(obj);
 };
+
+const i18n = require("i18n");
+exports.t = (str, ...args) => {
+    // return (i18n !== undefined ? i18n.__(str,args) : str+args.toString());
+    return i18n.__(str,...args)
+}

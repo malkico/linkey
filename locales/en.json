@@ -1,0 +1,76 @@
+{
+	"main_page": {
+		"title": "Make your #linkinbio a search engine!",
+		"menu": {
+			"how_it_work": "How it works",
+			"pricing": "Pricing",
+			"get_started": "Get started",
+			"log_in": "Log in"
+		},
+		"how_it_works": {
+			"1": {
+				"title": "Several links! No problem",
+				"description": {
+					"1": "Add your links, each one with a unique",
+					"2": "KEY."
+				}
+			},
+			"2": {
+				"title": "With a unique URL",
+				"description": " Retrieve your unique URL, put it on in your #bio"
+			},
+			"3": {
+				"title": "Track your followers",
+				"description": "Understand your audience and what they looking for."
+			},
+			"understand": {
+				"1": "To more understand",
+				"2": "This is a",
+				"demo": "Demo account"
+			},
+			"pricing": {
+				"description": "Quickly build an effective pricing table for your potential customers with this Bootstrap example.It 's built with default Bootstrap components and utilities with little customization.",
+				"free": {
+					"sign_up": "Sign up for free",
+					"title": "Free",
+					"plan": {
+						"1": "Unlimited links",
+						"2": "Social icons",
+						"3": "Newsletter Email Signup",
+						"4": "Link Tracking & Stats",
+						"5": "No Ads",
+						"6": "pre-designed themes",
+						"7": "Email Support"
+					}
+				},
+				"pro": {
+					"sign_up": "Contact us",
+					"title": "Pro (Coming Soon)",
+					"plan": {
+						"1": "& More"
+					}
+				}
+			}
+		},
+		"footer": {
+			"made": {
+				"1": "Made with",
+				"2": "by"
+			},
+			"copyright": "Copyright",
+			"menu": {
+				"contact": "Contact",
+				"terms_use": "Terms of Use",
+				"privacy": "Privacy Policy"
+			}
+		}
+	},
+	"sign_up": {
+		"title": "Create your own search engine now!",
+		"form": {
+			"first_name": "First name",
+			"email": "Email",
+			"submit": "Sign up!"
+		}
+	}
+}

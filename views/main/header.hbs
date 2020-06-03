@@ -14,7 +14,7 @@
         crossorigin="anonymous">
 
 
-    <title>{{ title }}</title>
+    <title>{{ t "main_page.title" }}</title>
 </head>
 
 <body>
@@ -30,16 +30,16 @@
         <div class="collapse navbar-collapse " id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link howitworks-btn " href="#howitworks">HOW IT WORKS</a>
+                    <a class="nav-link howitworks-btn text-uppercase" href="#howitworks">{{ t "main_page.menu.how_it_work"}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link pricing-btn " href="#pricing">PRICING</a>
+                    <a class="nav-link pricing-btn text-uppercase" href="#pricing">{{ t "main_page.menu.pricing"}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link getstarted-btn" href="#getstarted">GET STARTED</a>
+                    <a class="nav-link getstarted-btn text-uppercase" href="#getstarted">{{ t "main_page.menu.get_started"}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link getstarted-btn" href="/log-in">LOG IN</a>
+                    <a class="nav-link getstarted-btn text-uppercase" href="/log-in">{{ t "main_page.menu.log_in"}}</a>
                 </li>
             </ul>
         </div>

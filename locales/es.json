@@ -1,0 +1,99 @@
+{
+	"alfa": {
+		"cars": "alfa.cars"
+	},
+	"main_page": {
+		"title": "main_page.title",
+		"menu": {
+			"how_it_work": "main_page.menu.how_it_work",
+			"pricing": "main_page.menu.pricing",
+			"get_started": "main_page.menu.get_started",
+			"log_in": "main_page.menu.log_in"
+		},
+		"how_it_works": {
+			"1": {
+				"title": "main_page.how_it_works.1.title",
+				"description": "main_page.how_it_works.1.description"
+			},
+			"2": {
+				"title": "main_page.how_it_works.2.title",
+				"description": "main_page.how_it_works.2.description"
+			},
+			"3": {
+				"title": "main_page.how_it_works.3.title",
+				"description": "main_page.how_it_works.3.description"
+			},
+			"understand": {
+				"0": "main_page.how_it_works.understand.0",
+				"1": "main_page.how_it_works.understand.1",
+				"2": "main_page.how_it_works.understand.2",
+				"demo": "main_page.how_it_works.understand.demo"
+			},
+			"pricing": {
+				"title": "main_page.how_it_works.pricing.title",
+				"description": "main_page.how_it_works.pricing.description",
+				"free": {
+					"plan": {
+						"0": "main_page.how_it_works.pricing.free.plan.0",
+						"1": "main_page.how_it_works.pricing.free.plan.1",
+						"2": "main_page.how_it_works.pricing.free.plan.2",
+						"3": "main_page.how_it_works.pricing.free.plan.3",
+						"4": "main_page.how_it_works.pricing.free.plan.4",
+						"5": "main_page.how_it_works.pricing.free.plan.5",
+						"6": "main_page.how_it_works.pricing.free.plan.6",
+						"7": "main_page.how_it_works.pricing.free.plan.7",
+						"8": "main_page.how_it_works.pricing.free.plan.8"
+					},
+					"sign_up": "main_page.how_it_works.pricing.free.sign_up",
+					"title": "main_page.how_it_works.pricing.free.title"
+				},
+				"pro": {
+					"sign_up": "main_page.how_it_works.pricing.pro.sign_up",
+					"title": "main_page.how_it_works.pricing.pro.title",
+					"plan": {
+						"1": "main_page.how_it_works.pricing.pro.plan.1"
+					}
+				}
+			}
+		},
+		"get_started": {
+			"title": "main_page.get_started.title",
+			"form": {
+				"first_name": "main_page.get_started.form.first_name",
+				"email": "main_page.get_started.form.email",
+				"submit": "main_page.get_started.form.submit"
+			}
+		},
+		"footer": {
+			"made": {
+				"1": "main_page.footer.made.1",
+				"2": "main_page.footer.made.2"
+			},
+			"copyright": "main_page.footer.copyright",
+			"menu": {
+				"contact": "main_page.footer.menu.contact",
+				"terms_use": "main_page.footer.menu.terms_use",
+				"privacy": "main_page.footer.menu.privacy"
+			}
+		}
+	},
+	"title": "title",
+	"test": "test",
+	"aa": "aa",
+	"bb": "bb",
+	"cc": "cc",
+	"kk": "kk",
+	"jj": "jj",
+	"oo": {
+		"bb": "oo.bb"
+	},
+	"ooa": "ooa",
+	"sign_up": {
+		"title": "sign_up.title",
+		"form": {
+			"first_name": "sign_up.form.first_name",
+			"email": "sign_up.form.email",
+			"submit": "sign_up.form.submit"
+		}
+	}
+}
