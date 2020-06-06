@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 const Schema = mongoose.Schema
-const linkConf = require("./config/linkConf")
-
+// const linkConf = require("./config/linkConf")
+/*
 const photo = {
     'Article' :  "article.png",
     'Video': "video.png",
@@ -15,31 +15,32 @@ const photo = {
     'Product': '',
     'Web page': ''
 }
+*/ 
 
 let LinkSchema = new Schema({
     url: {
         type: String,
-        required: [true, "The URL is required"],
-        minlength:  [6,'The URL is shorter than the minimum allowed length (6)'],
-        maxlength: [180,'The URL is longer than the maximum allowed length (180)']
+        required: [true, "models.required|@|URL"],
+        minlength: [6,"models.minlength|@|URL|@|2"],
+        maxlength: [180,"models.maxlength|@|URL|@|180"]
     },
     key:{
         type: Number,
         required: false,
-        min:  [100,'The KEY is shorter than the minimum allowed length (3)'],
-        max: [9999,'The KEY is longer than the maximum allowed length (4)']
+        min: [100,"models.minlength|@|KEY|@|100"],
+        max: [9999,"models.maxlength|@|KEY|@|9999"]
     },
     title: {
         type: String,
-        required: [true,'The title is required'],
-        minlength:  [3,'The title is shorter than the minimum allowed length (3)'],
-        maxlength: [120,'The title is longer than the maximum allowed length (120)']
+        required: [true, "models.required|@|title"],
+        minlength: [3,"models.minlength|@|title|@|3"],
+        maxlength: [120,"models.maxlength|@|title|@|120"]
     },
     description: {
         type: String,
         required: false,
-        minlength:  [5,'The description is shorter than the minimum allowed length (5)'],
-        maxlength: [160,'The description is longer than the maximum allowed length (160)']
+        minlength: [5,"models.minlength|@|description|@|5"],
+        maxlength: [160,"models.maxlength|@|description|@|160"]
     },
     photo : {
         type: String,
@@ -52,8 +53,8 @@ let LinkSchema = new Schema({
     priority: {
         type: Number,
         required: false,
-        min:  [1,'Please enter a valid priority'],
-        max: [9999,'Priority cannot be more than 9999']
+        min:  [1, "models.link.priority.min"],
+        max: [9999, "models.link.priority.max"]
     },
     link_type : {
         type: String,
@@ -66,7 +67,7 @@ let LinkSchema = new Schema({
     },
     date_added: {
         type: Date,
-        required: [true,'An error was generated when assigning a registration date, please check the date and time on your device.'],
+        required: [true,'models.generated_date'],
         default: Date.now
     },
     date_modification: {
@@ -76,9 +77,10 @@ let LinkSchema = new Schema({
 
 })
 
+/* 
 LinkSchema.virtual("type_photo").get(function(){
     return "icons/"+photo.get(this.link_type)
-})
+}) */
 
 module.exports = mongoose.model("Link",LinkSchema)
 

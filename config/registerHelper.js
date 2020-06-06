@@ -97,7 +97,10 @@ exports.json = (obj) => {
 };
 
 const i18n = require("i18n");
-exports.t = (str, ...args) => {
-    // return (i18n !== undefined ? i18n.__(str,args) : str+args.toString());
-    return i18n.__(str,...args)
+exports.translate = (str, ...args) => {
+    const array_str = str.split("|@|")
+    const array_args = array_str.filter( v => v !== array_str[0])
+    
+    console.log(i18n.__(array_str[0],...array_args.concat(args)))
+    return i18n.__(array_str[0],...array_args.concat(args))
 }

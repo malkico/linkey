@@ -26,7 +26,7 @@
           <select name="which" class="{{ternaryIf myErrors.which 'is-invalid' ''}} form-control which"
             aria-describedby="whichHelp" id="which">
             {{#each which}}
-            <option {{ ternaryIf (iff ../contact.which '==' this) 'selected' ''}} value="{{this}}">{{this}}
+            <option {{ ternaryIf (iff ../contact.which '==' this) 'selected' ''}} value="{{ @key }}">{{this}}
             </option>
             {{/each }}
           </select>

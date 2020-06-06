@@ -6,18 +6,18 @@ const contactConf = require("./config/contactConf")
 let ContactSchema = new Schema({
     which: {
         type: String,
-        required: [true,"You must choose a contact information. And please contact us if you don't find your social media"],
+        required: [true,"models.contact.which.required"],
         enum: {
-            values : contactConf.which,
-            message : "If you didn't find your contact information, you can choose other, and please contact us"
+            values : Object.keys(contactConf.which),
+            message : "models.contact.which.enum.message"
         }
     },
     URL: {
         type: String,
         // required: [true,"You can't add your social media without a username. Come on!"],
-        required: [true,"This field is required"],
-        minlength:  [3,'The field is shorter than the minimum allowed length (3)'],
-        maxlength: [120,'The field is longer than the maximum allowed length (120)']
+        required: [true,"models.field_required"],
+        minlength: [3,"models.minlength|@|URL|@|3"],
+        maxlength: [120,"models.maxlength|@|URL|@|120"]
     }
 })
 

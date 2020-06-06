@@ -1,3 +1,23 @@
+exports.which = {
+    'instagram' : "models.contact.which.enum.values.instagram",
+    'facebook' : "models.contact.which.enum.values.facebook",
+    'twitter' : "models.contact.which.enum.values.twitter",
+    'snapchat' : "models.contact.which.enum.values.snapchat",
+    'tiktok' : "models.contact.which.enum.values.tiktok",
+    'youtube' : "models.contact.which.enum.values.youtube",
+    'linkedin' : "models.contact.which.enum.values.linkedin",
+    'github' : "models.contact.which.enum.values.github",
+    'behance' : "models.contact.which.enum.values.behance",
+    'twitch' : "models.contact.which.enum.values.twitch",
+    'email' : "models.contact.which.enum.values.email",
+    'whatsapp' : "models.contact.which.enum.values.whatsapp",
+    'blog' : "models.contact.which.enum.values.blog",
+    'store' : "models.contact.which.enum.values.store",
+    'portfolio' : "models.contact.which.enum.values.portfolio",
+    'website' : "models.contact.which.enum.values.website",
+    'other' : "models.contact.which.enum.values.other"
+}
+/* 
 exports.which = ['Instagram',
     'Facebook',
     'Twitter',
@@ -16,39 +36,40 @@ exports.which = ['Instagram',
     'Personal/Company Website',
     'Other'
 ]
+*/
 
 exports.preURL = {
-    'Instagram': 'https://www.instagram.com/',
-    'Facebook': 'https://www.facebook.com/',
-    'Twitter': 'https://twitter.com/',
-    'Snapchat': 'https://story.snapchat.com/s/',
-    'Tiktok': 'https://www.tiktok.com/@',
-    'Youtube': 'https://www.youtube.com/channel/',
-    'Linkedin': 'https://www.linkedin.com/in/',
-    'Github': 'https://github.com/',
-    'Behance': 'https://www.behance.net/',
-    'Twitch': 'https://www.twitch.tv/',
-    'Email': 'mailto:',
-    'Whatsapp' : 'tel:'
+    'instagram': 'https://www.instagram.com/',
+    'facebook': 'https://www.facebook.com/',
+    'twitter': 'https://twitter.com/',
+    'snapchat': 'https://story.snapchat.com/s/',
+    'tiktok': 'https://www.tiktok.com/@',
+    'youtube': 'https://www.youtube.com/channel/',
+    'linkedin': 'https://www.linkedin.com/in/',
+    'github': 'https://github.com/',
+    'behance': 'https://www.behance.net/',
+    'twitch': 'https://www.twitch.tv/',
+    'email': 'mailto:',
+    'whatsapp' : 'tel:'
 }
 
 exports.icone = {
-    'Instagram': 'fab fa-instagram',
-    'Facebook' : 'fab fa-facebook',
-    'Twitter' : 'fab fa-twitter',
-    'Snapchat' : 'fab fa-snapchat-ghost',
-    'Tiktok' : 'fab fa-tiktok',
-    'Youtube' : 'fab fa-youtube',
-    'Linkedin' : 'fab fa-linkedin-in',
-    'Github' : 'fab fa-github',
-    'Behance' : 'fab fa-behance',
-    'Twitch' : 'fab fa-twitch',
-    'Email' : 'fas fa-at at-icone',
-    'Whatsapp' : 'fab fa-whatsapp',
-    'Blog' : 'fab fa-blogger-b',
-    'Store' : 'fas fa-store',
-    'Portfolio' : 'fas fa-user-circle',
+    'instagram': 'fab fa-instagram',
+    'facebook' : 'fab fa-facebook',
+    'twitter' : 'fab fa-twitter',
+    'snapchat' : 'fab fa-snapchat-ghost',
+    'tiktok' : 'fab fa-tiktok',
+    'youtube' : 'fab fa-youtube',
+    'linkedin' : 'fab fa-linkedin-in',
+    'github' : 'fab fa-github',
+    'behance' : 'fab fa-behance',
+    'twitch' : 'fab fa-twitch',
+    'email' : 'fas fa-at at-icone',
+    'whatsapp' : 'fab fa-whatsapp',
+    'blog' : 'fab fa-blogger-b',
+    'store' : 'fas fa-store',
+    'portfolio' : 'fas fa-user-circle',
     // 'Personal/Company Website' : 'fab fa-wordpress-simple',
-    'Personal/Company Website' : 'fas fa-globe webSite',
-    'Other' : 'fas fa-feather other'
+    'website' : 'fas fa-globe webSite',
+    'other' : 'fas fa-feather other'
 }

@@ -8,7 +8,7 @@ const {
     validationResult
 } = require('express-validator');
 
-const getController = (req, res, next) => {
+const getController = (req, res) => {
     res.locals.niches = influencerCong.niches
     res.locals.subscriber_signin = req.session.subscriber_signin
     console.log("get a sign in page")
@@ -161,7 +161,7 @@ const postController = [
         })
 
     },
-    (req, res, next) => {
+    (req, res) => {
         console.log("influencer and saved! new client yéeeey")
         req.session.influencer = res.locals.influencer
         res.redirect("/dashboard/")

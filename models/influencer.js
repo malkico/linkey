@@ -6,46 +6,46 @@ const InfluencerSchema = new Schema({
     subscriber:{
         type: Schema.Types.ObjectId,
         ref: 'Subscriber',
-        unique: "This email is already taken.",
-        required: [true,'Are you sure that you already enter your email and your first name !']
+        unique : "models.unique_taken|@|email",
+        required: [true,"models.influencer.subscriber.required"]
     },
     login: {
         type: String,
-        required: [true,'The login is required'],
-        unique: 'this login is already taken',
-        minlength:  [3,'The login is shorter than the minimum allowed length (3)'],
-        maxlength: [30,'The login is longer than the maximum allowed length (30)']
+        unique : "models.unique_taken|@|login",
+        required: [true,"models.required|@|login"],
+        minlength: [3,"models.minlength|@|login|@|3"],
+        maxlength: [30,"models.maxlength|@|login|@|30"]
     },
     password: {
         type: String,
-        required: [true,'The password is required'],
-        minlength:  [30,'The password is shorter than the minimum allowed length (30)'],
-        maxlength: [80,'The password is longer than the maximum allowed length (80)']
+        required: [true,"models.required|@|password"],
+        minlength: [30,"models.minlength|@|password|@|30"],
+        maxlength: [80,"models.maxlength|@|password|@|80"]
     },
     last_name: {
         type: String,
         required: false,
-        minlength:  [2,'The last name is shorter than the minimum allowed length (2)'],
-        maxlength: [50,'The last name is longer than the maximum allowed length (50)']
+        minlength: [2,"models.minlength|@|last name|@|2"],
+        maxlength: [50,"models.maxlength|@|last name|@|50"]
     },
     registration_date: {
         type: Date,
-        required: [true,'An error was generated when assigning a registration date, please check the date and time on your device.'],
+        required: [true,"models.generated_date"],
         default: Date.now
     },
     niche: {
         type: String,
         index: true,
-        required: [true,"You must choose your niche, if you did not find the right niche, you can choose other, and please contact us"],
+        required: [true,"models.influencer.niche.required"],
         enum: {
-            values: influencerCong.niches,
-            message : "If you didn't find the right niche, you can choose other, and please contact us"
+            values: Object.keys(influencerCong.niches),
+            message : "models.influencer.niche.enum.message"
         }
     },
     contacts: [{
         type: Schema.Types.ObjectId,
         ref: 'Contact',
-        required: [true,"You should link your account with at least one contact information"],  
+        required: [true,"models.influencer.contacts.required"],  
     }],
     links: [{
         type: Schema.Types.ObjectId,

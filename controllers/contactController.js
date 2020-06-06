@@ -23,16 +23,16 @@ const getMyContactList = (req, res, next) => {
         .then(result => {
             if (result) {
                 const not_allowed = []
-                res.locals.which = []
+                res.locals.which = {}
 
                 /* just display the information channels which are not yet */
                 Object.keys(result.contacts).forEach(key => {
                     not_allowed.push(result.contacts[key].which)
                 })
 
-                contactConf.which.forEach(which => {
-                    if(!not_allowed.includes(which))
-                        res.locals.which.push(which)
+                Object.keys(contactConf.which).forEach(key => {
+                    if(!not_allowed.includes(contactConf.which[key]))
+                        res.locals.which[key] = contactConf.which[key]
                 })
 
                 res.locals.contacts = result.contacts

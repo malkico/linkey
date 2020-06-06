@@ -22,6 +22,7 @@ exports.get = [
                 if (Object.keys(result).length) {
                     res.locals.influencer = result
                     res.locals.influencer_insta = res.locals.influencer.contacts.find(contact => contact.which == 'Instagram')
+                    res.locals.title = "follower_page.title|@|"+res.locals.influencer.login
                     next()
                 } else {
                     console.log("influencer not found")

@@ -10,7 +10,7 @@
       <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
           {{#each myErrors }}
-          <p class="mb-0 ">{{this}}</p>
+          <p class="mb-0 ">{{ translate_mongo this}}</p>
           {{/each}}
 
           {{#if result}}
@@ -120,5 +120,9 @@
       return false;
 
     });
+    {{#if (iff myErrors '||' result) }}
+      $(".getstarted-btn").trigger("click")
+      console.log("click on getstarted-btn")
+    {{/if}}
   })
 </script>

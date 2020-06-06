@@ -1,6 +1,6 @@
 const Subscriber = require("../models/subscriber")
 const Influencer = require("../models/influencer")
-const influencerCong = require("../models/config/influencerConf")
+// const influencerCong = require("../models/config/influencerConf")
 const specialFunctions = require("../config/specialFunctions")
 
 const {
@@ -8,7 +8,7 @@ const {
     validationResult
 } = require('express-validator');
 
-const getController = function (req, res, next) {
+const getController = function (req, res) {
     console.log('Render to main page with GET METHOD');
     res.render('main/');
 }
@@ -45,7 +45,7 @@ const postController = [
         console.log("validationResult to myErrors");
         errors.forEach(function (e) {
             res.locals.myErrors[e.param] = e.msg;
-            console.log(e.param + ' => ' + myErrors[e.param]);
+            console.log(e.param + ' => ' + res.locals.myErrors[e.param]);
         })
 
         if (!errors.isEmpty && errors.length > 0) {
@@ -160,7 +160,7 @@ const postController = [
     },
 
     /* ***************** The last middleware for redirect to sign-up page ****************/
-    (req, res, next) => {
+    (req, res) => {
         req.session.subscriber_signin = res.locals.subscriber
         console.log('Render to sign-up page');
 
@@ -174,7 +174,7 @@ const errorController = (err, req, res, next) => {
     Object.keys(res.locals.myErrors).forEach(function (key) {
         console.log("%s => %s", key, res.locals.myErrors[key])
     })
-    res.render("main/")
+    res.render("main/index")
 }
 
 exports.getController = getController

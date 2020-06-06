@@ -5,12 +5,12 @@ const SubscriptionModel = new Schema({
     follower:{
         type: Schema.Types.ObjectId,
         ref: 'Follower',
-        required: true
+        required: [true,"models.required|@|follower id"],
     },
     influencer: {
         type: Schema.Types.ObjectId,
         ref: 'Influencer',
-        required: true
+        required: [true,"models.required|@|influencer id"],
     }
 })
 

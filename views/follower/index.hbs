@@ -7,7 +7,7 @@
           <a class="nav-link active" href="#">LINKEY</a>
         </li>
         <li class="nav-item bg-dark rounded-left">
-          <a class="nav-link active small text-white bg-dark " href="/">CREATE MY OWN SEARCH ENGINE</a>
+          <a class="nav-link active small text-white bg-dark " href="/">{{ translate "follower_page.menu.create_mine|@|MY"}}</a>
         </li>
       </ul>
     </div>
@@ -24,7 +24,7 @@
         </div>
       </div>
       <div class="social-media">
-        <i class="text-c-light"> Find us</i>
+        <i class="text-c-light">{{ translate "follower_page.influencer.find"}}</i>
         {{#each influencer.contacts}}
         <a href="{{this.full_URL}}"><i class="{{this.icone}}"></i></a>
         {{/each}}
@@ -37,7 +37,7 @@
       class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-4 bg-dark p-1 pt-2 pb-2 mb-4 max-with">
       <input
         class="form-control form-control-sm mr-3 w-75 border-white   border-1 border-top-0 border-right-0 border-left-0 text-dark"
-        type="text" placeholder="TAPE KEY OR SOME KEYWORDS" aria-label="Search" autofocus>
+        type="text" placeholder="{{ translate "follower_page.search_form.keyword"}}" aria-label="Search" autofocus>
       <i type="submit" class="fas fa-search text-white" aria-hidden="true"></i>
     </form>
   </div>
@@ -109,7 +109,7 @@
 
         <!-- Grid column -->
         <div class="col-12 mx-auto mt-3 d-none">
-          <h6 class="text-uppercase font-weight-bold">CREATE YOUR OWN SEARCH ENGINE</h6>
+          <h6 class="text-uppercase font-weight-bold">{{ translate "follower_page.menu.create_mine|@|YOUR"}}</h6>
           <p>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
             consectetur
             adipisicing elit.</p>
@@ -128,10 +128,10 @@
             <!--Copyright-->
             <p class="row">
               <span class="col-12">
-                Made with <i class="fa fa-heart pulse"></i> by <strong><a href="https://instagram.com/malki_hi"
+                {{ translate "follower_page.footer.made.1"}} <i class="fa fa-heart pulse"></i> {{ translate "follower_page.footer.made.2"}}<strong><a href="https://instagram.com/malki_hi"
                     class='text-dark'>
                     malki_co</a> </strong></span>
-              <span class="col-12"><u><a class="text-white" href="/">LINKEY</a></u> © 2020 Copyright</span>
+              <span class="col-12"><u><a class="text-white" href="/">LINKEY</a></u> © 2020 {{ translate "follower_page.footer.copyright"}}</span>
             </p>
 
           </div>

@@ -1,5 +1,6 @@
 const createError = require('http-errors');
 const express = require('express');
+const app = express();
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const cookieSession = require('cookie-session')
@@ -17,7 +18,39 @@ const {
 } = require('@handlebars/allow-prototype-access')
 
 
+const i18n = require("i18n");
+i18n.configure({
+    locales:['en', 'es', 'fr', 'ar'],
+    defaultLocale: 'en',
+    queryParameter: 'switch_lang',
+    // fallbacks : "en",
+    cookie: 'i18n_lang',
+    updateFiles: true, // default true :: if I use some word don't exist on my files local, it will create automatically
+    syncFiles: true, // default false
+    autoReload: true, // defeaul false
+    directory: __dirname + '/locales',
+    objectNotation: true,
+    // setting of log level DEBUG - default to require('debug')('i18n:debug')
+    logDebugFn: function (msg) {
+        console.log('debug', msg);
+    },
+ 
+    // setting of log level WARN - default to require('debug')('i18n:warn')
+    logWarnFn: function (msg) {
+        console.log('warn', msg);
+    },
+ 
+    // setting of log level ERROR - default to require('debug')('i18n:error')
+    logErrorFn: function (msg) {
+        console.log('error', msg);
+    },
+    api: {
+      '__': 't',  //now req.__ becomes req.t
+      '__n': 'tn' //and req.__n can be called as req.tn
+    },
 
+});
+app.use(i18n.init); 
 
 const indexRouter = require('./routes/main');
 const followerRouter = require('./routes/follower');
@@ -37,9 +70,8 @@ mongoose.connect(mongoDB, {
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'Erreur de connexion MongoDB:'));
 
-const app = express();
-
 var http = require("http").Server(app);
+
 var io = require("socket.io")(http);
 http.listen(3000, "127.0.0.1");
 
@@ -55,27 +87,6 @@ app.use(cookieSession({
   name: 'session',
   keys: ['key1', 'key2']
 }))
-
-const i18n = require("i18n");
-i18n.configure({
-    locales:['en', 'es', 'fr', 'ar'],
-    defaultLocale: 'en',
-    queryParameter: 'switch_lang',
-    // fallbacks : "en",
-    cookie: 'i18n_lang',
-    updateFiles: true, // default true :: if I use some word don't exist on my files local, it will create automatically
-    syncFiles: true, // default false
-    autoReload: true, // defeaul false
-    directory: __dirname + '/locales',
-    objectNotation: true,
-    api: {
-      '__': 't',  //now req.__ becomes req.t
-      '__n': 'tn' //and req.__n can be called as req.tn
-    },
-
-});
-app.use(i18n.init); 
-app.use(changeLang)
 
 /* 
 app.use(session({
@@ -103,8 +114,9 @@ app.engine('hbs', exphbs({
     get: registerHelper.get,
     objIsEmpty: registerHelper.objIsEmpty,
     json: registerHelper.json,
-    t: registerHelper.t
-  }
+    // t: registerHelper.t,
+  translate: registerHelper.translate
+}
 }))
 app.set('view engine', 'hbs');
 
@@ -120,6 +132,8 @@ app.use(sassMiddleware({
   sourceMap: true
 }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(changeLang)
+
 app.use('/', indexRouter);
 app.use('/u', followerRouter);
 app.use("/dashboard/",auth, influencerRouter)
@@ -149,3 +163,6 @@ io.on("connection", function (socket) {
 /// mongoose.connection.close();
 
 module.exports = app;
+
+i18n.setLocale("en")
+console.log(registerHelper.translate("models.unique_taken|@|email"))

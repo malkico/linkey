@@ -5,17 +5,17 @@ const VisitSchema = new Schema({
     follower : {
         type: Schema.Types.ObjectId,
         ref: 'Follower',
-        required: [true,'The follower id is required'],
+        required: [true,"models.required|@|follower id"],
     },
     influencer : {
         type: Schema.Types.ObjectId,
         ref: 'Influencer',
-        required: [true,'The influencer id is required'],
+        required: [true,"models.required|@|influencer id"],
     },
     date: {
         type : Date,
         default: Date.now,
-        required: [true,'An error was generated when assigning a registration date, please check the date and time on your device.'],
+        required: [true,'models.generated_date'],
     }
 })
 

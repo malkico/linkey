@@ -5,16 +5,16 @@ const ClickSchema = Schema({
     follower: {
         type: Schema.Types.ObjectId,
         ref: 'Follower',
-        required: [true,'The follower id is required'],
+        required: [true,'models.required|@|follower'],
     },
     link: {
         type: Schema.Types.ObjectId,
         ref: 'Link',
-        required: [true,'The link id is required'],
+        required: [true,'models.required|@|link'],
     },
     date: {
         type: Date,
-        required: [true,'An error was generated when assigning a registration date, please check the date and time on your device.'],
+        required: [true,'models.generated_date'],
         default : Date.now
     }
 })

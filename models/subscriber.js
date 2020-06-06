@@ -1,19 +1,18 @@
 const mongoose = require("mongoose")
 const Schema = mongoose.Schema
-
 const SubscriberSchema = new Schema({
     first_name: {
         type: String,
-        required: [true,'The first name is required'],
-        minlength:  [2,'The first name is shorter than the minimum allowed length (2)'],
-        maxlength: [50,'The first name is longer than the maximum allowed length (50)']
+        required: [true,"models.required|@|first name"],
+        minlength: [2,"models.minlength|@|first name|@|2"],
+        maxlength: [50,"models.maxlength|@|first name|@|50"]
     },
     email: {
         type: String,
-        required: [true,'The email is required'],
-        minlength: [8,'The email is shorter than the minimum allowed length (8)'],
-        maxlength:  [50,'The email is longer than the maximum allowed length (50)'],
-        unique: 'This email is already taken',
+        required: [true,"models.required|@|email"],
+        minlength: [8,"models.minlength|@|email|@|8"],
+        maxlength: [50,"models.maxlength|@|email|@|50"],
+        unique: "models.unique_taken|@|email",
     }
 
 })
