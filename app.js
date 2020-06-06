@@ -165,4 +165,6 @@ io.on("connection", function (socket) {
 module.exports = app;
 
 i18n.setLocale("en")
-console.log(registerHelper.translate("models.unique_taken|@|email"))
+console.log(registerHelper.translate("models.link.URL.minlength|@|2"))
+
+

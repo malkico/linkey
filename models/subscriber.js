@@ -3,16 +3,16 @@ const Schema = mongoose.Schema
 const SubscriberSchema = new Schema({
     first_name: {
         type: String,
-        required: [true,"models.required|@|first name"],
-        minlength: [2,"models.minlength|@|first name|@|2"],
-        maxlength: [50,"models.maxlength|@|first name|@|50"]
+        required: [true,"models.subscriber.first_name.required"],
+        minlength: [2,"models.subscriber.first_name.minlength|@|2"],
+        maxlength: [50,"models.subscriber.first_name.maxlength|@|50"]
     },
     email: {
         type: String,
-        required: [true,"models.required|@|email"],
-        minlength: [8,"models.minlength|@|email|@|8"],
-        maxlength: [50,"models.maxlength|@|email|@|50"],
-        unique: "models.unique_taken|@|email",
+        required: [true,"models.subscriber.email.required"],
+        minlength: [8,"models.subscriber.email.minlength|@|8"],
+        maxlength: [50,"models.subscriber.email.maxlength|@|50"],
+        unique: "models.subscriber.email.unique",
     }
 
 })

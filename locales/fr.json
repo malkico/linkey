@@ -89,7 +89,15 @@
 			"first_name": {
 				"minlength": "models.subscriber.first_name.minlength",
 				"minlength, 2": "models.subscriber.first_name.minlength, 2",
-				"minlength|@|2": "models.subscriber.first_name.minlength|@|2"
+				"minlength|@|2": "models.subscriber.first_name.minlength|@|2",
+				"required": "models.subscriber.first_name.required",
+				"maxlength": "models.subscriber.first_name.maxlength"
+			},
+			"email": {
+				"required": "models.subscriber.email.required",
+				"minlength": "models.subscriber.email.minlength",
+				"maxlength": "models.subscriber.email.maxlength",
+				"unique": "models.subscriber.email.unique"
 			}
 		},
 		"click": {
@@ -221,15 +229,60 @@
 			"priority": {
 				"min": "models.link.priority.min",
 				"max": "models.link.priority.max"
+			},
+			"URL": {
+				"required": "models.link.URL.required",
+				"minlength": "models.link.URL.minlength",
+				"maxlength": "models.link.URL.maxlength"
+			},
+			"title": {
+				"required": "models.link.title.required",
+				"minlength": "models.link.title.minlength",
+				"maxlength": "models.link.title.maxlength"
+			},
+			"key": {
+				"minlength": "models.link.key.minlength",
+				"maxlength": "models.link.key.maxlength"
+			},
+			"description": {
+				"minlength": "models.link.description.minlength",
+				"maxlength": "models.link.description.maxlength"
+			},
+			"KEY": {
+				"min": "models.link.KEY.min",
+				"max": "models.link.KEY.max"
 			}
 		},
 		"generated_date": "models.generated_date",
 		"search": {
 			"keyword": {
-				"required": "models.search.keyword.required"
+				"required": "models.search.keyword.required",
+				"maxlength": "models.search.keyword.maxlength"
+			},
+			"influencer": {
+				"required": "models.search.influencer.required"
+			},
+			"follower": {
+				"required": "models.search.follower.required"
 			}
 		},
-		"unique_taken": "models.unique_taken"
+		"unique_taken": "models.unique_taken",
+		"subscription": {
+			"influencer": {
+				"required": "models.subscription.influencer.required"
+			},
+			"follower": {
+				"required": "models.subscription.follower.required"
+			}
+		},
+		"visit": {
+			"influencer": {
+				"required": "models.visit.influencer.required"
+			},
+			"follower": {
+				"required": "models.visit.follower.required"
+			}
+		}
 	},
 	"this email is already taken by another influencer": "this email is already taken by another influencer",
 	"follower_page": {

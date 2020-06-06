@@ -18,29 +18,29 @@ const photo = {
 */ 
 
 let LinkSchema = new Schema({
-    url: {
+    URL: {
         type: String,
-        required: [true, "models.required|@|URL"],
-        minlength: [6,"models.minlength|@|URL|@|2"],
-        maxlength: [180,"models.maxlength|@|URL|@|180"]
+        required: [true, "models.link.URL.required"],
+        minlength: [2,"models.link.URL.minlength|@|2"],
+        maxlength: [180,"models.link.URL.maxlength|@|180"]
     },
-    key:{
+    KEY:{
         type: Number,
         required: false,
-        min: [100,"models.minlength|@|KEY|@|100"],
-        max: [9999,"models.maxlength|@|KEY|@|9999"]
+        min: [100,"models.link.KEY.min|@|100"],
+        max: [9999,"models.link.KEY.max|@|9999"]
     },
     title: {
         type: String,
-        required: [true, "models.required|@|title"],
-        minlength: [3,"models.minlength|@|title|@|3"],
-        maxlength: [120,"models.maxlength|@|title|@|120"]
+        required: [true, "models.link.title.required"],
+        minlength: [3,"models.link.title.minlength|@|3"],
+        maxlength: [120,"models.link.title.maxlength|@|120"]
     },
     description: {
         type: String,
         required: false,
-        minlength: [5,"models.minlength|@|description|@|5"],
-        maxlength: [160,"models.maxlength|@|description|@|160"]
+        minlength: [5,"models.link.description.minlength|@|5"],
+        maxlength: [160,"models.link.description.maxlength|@|160"]
     },
     photo : {
         type: String,
@@ -53,8 +53,8 @@ let LinkSchema = new Schema({
     priority: {
         type: Number,
         required: false,
-        min:  [1, "models.link.priority.min"],
-        max: [9999, "models.link.priority.max"]
+        min: [1,"models.link.priority.min|@|1"],
+        max: [9999,"models.link.priority.max|@|9999"]
     },
     link_type : {
         type: String,
@@ -67,7 +67,7 @@ let LinkSchema = new Schema({
     },
     date_added: {
         type: Date,
-        required: [true,'models.generated_date'],
+        required: [true,'models.errors.generated_date'],
         default: Date.now
     },
     date_modification: {

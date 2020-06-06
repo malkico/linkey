@@ -6,31 +6,31 @@ const InfluencerSchema = new Schema({
     subscriber:{
         type: Schema.Types.ObjectId,
         ref: 'Subscriber',
-        unique : "models.unique_taken|@|email",
+        unique : "models.influencer.subscriber.unique",
         required: [true,"models.influencer.subscriber.required"]
     },
     login: {
         type: String,
-        unique : "models.unique_taken|@|login",
-        required: [true,"models.required|@|login"],
-        minlength: [3,"models.minlength|@|login|@|3"],
-        maxlength: [30,"models.maxlength|@|login|@|30"]
+        unique : "models.influencer.login.unique",
+        required: [true,"models.influencer.login.required"],
+        minlength: [3,"models.influencer.login.minlength|@|3"],
+        maxlength: [30,"models.influencer.login.maxlength|@|30"]
     },
     password: {
         type: String,
-        required: [true,"models.required|@|password"],
-        minlength: [30,"models.minlength|@|password|@|30"],
-        maxlength: [80,"models.maxlength|@|password|@|80"]
+        required: [true,"models.influencer.password.required"],
+        minlength: [30,"models.influencer.password.minlength|@|30"],
+        maxlength: [80,"models.influencer.password.maxlength|@|80"]
     },
     last_name: {
         type: String,
         required: false,
-        minlength: [2,"models.minlength|@|last name|@|2"],
-        maxlength: [50,"models.maxlength|@|last name|@|50"]
+        minlength: [2,"models.influencer.last_name.minlength|@|2"],
+        maxlength: [50,"models.influencer.last_name.maxlength|@|50"]
     },
     registration_date: {
         type: Date,
-        required: [true,"models.generated_date"],
+        required: [true,"models.errors.generated_date"],
         default: Date.now
     },
     niche: {

@@ -4,8 +4,8 @@ const Schema = mongoose.Schema
 const FollowerSchema = Schema({
     ip_adress : {
         type: String,
-        required: [true,"models.required|@|IP Adress"],
-        unique : "models.unique_duplicated|@|IP Adress"
+        required: [true,"models.follower.ip_adress.required"],
+        unique : "models.follower.ip_adress.unique"
         /* minlength: 7,
         maxnlength: 15 */
     },

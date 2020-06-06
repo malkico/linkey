@@ -15,9 +15,9 @@ let ContactSchema = new Schema({
     URL: {
         type: String,
         // required: [true,"You can't add your social media without a username. Come on!"],
-        required: [true,"models.field_required"],
-        minlength: [3,"models.minlength|@|URL|@|3"],
-        maxlength: [120,"models.maxlength|@|URL|@|120"]
+        required: [true,"models.contact.URL.required"],
+        minlength: [3,"models.contact.URL.minlength|@|3"],
+        maxlength: [120,"models.contact.URL.maxlength|@|120"]
     }
 })
 

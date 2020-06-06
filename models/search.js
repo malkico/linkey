@@ -5,22 +5,22 @@ const SearchSchema = Schema({
     follower: {
         type: Schema.Types.ObjectId,
         ref: 'Follower',
-        required: [true,'models.required|@|follower'],
+        required: [true,"models.influencer.follower.required"],
     },
     influencer : {
         type: Schema.Types.ObjectId,
         ref: 'Influencer',
-        required: [true,'models.required|@|influencer id'],
+        required: [true,"models.influencer.influencer.required"],
     },
     date: {
         type: Date,
-        required: [true,'models.generated_date'],
+        required: [true,'models.errors.generated_date'],
         default : Date.now
     } ,
     keyword : {
         type:String,
-        required: [true,"models.search.keyword.required"],
-        maxlength: [80,'models.maxlength|@|keyword|@|80']
+        required: [true,"models.influencer.keyword.required"],
+        maxlength: [80,"models.influencer.keyword.maxlength|@|80"]
     },
     clicks:[{
         type: Schema.Types.ObjectId,

@@ -1,4 +1,183 @@
 {
+	"models": {
+		"errors": {
+			"required": "This field is required",
+			"generated_date": "An error was generated when assigning a registration date, please check the date and time on your device."
+		},
+		"subscriber": {
+			"first_name": {
+				"required": "The first name is required",
+				"minlength": "The first name is shorter than the minimum allowed length (%s)",
+				"maxlength": "The first name is longer than the maximum allowed length (%s)"
+			},
+			"email": {
+				"required": "The email is required",
+				"minlength": "The email is shorter than the minimum allowed length (%s)",
+				"maxlength": "The email is longer than the maximum allowed length (%s)",
+				"unique": "This email is already taken"
+			}
+		},
+		"contact": {
+			"which": {
+				"required": "You must choose a contact information. And please contact us if you don't find your social media",
+				"enum": {
+					"values": {
+						"instagram": "Instagram",
+						"facebook": "Facebook",
+						"twitter": "Twitter",
+						"snapchat": "Snapchat",
+						"tiktok": "Tiktok",
+						"youtube": "Youtube",
+						"linkedin": "Linkedin",
+						"github": "Github",
+						"behance": "Behance",
+						"twitch": "Twitch",
+						"email": "Email",
+						"whatsapp": "Whatsapp",
+						"blog": "Blog",
+						"store": "Store",
+						"portfolio": "Portfolio",
+						"website": "Personal/Company Website",
+						"other": "Other"
+					},
+					"message": "If you didn't find your contact information, you can choose other, and please contact us"
+				}
+			},
+			"URL": {
+				"required": "The URL is required",
+				"minlength": "The email is shorter than the minimum allowed length (%s)",
+				"maxlength": "The email is longer than the maximum allowed length (%s)"
+			}
+		},
+		"influencer": {
+			"subscriber": {
+				"required": "Are you sure that you already enter your email and your first name !",
+				"unique": "This influencer is diplicated!"
+			},
+			"niche": {
+				"required": "You must choose your niche, if you did not find the right niche, you can choose other, and please contact us",
+				"enum": {
+					"values": {
+						"humor_memes": "Humor & Memes",
+						"fashion_style": "Fashion & Style",
+						"fitness": "Fitness",
+						"quotes_texts": "Quotes & Texts",
+						"luxury_motivation": "Luxury & Motivation",
+						"cars": "Cars",
+						"motorcycles": "Motorcycles",
+						"nature": "Nature",
+						"food_nutrition": "Food & Nutrition",
+						"animals": "Animals",
+						"models": "Models",
+						"ambassadors_influencers": "Ambassadors & Influencers",
+						"music_singers": "Music & Singers",
+						"art": "Art",
+						"technology": "Technology",
+						"gaming": "Gaming",
+						"entrepreneurship": "Entrepreneurship",
+						"architecture_interior": "Architecture & Interior",
+						"fan_accounts": "Fan Accounts",
+						"celebrity": "Celebrity",
+						"policy": "Policy",
+						"makeup": "Makeup",
+						"hair": "Hair",
+						"nails": "Nails",
+						"sports": "Sports",
+						"love_romance": "Love & Romance",
+						"travel": "Travel",
+						"dogs": "Dogs",
+						"cats": "Cats",
+						"other": "Other"
+					},
+					"message": "If you didn't find the right niche, you can choose other, and please contact us"
+				}
+			},
+			"contacts": {
+				"required": "You should link your account with at least one contact information"
+			},
+			"login": {
+				"unique": "This login is already taken",
+				"required": "The login is required",
+				"minlength": "The email is shorter than the minimum allowed length (%s)",
+				"maxlength": "The email is longer than the maximum allowed length (%s)"
+			},
+			"password": {
+				"required": "The password is required",
+				"minlength": "The password is shorter than the minimum allowed length (%s)",
+				"maxlength": "The password is longer than the maximum allowed length (%s)"
+			},
+			"last_name": {
+				"minlength": "The last name is shorter than the minimum allowed length (%s)",
+				"maxlength": "The last name is longer than the maximum allowed length (%s)"
+			}
+		},
+		"link": {
+			"priority": {
+				"min": "Please enter a valid priority",
+				"max": "Priority cannot be more than 9999"
+			},
+			"URL": {
+				"required": "The URL is required",
+				"minlength": "The URL is shorter than the minimum allowed length (%s)",
+				"maxlength": "The URL is longer than the maximum allowed length (%s)"
+			},
+			"title": {
+				"required": "The title is required",
+				"minlength": "The title is shorter than the minimum allowed length (%s)",
+				"maxlength": "The title is longer than the maximum allowed length (%s)"
+			},
+			"KEY": {
+				"min": "The KEY is shorter than the minimum allowed length (%s)",
+				"max": "The KEY is longer than the maximum allowed length (%s)"
+			},
+			"description": {
+				"minlength": "The description is shorter than the minimum allowed length (%s)",
+				"maxlength": "The description is longer than the maximum allowed length (%s)"
+			}
+		},
+		"search": {
+			"keyword": {
+				"required": "We can't help you without knowing what you're looking for",
+				"maxlength": "The keywords is longer than the maximum allowed length (%s)"
+			},
+			"influencer": {
+				"required": "The influencer id is required"
+			},
+			"follower": {
+				"required": "The follower id is required"
+			}
+		},
+		"click": {
+			"follower": {
+				"required": "The follower id is required"
+			},
+			"link": {
+				"required": "The link id is required"
+			}
+		},
+		"follower": {
+			"ip_adress": {
+				"required": "We can't get the visitor's IP address",
+				"unique": "This IP Adress is duplicated"
+			}
+		},
+		"subscription": {
+			"influencer": {
+				"required": "The influencer id is required"
+			},
+			"follower": {
+				"required": "The follower id is required"
+			}
+		},
+		"visit": {
+			"influencer": {
+				"required": "The influencer id is required"
+			},
+			"follower": {
+				"required": "The follower id is required"
+			}
+		}
+	},
 	"main_page": {
 		"title": "Make your #linkinbio a search engine!",
 		"menu": {
@@ -71,106 +250,6 @@
 			"first_name": "First name",
 			"email": "Email",
 			"submit": "Sign up!"
-		}
-	},
-	"models": {
-		"required": "The %s is required",
-		"field_required": "This field is required",
-		"minlength": "The %s is shorter than the minimum allowed length (%s)",
-		"maxlength": "The %s is longer than the maximum allowed length (%s)",
-		"unique_taken": "This %s is already taken",
-		"unique_duplicated": "This %s is duplicated",
-		"generated_date": "An error was generated when assigning a registration date, please check the date and time on your device.",
-		"subscriber": {
-			"first_name": {
-				"required": "The first name is required",
-				"minlength": "The %s is shorter than the minimum allowed length (%s) - %s",
-				"maxlength": "The first name is longer than the maximum allowed length (50)"
-			}
-		},
-		"contact": {
-			"which": {
-				"required": "You must choose a contact information. And please contact us if you don't find your social media",
-				"enum": {
-					"values": {
-						"instagram": "Instagram",
-						"facebook": "Facebook",
-						"twitter": "Twitter",
-						"snapchat": "Snapchat",
-						"tiktok": "Tiktok",
-						"youtube": "Youtube",
-						"linkedin": "Linkedin",
-						"github": "Github",
-						"behance": "Behance",
-						"twitch": "Twitch",
-						"email": "Email",
-						"whatsapp": "Whatsapp",
-						"blog": "Blog",
-						"store": "Store",
-						"portfolio": "Portfolio",
-						"website": "Personal/Company Website",
-						"other": "Other"
-					},
-					"message": "If you didn't find your contact information, you can choose other, and please contact us"
-				}
-			}
-		},
-		"influencer": {
-			"subscriber": {
-				"required": "Are you sure that you already enter your email and your first name !"
-			},
-			"niche": {
-				"required": "You must choose your niche, if you did not find the right niche, you can choose other, and please contact us",
-				"enum": {
-					"values": {
-						"humor_memes": "Humor & Memes",
-						"fashion_style": "Fashion & Style",
-						"fitness": "Fitness",
-						"quotes_texts": "Quotes & Texts",
-						"luxury_motivation": "Luxury & Motivation",
-						"cars": "Cars",
-						"motorcycles": "Motorcycles",
-						"nature": "Nature",
-						"food_nutrition": "Food & Nutrition",
-						"animals": "Animals",
-						"models": "Models",
-						"ambassadors_influencers": "Ambassadors & Influencers",
-						"music_singers": "Music & Singers",
-						"art": "Art",
-						"technology": "Technology",
-						"gaming": "Gaming",
-						"entrepreneurship": "Entrepreneurship",
-						"architecture_interior": "Architecture & Interior",
-						"fan_accounts": "Fan Accounts",
-						"celebrity": "Celebrity",
-						"policy": "Policy",
-						"makeup": "Makeup",
-						"hair": "Hair",
-						"nails": "Nails",
-						"sports": "Sports",
-						"love_romance": "Love & Romance",
-						"travel": "Travel",
-						"dogs": "Dogs",
-						"cats": "Cats",
-						"other": "Other"
-					},
-					"message": "If you didn't find the right niche, you can choose other, and please contact us"
-				}
-			},
-			"contacts": {
-				"required": "You should link your account with at least one contact information"
-			}
-		},
-		"link": {
-			"priority": {
-				"min": "Please enter a valid priority",
-				"max": "Priority cannot be more than 9999"
-			}
-		},
-		"search": {
-			"keyword": {
-				"required": "We can't help you without knowing what you're looking for"
-			}
 		}
 	},
 	"follower_page": {
