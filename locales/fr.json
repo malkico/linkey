@@ -5,7 +5,8 @@
 			"how_it_work": "main_page.menu.how_it_work",
 			"pricing": "main_page.menu.pricing",
 			"get_started": "main_page.menu.get_started",
-			"log_in": "main_page.menu.log_in"
+			"log_in": "main_page.menu.log_in",
+			"home": "main_page.menu.home"
 		},
 		"how_it_works": {
 			"1": {

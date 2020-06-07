@@ -4,11 +4,12 @@
 <div class="page-content p-2 px-md-3 pt-md-4 social-media" id="content">
   <!-- Toggle button -->
   <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><i
-      class="fa fa-bars mr-2"></i><small class="text-uppercase font-weight-bold">Toggle</small></button>
+      class="fa fa-bars mr-2"></i><small class="text-uppercase font-weight-bold">
+        Toggle{{ translate "dashboard.menu.toggle" }} </small></button>
 
 
   <!-- Demo content -->
-  <h3 class=" text-white">My contact list</h3>
+  <h3 class=" text-white">{{ translate "dashboard.contact_list.page_title" }} My contact list</h3>
   {{#if result}}
   <div class="col-lg-6 alert alert-{{ternaryIf success 'success' 'danger'}} result" role="alert">
     {{result}}
@@ -35,7 +36,7 @@
           {{/if}}
         </div>
         <div class="form-group">
-          <label for="URL" class="d-none">link</label>
+          <label for="URL" class="d-none">link{{ translate "dashboard.contact_list.link.label" }} </label>
           <div class="input-group mb-2">
             <div class="input-group-prepend">
               <div class="input-group-text preURL"></div>
@@ -51,7 +52,7 @@
 
         <div class="form-group row">
           <div class="col-sm-10">
-            <button type="submit" class="btn btn-primary">Add my contact information</button>
+            <button type="submit" class="btn btn-primary">{{ translate 'dashboard.contact_list.form.submit' }} Add my contact information</button>
           </div>
         </div>
 
@@ -105,22 +106,22 @@
       const which = $(myInput).val()
       if (which === "Email") {
         $(".preURL").parent().hide()
-        $("#URL").attr("placeholder", "Your email")
+        $("#URL").attr("placeholder", "Your email{{ translate 'dashboard.contact_list.form.URL.placeholder.email' }} ")
         $(".preURL").parent().show()
         $(".preURL").html('@')
       } else if (which === "Whatsapp") {
         $(".preURL").parent().hide()
-        $("#URL").attr("placeholder", "Your number")
+        $("#URL").attr("placeholder", "Your number{{ translate 'dashboard.contact_list.form.URL.placeholder.number' }}")
         $(".preURL").parent().show()
         $(".preURL").html('Num°')
       } else if (typeof (preURL[which]) !== "undefined") {
         $(".preURL").parent().show()
         // $(".web_site").html(webSite[which])
         $(".preURL").html('@')
-        $("#URL").attr("placeholder", "Your username")
+        $("#URL").attr("placeholder", "Your username {{ translate 'dashboard.contact_list.form.URL.placeholder.username' }}")
       } else {
         $(".preURL").parent().hide()
-        $("#URL").attr("placeholder", "Your URL")
+        $("#URL").attr("placeholder", "Your URL {{ translate 'dashboard.contact_list.form.URL.placeholder.URL' }}")
       }
     }
 
@@ -164,7 +165,7 @@
             deleteBtn.parent().remove()
             const oldWhich = deleteBtn.data("which")
             $("select#which").append("<option value='" + oldWhich + "'>" + oldWhich + "</option>")
-            console.log("removed succesfuly! ")
+            console.log("removed succesfuly! {{ translate 'dashboard.contact_list.all.result.removed' }}")
           }
           $(".result").fadeOut()
         }

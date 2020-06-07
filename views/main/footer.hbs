@@ -3,14 +3,14 @@
   <div class="container">
     <div class="row">
       <div class="col-xl-9 mx-auto">
-        <h2 class="mb-4">{{ t "sign_up.title"}}</h2>
+        <h2 class="mb-4">{{ translate "sign_up.title"}}</h2>
       </div>
 
       {{#if (iff myErrors '||' result) }}
       <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
           {{#each myErrors }}
-          <p class="mb-0 ">{{ translate_mongo this}}</p>
+          <p class="mb-0 ">{{ translate this}}</p>
           {{/each}}
 
           {{#if result}}
@@ -29,14 +29,14 @@
           <div class="form-row">
             <div class="col-12 mb-md-0 ">
               <input name="first_name" value="{{ subscriber.first_name }}" type="text" autocomplete='given-name'
-                class="form-control form-control-lg" placeholder="{{ t "sign_up.form.first_name"}}">
+                class="form-control form-control-lg" placeholder="{{ translate "sign_up.form.first_name"}}">
             </div>
             <div class="col-12  mt-1">
               <input name="email" value="{{ subscriber.email}}" type="text" autocomplete="email"
-                class="form-control form-control-lg" placeholder="{{ t "sign_up.form.email"}}">
+                class="form-control form-control-lg" placeholder="{{ translate "sign_up.form.email"}}">
             </div>
             <div class="col-12  mt-1">
-              <input type="submit" class="btn btn-block btn-lg btn-primary" value="{{ t "sign_up.form.submit"}}" />
+              <input type="submit" class="btn btn-block btn-lg btn-primary" value="{{ translate "sign_up.form.submit"}}" />
             </div>
           </div>
         </form>
@@ -51,23 +51,23 @@
       <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
         <ul class="list-inline mb-2">
           <li class="list-inline-item">
-            <a href="mailto:hichamlmalki@gmail.com"> {{ t "main_page.footer.menu.contact"}} </a>
+            <a href="mailto:hichamlmalki@gmail.com"> {{ translate "main_page.footer.menu.contact"}} </a>
           </li>
           <li class="list-inline-item">⋅</li>
           <li class="list-inline-item">
-            <a href="/terms-of-use">{{ t "main_page.footer.menu.terms_use"}}</a>
+            <a href="/terms-of-use">{{ translate "main_page.footer.menu.terms_use"}}</a>
           </li>
           <li class="list-inline-item">⋅</li>
           <li class="list-inline-item">
-            <a href="/privacy-policy">{{ t "main_page.footer.menu.privacy"}}</a>
+            <a href="/privacy-policy">{{ translate "main_page.footer.menu.privacy"}}</a>
           </li>
         </ul>
         <p class="text-muted small mb-4 mb-lg-0">
           <span class="col-12">
-            {{ t "main_page.footer.made.1"}} <i class="fa fa-heart pulse"></i> {{ t "main_page.footer.made.2"}}
+            {{ translate "main_page.footer.made.1"}} <i class="fa fa-heart pulse"></i> {{ translate "main_page.footer.made.2"}}
             <strong><a href="https://instagram.com/malki_hi" class='text-dark'>
                 malki_co</a></strong> </span>
-          <span class="col-12 text-lg-left"><u></u> © 2020 {{ t "main_page.footer.copyright"}}</span>
+          <span class="col-12 text-lg-left"><u></u> © 2020 {{ translate "main_page.footer.copyright"}}</span>
 
         </p>
       </div>

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="{{i18n_lang_2}}">
 
 <head>
   <!-- Required meta tags -->
@@ -16,7 +16,7 @@
 
 
 
-  <title>{{ title }}</title>
+  <title>{{  translate "dashboard.generals.title" }}</title>
 </head>
 
 <body>
@@ -34,25 +34,25 @@
       </div>
     </div>
 
-    <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">Main</p>
+    <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">{{ translate "dashboard.menu.main" }} Main</p>
 
     <ul class="nav flex-column bg-white mb-0">
       <li class="nav-item">
         <a href="./add-link" class="nav-link text-dark font-italic bg-light">
           <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
-          Add a link
+          Add a link{{ translate "dashboard.menu.add_link" }} 
         </a>
       </li>
       <li class="nav-item">
         <a href="./contact-list" class="nav-link text-dark font-italic">
           <i class="fa fa-address-card mr-3 text-primary fa-fw"></i>
-          Contact list
+          Contact list {{ translate "dashboard.menu.contact_list" }} 
         </a>
       </li>
       <li class="nav-item">
         <a href="./all-my-links" class="nav-link text-dark font-italic">
           <i class="fa fa-cubes mr-3 text-primary fa-fw"></i>
-          All my links
+          All my links {{ translate "dashboard.menu.all_links" }} 
         </a>
       </li>
       <li class="nav-item">

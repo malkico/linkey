@@ -184,7 +184,8 @@
 			"how_it_work": "How it works",
 			"pricing": "Pricing",
 			"get_started": "Get started",
-			"log_in": "Log in"
+			"log_in": "Log in",
+			"home": "Home"
 		},
 		"how_it_works": {
 			"1": {
@@ -269,6 +270,6 @@
 		"search_form": {
 			"keyword": "TAPE KEY OR SOME KEYWORDS"
 		},
-		"title": "The %s Search Engine"
+		"title": "The %s's Search Engine"
 	}
 }
