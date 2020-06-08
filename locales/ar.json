@@ -316,8 +316,18 @@
 			"copyright": "follower_page.footer.copyright"
 		},
 		"search_form": {
-			"keyword": "follower_page.search_form.keyword"
+			"keyword": "follower_page.search_form.keyword",
+			"result": {
+				"nothing_found": "follower_page.search_form.result.nothing_found",
+				"tape_key": "follower_page.search_form.result.tape_key"
+			}
 		},
 		"title": "follower_page.title"
+	},
+	"Please enter a valid email address": "Please enter a valid email address",
+	"generals": {
+		"errors": {
+			"special_chars": "generals.errors.special_chars"
+		}
 	}
 }

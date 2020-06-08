@@ -75,7 +75,7 @@
 		}
 	},
 	"sign_up": {
-		"title": "sign_up.title",
+		"title": "Le moteur de recherche",
 		"form": {
 			"first_name": "sign_up.form.first_name",
 			"email": "sign_up.form.email",
@@ -88,9 +88,7 @@
 			"required": "models.subscriber.required",
 			"minlength": "models.subscriber.minlength",
 			"first_name": {
-				"minlength": "models.subscriber.first_name.minlength",
-				"minlength, 2": "models.subscriber.first_name.minlength, 2",
-				"minlength|@|2": "models.subscriber.first_name.minlength|@|2",
+				"minlength": "The first name est plus cours (%s)",
 				"required": "models.subscriber.first_name.required",
 				"maxlength": "models.subscriber.first_name.maxlength"
 			},
@@ -301,8 +299,18 @@
 			"copyright": "follower_page.footer.copyright"
 		},
 		"search_form": {
-			"keyword": "follower_page.search_form.keyword"
+			"keyword": "follower_page.search_form.keyword",
+			"result": {
+				"nothing_found": "follower_page.search_form.result.nothing_found",
+				"tape_key": "follower_page.search_form.result.tape_key"
+			}
 		},
 		"title": "follower_page.title"
+	},
+	"Please enter a valid email address": "Please enter a valid email address",
+	"generals": {
+		"errors": {
+			"special_chars": "generals.errors.special_chars"
+		}
 	}
 }

@@ -10,7 +10,7 @@ module.exports = (req, res, next) => {
         lang = req.query.lang
     }
     else if (req.cookies[lang_cookie] && lang_allowed.filter(v => v === req.cookies[lang_cookie]).length ) {
-        console.log("get langage from cookie")
+        // console.log("get langage from cookie")
         lang = req.cookies[lang_cookie]
     }
     else if (lang) {
@@ -24,7 +24,7 @@ module.exports = (req, res, next) => {
     i18n.setLocale(lang);
     res.set("Content-Language",lang)
     res.locals.i18n_lang_2 = lang
-    console.log("change langage to %s", lang)
+    // console.log("change langage to %s", lang)
 
     next();
 }

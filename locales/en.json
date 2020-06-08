@@ -268,8 +268,17 @@
 			"copyright": "Copyright"
 		},
 		"search_form": {
-			"keyword": "TAPE KEY OR SOME KEYWORDS"
+			"keyword": "TAPE KEY OR SOME KEYWORDS",
+			"result": {
+				"nothing_found": "Can't find nothing!",
+				"tape_key": "Please tape a KEY or some keywords to start searching"
+			}
 		},
 		"title": "The %s's Search Engine"
+	},
+	"generals": {
+		"errors": {
+			"special_chars": "It does not allow special characters like < > ' \" \\ /"
+		}
 	}
 }

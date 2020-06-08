@@ -119,7 +119,7 @@ app.engine('hbs', exphbs({
 }
 }))
 app.set('view engine', 'hbs');
-
+app.use(changeLang)
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({
@@ -164,7 +164,7 @@ io.on("connection", function (socket) {
 
 module.exports = app;
 
-i18n.setLocale("en")
-console.log(registerHelper.translate("models.link.URL.minlength|@|2"))
+// i18n.setLocale("en")
+// console.log(registerHelper.translate("models.link.URL.minlength|@|2"))
 
 

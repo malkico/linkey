@@ -1,10 +1,10 @@
 const Search = require("../models/search")
 const specialFuncts = require("../config/specialFunctions")
-
+const i18n = require("i18n")
 module.exports = (data, callback) => {
             data.keyword = data.keyword.replace(/ +/g, " ").trim()
             if(data.keyword === ""){
-                callback({message : "Please tape a KEY or some keywords to start searching"})
+                callback({message : i18n.__("follower_page.search_form.result.tape_key")})
                 return 
             }
             try{
