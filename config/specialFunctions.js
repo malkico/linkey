@@ -1,36 +1,35 @@
 const passwordValidator = require('password-validator');
 const schemaPassword = new passwordValidator();
-const i18n = require("i18n")
+const helper = require("../config/registerHelper")
 
-schemaPassword
-    // .has().uppercase() // Must have uppercase letters
-    // .has().lowercase() // Must have lowercase letters
-    // .has().digits() // Must have digits
-    .is().min(4) // Minimum length 8
-    .is().max(30) // Maximum length 100
-    .has().not().spaces() // Should not have spaces
-    .is().not().oneOf(['Passw0rd', 'Password123']); // Blacklist these values
-
-exports.checkPassword = value => {
+exports.checkPassword = (value, min, max) => {
+    schemaPassword
+        // .has().uppercase() // Must have uppercase letters
+        // .has().lowercase() // Must have lowercase letters
+        // .has().digits() // Must have digits
+        .is().min(min || 4) // Minimum length 8
+        .is().max(max || 30) // Maximum length 100
+        .has().not().spaces() // Should not have spaces
+        .is().not().oneOf(['Passw0rd', 'Password123']); // Blacklist these values
     const errors = schemaPassword.validate(value, {
         list: true
     })
     errors.forEach(err => {
         switch (err) {
             case "min":
-                throw new Error("The password is shorter than the minimum allowed length (4)")
+                throw new Error(helper.translate("generals.errors.password.min|@|" + min))
             case "max":
-                throw new Error("The password is longer than the maximum allowed length (30)")
+                throw new Error(helper.translate("generals.errors.password.max|@|" + max))
             case "uppercase":
-                throw new Error("Must include at least one upper case letter")
+                throw new Error(helper.translate("generals.errors.password.uppercase"))
             case "lowercase":
-                throw new Error("Must include at least one lower case letter")
+                throw new Error(helper.translate("generals.errors.password.lowercase"))
             case "digits":
-                throw new Error("Must include at least one numeric character")
+                throw new Error(helper.translate("generals.errors.password.digits"))
             case "spaces":
-                throw new Error("It does not allow blank spaces")
+                throw new Error(helper.translate("generals.errors.password.spaces"))
             default:
-                throw new Error('Please enter a valid password')
+                throw new Error(helper.translate("generals.errors.password.valid"))
         }
     })
     return true;
@@ -39,7 +38,7 @@ exports.checkPassword = value => {
 exports.checkSpecialChars = (field) => {
     // eslint-disable-next-line no-useless-escape
     if (/[\<\>\/\\\'\"]/.exec(field))
-        throw new Error(i18n.__("generals.errors.special_chars"))
+        throw new Error(helper.translate("generals.errors.special_chars"))
 
     return true
 }
@@ -47,7 +46,12 @@ exports.checkSpecialChars = (field) => {
 exports.catchErrors = (errors, myErrors) => {
     if (errors) {
         Object.keys(errors).forEach((key) => {
-            myErrors[errors[key].path] = errors[key].message
+            // eslint-disable-next-line no-useless-escape
+            if (/^models./.exec(errors[key].message)) {
+                myErrors[errors[key].path] = helper.translate(errors[key].message)
+            } else {
+                myErrors[errors[key].path] = errors[key].message
+            }
             console.log("%s => %s ", errors[key].path, errors[key].message)
         })
     }

@@ -24,7 +24,7 @@ module.exports = (req, res, next) => {
     i18n.setLocale(lang);
     res.set("Content-Language",lang)
     res.locals.i18n_lang_2 = lang
-    // console.log("change langage to %s", lang)
+    console.log("change langage to %s", lang)
 
     next();
 }

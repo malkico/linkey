@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const helper = require("../config/registerHelper")
 
 module.exports = (req, res, next) => {
     
@@ -6,7 +7,7 @@ module.exports = (req, res, next) => {
     jwt.verify(req.cookies.token, process.env.TOKEN_SECRET, (err,decoded) => {
 
         if(err){
-            res.locals.result = "You must be authenticated first"
+            res.locals.result = helper.translate("account_page.login.errors.authenticated_first")
             res.render("account/log-in")
             return
         }

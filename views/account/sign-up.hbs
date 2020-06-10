@@ -8,18 +8,18 @@
       </div>
     {{/if}} 
     <form class="bg-white border p-3 " method="POST" action="/sign-up">
-      <h3> Sign up </h3> 
+      <h3> {{ translate "account_page.signup.page_title"}} </h3> 
       <hr class="pb-2" />
       <input value="{{ subscriber_signin._id }}"  autocomplete='off' type="hidden" />
       <input value="{{ subscriber_signin.first_name }}"  autocomplete='off'  type="hidden"/>
       <input value="{{ subscriber_signin.email }}" autocomplete='off'  type="hidden" />  
       <div class="form-group mb-3">
-        <label for="inputFirstName">{{ translate "account_page.signup.form.first_name.label"}} First name</label>
+        <label for="inputFirstName">{{ translate "account_page.signup.form.first_name.label"}}</label>
         <input value="{{ subscriber_signin.first_name }}" type="text" 
         class="form-control"  autocomplete='off' id="inputFirstName" disabled />
       </div>
       <div class="form-group mb-3 ">
-        <label for="emailInput">{{ translate "account_page.signup.form.email.label"}} Email address</label>
+        <label for="emailInput">{{ translate "account_page.signup.form.email.label"}}</label>
         <input value="{{ subscriber_signin.email }}" type="email" 
         class="form-control {{ternaryIf myErrors.email 'is-invalid' ''}}" id="emailInput" autocomplete='off' 
                   aria-describedby="emailHelp" disabled />
@@ -28,11 +28,11 @@
         {{/if}}
       </div>
       <div class="form-group mb-3">
-        <label for="nicheSelect">{{ translate "account_page.signup.form.niche.label"}} Niche</label>
+        <label for="nicheSelect">{{ translate "account_page.signup.form.niche.label"}}</label>
         <select name="niche" class="custom-select {{ternaryIf myErrors.niche 'is-invalid' ''}}" id='nicheSelect' autocomplete='off'>
           <option value="" ></option>
           {{#each niches }}
-          <option value="{{this}}" {{ternaryIf (iff ../influencer.niche '==' this) 'selected' ''}}> {{ this }}  </option>
+          <option value="{{@key}}" {{ternaryIf (iff ../influencer.niche '==' @key) 'selected' ''}}> {{ translate this }}  </option>
           {{/each}}
         </select>
         {{#if myErrors.niche}}
@@ -40,7 +40,7 @@
         {{/if}}
       </div>
       <div class="form-group mb-3">
-        <label for="passwordInput">{{ translate "account_page.signup.form.password.label"}} Password</label>
+        <label for="passwordInput">{{ translate "account_page.signup.form.password.label"}}</label>
         <input name="password" value="{{ influencer.password}}" autocomplete="new-password" 
         type="password" class="form-control {{ternaryIf myErrors.password 'is-invalid' ''}}" id="passwordInput" />
         {{#if myErrors.password}}
@@ -48,7 +48,7 @@
         {{/if}}
       </div>
       <div class="form-group mb-3">
-        <label for="passwordConfirmInput">{{ translate "account_page.signup.form.confirm_password.label"}} Confirm password</label>
+        <label for="passwordConfirmInput">{{ translate "account_page.signup.form.confirm_password.label"}}</label>
         <input name="confirm_password" value="{{form.confirm_password}}" autocomplete='new-password' type="password" 
         class="form-control {{ternaryIf myErrors.confirm_password 'is-invalid' ''}}" id="passwordConfirmInput" />
         {{#if myErrors.confirm_password}}
@@ -59,19 +59,20 @@
         <input name= 'agreement' type="checkbox" class="form-check-input" 
         id="agreementCheckbox" {{ternaryIf form.agreement 'checked' ''}} autocomplete='off' >
         <label class="form-check-label" for="agreementCheckbox">
-          {{ translate "account_page.signup.form.agree.label.agree"}} Agree to the <a href="/privacy-policy">Privacy Policy</a>
-          {{ translate "account_page.signup.form.agree.label.and"}}, and <a href="/terms-of-use">{{ translate "account_page.signup.form.agree.label.terms"}} Terms and Conditions of Use.</a></label>
+          {{ translate "account_page.signup.form.agree.label.agree"}} 
+          <a href="/privacy-policy">{{ translate "account_page.signup.form.agree.label.privacy"}}</a>{{ translate "account_page.signup.form.agree.label.and"}}
+          <a href="/terms-of-use">{{ translate "account_page.signup.form.agree.label.terms"}} </a></label>
       </div>
         {{#if myErrors.agreement}}
           <small class="form-text text-danger float-left"> {{myErrors.agreement}} </small>
         {{/if}}
 
-      <button type="submit" class="btn btn-primary w-100 mt-2">{{ translate "account_page.signup.form.submit"}} SIGN UP</button>
+      <button type="submit" class="btn btn-primary w-100 mt-2">{{ translate "account_page.signup.form.submit"}}</button>
     </form>
     <div class="bg-white mt-2 border  p-3 mb-4">
       <p class="text-dark mb-0 text-center">
-        {{ translate "account_page.signup.form.footer.have_account"}} Already have an account ? <a href="/log-in">
-        {{ translate "account_page.signup.form.footer.login"}} Log in</a>
+        {{ translate "account_page.signup.form.footer.have_account"}} <a href="/log-in">
+        {{ translate "account_page.signup.form.footer.login"}}</a>
       </p>
     </div>
   </div>

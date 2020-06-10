@@ -1,7 +1,9 @@
 const Subscriber = require("../models/subscriber")
 const Influencer = require("../models/influencer")
 // const influencerCong = require("../models/config/influencerConf")
-const specialFunctions = require("../config/specialFunctions")
+const specialFns = require("../config/specialFunctions")
+
+const helper = require("../config/registerHelper")
 
 const {
     check,
@@ -15,8 +17,12 @@ const getController = function (req, res) {
 
 const postController = [
     /* ******************** middlwares to check all my fields **************/
-    check("first_name").trim().custom(specialFunctions.checkSpecialChars),
-    check('email').isEmail().normalizeEmail().withMessage('Please enter a valid email address'),
+    check("first_name").trim().custom(specialFns.checkSpecialChars),
+    // check('email').isEmail().normalizeEmail().withMessage(helper.translate("generals.errors.valid_email")),
+    // check('email').isEmail().normalizeEmail().withMessage("generals.errors.valid_email"),
+    check('email').isEmail().normalizeEmail().withMessage(() => {
+        return helper.translate("generals.errors.valid_email");
+      }),
     /* .custom(value => {
         return Subscriber.findOne({
             email: value
@@ -93,7 +99,7 @@ const postController = [
                 res.locals.myErrors["email"] = "Something is wrong with your email, please contact us."
                 next(err)
             } else if (influencers.length) {
-                res.locals.myErrors["email"] = "this email is already taken by another influencer"
+                res.locals.myErrors["email"] = helper.translate("sign_up.form.errors.email_taken")
                 next(new Error(res.locals.myErrors["email"]))
                 // next()
             } else {
@@ -114,13 +120,8 @@ const postController = [
             runValidators: true
         }, (err, subscriber) => {
             if (err) {
-                if (err.errors) {
-                    Object.keys(err.errors).forEach(function (key) {
-                        res.locals.myErrors[err.errors[key].path] = err.errors[key].message
-                    })
-                } 
-                else
-                    res.locals.result = "An error was produced during your registration, please contact us"
+                specialFns.catchErrors(err.errors, res.locals.myErrors)
+                // res.locals.result = "An error was produced during your registration, please contact us"
                 next(err)
             } else if (subscriber) {
                 res.locals.subscriber._id = subscriber._id
@@ -140,13 +141,8 @@ const postController = [
             res.locals.subscriber.save(function (err) {
                 if (err) {
                     console.log(err.stack)
-                    if (err.errors) {
-                        Object.keys(err.errors).forEach(function (key) {
-                            res.locals.myErrors[err.errors[key].path] = err.errors[key].message
-                        })
-                    }
-                    else
-                        res.locals.result = "An error was produced during your registration, please contact us"
+                    specialFns.catchErrors(err.errors,res.locals.myErrors)
+                    // res.locals.result = "An error was produced during your registration, please contact us"
 
                     next(err)
                 } else {

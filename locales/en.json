@@ -250,7 +250,10 @@
 		"form": {
 			"first_name": "First name",
 			"email": "Email",
-			"submit": "Sign up!"
+			"submit": "Sign up!",
+			"errors": {
+				"email_taken": "this email is already taken by another influencer"
+			}
 		}
 	},
 	"follower_page": {
@@ -278,7 +281,125 @@
 	},
 	"generals": {
 		"errors": {
-			"special_chars": "It does not allow special characters like < > ' \" \\ /"
+			"special_chars": "It does not allow special characters like < > ' \" \\ /",
+			"valid_email": "Please enter a valid email address",
+			"password": {
+				"min": "The password is shorter than the minimum allowed length (%s)",
+				"max": "The password is longer than the maximum allowed length (%s)",
+				"uppercase": "Must include at least one upper case letter",
+				"lowercase": "Must include at least one lower case letter",
+				"digits": "Must include at least one numeric character",
+				"spaces": "It does not allow blank spaces",
+				"valid": "Please enter a valid password"
+			}
+		}
+	},
+	"account_page": {
+		"login": {
+			"form": {
+				"email": {
+					"label": "Email address"
+				},
+				"password": {
+					"label": "Password"
+				},
+				"submit": "LOG IN",
+				"i_forgot": "I forgot my password",
+				"footer": {
+					"have_account": "Do not have an account yet ? ",
+					"signup_link": "Sign up"
+				}
+			},
+			"errors": {
+				"authenticated_first": "You must be authenticated first"
+			},
+			"page_title": "Log in",
+			"result": {
+				"email_not_found": "Cannot find an influencer with this email",
+				"incorrect": "Incorrect email or password"
+			}
+		},
+		"footer": {
+			"menu": {
+				"contact": "account_page.footer.menu.contact",
+				"terms_use": "account_page.footer.menu.terms_use",
+				"privacy": "account_page.footer.menu.privacy"
+			},
+			"made": {
+				"1": "account_page.footer.made.1",
+				"2": "account_page.footer.made.2"
+			},
+			"copyright": "account_page.footer.copyright"
+		},
+		"signup": {
+			"form": {
+				"first_name": {
+					"label": "First name"
+				},
+				"email": {
+					"label": "Email address"
+				},
+				"niche": {
+					"label": "Niche"
+				},
+				"password": {
+					"label": "Password"
+				},
+				"confirm_password": {
+					"label": "Confirm password",
+					"valid": "Please enter a valid password",
+					"identical": "The two passwords must be identical...."
+				},
+				"agree": {
+					"label": {
+						"agree": "Agree to the",
+						"privacy": "Privacy Policy",
+						"and": ", and",
+						"terms": "Terms and Conditions of Use."
+					},
+					"you_should": "Sorry but you have to"
+				},
+				"submit": "SIGN UP",
+				"footer": {
+					"have_account": "Already have an account ?",
+					"login": "Log in"
+				},
+				"result": {
+					"check_fields": "Please verify that all fields are valid"
+				}
+			},
+			"page_title": "Sign up"
+		},
+		"reset_password": {
+			"result": {
+				"password_sent": "We have sent a password reset link to your mailbox if it exists."
+			},
+			"form": {
+				"header": {
+					"title": "Reset my password"
+				},
+				"email": {
+					"label": "Email address"
+				},
+				"login": {
+					"label": "Login"
+				},
+				"submit": "RESET MY PASSWORD",
+				"footer": {
+					"return": "Return to the login screen"
+				}
+			}
+		}
+	},
+	"dashboard": {
+		"generals": {
+			"title": "dashboard.generals.title"
+		},
+		"menu": {
+			"main": "dashboard.menu.main",
+			"add_link": "dashboard.menu.add_link",
+			"contact_list": "dashboard.menu.contact_list",
+			"all_links": "dashboard.menu.all_links"
 		}
 	}
 }

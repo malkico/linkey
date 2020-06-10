@@ -20,37 +20,37 @@ const {
 
 const i18n = require("i18n");
 i18n.configure({
-    locales:['en', 'es', 'fr', 'ar'],
-    defaultLocale: 'en',
-    queryParameter: 'switch_lang',
-    // fallbacks : "en",
-    cookie: 'i18n_lang',
-    updateFiles: true, // default true :: if I use some word don't exist on my files local, it will create automatically
-    syncFiles: true, // default false
-    autoReload: true, // defeaul false
-    directory: __dirname + '/locales',
-    objectNotation: true,
-    // setting of log level DEBUG - default to require('debug')('i18n:debug')
-    logDebugFn: function (msg) {
-        console.log('debug', msg);
-    },
- 
-    // setting of log level WARN - default to require('debug')('i18n:warn')
-    logWarnFn: function (msg) {
-        console.log('warn', msg);
-    },
- 
-    // setting of log level ERROR - default to require('debug')('i18n:error')
-    logErrorFn: function (msg) {
-        console.log('error', msg);
-    },
-    api: {
-      '__': 't',  //now req.__ becomes req.t
-      '__n': 'tn' //and req.__n can be called as req.tn
-    },
+  locales: ['en', 'es', 'fr', 'ar'],
+  defaultLocale: 'en',
+  queryParameter: 'switch_lang',
+  // fallbacks : "en",
+  cookie: 'i18n_lang',
+  updateFiles: true, // default true :: if I use some word don't exist on my files local, it will create automatically
+  syncFiles: true, // default false
+  autoReload: true, // defeaul false
+  directory: __dirname + '/locales',
+  objectNotation: true,
+  // setting of log level DEBUG - default to require('debug')('i18n:debug')
+  logDebugFn: function (msg) {
+    console.log('debug', msg);
+  },
+
+  // setting of log level WARN - default to require('debug')('i18n:warn')
+  logWarnFn: function (msg) {
+    console.log('warn', msg);
+  },
+
+  // setting of log level ERROR - default to require('debug')('i18n:error')
+  logErrorFn: function (msg) {
+    console.log('error', msg);
+  },
+  api: {
+    '__': 't', //now req.__ becomes req.t
+    '__n': 'tn' //and req.__n can be called as req.tn
+  },
 
 });
-app.use(i18n.init); 
+app.use(i18n.init);
 
 const indexRouter = require('./routes/main');
 const followerRouter = require('./routes/follower');
@@ -64,7 +64,7 @@ mongoose.connect(mongoDB, {
   useUnifiedTopology: true,
   autoIndex: true,
   useCreateIndex: true,
-  useFindAndModify: false 
+  useFindAndModify: false
 });
 // mongoose.set('debug', true);
 const db = mongoose.connection;
@@ -115,8 +115,8 @@ app.engine('hbs', exphbs({
     objIsEmpty: registerHelper.objIsEmpty,
     json: registerHelper.json,
     // t: registerHelper.t,
-  translate: registerHelper.translate
-}
+    translate: registerHelper.translate
+  }
 }))
 app.set('view engine', 'hbs');
 app.use(changeLang)
@@ -132,11 +132,9 @@ app.use(sassMiddleware({
   sourceMap: true
 }));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(changeLang)
-
 app.use('/', indexRouter);
 app.use('/u', followerRouter);
-app.use("/dashboard/",auth, influencerRouter)
+app.use("/dashboard/", auth, influencerRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -144,7 +142,7 @@ app.use(function (req, res, next) {
 });
 
 // error handler
-app.use(function (err, req, res) {  
+app.use(function (err, req, res) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
@@ -156,8 +154,8 @@ app.use(function (err, req, res) {
 
 const socketCtrl = require("./sockets/get")
 io.on("connection", function (socket) {
-    // console.log("un nouveau client est connecté");
-    socketCtrl(socket)
+  // console.log("un nouveau client est connecté");
+  socketCtrl(socket)
 })
 
 /// mongoose.connection.close();
@@ -166,5 +164,3 @@ module.exports = app;
 
 // i18n.setLocale("en")
 // console.log(registerHelper.translate("models.link.URL.minlength|@|2"))
-
-

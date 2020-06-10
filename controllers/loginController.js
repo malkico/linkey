@@ -6,9 +6,10 @@ const {
     validationResult
 } = require("express-validator")
 const bcrypt = require("bcrypt")
+const helper = require("../config/registerHelper")
 
 const page = "account/log-in";
-let influencer = null
+let influencerFound
 exports.getPage = function (req, res, next) {
     res.render(page)
     return
@@ -16,9 +17,11 @@ exports.getPage = function (req, res, next) {
 
 exports.loginIn = [
     /* ************************************** middlwares to check all my fields  */
-    check("email").normalizeEmail().isEmail().normalizeEmail().withMessage("Please enter a valid email"),
+    check("email").isEmail().normalizeEmail().withMessage(() => {
+        return helper.translate("generals.errors.valid_email");
+    }),
     check("password").trim().custom(specialFns.checkSpecialChars),
-    check("password").custom(specialFns.checkPassword),
+    check("password").custom( (value) => {return (specialFns.checkPassword(value) === true)}),
 
     /* ********************** middleware to initialise all my form with req.body. fields */
     (req, res, next) => {
@@ -78,7 +81,7 @@ exports.loginIn = [
                     console.log("influencerFound => %s", influencerFound)
                     next()
                 } else {
-                    res.locals.myErrors.email = "Cannot find an influencer with this email"
+                    res.locals.myErrors.email = helper.translate("account_page.login.result.email_not_found")
                     console.log("myErrors %s", res.locals.myErrors.email)
                     res.render(page)
                     return
@@ -98,7 +101,7 @@ exports.loginIn = [
                 if (isEqual) {
                     next()
                 } else {
-                    res.locals.result = "Incorrect email or password"
+                    res.locals.result = helper.translate("account_page.login.result.incorrect")
                     res.render(page)
                     return
                 }
@@ -143,7 +146,7 @@ exports.loginIn = [
 ]
 
 exports.error = (err, req, res, next) => {
-    console.log("Error => %s"+err)
+    console.log("Error => %s" + err)
     res.locals.result = "An error during the page load"
     res.render(page)
     return

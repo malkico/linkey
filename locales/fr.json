@@ -5,8 +5,7 @@
 			"how_it_work": "main_page.menu.how_it_work",
 			"pricing": "main_page.menu.pricing",
 			"get_started": "main_page.menu.get_started",
-			"log_in": "main_page.menu.log_in",
-			"home": "main_page.menu.home"
+			"log_in": "main_page.menu.log_in"
 		},
 		"how_it_works": {
 			"1": {
@@ -53,14 +52,6 @@
 				}
 			}
 		},
-		"get_started": {
-			"title": "main_page.get_started.title",
-			"form": {
-				"first_name": "main_page.get_started.form.first_name",
-				"email": "main_page.get_started.form.email",
-				"submit": "main_page.get_started.form.submit"
-			}
-		},
 		"footer": {
 			"menu": {
 				"contact": "main_page.footer.menu.contact",
@@ -75,113 +66,39 @@
 		}
 	},
 	"sign_up": {
-		"title": "Le moteur de recherche",
+		"title": "sign_up.title",
 		"form": {
 			"first_name": "sign_up.form.first_name",
 			"email": "sign_up.form.email",
-			"submit": "sign_up.form.submit"
+			"submit": "sign_up.form.submit",
+			"errors": {
+				"email_taken": "sign_up.form.errors.email_taken"
+			}
+		}
+	},
+	"generals": {
+		"errors": {
+			"valid_email": "generals.errors.valid_email",
+			"password": {
+				"min": "generals.errors.password.min",
+				"spaces": "generals.errors.password.spaces",
+				"max": "generals.errors.password.max"
+			},
+			"special_chars": "generals.errors.special_chars"
 		}
 	},
 	"models": {
-		"required": "Le prénom est requis",
 		"subscriber": {
-			"required": "models.subscriber.required",
-			"minlength": "models.subscriber.minlength",
 			"first_name": {
-				"minlength": "The first name est plus cours (%s)",
-				"required": "models.subscriber.first_name.required",
-				"maxlength": "models.subscriber.first_name.maxlength"
-			},
-			"email": {
-				"required": "models.subscriber.email.required",
-				"minlength": "models.subscriber.email.minlength",
-				"maxlength": "models.subscriber.email.maxlength",
-				"unique": "models.subscriber.email.unique"
-			}
-		},
-		"click": {
-			"follower": {
-				"required": "models.click.follower.required"
-			},
-			"link": {
-				"required": "models.click.link.required"
-			},
-			"date": {
-				"required": "models.click.date.required"
-			}
-		},
-		"contact": {
-			"follower": {
-				"required": "models.contact.follower.required"
-			},
-			"link": {
-				"required": "models.contact.link.required"
-			},
-			"date": {
-				"required": "models.contact.date.required"
-			},
-			"which": {
-				"required": "models.contact.which.required",
-				"enum": {
-					"values": {
-						"instagram": "models.contact.which.enum.values.instagram",
-						"facebook": "models.contact.which.enum.values.facebook",
-						"twitter": "models.contact.which.enum.values.twitter",
-						"snapchat": "models.contact.which.enum.values.snapchat",
-						"tiktok": "models.contact.which.enum.values.tiktok",
-						"youtube": "models.contact.which.enum.values.youtube",
-						"linkedin": "models.contact.which.enum.values.linkedin",
-						"github": "models.contact.which.enum.values.github",
-						"behance": "models.contact.which.enum.values.behance",
-						"twitch": "models.contact.which.enum.values.twitch",
-						"email": "models.contact.which.enum.values.email",
-						"whatsapp": "models.contact.which.enum.values.whatsapp",
-						"blog": "models.contact.which.enum.values.blog",
-						"store": "models.contact.which.enum.values.store",
-						"portfolio": "models.contact.which.enum.values.portfolio",
-						"website": "models.contact.which.enum.values.website",
-						"other": "models.contact.which.enum.values.other"
-					}
-				}
-			},
-			"URL": {
-				"required": "models.contact.URL.required",
-				"minlength": "models.contact.URL.minlength",
-				"maxlength": "models.contact.URL.maxlength"
-			}
-		},
-		"follower": {
-			"ip_adress": {
-				"required": "models.follower.ip_adress.required",
-				"unique": "models.follower.ip_adress.unique"
+				"minlength|@|2": "models.subscriber.first_name.minlength|@|2",
+				"minlength": "models.subscriber.first_name.minlength",
+				"required": "models.subscriber.first_name.required"
 			}
 		},
 		"influencer": {
-			"subscriber": {
-				"unique": "models.influencer.subscriber.unique",
-				"required": "models.influencer.subscriber.required"
-			},
-			"login": {
-				"required": "models.influencer.login.required",
-				"unique": "models.influencer.login.unique",
-				"minlength": "models.influencer.login.minlength",
-				"maxlength": "models.influencer.login.maxlength"
-			},
-			"password": {
-				"required": "models.influencer.password.required",
-				"minlength": "models.influencer.password.minlength",
-				"maxlength": "models.influencer.password.maxlength"
-			},
-			"last_name": {
-				"minlength": "models.influencer.last_name.minlength",
-				"maxlength": "models.influencer.last_name.maxlength"
-			},
-			"registration_date": {
-				"required": "models.influencer.registration_date.required"
-			},
 			"niche": {
-				"required": "models.influencer.niche.required",
 				"enum": {
+					"message": "models.influencer.niche.enum.message",
 					"values": {
 						"humor_memes": "models.influencer.niche.enum.values.humor_memes",
 						"fashion_style": "models.influencer.niche.enum.values.fashion_style",
@@ -213,83 +130,136 @@
 						"dogs": "models.influencer.niche.enum.values.dogs",
 						"cats": "models.influencer.niche.enum.values.cats",
 						"other": "models.influencer.niche.enum.values.other"
-					},
-					"message": "models.influencer.niche.enum.message"
-				}
-			},
-			"contacts": {
-				"message": "models.influencer.contacts.message",
-				"required": "models.influencer.contacts.required"
-			}
-		},
-		"minlength": "models.minlength",
-		"maxlength": "models.maxlength",
-		"link": {
-			"priority": {
-				"min": "models.link.priority.min",
-				"max": "models.link.priority.max"
-			},
-			"URL": {
-				"required": "models.link.URL.required",
-				"minlength": "models.link.URL.minlength",
-				"maxlength": "models.link.URL.maxlength"
-			},
-			"title": {
-				"required": "models.link.title.required",
-				"minlength": "models.link.title.minlength",
-				"maxlength": "models.link.title.maxlength"
-			},
-			"key": {
-				"minlength": "models.link.key.minlength",
-				"maxlength": "models.link.key.maxlength"
-			},
-			"description": {
-				"minlength": "models.link.description.minlength",
-				"maxlength": "models.link.description.maxlength"
-			},
-			"KEY": {
-				"min": "models.link.KEY.min",
-				"max": "models.link.KEY.max"
-			}
-		},
-		"generated_date": "models.generated_date",
-		"search": {
-			"keyword": {
-				"required": "models.search.keyword.required",
-				"maxlength": "models.search.keyword.maxlength"
-			},
-			"influencer": {
-				"required": "models.search.influencer.required"
-			},
-			"follower": {
-				"required": "models.search.follower.required"
-			}
-		},
-		"unique_taken": "models.unique_taken",
-		"subscription": {
-			"influencer": {
-				"required": "models.subscription.influencer.required"
-			},
-			"follower": {
-				"required": "models.subscription.follower.required"
-			}
-		},
-		"visit": {
-			"influencer": {
-				"required": "models.visit.influencer.required"
-			},
-			"follower": {
-				"required": "models.visit.follower.required"
+					}
+				},
+				"required": "models.influencer.niche.required"
 			}
 		}
 	},
-	"this email is already taken by another influencer": "this email is already taken by another influencer",
+	"account_page": {
+		"login": {
+			"form": {
+				"email": {
+					"label": "account_page.login.form.email.label"
+				},
+				"password": {
+					"label": "account_page.login.form.password.label"
+				},
+				"submit": "account_page.login.form.submit",
+				"i_forgot": "account_page.login.form.i_forgot",
+				"footer": {
+					"have_account": "account_page.login.form.footer.have_account",
+					"signup_link": "account_page.login.form.footer.signup_link"
+				}
+			},
+			"errors": {
+				"authenticated_first": "account_page.login.errors.authenticated_first"
+			},
+			"page_title": "account_page.login.page_title",
+			"result": {
+				"email_not_found": "account_page.login.result.email_not_found",
+				"incorrect": "account_page.login.result.incorrect"
+			}
+		},
+		"footer": {
+			"menu": {
+				"contact": "account_page.footer.menu.contact",
+				"terms_use": "account_page.footer.menu.terms_use",
+				"privacy": "account_page.footer.menu.privacy"
+			},
+			"made": {
+				"1": "account_page.footer.made.1",
+				"2": "account_page.footer.made.2"
+			},
+			"copyright": "account_page.footer.copyright"
+		},
+		"signup": {
+			"form": {
+				"first_name": {
+					"label": "account_page.signup.form.first_name.label"
+				},
+				"email": {
+					"label": "account_page.signup.form.email.label"
+				},
+				"niche": {
+					"label": "account_page.signup.form.niche.label"
+				},
+				"password": {
+					"label": "account_page.signup.form.password.label"
+				},
+				"confirm_password": {
+					"label": "account_page.signup.form.confirm_password.label",
+					"valid": "account_page.signup.form.confirm_password.valid",
+					"identical": "account_page.signup.form.confirm_password.identical"
+				},
+				"agree": {
+					"label": {
+						"agree": "account_page.signup.form.agree.label.agree",
+						"and": "account_page.signup.form.agree.label.and",
+						"terms": "account_page.signup.form.agree.label.terms",
+						"privacy": "account_page.signup.form.agree.label.privacy"
+					},
+					"you_should": "account_page.signup.form.agree.you_should"
+				},
+				"submit": "account_page.signup.form.submit",
+				"footer": {
+					"have_account": "account_page.signup.form.footer.have_account",
+					"login": "account_page.signup.form.footer.login"
+				},
+				"result": {
+					"check_fields": "account_page.signup.form.result.check_fields"
+				},
+				"agreement": {
+					"you_should": "account_page.signup.form.agreement.you_should"
+				}
+			},
+			"page_title": "account_page.signup.page_title"
+		},
+		"reset_password": {
+			"result": {
+				"password_sent": "account_page.reset_password.result.password_sent"
+			},
+			"form": {
+				"header": {
+					"title": "account_page.reset_password.form.header.title"
+				},
+				"email": {
+					"label": "account_page.reset_password.form.email.label"
+				},
+				"login": {
+					"label": "account_page.reset_password.form.login.label"
+				},
+				"submit": "account_page.reset_password.form.submit",
+				"footer": {
+					"return": "account_page.reset_password.form.footer.return"
+				}
+			}
+		}
+	},
+	"dashboard": {
+		"generals": {
+			"title": "dashboard.generals.title"
+		},
+		"menu": {
+			"main": "dashboard.menu.main",
+			"add_link": "dashboard.menu.add_link",
+			"contact_list": "dashboard.menu.contact_list",
+			"all_links": "dashboard.menu.all_links"
+		}
+	},
 	"follower_page": {
+		"title": "follower_page.title",
 		"menu": {
 			"create_mine": "follower_page.menu.create_mine"
 		},
 		"influencer": {
 			"find": "follower_page.influencer.find"
+		},
+		"search_form": {
+			"keyword": "follower_page.search_form.keyword",
+			"result": {
+				"nothing_found": "follower_page.search_form.result.nothing_found"
+			}
 		},
 		"footer": {
 			"made": {
@@ -297,20 +267,6 @@
 				"2": "follower_page.footer.made.2"
 			},
 			"copyright": "follower_page.footer.copyright"
-		},
-		"search_form": {
-			"keyword": "follower_page.search_form.keyword",
-			"result": {
-				"nothing_found": "follower_page.search_form.result.nothing_found",
-				"tape_key": "follower_page.search_form.result.tape_key"
-			}
-		},
-		"title": "follower_page.title"
-	},
-	"Please enter a valid email address": "Please enter a valid email address",
-	"generals": {
-		"errors": {
-			"special_chars": "generals.errors.special_chars"
 		}
 	}
 }

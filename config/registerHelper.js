@@ -100,7 +100,5 @@ const i18n = require("i18n");
 exports.translate = (str, ...args) => {
     const array_str = str.split("|@|")
     const array_args = array_str.filter( v => v !== array_str[0])
-    
-    // console.log(i18n.__(array_str[0],...array_args.concat(args)))
     return i18n.__(array_str[0],...array_args.concat(args))
 }

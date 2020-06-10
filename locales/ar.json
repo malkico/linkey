@@ -94,7 +94,10 @@
 		"form": {
 			"first_name": "sign_up.form.first_name",
 			"email": "sign_up.form.email",
-			"submit": "sign_up.form.submit"
+			"submit": "sign_up.form.submit",
+			"errors": {
+				"email_taken": "sign_up.form.errors.email_taken"
+			}
 		}
 	},
 	"models": {
@@ -327,7 +330,124 @@
 	"Please enter a valid email address": "Please enter a valid email address",
 	"generals": {
 		"errors": {
-			"special_chars": "generals.errors.special_chars"
+			"special_chars": "generals.errors.special_chars",
+			"valid_email": "generals.errors.valid_email",
+			"password": {
+				"min": "generals.errors.password.min",
+				"spaces": "generals.errors.password.spaces",
+				"max": "generals.errors.password.max"
+			}
+		}
+	},
+	"account_page": {
+		"login": {
+			"form": {
+				"email": {
+					"label": "account_page.login.form.email.label"
+				},
+				"password": {
+					"label": "account_page.login.form.password.label"
+				},
+				"submit": "account_page.login.form.submit",
+				"i_forgot": "account_page.login.form.i_forgot",
+				"footer": {
+					"have_account": "account_page.login.form.footer.have_account",
+					"signup_link": "account_page.login.form.footer.signup_link"
+				}
+			},
+			"errors": {
+				"authenticated_first": "account_page.login.errors.authenticated_first"
+			},
+			"page_title": "account_page.login.page_title",
+			"result": {
+				"email_not_found": "account_page.login.result.email_not_found",
+				"incorrect": "account_page.login.result.incorrect"
+			}
+		},
+		"footer": {
+			"menu": {
+				"contact": "account_page.footer.menu.contact",
+				"terms_use": "account_page.footer.menu.terms_use",
+				"privacy": "account_page.footer.menu.privacy"
+			},
+			"made": {
+				"1": "account_page.footer.made.1",
+				"2": "account_page.footer.made.2"
+			},
+			"copyright": "account_page.footer.copyright"
+		},
+		"signup": {
+			"form": {
+				"first_name": {
+					"label": "account_page.signup.form.first_name.label"
+				},
+				"email": {
+					"label": "account_page.signup.form.email.label"
+				},
+				"niche": {
+					"label": "account_page.signup.form.niche.label"
+				},
+				"password": {
+					"label": "account_page.signup.form.password.label"
+				},
+				"confirm_password": {
+					"label": "account_page.signup.form.confirm_password.label",
+					"valid": "account_page.signup.form.confirm_password.valid",
+					"identical": "account_page.signup.form.confirm_password.identical"
+				},
+				"agree": {
+					"label": {
+						"agree": "account_page.signup.form.agree.label.agree",
+						"and": "account_page.signup.form.agree.label.and",
+						"terms": "account_page.signup.form.agree.label.terms",
+						"privacy": "account_page.signup.form.agree.label.privacy"
+					},
+					"you_should": "account_page.signup.form.agree.you_should"
+				},
+				"submit": "account_page.signup.form.submit",
+				"footer": {
+					"have_account": "account_page.signup.form.footer.have_account",
+					"login": "account_page.signup.form.footer.login"
+				},
+				"result": {
+					"check_fields": "account_page.signup.form.result.check_fields"
+				},
+				"agreement": {
+					"you_should": "account_page.signup.form.agreement.you_should"
+				}
+			},
+			"page_title": "account_page.signup.page_title"
+		},
+		"reset_password": {
+			"result": {
+				"password_sent": "account_page.reset_password.result.password_sent"
+			},
+			"form": {
+				"header": {
+					"title": "account_page.reset_password.form.header.title"
+				},
+				"email": {
+					"label": "account_page.reset_password.form.email.label"
+				},
+				"login": {
+					"label": "account_page.reset_password.form.login.label"
+				},
+				"submit": "account_page.reset_password.form.submit",
+				"footer": {
+					"return": "account_page.reset_password.form.footer.return"
+				}
+			}
+		}
+	},
+	"dashboard": {
+		"generals": {
+			"title": "dashboard.generals.title"
+		},
+		"menu": {
+			"main": "dashboard.menu.main",
+			"add_link": "dashboard.menu.add_link",
+			"contact_list": "dashboard.menu.contact_list",
+			"all_links": "dashboard.menu.all_links"
 		}
 	}
 }

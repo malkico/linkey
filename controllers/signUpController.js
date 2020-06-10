@@ -3,6 +3,8 @@ const Influencer = require("../models/influencer")
 const influencerCong = require("../models/config/influencerConf")
 const specialFns = require("../config/specialFunctions")
 const bcrypt = require("bcrypt")
+const helper = require("../config/registerHelper")
+
 const {
     check,
     validationResult
@@ -28,16 +30,18 @@ const postController = [
     // check("email").normalizeEmail().isEmail().withMessage("Please enter a valid email."),
     check("niche").trim().custom(specialFns.checkSpecialChars),
     check("password").custom(specialFns.checkSpecialChars),
-    check("password").custom(specialFns.checkPassword),
-    check("confirm_password", "Please enter a valid password").trim(),
-    check("confirm_password").custom((value, {
+    check("password").custom(value => {return (specialFns.checkPassword(value) === true)} ),
+    // check("confirm_password").withMessage( () => { return helper.translate("account_page.signup.form.confirm_password.valid")}),
+    check("confirm_password").trim().custom((value, {
             req
         }) =>
         (value === req.body.password)
-    ).withMessage("The two passwords must be identical"),
+    ).withMessage(() => { return helper.translate("account_page.signup.form.confirm_password.identical")}),
     check("agreement").custom((value) =>
         (typeof (value) !== 'undefined')
-    ).withMessage("Sorry but you have to"),
+    ).withMessage( () => {
+        return helper.translate("account_page.signup.form.agree.you_should")
+    }),
 
     /* ********************** middleware to initialise all my form with req.body. fields */
     (req, res, next) => {
@@ -50,12 +54,12 @@ const postController = [
             first_name: res.locals.subscriber_signin.first_name,
             email: res.locals.subscriber_signin.email
         })
-        res.locals.influencer = new Influencer({
+        res.locals.influencer = {
             niche: req.body.niche,
             password: req.body.password,
             subscriber: res.locals.subscriber._id,
             login: res.locals.subscriber_signin.email.split('@')[0] + (Math.floor(Math.random() * (9999 - 0 + 1)))
-        })
+        }
 
         next()
     },
@@ -87,12 +91,7 @@ const postController = [
         res.locals.subscriber.validate().then(() => {
             next()
         }).catch(err => {
-            const errors = err.errors
-            Object.keys(errors).forEach((key) => {
-                res.locals.myErrors[errors[key].path] = errors[key].message
-                console.log("%s => %s ", errors[key].path, errors[key].message)
-            })
-
+            specialFns(err.errors,res.locals.myErrors)
             next(new Error("There are some errors in your email and first name "))
         })
 
@@ -141,29 +140,28 @@ const postController = [
     /* *************** middlware to check ans save the influencer ********/
     (req, res, next) => {
         console.log(res.locals.influencer)
-        let influencerToSave = res.locals.influencer
-        console.log("hashed password => %s",res.locals.hashed_pass)
+        let influencerToSave = new Influencer({
+            ...res.locals.influencer
+        })
+        // console.log("hashed password => %s",res.locals.hashed_pass)
         influencerToSave.password = res.locals.hashed_pass
         console.log("influencerToSave => %s",influencerToSave)
+        console.log("influencer form => %s",res.locals.influencer)
         influencerToSave.save((err) => {
             if (err) {
-                if (err.errors) {
-                    Object.keys(err.errors).forEach((key) => {
-                        res.locals.myErrors[err.errors[key].path] = err.errors[key].message
-                        console.log("%s => %s ", err.errors[key].path, err.errors[key].message)
-                    })
-                } else
-                    res.locals.result = "An error was produced during your registration, please contact us"
+                specialFns.catchErrors(err.errors,res.locals.myErrors)
+                // res.locals.result = "An error was produced during your registration, please contact us"
                 next(err)
-            } else
+            } else{
+                req.session.influencer = influencerToSave
                 next()
+            }
 
         })
 
     },
     (req, res) => {
         console.log("influencer and saved! new client yéeeey")
-        req.session.influencer = res.locals.influencer
         res.redirect("/dashboard/")
     }
 ]
@@ -171,7 +169,7 @@ const postController = [
 const errorController = (err, req, res, next) => {
     console.log(err.stack)
     if (!res.locals.result)
-        res.locals.result = "Please verify that all fields are valid"
+        res.locals.result = helper.translate("account_page.signup.form.result.check_fields")
     res.render("account/sign-up")
 
 }
