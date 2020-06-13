@@ -162,6 +162,7 @@ const postController = [
     },
     (req, res) => {
         console.log("influencer and saved! new client yéeeey")
+        res.clearCookie('token')
         res.redirect("/dashboard/")
     }
 ]

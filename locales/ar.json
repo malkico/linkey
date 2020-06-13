@@ -161,7 +161,8 @@
 						"portfolio": "models.contact.which.enum.values.portfolio",
 						"website": "models.contact.which.enum.values.website",
 						"other": "models.contact.which.enum.values.other"
-					}
+					},
+					"message": "models.contact.which.enum.message"
 				}
 			},
 			"URL": {
@@ -336,7 +337,8 @@
 				"min": "generals.errors.password.min",
 				"spaces": "generals.errors.password.spaces",
 				"max": "generals.errors.password.max"
-			}
+			},
+			"special_chars_URL": "generals.errors.special_chars_URL"
 		}
 	},
 	"account_page": {
@@ -441,13 +443,118 @@
 	},
 	"dashboard": {
 		"generals": {
-			"title": "dashboard.generals.title"
+			"title": "dashboard.generals.title",
+			"toggle": "dashboard.generals.toggle"
 		},
 		"menu": {
 			"main": "dashboard.menu.main",
 			"add_link": "dashboard.menu.add_link",
 			"contact_list": "dashboard.menu.contact_list",
-			"all_links": "dashboard.menu.all_links"
+			"all_links": "dashboard.menu.all_links",
+			"toggle": "dashboard.menu.toggle"
+		},
+		"add_link": {
+			"page_title": "dashboard.add_link.page_title",
+			"form": {
+				"URL": {
+					"label": "dashboard.add_link.form.URL.label",
+					"placeholder": "dashboard.add_link.form.URL.placeholder",
+					"errors": {
+						"valid": "dashboard.add_link.form.URL.errors.valid"
+					}
+				},
+				"title": {
+					"label": "dashboard.add_link.form.title.label"
+				},
+				"KEY": {
+					"label": "dashboard.add_link.form.KEY.label",
+					"errors": {
+						"Duplicated": "dashboard.add_link.form.KEY.errors.Duplicated"
+					}
+				},
+				"main": {
+					"label": "dashboard.add_link.form.main.label"
+				},
+				"submit": "dashboard.add_link.form.submit",
+				"result": {
+					"key": "dashboard.add_link.form.result.key",
+					"KEY": "dashboard.add_link.form.result.KEY",
+					"cant_add": "dashboard.add_link.form.result.cant_add",
+					"success": "dashboard.add_link.form.result.success"
+				}
+			}
+		},
+		"all_links": {
+			"page_title": "dashboard.all_links.page_title",
+			"table": {
+				"head": {
+					"link": "dashboard.all_links.table.head.link",
+					"KEY": "dashboard.all_links.table.head.KEY",
+					"created": "dashboard.all_links.table.head.created"
+				},
+				"link": {
+					"main": "dashboard.all_links.table.link.main"
+				},
+				"DataTable": {
+					"emptyTable": "dashboard.all_links.table.DataTable.emptyTable",
+					"info": "dashboard.all_links.table.DataTable.info",
+					"lengthMenu": "dashboard.all_links.table.DataTable.lengthMenu",
+					"infoEmpty": "dashboard.all_links.table.DataTable.infoEmpty",
+					"infoFiltered": "dashboard.all_links.table.DataTable.infoFiltered",
+					"paginate": {
+						"first": "dashboard.all_links.table.DataTable.paginate.first",
+						"previous": "dashboard.all_links.table.DataTable.paginate.previous",
+						"next": "dashboard.all_links.table.DataTable.paginate.next",
+						"last": "dashboard.all_links.table.DataTable.paginate.last"
+					},
+					"search": "dashboard.all_links.table.DataTable.search",
+					"zeroRecords": "dashboard.all_links.table.DataTable.zeroRecords"
+				}
+			}
+		},
+		"contact_list": {
+			"page_title": "dashboard.contact_list.page_title",
+			"link": {
+				"label": "dashboard.contact_list.link.label"
+			},
+			"form": {
+				"submit": "dashboard.contact_list.form.submit",
+				"URL": {
+					"placeholder": {
+						"email": "dashboard.contact_list.form.URL.placeholder.email",
+						"number": "dashboard.contact_list.form.URL.placeholder.number",
+						"username": "dashboard.contact_list.form.URL.placeholder.username",
+						"URL": "dashboard.contact_list.form.URL.placeholder.URL"
+					}
+				},
+				"result": {
+					"success ": "dashboard.contact_list.form.result.success "
+				}
+			},
+			"all": {
+				"result": {
+					"removed": "dashboard.contact_list.all.result.removed"
+				},
+				"delete_btn": "dashboard.contact_list.all.delete_btn"
+			}
 		}
-	}
+	},
+	"instagram": "instagram",
+	"whatsapp": "whatsapp",
+	"behance": "behance",
+	"twitch": "twitch",
+	"email": "email",
+	"blog": "blog",
+	"store": "store",
+	"portfolio": "portfolio",
+	"website": "website",
+	"other": "other",
+	"facebook": "facebook",
+	"twitter": "twitter",
+	"snapchat": "snapchat",
+	"tiktok": "tiktok",
+	"youtube": "youtube",
+	"linkedin": "linkedin",
+	"github": "github",
+	"+whichList[key]+": "+whichList[key]+"
 }

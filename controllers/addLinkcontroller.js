@@ -2,7 +2,8 @@ const linkConf = require("../models/config/linkConf")
 const Link = require('../models/link')
 const Influencer = require("../models/influencer")
 const async = require("async")
-const ObjectId = require('mongoose').Types.ObjectId; 
+const ObjectId = require('mongoose').Types.ObjectId;
+const helper = require("../config/registerHelper")
 
 const {
     check,
@@ -27,17 +28,19 @@ exports.post = [
     },
 
     /* *********************** middlewares to check my fields **********/
-    check("url").trim().isURL().withMessage("Please enter a valid url"),
+    check("URL").trim().isURL().withMessage(() => {
+        return helper.translate("dashboard.add_link.form.URL.errors.valid")
+    }),
     check("title").trim().custom(specialFncs.checkSpecialChars),
-    check("key").trim(),
+    check("KEY").trim(),
 
     /* ********************** middleware to initialise all my form with req.body. fields */
     (req, res, next) => {
         console.log("initialise all my form")
         res.locals.link = new Link({
-            url: req.body.url,
+            URL: req.body.URL,
             title: req.body.title,
-            key: req.body.key,
+            KEY: req.body.KEY,
             main: (typeof (req.body.main) !== "undefined"),
             link_type: req.body.link_type
         })
@@ -74,35 +77,40 @@ exports.post = [
         console.log("save the new link")
         async.series({
             checkTheKey: function (callback) {
-                Influencer.aggregate([{
-                        $lookup: {
-                            from: "links",
-                            localField: "links",
-                            foreignField: "_id",
-                            as: "links",
-                        }
-                    }, {
-                        $match: {
-                            _id: ObjectId(res.locals.influencer._id),
-                            "links.key": res.locals.link.key
-                        }
-                    }]
+                // just check if the the influencer enter a KEY
+                if (res.locals.link.KEY) {
+                    Influencer.aggregate([{
+                            $lookup: {
+                                from: "links",
+                                localField: "links",
+                                foreignField: "_id",
+                                as: "links",
+                            }
+                        }, {
+                            $match: {
+                                _id: ObjectId(res.locals.influencer._id),
+                                "links.KEY": res.locals.link.KEY
+                            }
+                        }]
 
-                ).then((result) => {
-                    console.log("%s - %s ",res.locals.influencer._id, res.locals.link.key)
-                    console.log("check a key: "+result)
-                    if (Object.keys(result).length) {
-                        res.locals.result = "Please enter another key"
-                        res.locals.myErrors.key = "Duplicated key!"
-                        res.render(page)
-                        return
-                    } else
-                        callback(null, true)
+                    ).then((result) => {
+                        console.log("%s - %s ", res.locals.influencer._id, res.locals.link.KEY)
+                        console.log("check a key: " + result)
+                        if (Object.keys(result).length) {
+                            res.locals.result = helper.translate("dashboard.add_link.form.result.KEY")
+                            res.locals.myErrors.KEY = helper.translate("dashboard.add_link.form.KEY.errors.Duplicated")
+                            res.render(page)
+                            return
+                        } else
+                            callback(null, true)
 
-                }).catch(err => {
-                    res.locals.result = "Error! Cannot check the key"
-                    callback(err, null)
-                })
+                    }).catch(err => {
+                        res.locals.result = "Error! Cannot check the key"
+                        callback(err, null)
+                    })
+                } else{
+                    callback(null, true)
+                }
             },
             alink: function (callback) {
                 res.locals.link.save()
@@ -117,7 +125,7 @@ exports.post = [
                         }
                     })
                     .catch(err => {
-                        res.locals.result = "Can't add the link in dataBase, Please try again later"
+                        res.locals.result =  helper.translate("dashboard.add_link.form.result.cant_add")
                         callback(err, null)
                     })
             },
@@ -153,7 +161,7 @@ exports.post = [
                 return
 
             } else if (results.alink && results.toInfluencer && results.checkTheKey) {
-                res.locals.result = "link successfully added"
+                res.locals.result = helper.translate("dashboard.add_link.form.result.success")
                 res.locals.success = true
                 next()
             }

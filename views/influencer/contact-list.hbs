@@ -5,11 +5,11 @@
   <!-- Toggle button -->
   <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><i
       class="fa fa-bars mr-2"></i><small class="text-uppercase font-weight-bold">
-        Toggle{{ translate "dashboard.menu.toggle" }} </small></button>
+        {{ translate "dashboard.generals.toggle" }} </small></button>
 
 
   <!-- Demo content -->
-  <h3 class=" text-white">{{ translate "dashboard.contact_list.page_title" }} My contact list</h3>
+  <h3 class=" text-white">{{ translate "dashboard.contact_list.page_title" }} </h3>
   {{#if result}}
   <div class="col-lg-6 alert alert-{{ternaryIf success 'success' 'danger'}} result" role="alert">
     {{result}}
@@ -27,7 +27,7 @@
           <select name="which" class="{{ternaryIf myErrors.which 'is-invalid' ''}} form-control which"
             aria-describedby="whichHelp" id="which">
             {{#each which}}
-            <option {{ ternaryIf (iff ../contact.which '==' this) 'selected' ''}} value="{{ @key }}">{{this}}
+            <option {{ ternaryIf (iff ../contact.which '==' @key) 'selected' ''}} value="{{ @key }}">{{ translate this}}
             </option>
             {{/each }}
           </select>
@@ -36,7 +36,7 @@
           {{/if}}
         </div>
         <div class="form-group">
-          <label for="URL" class="d-none">link{{ translate "dashboard.contact_list.link.label" }} </label>
+          <label for="URL" class="d-none">{{ translate "dashboard.contact_list.link.label" }} </label>
           <div class="input-group mb-2">
             <div class="input-group-prepend">
               <div class="input-group-text preURL"></div>
@@ -52,7 +52,7 @@
 
         <div class="form-group row">
           <div class="col-sm-10">
-            <button type="submit" class="btn btn-primary">{{ translate 'dashboard.contact_list.form.submit' }} Add my contact information</button>
+            <button type="submit" class="btn btn-primary">{{ translate 'dashboard.contact_list.form.submit' }} </button>
           </div>
         </div>
 
@@ -64,10 +64,9 @@
           <i class="{{get ../icone this.which }}"></i>
           <a class="mx-2" href="{{this.full_URL}}">{{this.URL}}</a>
           <i type="button" class="fas fa-backspace remove " data-toggle="tooltip" data-placement="top"
-            title="Delete this" data-id='{{this._id}}' data-which="{{this.which}}"></i>
+            title="{{translate "dashboard.contact_list.all.delete_btn"}}" data-id='{{this._id}}' data-which="{{this.which}}"></i> 
         </li>
         {{/each}}
-        
       </ul>
     </div>
   </div>
@@ -104,24 +103,24 @@
     const changePreURL = (myInput) => {
       const preURL = JSON.parse('{{{json preURL }}}')
       const which = $(myInput).val()
-      if (which === "Email") {
+      if (which === "email") {
         $(".preURL").parent().hide()
-        $("#URL").attr("placeholder", "Your email{{ translate 'dashboard.contact_list.form.URL.placeholder.email' }} ")
+        $("#URL").attr("placeholder", "{{ translate "dashboard.contact_list.form.URL.placeholder.email" }} ")
         $(".preURL").parent().show()
         $(".preURL").html('@')
-      } else if (which === "Whatsapp") {
+      } else if (which === "whatsapp") {
         $(".preURL").parent().hide()
-        $("#URL").attr("placeholder", "Your number{{ translate 'dashboard.contact_list.form.URL.placeholder.number' }}")
+        $("#URL").attr("placeholder", "{{ translate "dashboard.contact_list.form.URL.placeholder.number" }}")
         $(".preURL").parent().show()
         $(".preURL").html('Num°')
       } else if (typeof (preURL[which]) !== "undefined") {
         $(".preURL").parent().show()
         // $(".web_site").html(webSite[which])
         $(".preURL").html('@')
-        $("#URL").attr("placeholder", "Your username {{ translate 'dashboard.contact_list.form.URL.placeholder.username' }}")
+        $("#URL").attr("placeholder", "{{ translate "dashboard.contact_list.form.URL.placeholder.username" }}")
       } else {
         $(".preURL").parent().hide()
-        $("#URL").attr("placeholder", "Your URL {{ translate 'dashboard.contact_list.form.URL.placeholder.URL' }}")
+        $("#URL").attr("placeholder", "{{ translate "dashboard.contact_list.form.URL.placeholder.URL" }}")
       }
     }
 
@@ -132,6 +131,7 @@
 
     /* ************ AJAX to delete a social media *************/
     $('.remove').tooltip()
+    const whichList = JSON.parse('{{{json whichList }}}')
     $(".remove").click(function (e) {
       console.log($(this).data("id"))
       const deleteBtn = $(this)
@@ -164,8 +164,8 @@
             deleteBtn.tooltip("hide")
             deleteBtn.parent().remove()
             const oldWhich = deleteBtn.data("which")
-            $("select#which").append("<option value='" + oldWhich + "'>" + oldWhich + "</option>")
-            console.log("removed succesfuly! {{ translate 'dashboard.contact_list.all.result.removed' }}")
+            $("select#which").append("<option value='" + oldWhich + "'> "+whichList[oldWhich]+"</option>")
+            console.log("{{ translate 'dashboard.contact_list.all.result.removed' }}")
           }
           $(".result").fadeOut()
         }

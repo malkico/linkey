@@ -282,6 +282,7 @@
 	"generals": {
 		"errors": {
 			"special_chars": "It does not allow special characters like < > ' \" \\ /",
+			"special_chars_URL": "It does not allow special characters like < > ' \" \\",
 			"valid_email": "Please enter a valid email address",
 			"password": {
 				"min": "The password is shorter than the minimum allowed length (%s)",
@@ -393,13 +394,117 @@
 	},
 	"dashboard": {
 		"generals": {
-			"title": "dashboard.generals.title"
+			"title": "Influencer dashboard",
+			"toggle": "Toggle"
 		},
 		"menu": {
-			"main": "dashboard.menu.main",
-			"add_link": "dashboard.menu.add_link",
-			"contact_list": "dashboard.menu.contact_list",
-			"all_links": "dashboard.menu.all_links"
+			"main": "Main",
+			"add_link": "Add a link",
+			"contact_list": "Contact list",
+			"all_links": "All my link",
+			"toggle": "dashboard.menu.toggle"
+		},
+		"add_link": {
+			"page_title": "Add a link",
+			"form": {
+				"URL": {
+					"label": "URL",
+					"placeholder": "https://example.com/",
+					"errors": {
+						"valid": "Please enter a valid URL"
+					}
+				},
+				"title": {
+					"label": "Title"
+				},
+				"KEY": {
+					"label": "KEY",
+					"errors": {
+						"Duplicated": "Duplicated key!"
+					}
+				},
+				"main": {
+					"label": "Make it on my main page"
+				},
+				"submit": "Add my link",
+				"result": {
+					"KEY": "Please enter another key",
+					"cant_add": "Can't add the link in dataBase, Please try again",
+					"success": "link successfully added"
+				}
+			}
+		},
+		"all_links": {
+			"page_title": "All my links",
+			"table": {
+				"head": {
+					"link": "Link",
+					"KEY": "KEY",
+					"created": "Created at"
+				},
+				"link": {
+					"main": "Make it on main"
+				},
+				"DataTable": {
+					"emptyTable": "No data available in table",
+					"info": "Showing _START_ to _END_ of _TOTAL_ links",
+					"lengthMenu": "Show _MENU_ links",
+					"infoEmpty": "Showing 0 to 0 of 0 links",
+					"infoFiltered": "(filtered from _MAX_ total links)",
+					"paginate": {
+						"first": "First",
+						"previous": "Previous",
+						"next": "Next",
+						"last": "Last"
+					},
+					"search": "Search:",
+					"zeroRecords": "No matching records found"
+				}
+			}
+		},
+		"contact_list": {
+			"page_title": "My contact list",
+			"link": {
+				"label": "Link"
+			},
+			"form": {
+				"submit": "Add my contact information",
+				"URL": {
+					"placeholder": {
+						"email": "Your email",
+						"number": "Your number",
+						"username": "Your username",
+						"URL": "Your URL"
+					}
+				},
+				"result": {
+					"success ": "A new contact added succesfuly"
+				}
+			},
+			"all": {
+				"result": {
+					"removed": "removed succesfuly! "
+				},
+				"delete_btn": "Delete this"
+			}
 		}
-	}
+	},
+	"behance": "behance",
+	"twitch": "twitch",
+	"email": "email",
+	"whatsapp": "whatsapp",
+	"blog": "blog",
+	"store": "store",
+	"portfolio": "portfolio",
+	"website": "website",
+	"other": "other",
+	"instagram": "instagram",
+	"facebook": "facebook",
+	"twitter": "twitter",
+	"snapchat": "snapchat",
+	"tiktok": "tiktok",
+	"youtube": "youtube",
+	"linkedin": "linkedin",
+	"github": "github",
+	"+whichList[key]+": "+whichList[key]+"
 }
