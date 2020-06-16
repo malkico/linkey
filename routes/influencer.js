@@ -4,6 +4,7 @@ const router = express.Router()
 const addLinkCtrl = require("../controllers/addLinkcontroller")
 const dashboardCtrl = require("../controllers/dashboardController")
 const socialMediaCtrl = require("../controllers/contactController")
+const profileCtrl = require("../controllers/profileController")
 
 router.get("/",dashboardCtrl.get)
 router.get("/add-link",addLinkCtrl.get)
@@ -15,8 +16,15 @@ router.post('/contact-list',socialMediaCtrl.post)
 router.delete("/contact-list",socialMediaCtrl.delete)
 router.use("/contact-list",socialMediaCtrl.error)
 
+router.get("/profile",profileCtrl.get)
+
 router.get("/all-my-links",function(req, res, next){
     res.render("influencer/all-my-links")
+})
+
+router.get('/logout', (req, res, next) => {
+    res.clearCookie("token")
+    res.redirect("/")
 })
 
 

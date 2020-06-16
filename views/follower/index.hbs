@@ -70,7 +70,9 @@
                 <p class="mb-0 "><i class="fab fa-slack-hash fa-2x mr-4" aria-hidden="true"></i>
                   <div class="my-auto">
                     <h6 class="mb-0"> {{this.title}}<h6>
+                        {{#if this.key}}
                         <span class="badge badge-c-dark">KEY: {{this.key}}</span>
+                        {{/if }}
                   </div>
                   <div class="spinner-border ml-2 " role="status">
                     <span class="sr-only">Loading...</span>

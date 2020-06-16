@@ -20,7 +20,7 @@ const postController = [
     check("first_name").trim().custom(specialFns.checkSpecialChars),
     // check('email').isEmail().normalizeEmail().withMessage(helper.translate("generals.errors.valid_email")),
     // check('email').isEmail().normalizeEmail().withMessage("generals.errors.valid_email"),
-    check('email').isEmail().normalizeEmail().withMessage(() => {
+    check('email').isEmail().withMessage(() => {
         return helper.translate("generals.errors.valid_email");
       }),
     /* .custom(value => {

@@ -4,6 +4,7 @@ const influencerCong = require("../models/config/influencerConf")
 const specialFns = require("../config/specialFunctions")
 const bcrypt = require("bcrypt")
 const helper = require("../config/registerHelper")
+const mailer = require("../middlwares/mailer")
 
 const {
     check,
@@ -27,7 +28,7 @@ const postController = [
     /* ************************************** middlwares to check all my fields  */
     check("subscriber_id").trim().custom(specialFns.checkSpecialChars),
     // check("first_name").trim().custom(specialFunctions.checkSpecialChars),
-    // check("email").normalizeEmail().isEmail().withMessage("Please enter a valid email."),
+    // check("email").isEmail().withMessage("Please enter a valid email."),
     check("niche").trim().custom(specialFns.checkSpecialChars),
     check("password").custom(specialFns.checkSpecialChars),
     check("password").custom(value => {return (specialFns.checkPassword(value) === true)} ),
@@ -159,6 +160,8 @@ const postController = [
 
         })
 
+    },(req, res, next) => {
+        mailer.send(res.locals.subscriber, res.locals.influencer, next)
     },
     (req, res) => {
         console.log("influencer and saved! new client yéeeey")

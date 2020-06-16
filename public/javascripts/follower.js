@@ -64,13 +64,17 @@ $(() => {
     // +++++++++++++++++  GET influencer links 
     const links = $("body").data('influencerLinks')
     const link_filtered = (url, title, key, _id) => {
+        let span_key = "";
+        if(key){
+            span_key = "<span class='badge badge-c-dark'>KEY: " + key + "</span>"
+        }
         return "<a href='" + url + "' class='text-dark filtred' data-id='" + _id + "'>" +
             "<div class='alink list-group-item d-flex pr-0 pl-0 row pt-0'>" +
             "<div class='d-flex offset-1 col-10 border-bottom pb-2 max-with'>" +
             "<p class='mb-0'><i class='fab fa-slack-hash fa-2x mr-4' aria-hidden='true'></i>" +
             "<div class='my-auto'>" +
             "<h6 class='mb-0'> " + title + "<h6>" +
-            "<span class='badge badge-c-dark'>KEY: " + key + "</span>" +
+            span_key +
             "</div>" +
             " <div class='spinner-border ml-2 ' role='status'>" +
             " <span class='sr-only'>Loading...</span>" +

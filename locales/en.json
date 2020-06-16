@@ -402,7 +402,8 @@
 			"add_link": "Add a link",
 			"contact_list": "Contact list",
 			"all_links": "All my links",
-			"toggle": "dashboard.menu.toggle"
+			"logout": "Log out",
+			"profile": "dashboard.menu.profile"
 		},
 		"add_link": {
 			"page_title": "Add a link",
@@ -487,24 +488,19 @@
 				},
 				"delete_btn": "Delete this"
 			}
+		},
+		"profile": {
+			"page_title": "dashboard.profile.page_title",
+			"tabs": {
+				"head": {
+					"profile": "Profile details",
+					"password": "Password details"
+				}
+			}
 		}
 	},
-	"behance": "behance",
-	"twitch": "twitch",
-	"email": "email",
-	"whatsapp": "whatsapp",
-	"blog": "blog",
-	"store": "store",
-	"portfolio": "portfolio",
-	"website": "website",
-	"other": "other",
-	"instagram": "instagram",
-	"facebook": "facebook",
-	"twitter": "twitter",
-	"snapchat": "snapchat",
-	"tiktok": "tiktok",
-	"youtube": "youtube",
-	"linkedin": "linkedin",
-	"github": "github",
-	"+whichList[key]+": "+whichList[key]+"
+	"mailer" : {
+		"welcome" : "Dear %s,\n\nThank you for your confidence in LINKEY, you will find below your authentication details \nLogin: %s \nPassword: %s \n\nWe wish you a very good experience with us."
+	}
+	
 }

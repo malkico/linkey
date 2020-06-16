@@ -451,7 +451,9 @@
 			"add_link": "dashboard.menu.add_link",
 			"contact_list": "dashboard.menu.contact_list",
 			"all_links": "dashboard.menu.all_links",
-			"toggle": "dashboard.menu.toggle"
+			"toggle": "dashboard.menu.toggle",
+			"logout": "dashboard.menu.logout",
+			"profile": "dashboard.menu.profile"
 		},
 		"add_link": {
 			"page_title": "dashboard.add_link.page_title",
@@ -537,6 +539,15 @@
 				},
 				"delete_btn": "dashboard.contact_list.all.delete_btn"
 			}
+		},
+		"profile": {
+			"page_title": "dashboard.profile.page_title",
+			"tabs": {
+				"head": {
+					"profile": "dashboard.profile.tabs.head.profile",
+					"password": "dashboard.profile.tabs.head.password"
+				}
+			}
 		}
 	},
 	"instagram": "instagram",
@@ -556,5 +567,8 @@
 	"youtube": "youtube",
 	"linkedin": "linkedin",
 	"github": "github",
-	"+whichList[key]+": "+whichList[key]+"
+	"+whichList[key]+": "+whichList[key]+",
+	"mailer": {
+		"welcome": "mailer.welcome"
+	}
 }
