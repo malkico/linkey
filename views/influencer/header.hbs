@@ -38,25 +38,25 @@
 
     <ul class="nav flex-column bg-white mb-0">
       <li class="nav-item">
-        <a href="./profile" class="nav-link text-dark font-italic" >
+        <a href="./profile" class="nav-link text-dark font-italic  {{ternaryIf (iff page '==' 'profile') 'bg-light' ''}}">
           <i class="fa fa-cubes mr-3 text-primary fa-fw"></i>
           {{ translate "dashboard.menu.profile" }} 
         </a>
       </li>
       <li class="nav-item">
-        <a href="./add-link" class="nav-link text-dark font-italic bg-light">
+        <a href="./add-link" class="nav-link text-dark font-italic {{ternaryIf (iff page '==' 'add-link') 'bg-light' ''}}">
           <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
           {{ translate "dashboard.menu.add_link" }} 
         </a>
       </li>
       <li class="nav-item">
-        <a href="./contact-list" class="nav-link text-dark font-italic">
+        <a href="./contact-list" class="nav-link text-dark font-italic {{ternaryIf (iff page '==' 'contact-list') 'bg-light' ''}}">
           <i class="fa fa-address-card mr-3 text-primary fa-fw"></i>
            {{ translate "dashboard.menu.contact_list" }} 
         </a>
       </li>
       <li class="nav-item">
-        <a href="./all-my-links" class="nav-link text-dark font-italic">
+        <a href="./all-my-links" class="nav-link text-dark font-italic {{ternaryIf (iff page '==' 'all-my-links') 'bg-light' ''}}">
           <i class="fa fa-cubes mr-3 text-primary fa-fw"></i>
           {{ translate "dashboard.menu.all_links" }} 
         </a>

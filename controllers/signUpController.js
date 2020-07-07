@@ -6,6 +6,7 @@ const bcrypt = require("bcrypt")
 const helper = require("../config/registerHelper")
 const mailer = require("../middlwares/mailer")
 
+let confirm_code
 const {
     check,
     validationResult
@@ -31,16 +32,20 @@ const postController = [
     // check("email").isEmail().withMessage("Please enter a valid email."),
     check("niche").trim().custom(specialFns.checkSpecialChars),
     check("password").custom(specialFns.checkSpecialChars),
-    check("password").custom(value => {return (specialFns.checkPassword(value) === true)} ),
+    check("password").custom(value => {
+        return (specialFns.checkPassword(value) === true)
+    }),
     // check("confirm_password").withMessage( () => { return helper.translate("account_page.signup.form.confirm_password.valid")}),
     check("confirm_password").trim().custom((value, {
             req
         }) =>
         (value === req.body.password)
-    ).withMessage(() => { return helper.translate("account_page.signup.form.confirm_password.identical")}),
+    ).withMessage(() => {
+        return helper.translate("account_page.signup.form.confirm_password.identical")
+    }),
     check("agreement").custom((value) =>
         (typeof (value) !== 'undefined')
-    ).withMessage( () => {
+    ).withMessage(() => {
         return helper.translate("account_page.signup.form.agree.you_should")
     }),
 
@@ -92,7 +97,7 @@ const postController = [
         res.locals.subscriber.validate().then(() => {
             next()
         }).catch(err => {
-            specialFns(err.errors,res.locals.myErrors)
+            specialFns(err.errors, res.locals.myErrors)
             next(new Error("There are some errors in your email and first name "))
         })
 
@@ -125,18 +130,38 @@ const postController = [
     /* ********************** middleware to hashing my password */
     (req, res, next) => {
         console.log("password to hash : %s", res.locals.influencer.password)
-        bcrypt.hash(res.locals.influencer.password,10)
-        .then((hashed) => {
-            res.locals.hashed_pass = hashed
-            next()
+        bcrypt.hash(res.locals.influencer.password, 10)
+            .then((hashed) => {
+                res.locals.hashed_pass = hashed
+                next()
+            })
+            .catch((err) => {
+                const msg = 'An error was generated while hashing the password'
+                console.log("%s => %s", msg, err)
+                res.locals.myErrors["password"] = msg
+                next(new Error(msg))
+            })
+
+    },
+    /* *************** middlware to save the email_status ********/
+    (req, res, next) => {
+        const Email_status = require("../models/email_status")
+        const email_status = new Email_status({
+            email: res.locals.subscriber.email
         })
-        .catch((err) => {
-            const msg = 'An error was generated while hashing the password'
-            console.log("%s => %s",msg, err)
-            res.locals.myErrors["password"] = msg
-            next(new Error(msg))
+
+        email_status.save().then(result => {
+            if (Object.keys(result).length) {
+                confirm_code = result._id
+                next()
+            } else {
+                next(new Error("Can't add the email status"))
+            }
+
+        }).catch(err => {
+            next(err)
         })
-        
+
     },
     /* *************** middlware to check ans save the influencer ********/
     (req, res, next) => {
@@ -144,24 +169,25 @@ const postController = [
         let influencerToSave = new Influencer({
             ...res.locals.influencer
         })
+        influencerToSave.email_status = new Array(confirm_code)
         // console.log("hashed password => %s",res.locals.hashed_pass)
         influencerToSave.password = res.locals.hashed_pass
-        console.log("influencerToSave => %s",influencerToSave)
-        console.log("influencer form => %s",res.locals.influencer)
+        console.log("influencerToSave => %s", influencerToSave)
+        console.log("influencer form => %s", res.locals.influencer)
         influencerToSave.save((err) => {
             if (err) {
-                specialFns.catchErrors(err.errors,res.locals.myErrors)
+                specialFns.catchErrors(err.errors, res.locals.myErrors)
                 // res.locals.result = "An error was produced during your registration, please contact us"
                 next(err)
-            } else{
+            } else {
                 req.session.influencer = influencerToSave
                 next()
             }
 
         })
 
-    },(req, res, next) => {
-        mailer.send(res.locals.subscriber, res.locals.influencer, next)
+    }, (req, res, next) => {
+        mailer.send(res.locals.subscriber, res.locals.influencer,confirm_code, next)
     },
     (req, res) => {
         console.log("influencer and saved! new client yéeeey")

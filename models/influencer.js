@@ -1,5 +1,6 @@
 const mongoose = require("mongoose")
 const Schema = mongoose.Schema
+// const helper = require("../config/registerHelper")
 
 const influencerCong = require("./config/influencerConf")
 const InfluencerSchema = new Schema({
@@ -51,6 +52,11 @@ const InfluencerSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Link',
         required: false
+    }],
+    email_status : [{
+        type : Schema.Types.ObjectId,
+        ref: 'email_status',
+        required : [true,"models.influencer.email_status.required"]
     }]
 
 }) 

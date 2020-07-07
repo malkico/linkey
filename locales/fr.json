@@ -140,6 +140,9 @@
 			},
 			"subscriber": {
 				"unique": "models.influencer.subscriber.unique"
+			},
+			"email_status": {
+				"required": "models.influencer.email_status.required"
 			}
 		},
 		"link": {
@@ -389,8 +392,16 @@
 			"tabs": {
 				"head": {
 					"profile": "dashboard.profile.tabs.head.profile",
-					"password": "dashboard.profile.tabs.head.password"
+					"password": "dashboard.profile.tabs.head.password",
+					"email": "dashboard.profile.tabs.head.email"
 				}
+			}
+		},
+		"index": {
+			"result": {
+				"confirmation": "dashboard.index.result.confirmation",
+				"sucess_email_confirmation": "dashboard.index.result.sucess_email_confirmation",
+				"success_email_confirmation": "dashboard.index.result.success_email_confirmation"
 			}
 		}
 	},

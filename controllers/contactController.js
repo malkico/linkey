@@ -15,6 +15,7 @@ const initialPage = (req, res, next) => {
     console.log("initiale the page")
     res.locals.preURL = contactConf.preURL
     res.locals.icone = contactConf.icone
+    res.locals.page = "contact-list"
     res.locals.whichList = {}
     Object.keys(contactConf.which).forEach(key => {
       res.locals.whichList[key] = helper.translate(contactConf.which[key])

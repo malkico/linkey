@@ -109,6 +109,9 @@
 			"last_name": {
 				"minlength": "The last name is shorter than the minimum allowed length (%s)",
 				"maxlength": "The last name is longer than the maximum allowed length (%s)"
+			},
+			"email_status": {
+				"required": "The email status is required"
 			}
 		},
 		"link": {
@@ -403,7 +406,7 @@
 			"contact_list": "Contact list",
 			"all_links": "All my links",
 			"logout": "Log out",
-			"profile": "dashboard.menu.profile"
+			"profile": "Profile"
 		},
 		"add_link": {
 			"page_title": "Add a link",
@@ -490,17 +493,25 @@
 			}
 		},
 		"profile": {
-			"page_title": "dashboard.profile.page_title",
+			"page_title": "My profile",
 			"tabs": {
 				"head": {
 					"profile": "Profile details",
-					"password": "Password details"
+					"password": "Password details",
+					"email": "Email"
 				}
+			}
+		},
+		"index": {
+			"result": {
+				"success_email_confirmation": "Congratulations! You have confirmed your email"
 			}
 		}
 	},
-	"mailer" : {
-		"welcome" : "Dear %s,\n\nThank you for your confidence in LINKEY, you will find below your authentication details \nLogin: %s \nPassword: %s \n\nWe wish you a very good experience with us."
+	"mailer": {
+		"welcome": {
+			"1": "Dear %s,\n\nThank you for your confidence in LINKEY, you will find below your authentication details \nLogin: %s \nPassword: %s \n\nYou must also confirm your account by clicking on this link below\n",
+			"2": "\n\nWe wish you a very good experience with us."
+		}
 	}
-	
 }

@@ -14,6 +14,7 @@ const page = "influencer/add-link"
 
 // Console.log(Link.link_type[0]);
 exports.get = function (req, res, next) {
+    res.locals.page = "add-link"
     res.render(page, {
         link_type: linkConf.link_type
     })
@@ -23,6 +24,7 @@ exports.get = function (req, res, next) {
 exports.post = [
     /* *********************** middleware to initale my page **********/
     (req, res, next) => {
+        res.locals.page = "add-link"
         res.locals.link_type = linkConf.link_type
         next()
     },

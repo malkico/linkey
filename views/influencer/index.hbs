@@ -10,7 +10,13 @@
 
 
   <!-- Demo content -->
-  <h3 class="display-4 text-white">Add a link</h3>
+  <h3 class="display-4 text-white">Index page</h3>
+  {{#if result}}
+  <div class="col-lg-6 alert alert-{{ternaryIf result.success 'success' 'danger'}} " role="alert">
+    {{result.message}}
+    <!-- We have sent a password reset link to your mailbox if it exists. -->
+  </div>
+  {{/if}}
 
   <div class="card mb-4 py-3 border-left-success col-lg-6">
     <div class="card-body">

@@ -134,7 +134,9 @@ app.use(sassMiddleware({
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/u', followerRouter);
+app.get("/account/confirmation/:code",require("./controllers/confirmationEmailController").get)
 app.use("/dashboard/", auth, influencerRouter)
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
