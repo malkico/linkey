@@ -1,0 +1,61 @@
+{{> "account/header"}}
+
+<div class="d-flex justify-content-center   ">
+  <div class="  m-3">
+    {{#if result}}
+    <div class="alert alert-danger" role="alert">
+      {{result}}
+      <!-- We have sent a password reset link to your mailbox if it exists. -->
+    </div>
+    {{/if}}
+    <form class="bg-white border p-3" method="POST" action="/log-in">
+
+      <div class="form-group p-1 pt-3">
+        <h3>{{ translate "account_page.login.page_title"}}</h3>
+        <hr class="pb-2" />
+        <label for="emailInput">{{ translate "account_page.login.form.email.label"}}</label>
+        <input name="email" value="{{influencer.email}}" type="email"
+          class="form-control {{ternaryIf myErrors.email "is-invalid" "" }}" id="emailInput"
+          aria-describedby="emailHelp" autocomplete="username">
+        {{#if myErrors.email}}
+        <small id="emailHelp" class="form-text text-danger">{{myErrors.email }} </small>
+        {{/if}}
+      </div>
+      <div class="form-group">
+        <label for="passwordInput">{{ translate "account_page.login.form.password.label"}}</label>
+        <input name="password" value="{{influencer.password}}" type="password"
+          class="form-control {{ternaryIf myErrors.password "is-invalid" "" }}" id="passwordInput"
+          autocomplete="current-password" aria-describedby="passwordHelp">
+        {{#if myErrors.password}}
+        <small id="passwordHelp" class="form-text text-danger">{{ myErrors.password }} </small>
+        {{/if}}
+      </div>
+      <button type="submit" class="btn btn-primary w-100 mt-2">{{ translate "account_page.login.form.submit"}}</button>
+      <div class="pt-3 text-center">
+        <a class="form-check-label" href="/reset-password"> {{ translate "account_page.login.form.i_forgot"}}</a>
+      </div>
+    </form>
+    <div class="bg-white mt-2 border  p-3 mb-4">
+      <p class="text-dark mb-0">
+        {{ translate "account_page.login.form.footer.have_account"}} <a href="/#getstarted">
+        {{ translate "account_page.login.form.footer.signup_link"}} </a>
+        {{!-- Do not have an account yet ? <a href="/sign-up">Sign up</a> --}}
+      </p>
+    </div>
+  </div>
+</div>
+</div>
+{{> "account/footer"}}
+
+<script>
+  /* ****************************** make the footer always on the bottom */
+  $(function () {
+
+  });
+</script>
+
+
+
+</body>
+
+</html>

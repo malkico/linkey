@@ -1,0 +1,517 @@
+{
+	"models": {
+		"errors": {
+			"required": "This field is required",
+			"generated_date": "An error was generated when assigning a registration date, please check the date and time on your device."
+		},
+		"subscriber": {
+			"first_name": {
+				"required": "The first name is required",
+				"minlength": "The first name is shorter than the minimum allowed length (%s)",
+				"maxlength": "The first name is longer than the maximum allowed length (%s)"
+			},
+			"email": {
+				"required": "The email is required",
+				"minlength": "The email is shorter than the minimum allowed length (%s)",
+				"maxlength": "The email is longer than the maximum allowed length (%s)",
+				"unique": "This email is already taken"
+			}
+		},
+		"contact": {
+			"which": {
+				"required": "You must choose a contact information. And please contact us if you don't find your social media",
+				"enum": {
+					"values": {
+						"instagram": "Instagram",
+						"facebook": "Facebook",
+						"twitter": "Twitter",
+						"snapchat": "Snapchat",
+						"tiktok": "Tiktok",
+						"youtube": "Youtube",
+						"linkedin": "Linkedin",
+						"github": "Github",
+						"behance": "Behance",
+						"twitch": "Twitch",
+						"email": "Email",
+						"whatsapp": "Whatsapp",
+						"blog": "Blog",
+						"store": "Store",
+						"portfolio": "Portfolio",
+						"website": "Personal/Company Website",
+						"other": "Other"
+					},
+					"message": "If you didn't find your contact information, you can choose other, and please contact us"
+				}
+			},
+			"URL": {
+				"required": "The URL is required",
+				"minlength": "The email is shorter than the minimum allowed length (%s)",
+				"maxlength": "The email is longer than the maximum allowed length (%s)"
+			}
+		},
+		"influencer": {
+			"subscriber": {
+				"required": "Are you sure that you already enter your email and your first name !",
+				"unique": "This influencer is diplicated!"
+			},
+			"niche": {
+				"required": "You must choose your niche, if you did not find the right niche, you can choose other, and please contact us",
+				"enum": {
+					"values": {
+						"humor_memes": "Humor & Memes",
+						"fashion_style": "Fashion & Style",
+						"fitness": "Fitness",
+						"quotes_texts": "Quotes & Texts",
+						"luxury_motivation": "Luxury & Motivation",
+						"cars": "Cars",
+						"motorcycles": "Motorcycles",
+						"nature": "Nature",
+						"food_nutrition": "Food & Nutrition",
+						"animals": "Animals",
+						"models": "Models",
+						"ambassadors_influencers": "Ambassadors & Influencers",
+						"music_singers": "Music & Singers",
+						"art": "Art",
+						"technology": "Technology",
+						"gaming": "Gaming",
+						"entrepreneurship": "Entrepreneurship",
+						"architecture_interior": "Architecture & Interior",
+						"fan_accounts": "Fan Accounts",
+						"celebrity": "Celebrity",
+						"policy": "Policy",
+						"makeup": "Makeup",
+						"hair": "Hair",
+						"nails": "Nails",
+						"sports": "Sports",
+						"love_romance": "Love & Romance",
+						"travel": "Travel",
+						"dogs": "Dogs",
+						"cats": "Cats",
+						"other": "Other"
+					},
+					"message": "If you didn't find the right niche, you can choose other, and please contact us"
+				}
+			},
+			"contacts": {
+				"required": "You should link your account with at least one contact information"
+			},
+			"login": {
+				"unique": "This login is already taken",
+				"required": "The login is required",
+				"minlength": "The email is shorter than the minimum allowed length (%s)",
+				"maxlength": "The email is longer than the maximum allowed length (%s)"
+			},
+			"password": {
+				"required": "The password is required",
+				"minlength": "The password is shorter than the minimum allowed length (%s)",
+				"maxlength": "The password is longer than the maximum allowed length (%s)"
+			},
+			"last_name": {
+				"minlength": "The last name is shorter than the minimum allowed length (%s)",
+				"maxlength": "The last name is longer than the maximum allowed length (%s)"
+			},
+			"email_status": {
+				"required": "The email status is required"
+			}
+		},
+		"link": {
+			"priority": {
+				"min": "Please enter a valid priority",
+				"max": "Priority cannot be more than 9999"
+			},
+			"URL": {
+				"required": "The URL is required",
+				"minlength": "The URL is shorter than the minimum allowed length (%s)",
+				"maxlength": "The URL is longer than the maximum allowed length (%s)"
+			},
+			"title": {
+				"required": "The title is required",
+				"minlength": "The title is shorter than the minimum allowed length (%s)",
+				"maxlength": "The title is longer than the maximum allowed length (%s)"
+			},
+			"KEY": {
+				"min": "The KEY is shorter than the minimum allowed length (%s)",
+				"max": "The KEY is longer than the maximum allowed length (%s)"
+			},
+			"description": {
+				"minlength": "The description is shorter than the minimum allowed length (%s)",
+				"maxlength": "The description is longer than the maximum allowed length (%s)"
+			}
+		},
+		"search": {
+			"keyword": {
+				"required": "We can't help you without knowing what you're looking for",
+				"maxlength": "The keywords is longer than the maximum allowed length (%s)"
+			},
+			"influencer": {
+				"required": "The influencer id is required"
+			},
+			"follower": {
+				"required": "The follower id is required"
+			}
+		},
+		"click": {
+			"follower": {
+				"required": "The follower id is required"
+			},
+			"link": {
+				"required": "The link id is required"
+			}
+		},
+		"follower": {
+			"ip_adress": {
+				"required": "We can't get the visitor's IP address",
+				"unique": "This IP Adress is duplicated"
+			}
+		},
+		"subscription": {
+			"influencer": {
+				"required": "The influencer id is required"
+			},
+			"follower": {
+				"required": "The follower id is required"
+			}
+		},
+		"visit": {
+			"influencer": {
+				"required": "The influencer id is required"
+			},
+			"follower": {
+				"required": "The follower id is required"
+			}
+		}
+	},
+	"main_page": {
+		"title": "Make your #linkinbio a search engine!",
+		"menu": {
+			"how_it_work": "How it works",
+			"pricing": "Pricing",
+			"get_started": "Get started",
+			"log_in": "Log in",
+			"home": "Home"
+		},
+		"how_it_works": {
+			"1": {
+				"title": "Several links! No problem",
+				"description": {
+					"1": "Add your links, each one with a unique",
+					"2": "KEY."
+				}
+			},
+			"2": {
+				"title": "With a unique URL",
+				"description": " Retrieve your unique URL, put it on in your #bio"
+			},
+			"3": {
+				"title": "Track your followers",
+				"description": "Understand your audience and what they looking for."
+			},
+			"understand": {
+				"1": "To more understand",
+				"2": "This is a",
+				"demo": "Demo account"
+			},
+			"pricing": {
+				"description": "Quickly build an effective pricing table for your potential customers with this Bootstrap example.It 's built with default Bootstrap components and utilities with little customization.",
+				"free": {
+					"sign_up": "Sign up for free",
+					"title": "Free",
+					"plan": {
+						"1": "Unlimited links",
+						"2": "Social icons",
+						"3": "Newsletter Email Signup",
+						"4": "Link Tracking & Stats",
+						"5": "No Ads",
+						"6": "pre-designed themes",
+						"7": "Email Support"
+					}
+				},
+				"pro": {
+					"sign_up": "Contact us",
+					"title": "Pro (Coming Soon)",
+					"plan": {
+						"1": "& More"
+					}
+				}
+			}
+		},
+		"footer": {
+			"made": {
+				"1": "Made with",
+				"2": "by"
+			},
+			"copyright": "Copyright",
+			"menu": {
+				"contact": "Contact",
+				"terms_use": "Terms of Use",
+				"privacy": "Privacy Policy"
+			}
+		}
+	},
+	"sign_up": {
+		"title": "Create your own search engine now!",
+		"form": {
+			"first_name": "First name",
+			"email": "Email",
+			"submit": "Sign up!",
+			"errors": {
+				"email_taken": "this email is already taken by another influencer"
+			}
+		}
+	},
+	"follower_page": {
+		"menu": {
+			"create_mine": "CREATE %s OWN SEARCH ENGINE"
+		},
+		"influencer": {
+			"find": "Find us"
+		},
+		"footer": {
+			"made": {
+				"1": "Made with",
+				"2": "by"
+			},
+			"copyright": "Copyright"
+		},
+		"search_form": {
+			"keyword": "TAPE KEY OR SOME KEYWORDS",
+			"result": {
+				"nothing_found": "Can't find nothing!",
+				"tape_key": "Please tape a KEY or some keywords to start searching"
+			}
+		},
+		"title": "The %s's Search Engine"
+	},
+	"generals": {
+		"errors": {
+			"special_chars": "It does not allow special characters like < > ' \" \\ /",
+			"special_chars_URL": "It does not allow special characters like < > ' \" \\",
+			"valid_email": "Please enter a valid email address",
+			"password": {
+				"min": "The password is shorter than the minimum allowed length (%s)",
+				"max": "The password is longer than the maximum allowed length (%s)",
+				"uppercase": "Must include at least one upper case letter",
+				"lowercase": "Must include at least one lower case letter",
+				"digits": "Must include at least one numeric character",
+				"spaces": "It does not allow blank spaces",
+				"valid": "Please enter a valid password"
+			}
+		}
+	},
+	"account_page": {
+		"login": {
+			"form": {
+				"email": {
+					"label": "Email address"
+				},
+				"password": {
+					"label": "Password"
+				},
+				"submit": "LOG IN",
+				"i_forgot": "I forgot my password",
+				"footer": {
+					"have_account": "Do not have an account yet ? ",
+					"signup_link": "Sign up"
+				}
+			},
+			"errors": {
+				"authenticated_first": "You must be authenticated first"
+			},
+			"page_title": "Log in",
+			"result": {
+				"email_not_found": "Cannot find an influencer with this email",
+				"incorrect": "Incorrect email or password"
+			}
+		},
+		"footer": {
+			"menu": {
+				"contact": "account_page.footer.menu.contact",
+				"terms_use": "account_page.footer.menu.terms_use",
+				"privacy": "account_page.footer.menu.privacy"
+			},
+			"made": {
+				"1": "account_page.footer.made.1",
+				"2": "account_page.footer.made.2"
+			},
+			"copyright": "account_page.footer.copyright"
+		},
+		"signup": {
+			"form": {
+				"first_name": {
+					"label": "First name"
+				},
+				"email": {
+					"label": "Email address"
+				},
+				"niche": {
+					"label": "Niche"
+				},
+				"password": {
+					"label": "Password"
+				},
+				"confirm_password": {
+					"label": "Confirm password",
+					"valid": "Please enter a valid password",
+					"identical": "The two passwords must be identical...."
+				},
+				"agree": {
+					"label": {
+						"agree": "Agree to the",
+						"privacy": "Privacy Policy",
+						"and": ", and",
+						"terms": "Terms and Conditions of Use."
+					},
+					"you_should": "Sorry but you have to"
+				},
+				"submit": "SIGN UP",
+				"footer": {
+					"have_account": "Already have an account ?",
+					"login": "Log in"
+				},
+				"result": {
+					"check_fields": "Please verify that all fields are valid"
+				}
+			},
+			"page_title": "Sign up"
+		},
+		"reset_password": {
+			"result": {
+				"password_sent": "We have sent a password reset link to your mailbox if it exists."
+			},
+			"form": {
+				"header": {
+					"title": "Reset my password"
+				},
+				"email": {
+					"label": "Email address"
+				},
+				"login": {
+					"label": "Login"
+				},
+				"submit": "RESET MY PASSWORD",
+				"footer": {
+					"return": "Return to the login screen"
+				}
+			}
+		}
+	},
+	"dashboard": {
+		"generals": {
+			"title": "Influencer dashboard",
+			"toggle": "Toggle"
+		},
+		"menu": {
+			"main": "Main",
+			"add_link": "Add a link",
+			"contact_list": "Contact list",
+			"all_links": "All my links",
+			"logout": "Log out",
+			"profile": "Profile"
+		},
+		"add_link": {
+			"page_title": "Add a link",
+			"form": {
+				"URL": {
+					"label": "URL",
+					"placeholder": "https://example.com/",
+					"errors": {
+						"valid": "Please enter a valid URL"
+					}
+				},
+				"title": {
+					"label": "Title"
+				},
+				"KEY": {
+					"label": "KEY",
+					"errors": {
+						"Duplicated": "Duplicated key!"
+					}
+				},
+				"main": {
+					"label": "Make it on my main page"
+				},
+				"submit": "Add my link",
+				"result": {
+					"KEY": "Please enter another key",
+					"cant_add": "Can't add the link in dataBase, Please try again",
+					"success": "link successfully added"
+				}
+			}
+		},
+		"all_links": {
+			"page_title": "All my links",
+			"table": {
+				"head": {
+					"link": "Link",
+					"KEY": "KEY",
+					"created": "Created at"
+				},
+				"link": {
+					"main": "Make it on main"
+				},
+				"DataTable": {
+					"emptyTable": "No data available in table",
+					"info": "Showing _START_ to _END_ of _TOTAL_ links",
+					"lengthMenu": "Show _MENU_ links",
+					"infoEmpty": "Showing 0 to 0 of 0 links",
+					"infoFiltered": "(filtered from _MAX_ total links)",
+					"paginate": {
+						"first": "First",
+						"previous": "Previous",
+						"next": "Next",
+						"last": "Last"
+					},
+					"search": "Search:",
+					"zeroRecords": "No matching records found"
+				}
+			}
+		},
+		"contact_list": {
+			"page_title": "My contact list",
+			"link": {
+				"label": "Link"
+			},
+			"form": {
+				"submit": "Add my contact information",
+				"URL": {
+					"placeholder": {
+						"email": "Your email",
+						"number": "Your number",
+						"username": "Your username",
+						"URL": "Your URL"
+					}
+				},
+				"result": {
+					"success ": "A new contact added succesfuly"
+				}
+			},
+			"all": {
+				"result": {
+					"removed": "removed succesfuly! "
+				},
+				"delete_btn": "Delete this"
+			}
+		},
+		"profile": {
+			"page_title": "My profile",
+			"tabs": {
+				"head": {
+					"profile": "Profile details",
+					"password": "Password details",
+					"email": "Email"
+				}
+			}
+		},
+		"index": {
+			"result": {
+				"success_email_confirmation": "Congratulations! You have confirmed your email"
+			}
+		}
+	},
+	"mailer": {
+		"welcome": {
+			"1": "Dear %s,\n\nThank you for your confidence in LINKEY, you will find below your authentication details \nLogin: %s \nPassword: %s \n\nYou must also confirm your account by clicking on this link below\n",
+			"2": "\n\nWe wish you a very good experience with us."
+		}
+	}
+}

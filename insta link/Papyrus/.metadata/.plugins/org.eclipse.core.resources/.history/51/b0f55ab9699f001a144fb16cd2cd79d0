@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_IuXrAIGtEeq7KLZrT6sMtQ" name="linkey">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_JDUAQIGtEeq7KLZrT6sMtQ">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_O6w70IGtEeq7KLZrT6sMtQ" name="Influencer">
+    <generalization xmi:type="uml:Generalization" xmi:id="_tClPII2OEeqQzuDqQJHCkg" general="_VVIiYI2OEeqQzuDqQJHCkg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_lHAUgIGtEeq7KLZrT6sMtQ" name="Nom">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_q--0gIGtEeq7KLZrT6sMtQ" name="Prenom">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_yBDeMIGvEeq7KLZrT6sMtQ" name="lastName" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_YU-FEIGwEeq7KLZrT6sMtQ" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_vTmkAIGwEeq7KLZrT6sMtQ" name="niche" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_Z3q20IHEEeq7KLZrT6sMtQ" name="login">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_AydVwIKcEeqvNMy2-Z2L7w" name="password" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_Gk7RwIVcEeq2dMYWNI3dWw" name="registrationDate" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_9i_a4IGwEeq7KLZrT6sMtQ" name="Link">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_JtPeUIG-Eeq7KLZrT6sMtQ" name="title" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_GmJVEIG_Eeq7KLZrT6sMtQ" name="key" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_UVey4IG_Eeq7KLZrT6sMtQ" name="link" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_XzhAAIG_Eeq7KLZrT6sMtQ" name="photo">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_uSypcIG_Eeq7KLZrT6sMtQ" name="description" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_yXIYYIV_Eeq2dMYWNI3dWw"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CATV4IHAEeq7KLZrT6sMtQ" name="main">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_SDfssIHAEeq7KLZrT6sMtQ" name="priority" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_I4wAEIKfEeqvNMy2-Z2L7w" name="type" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_M9AOIIVcEeq2dMYWNI3dWw" name="dateAjout" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_RabHcIu5Eeq6Ms_ZlKBOJA" name="dateModification" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_FfleAIGxEeq7KLZrT6sMtQ" name="Follower">
+    <generalization xmi:type="uml:Generalization" xmi:id="_NgmSQI2SEeqQzuDqQJHCkg" general="_VVIiYI2OEeqQzuDqQJHCkg"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_Jbe4kIHBEeq7KLZrT6sMtQ" name="ipAdress" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_M0PkIIHBEeq7KLZrT6sMtQ" name="session" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:AssociationClass" xmi:id="_JL9pIIGxEeq7KLZrT6sMtQ" name="Click" memberEnd="_JMYf4IGxEeq7KLZrT6sMtQ _JMa8IIGxEeq7KLZrT6sMtQ">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_JMWDoIGxEeq7KLZrT6sMtQ" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_JMWDoYGxEeq7KLZrT6sMtQ" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_gGOVsIHCEeq7KLZrT6sMtQ" name="date" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
+    </ownedAttribute>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_JMYf4IGxEeq7KLZrT6sMtQ" name="link" type="_9i_a4IGwEeq7KLZrT6sMtQ" association="_JL9pIIGxEeq7KLZrT6sMtQ">
+      <lowerValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_YLhmcIG2Eeq7KLZrT6sMtQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ZkYPwIG2Eeq7KLZrT6sMtQ" value="*"/>
+    </ownedEnd>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_JMa8IIGxEeq7KLZrT6sMtQ" name="follower" type="_FfleAIGxEeq7KLZrT6sMtQ" association="_JL9pIIGxEeq7KLZrT6sMtQ">
+      <lowerValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_BBKYoIG2Eeq7KLZrT6sMtQ" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_C25LMIG2Eeq7KLZrT6sMtQ" value="*"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_GKwsgIGyEeq7KLZrT6sMtQ" visibility="public" memberEnd="_GKwsg4GyEeq7KLZrT6sMtQ _GK4BQIGyEeq7KLZrT6sMtQ">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_GKwsgYGyEeq7KLZrT6sMtQ" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_GKwsgoGyEeq7KLZrT6sMtQ" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_GKwsg4GyEeq7KLZrT6sMtQ" name="link" type="_9i_a4IGwEeq7KLZrT6sMtQ" aggregation="shared" association="_GKwsgIGyEeq7KLZrT6sMtQ">
+      <lowerValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ggNO4IG1Eeq7KLZrT6sMtQ"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Mw9H8IGzEeq7KLZrT6sMtQ" value="*"/>
+    </ownedEnd>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_GK4BQIGyEeq7KLZrT6sMtQ" name="influencer" type="_O6w70IGtEeq7KLZrT6sMtQ" association="_GKwsgIGyEeq7KLZrT6sMtQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_kcWoUINKEeqSD7VrsgJfmA" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_w5fVAIG2Eeq7KLZrT6sMtQ" name="SocialMedia">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_MyCJMIG3Eeq7KLZrT6sMtQ" name="which" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEnumerator"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_ebdeAIG3Eeq7KLZrT6sMtQ" name="link" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_e0qg0IG6Eeq7KLZrT6sMtQ" visibility="public" memberEnd="_e0qg04G6Eeq7KLZrT6sMtQ _e0rH4YG6Eeq7KLZrT6sMtQ">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_e0qg0YG6Eeq7KLZrT6sMtQ" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_e0qg0oG6Eeq7KLZrT6sMtQ" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_e0rH4YG6Eeq7KLZrT6sMtQ" name="influencer" type="_O6w70IGtEeq7KLZrT6sMtQ" association="_e0qg0IG6Eeq7KLZrT6sMtQ"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_e0qg04G6Eeq7KLZrT6sMtQ" name="contact" type="_w5fVAIG2Eeq7KLZrT6sMtQ" aggregation="shared" association="_e0qg0IG6Eeq7KLZrT6sMtQ">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_e0qg1IG6Eeq7KLZrT6sMtQ" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_e0rH4IG6Eeq7KLZrT6sMtQ" value="*"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_WT3OUIHDEeq7KLZrT6sMtQ" name="Search">
+    <generalization xmi:type="uml:Generalization" xmi:id="_nnMXUIHDEeq7KLZrT6sMtQ" general="_JL9pIIGxEeq7KLZrT6sMtQ"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_eHLZoIHDEeq7KLZrT6sMtQ" name="keyword" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:AssociationClass" xmi:id="_696tkINGEeqSD7VrsgJfmA" name="Visit" memberEnd="_6-WLYINGEeqSD7VrsgJfmA _6-YnoINGEeqSD7VrsgJfmA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_6-U9QINGEeqSD7VrsgJfmA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_6-U9QYNGEeqSD7VrsgJfmA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_KLNXIINHEeqSD7VrsgJfmA" name="date" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
+    </ownedAttribute>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_6-WLYINGEeqSD7VrsgJfmA" name="influencer" type="_O6w70IGtEeq7KLZrT6sMtQ" association="_696tkINGEeqSD7VrsgJfmA"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_6-YnoINGEeqSD7VrsgJfmA" name="follower" type="_FfleAIGxEeq7KLZrT6sMtQ" association="_696tkINGEeqSD7VrsgJfmA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_VVIiYI2OEeqQzuDqQJHCkg" name="Subscriber">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_WxyrAIHEEeq7KLZrT6sMtQ" name="mail">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_ec9pkI2OEeqQzuDqQJHCkg" name="firfirstName" isUnique="false">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:AssociationClass" xmi:id="_1HWPcI2REeqQzuDqQJHCkg" name="subscription" memberEnd="_1HXdkY2REeqQzuDqQJHCkg _1HYrsI2REeqQzuDqQJHCkg">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_1HW2gI2REeqQzuDqQJHCkg" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_1HXdkI2REeqQzuDqQJHCkg" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_1HXdkY2REeqQzuDqQJHCkg" name="influencer" type="_O6w70IGtEeq7KLZrT6sMtQ" association="_1HWPcI2REeqQzuDqQJHCkg"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_1HYrsI2REeqQzuDqQJHCkg" name="follower" type="_696tkINGEeqSD7VrsgJfmA" association="_1HWPcI2REeqQzuDqQJHCkg"/>
+  </packagedElement>
+</uml:Model>

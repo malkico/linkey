@@ -1,0 +1,101 @@
+{{> "influencer/header"}}
+
+<!-- Page content holder -->
+<div class="page-content p-2 px-md-3 pt-md-4" id="content">
+  <!-- Toggle button -->
+  <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><i
+      class="fa fa-bars mr-2"></i><small class="text-uppercase font-weight-bold">
+        {{ translate "dashboard.generals.toggle" }} 
+
+      </small></button>
+
+
+  <!-- Demo content -->
+  <h3 class="display-4 text-white">{{ translate "dashboard.add_link.page_title" }} </h3>
+  {{#if result}}
+  <div class="col-lg-6 alert alert-{{ternaryIf success 'success' 'danger'}} " role="alert">
+    {{result}}
+    <!-- We have sent a password reset link to your mailbox if it exists. -->
+  </div>
+  {{/if}}
+
+  <div class="card mb-4 py-3 border-left-success col-lg-6">
+
+    <div class="card-body">
+      <form method="POST">
+        <div class="form-group">
+          <label for="URL">{{ translate "dashboard.add_link.form.URL.label" }}</label>
+          <input name="URL" value="{{link.URL}}" class="{{ternaryIf myErrors.URL 'is-invalid' ''}} form-control"
+            placeholder="{{ translate "dashboard.add_link.form.URL.placeholder" }}" id="URL" type="url" autocomplete="on" aria-describedby="urlHelp">
+          {{#if myErrors.URL }}
+          <small id="urlHelp" class="form-text text-danger">{{ myErrors.URL }}</small>
+          {{/if}}
+        </div>
+        <div class="form-group">
+          <label for="title">{{ translate "dashboard.add_link.form.title.label" }}</label>
+          <input name="title" value="{{link.title}}" class="{{ternaryIf myErrors.title 'is-invalid' ''}} form-control"
+            type="text" id="title" autocomplete="on" aria-describedby="titleHelp">
+          {{#if myErrors.title }}
+          <small id="urlHelp" class="form-text text-danger">{{ myErrors.title }}</small>
+          {{/if}}
+        </div>
+        <div class="form-group">
+          <label for="KEY">{{ translate "dashboard.add_link.form.KEY.label" }}</label>
+          <input name="KEY" value="{{link.KEY}}" class="{{ternaryIf myErrors.KEY 'is-invalid' ''}} form-control"
+            id="KEY" type="number" autocomplete="on" aria-describedby="keyHelp">
+          {{#if myErrors.KEY }}
+          <small id="urlHelp" class="form-text text-danger">{{ myErrors.KEY }}</small>
+          {{/if}}
+        </div>
+        {{!--
+        <div class="form-group">
+          <label for="link_type">Type of link</label>
+          <select name="link_type" class="{{ternaryIf myErrors.link_type 'is-invalid' ''}} form-control"
+            aria-describedby="typeHelp" id="link_type">
+            <option></option>
+            {{#each link_type}}
+            <option {{ ternaryIf (iff ../link.link_type '==' this) 'selected' ''}}>{{this}}</option>
+            {{/each }}
+          </select>
+          {{#if myErrors.link_type }}
+          <small id="typeHelp" class="form-text text-danger">{{ myErrors.link_type }}</small>
+          {{/if}}
+        </div>
+         --}}
+        <div class="form-group d-none">
+          <label for="exampleFormControlTextarea1">Description</label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+        <div class="custom-control custom-switch mr-3 mb-3">
+          <input name="main" {{ternaryIf link.main 'checked' ''}} type="checkbox" class="custom-control-input"
+            id="main">
+          <label class="custom-control-label" for="main">{{ translate "dashboard.add_link.form.main.label" }}</label>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary">{{ translate "dashboard.add_link.form.submit" }}</button>
+          </div>
+        </div>
+
+      </form>
+
+
+    </div>
+  </div>
+
+
+
+  <p class="lead text-white mb-0">Build a fixed sidebar using Bootstrap 4 vertical navigation and media objects.</p>
+  <p class="lead text-white">Snippet by <a href="https://bootstrapious.com/snippets" class="text-white">
+      <u>Bootstrapious</u></a>
+  </p>
+  <div class="separator"></div>
+
+</div>
+<!-- End demo content -->
+
+{{> "influencer/footer"}}
+
+</body>
+
+</html>

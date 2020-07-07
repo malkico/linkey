@@ -1,0 +1,56 @@
+nav.navbar {
+    position: fixed;
+    // position: sticky !important;
+    top: 0;
+    z-index: 10;
+    width: 100%;
+}
+
+.pricing {
+    li {
+        list-style: inside;
+        text-align: left;
+    }
+
+    .getpaid {
+        text-decoration: line-through;
+    }
+}
+
+header {
+    position: relative;
+    background-color: #343a40;
+    background: url(/images/concery-wallpaper-festival-party.jpg) no-repeat center center;
+    background-size: cover;
+
+    .black {
+        background: rgba(0, 0, 0, 0.4);
+        padding: 8rem 0 8rem;
+
+    }
+}
+
+#howitworks {
+    .icon {
+        margin-bottom: 1rem;
+    }
+
+    blockquote {
+        background: #ffffff;
+        border-left: 1rem solid #ccc;
+        margin-top: 4rem;
+        padding: 0.5rem 1rem;
+        quotes: "\201C""\201D""\2018""\2019";
+    }
+
+    blockquote p {
+        display: inline;
+    }
+
+}
+
+form{
+    .err{
+          color: #c51244;
+    }
+}

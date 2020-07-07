@@ -1,0 +1,128 @@
+<section class="call-to-action text-white text-center bg-dark pt-5 pb-5" id='getstarted'>
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-9 mx-auto">
+        <h2 class="mb-4">{{ translate "sign_up.title"}}</h2>
+      </div>
+
+      {{#if (iff myErrors '||' result) }}
+      <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          {{#each myErrors }}
+          <p class="mb-0 ">{{ this}}</p>
+          {{/each}}
+
+          {{#if result}}
+          <p class="mb-0 ">{{result}}</p>
+          {{/if}}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+      </div>
+      {{/if}}
+
+      <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+        <form method="POST">
+          <div class="form-row">
+            <div class="col-12 mb-md-0 ">
+              <input name="first_name" value="{{ subscriber.first_name }}" type="text" autocomplete='given-name'
+                class="form-control form-control-lg" placeholder="{{ translate "sign_up.form.first_name"}}">
+            </div>
+            <div class="col-12  mt-1">
+              <input name="email" value="{{ subscriber.email}}" type="text" autocomplete="email"
+                class="form-control form-control-lg" placeholder="{{ translate "sign_up.form.email"}}">
+            </div>
+            <div class="col-12  mt-1">
+              <input type="submit" class="btn btn-block btn-lg btn-primary" value="{{ translate "sign_up.form.submit"}}" />
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer bg-light pt-5 pb-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
+        <ul class="list-inline mb-2">
+          <li class="list-inline-item">
+            <a href="mailto:hichamlmalki@gmail.com"> {{ translate "main_page.footer.menu.contact"}} </a>
+          </li>
+          <li class="list-inline-item">⋅</li>
+          <li class="list-inline-item">
+            <a href="/terms-of-use">{{ translate "main_page.footer.menu.terms_use"}}</a>
+          </li>
+          <li class="list-inline-item">⋅</li>
+          <li class="list-inline-item">
+            <a href="/privacy-policy">{{ translate "main_page.footer.menu.privacy"}}</a>
+          </li>
+        </ul>
+        <p class="text-muted small mb-4 mb-lg-0">
+          <span class="col-12 pl-lg-0">
+            {{ translate "main_page.footer.made.1"}} <i class="fa fa-heart pulse"></i> {{ translate "main_page.footer.made.2"}}
+            <strong><a href="https://instagram.com/malki_hi" class='text-dark'>
+                malki_co</a></strong> </span>
+          <span class="col-12 text-lg-left"><u></u> © 2020 {{ translate "main_page.footer.copyright"}}</span>
+
+        </p>
+      </div>
+      <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
+        <ul class="list-inline mb-0">
+          <li class="list-inline-item mr-3">
+            <a href="#">
+              <i class="fab fa-facebook fa-2x fa-fw"></i>
+            </a>
+          </li>
+          <li class="list-inline-item mr-3">
+            <a href="#">
+              <i class="fab fa-twitter-square fa-2x fa-fw"></i>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a href="#">
+              <i class="fab fa-instagram fa-2x fa-fw"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+  integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+  integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+</script>
+<script>
+  $(() => {
+    // ***************************** Nav scrolling ***************
+    $("#navbarNav ul li a[href^='#']").on('click', function (e) {
+
+      e.preventDefault();
+      let url = $('body').find($(this).attr('href')).offset().top;
+      $(this).parent().height()
+      $('html, body').animate({
+        scrollTop: url - $("#navbarNav").parent().height()
+      }, 300);
+      $(this).parent().addClass('active');
+      $(this).parent().siblings().removeClass('active');
+
+      return false;
+
+    });
+    {{#if (iff myErrors '||' result) }}
+      $(".getstarted-btn").trigger("click")
+      console.log("click on getstarted-btn")
+    {{/if}}
+  })
+</script>
