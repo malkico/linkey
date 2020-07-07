@@ -1,0 +1,103 @@
+{{> "influencer/header"}}
+
+<!-- Page content holder -->
+<div class="page-content p-2 px-md-3 pt-md-4 all-links" id="content">
+    <!-- Toggle button -->
+    <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><i
+            class="fa fa-bars mr-2"></i><small class="text-uppercase font-weight-bold">
+            {{ translate "dashboard.generals.toggle" }}
+        </small></button>
+
+
+    <!-- Demo content -->
+    <h3 class="display-4 text-white">{{ translate "dashboard.all_links.page_title" }}</h3>
+
+    <div class="card mb-4 p-0 p-md-1 col-12">
+        <div class="card-body">
+            <div class=" ">
+
+
+                <table id="myTable" class="display ">
+                    <thead>
+                        <tr>
+                            <th>{{ translate "dashboard.all_links.table.head.link" }}</th>
+                            <th>{{ translate "dashboard.all_links.table.head.KEY" }} </th>
+                            <th>{{ translate "dashboard.all_links.table.head.created" }}</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="">
+                            <td class="d-flex align-items-center ">
+                                <i class="fab fa-slack-hash fa-2x mr-3 " aria-hidden="true"></i>
+                                <a href="#">jk hoihohohhoh oiuhuih uihuih iuhui hiui uig</a>
+                            </td>
+                            <td><span class="badge bg-dark text-white">646</span></td>
+                            <td>01-02-2020</td>
+                            <td>
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <div class="custom-control custom-switch mr-3">
+                                        <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                                        <label class="custom-control-label" for="customSwitch1">{{ translate "dashboard.all_links.table.link.main" }}</label>
+                                    </div>
+                                    <div class='d-flex flex-column'>
+                                        <i class="fas fa-pen fa-1x mb-2"></i>
+                                        <i class="fas fa-trash-alt fa-1x "></i>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <p class="lead text-white mb-0">Build a fixed sidebar using Bootstrap 4 vertical navigation and media objects.</p>
+    <p class="lead text-white">Snippet by <a href="https://bootstrapious.com/snippets" class="text-white">
+            <u>Bootstrapious</u></a>
+    </p>
+    <div class="separator"></div>
+
+</div>
+<!-- End demo content -->
+
+{{> "influencer/footer"}}
+
+
+
+<script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+
+
+<script>
+    $(document).ready(function () {
+        $('#myTable').DataTable({
+            "language": {
+                "emptyTable": "{{ translate "dashboard.all_links.table.DataTable.emptyTable" }}",
+                "info": "{{ translate "dashboard.all_links.table.DataTable.info" }}",
+                "lengthMenu": "{{ translate "dashboard.all_links.table.DataTable.lengthMenu" }}",
+                "infoEmpty": "{{ translate "dashboard.all_links.table.DataTable.infoEmpty" }}",
+                "infoFiltered": "{{ translate "dashboard.all_links.table.DataTable.infoFiltered" }}",
+                zeroRecords:    "{{ translate "dashboard.all_links.table.DataTable.zeroRecords" }}",
+                search:         "{{ translate "dashboard.all_links.table.DataTable.search" }}",
+                "paginate": {
+                    "first":      "{{ translate "dashboard.all_links.table.DataTable.paginate.first" }}",
+                    "previous":   "{{ translate "dashboard.all_links.table.DataTable.paginate.previous" }}",
+                    "next":       "{{ translate "dashboard.all_links.table.DataTable.paginate.next" }}",
+                    "last":       "{{ translate "dashboard.all_links.table.DataTable.paginate.last" }}"
+                }
+            }
+        });
+
+        $("#myTable").wrap("<div class='overflow-auto w-100'></div>")
+
+
+    });
+</script>
+
+</body>
+
+</html>

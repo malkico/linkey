@@ -1,0 +1,43 @@
+{{> "influencer/header"}}
+
+<!-- Page content holder -->
+<div class="page-content p-2 px-md-3 pt-md-4" id="content">
+  <!-- Toggle button -->
+  <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><i
+      class="fa fa-bars mr-2"></i><small class="text-uppercase font-weight-bold">
+        {{ translate "dashboard.generals.toggle" }} 
+      </small></button>
+
+
+  <!-- Demo content -->
+  <h3 class="display-4 text-white">Index page</h3>
+  {{#if result}}
+  <div class="col-lg-6 alert alert-{{ternaryIf result.success 'success' 'danger'}} " role="alert">
+    {{result.message}}
+    <!-- We have sent a password reset link to your mailbox if it exists. -->
+  </div>
+  {{/if}}
+
+  <div class="card mb-4 py-3 border-left-success col-lg-6">
+    <div class="card-body">
+
+
+    </div>
+  </div>
+
+
+
+  <p class="lead text-white mb-0">Build a fixed sidebar using Bootstrap 4 vertical navigation and media objects.</p>
+  <p class="lead text-white">Snippet by <a href="https://bootstrapious.com/snippets" class="text-white">
+      <u>Bootstrapious</u></a>
+  </p>
+  <div class="separator"></div>
+
+</div>
+<!-- End demo content -->
+
+{{> "influencer/footer"}}
+
+</body>
+
+</html>
