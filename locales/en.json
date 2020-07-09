@@ -499,6 +499,45 @@
 					"profile": "Profile details",
 					"password": "Password details",
 					"email": "Email"
+				},
+				"profile": {
+					"form": {
+						"first_name": {
+							"libelle": "First name"
+						},
+						"last_name": {
+							"libelle": "Last name"
+						},
+						"login": {
+							"libelle": "Login"
+						},
+						"niche": {
+							"libelle": "Niche"
+						},
+						"submit": "Save"
+					}
+				},
+				"email": {
+					"form": {
+						"email": {
+							"libelle": "Email"
+						},
+						"submit": "Change"
+					}
+				},
+				"password": {
+					"form": {
+						"new_password": {
+							"libelle": "New password"
+						},
+						"confirm_password": {
+							"libelle": "Confirm password"
+						},
+						"old_password": {
+							"libelle": "Old password"
+						},
+						"submit": "Change"
+					}
 				}
 			}
 		},

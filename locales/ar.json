@@ -550,6 +550,61 @@
 					"profile": "dashboard.profile.tabs.head.profile",
 					"password": "dashboard.profile.tabs.head.password",
 					"email": "dashboard.profile.tabs.head.email"
+				},
+				"profile": {
+					"form": {
+						"first_name": {
+							"libelle": "dashboard.profile.tabs.profile.form.first_name.libelle"
+						},
+						"last_name": {
+							"libelle": "dashboard.profile.tabs.profile.form.last_name.libelle"
+						},
+						"email": {
+							"libelle": "dashboard.profile.tabs.profile.form.email.libelle"
+						},
+						"submit": "dashboard.profile.tabs.profile.form.submit",
+						"niche": {
+							"libelle": "dashboard.profile.tabs.profile.form.niche.libelle"
+						},
+						"login": {
+							"libelle": "dashboard.profile.tabs.profile.form.login.libelle"
+						},
+						"password": {
+							"libelle": "dashboard.profile.tabs.profile.form.password.libelle"
+						}
+					}
+				},
+				"email": {
+					"form": {
+						"email": {
+							"libelle": "dashboard.profile.tabs.email.form.email.libelle"
+						},
+						"submit": "dashboard.profile.tabs.email.form.submit"
+					}
+				},
+				"password": {
+					"form": {
+						"password": {
+							"libelle": "dashboard.profile.tabs.password.form.password.libelle"
+						},
+						"submit": "dashboard.profile.tabs.password.form.submit",
+						"new_password": {
+							"libelle": "dashboard.profile.tabs.password.form.new_password.libelle"
+						},
+						"confirm_password": {
+							"libelle": "dashboard.profile.tabs.password.form.confirm_password.libelle"
+						},
+						"old_password": {
+							"libelle": "dashboard.profile.tabs.password.form.old_password.libelle"
+						}
+					}
+				},
+				"old_password": {
+					"form": {
+						"old_password": {
+							"libelle": "dashboard.profile.tabs.old_password.form.old_password.libelle"
+						}
+					}
 				}
 			}
 		},
