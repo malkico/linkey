@@ -13,6 +13,7 @@ module.exports = (req, res, next) => {
         }
 
         console.log("decodedToken => %s", decoded)
+        
         if(decoded && decoded.influencer_id && decoded.influencer){
             console.log("successful authentication with the given token")
             res.locals.influencer = decoded.influencer

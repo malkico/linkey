@@ -1,5 +1,5 @@
 const express = require("express");
-const router = express.Router()
+const router = express.Router({mergeParams: true})
 
 const addLinkCtrl = require("../controllers/addLinkcontroller")
 const dashboardCtrl = require("../controllers/dashboardController")
@@ -17,6 +17,8 @@ router.delete("/contact-list",socialMediaCtrl.delete)
 router.use("/contact-list",socialMediaCtrl.error)
 
 router.get("/profile",profileCtrl.get)
+// router.post("/profile/email",profileCtrl.initpost)
+router.post("/profile/details",profileCtrl.postDetails)
 
 router.get("/all-my-links",function(req, res, next){
     res.render("influencer/all-my-links")

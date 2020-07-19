@@ -72,6 +72,8 @@ exports.loginIn = [
                     $match: {
                         "subscriber.email": res.locals.influencer.email
                     }
+                },{
+                    $unwind: {"path":"$subscriber"}
                 }
             ])
             .then(influencers => {

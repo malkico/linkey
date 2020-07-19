@@ -143,6 +143,12 @@
 			},
 			"email_status": {
 				"required": "models.influencer.email_status.required"
+			},
+			"last_name": {
+				"minlength": "models.influencer.last_name.minlength"
+			},
+			"login": {
+				"required": "models.influencer.login.required"
 			}
 		},
 		"link": {
@@ -415,6 +421,10 @@
 						},
 						"password": {
 							"libelle": "dashboard.profile.tabs.profile.form.password.libelle"
+						},
+						"result": {
+							"success": "dashboard.profile.tabs.profile.form.result.success",
+							"error": "dashboard.profile.tabs.profile.form.result.error"
 						}
 					}
 				},

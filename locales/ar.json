@@ -571,6 +571,10 @@
 						},
 						"password": {
 							"libelle": "dashboard.profile.tabs.profile.form.password.libelle"
+						},
+						"result": {
+							"success": "dashboard.profile.tabs.profile.form.result.success",
+							"error": "dashboard.profile.tabs.profile.form.result.error"
 						}
 					}
 				},

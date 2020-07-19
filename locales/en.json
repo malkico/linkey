@@ -514,7 +514,11 @@
 						"niche": {
 							"libelle": "Niche"
 						},
-						"submit": "Save"
+						"submit": "Save",
+						"result": {
+							"success": "The modifications are well done.",
+							"error": "An error occurred while modifying the data."
+						}
 					}
 				},
 				"email": {

@@ -1,6 +1,6 @@
 <div class="form-group">
     <label for="email">{{ translate "dashboard.profile.tabs.email.form.email.libelle" }}</label>
-    <input name="email" value="{{subscriber.email}}" class="{{ternaryIf myErrors.email 'is-invalid' ''}} form-control"
+    <input name="email" value="{{influencer_form.subscriber.email}}" class="{{ternaryIf myErrors.email 'is-invalid' ''}} form-control"
         id="email" type="text" autocomplete="email" aria-describedby="emailHelp">
     {{#if myErrors.KEY }}
     <small id="emailHelp" class="form-text text-danger">{{ myErrors.email }}</small>
