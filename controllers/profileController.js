@@ -1,4 +1,6 @@
 const influencerConf = require("../models/config/influencerConf")
+const jwt = require('jsonwebtoken');
+
 const page = "influencer/profile"
 const {
     check,
@@ -11,7 +13,9 @@ const Subscriber = require("../models/subscriber")
 const mongoose = require("mongoose")
 const async = require("async")
 const helpers = require("../config/registerHelper")
-const initPage = (req, res, next) => {  
+
+
+const initPage = (req, res, next) => {
 
     res.locals.influencer_form = clone(res.locals.influencer)
 
@@ -21,6 +25,36 @@ const initPage = (req, res, next) => {
     res.locals.niches = influencerConf.niches
     next()
 }
+
+/* ******************* middleware to update the influecer token ****************/
+const updateInfluencerToken = (req, res, next) => {
+    jwt.sign({
+            influencer_id: res.locals.influencer._id,
+            influencer: res.locals.influencer
+        },
+        process.env.TOKEN_SECRET, {
+            expiresIn: '24000h'
+        }, (err, token) => {
+            if (err) {
+                res.locals.result = "Can't create a authentication token for you!"
+                res.render(page)
+                return
+            } else {
+                res.cookie(process.env.influencer_token, token, {
+                    secure: false
+                })
+                req.headers.authorization = req.cookies[process.env.influencer_token]
+                next()
+            }
+
+        }
+    )
+
+}
+
+exports.postPassword = [
+    
+]
 
 exports.postDetails = [
     initPage,
@@ -69,21 +103,20 @@ exports.postDetails = [
     check("login").escape(),
 
     (req, res, next) => {
-        console.log("subscriber id => ",res.locals.influencer.subscriber._id)
         async.parallel({
             updateInfluencer: callback => {
                 Influencer.findOneAndUpdate({
-                        _id: mongoose.Types.ObjectId(res.locals.influencer._id) ,
+                        _id: mongoose.Types.ObjectId(res.locals.influencer._id),
                     }, {
-                        $set : {
+                        $set: {
                             last_name: req.body.last_name,
                             login: req.body.login,
                             niche: req.body.niche
-                        } 
-                        
+                        }
+
                         // ...req.boy
                     }, {
-                        new : false,
+                        new: false,
                         runValidators: true
                     },
                     (err, result) => {
@@ -94,39 +127,51 @@ exports.postDetails = [
                             res.render(page)
                             return
                         } else if (result) {
-                            console.log("influencer %s is updated! => ", res.locals.influencer._id, result)
+                            // console.log("influencer %s is updated! => ", res.locals.influencer._id, result)
                             callback(null, true)
                         }
                     })
             },
-            updateSubscriber : callback => {
+            updateSubscriber: callback => {
+                console.log("subscriber id => ", res.locals.influencer.subscriber._id)
+                console.log("update the subscriber")
                 Subscriber.findOneAndUpdate({
-                    _id : mongoose.Types.ObjectId(res.locals.influencer.subscriber._id)
+                    _id: mongoose.Types.ObjectId(res.locals.influencer.subscriber._id)
                 }, {
-                    first_name : req.body.first_name
+                    first_name: req.body.first_name
                 }, {
                     runValidators: true
-                } , (err, result) => {
-                    if (err) {
-                        specialFns.catchErrors(err.errors, res.locals.myErrors) 
+                }, (err, result) => {
+                    if (result) {
+                        callback(null, true)
+                    }
+                    else {
+                        if(err)
+                            specialFns.catchErrors(err.errors, res.locals.myErrors)
+                        console.log("can't update the subscriber %s ",result)
                         res.locals.result = helpers.translate("dashboard.profile.tabs.profile.form.result.error")
                         res.render(page)
                         return
-                    } else if(result) {
-                        callback(null, true)
                     }
                 })
 
             }
         }, (err, results) => {
-            if(results.updateSubscriber && results.updateInfluencer){
+            console.log("éee")
+            if (results.updateSubscriber && results.updateInfluencer) {
                 res.locals.success = true;
                 res.locals.result = helpers.translate("dashboard.profile.tabs.profile.form.result.success")
+                console.log("res.locals.influencer => %s",res.locals.influencer.subscriber)
+                const subscriberObj = clone(res.locals.influencer.subscriber)
+                Object.assign(res.locals.influencer,res.locals.influencer_form)
+                Object.assign(res.locals.influencer.subscriber,subscriberObj)
+                console.log("res.locals.influencer => %s",res.locals.influencer.subscriber)
+                console.log("assign is finished !")
                 next()
             }
         })
     },
-
+    updateInfluencerToken,
     (req, res, next) => {
         res.render(page)
     }

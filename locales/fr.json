@@ -148,7 +148,8 @@
 				"minlength": "models.influencer.last_name.minlength"
 			},
 			"login": {
-				"required": "models.influencer.login.required"
+				"required": "models.influencer.login.required",
+				"minlength": "models.influencer.login.minlength"
 			}
 		},
 		"link": {

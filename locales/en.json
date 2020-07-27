@@ -509,7 +509,7 @@
 							"libelle": "Last name"
 						},
 						"login": {
-							"libelle": "Login"
+							"libelle": "Username"
 						},
 						"niche": {
 							"libelle": "Niche"
