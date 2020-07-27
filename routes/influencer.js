@@ -19,6 +19,8 @@ router.use("/contact-list",socialMediaCtrl.error)
 router.get("/profile",profileCtrl.get)
 // router.post("/profile/email",profileCtrl.initpost)
 router.post("/profile/details",profileCtrl.postDetails)
+// router.post("/profile/password",profileCtrl.postPassword)
+
 
 router.get("/all-my-links",function(req, res, next){
     res.render("influencer/all-my-links")
