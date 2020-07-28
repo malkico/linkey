@@ -540,7 +540,11 @@
 						"old_password": {
 							"libelle": "Old password"
 						},
-						"submit": "Change"
+						"submit": "Change",
+						"result": {
+							"compare_password": "The old password is wrong!",
+							"success": "Done! The password id updated."
+						}
 					}
 				}
 			}

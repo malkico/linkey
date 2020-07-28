@@ -5,9 +5,11 @@ exports.postPassword = require("./profileController/passwordPOST")
 exports.postDetails = require("./profileController/detailsPOST")
 
 exports.get = [
-    profileFncs.initPage,
     (req, res, next) => {
-        res.locals.tab = "profile_details"
+        res.locals.tab = "details"
+        profileFncs.initPage(req, res, next)
+    },
+    (req, res, next) => {
         res.render(page)
     }
 ]

@@ -1,4 +1,4 @@
-const profileFncs = require("../profileController/functions")
+const profileFncs = require("./functions")
 const page = "influencer/profile"
 const clone = require("clone")
 const {
@@ -14,7 +14,10 @@ const helpers = require("../../config/registerHelper")
 
 
  const postDetails = [
-    profileFncs.initPage,
+    (req, res, next) => {
+        res.locals.tab = "details"
+        profileFncs.initPage(req, res, next)
+    },
     check("first_name").trim().custom(specialFns.checkSpecialChars),
     check("last_name").trim().custom(specialFns.checkSpecialChars),
     check("login").trim().custom(specialFns.checkSpecialChars),
@@ -41,7 +44,7 @@ const helpers = require("../../config/registerHelper")
         res.locals.ressult = null
         const errors = validationResult(req).errors
         errors.forEach(element => {
-            res.locals[element.param] = element.msg
+            res.locals.myErrors[element.param] = element.msg
         })
 
         if (!Object.keys(res.locals.myErrors).length) {

@@ -600,6 +600,10 @@
 						},
 						"old_password": {
 							"libelle": "dashboard.profile.tabs.password.form.old_password.libelle"
+						},
+						"result": {
+							"compare_password": "dashboard.profile.tabs.password.form.result.compare_password",
+							"success": "dashboard.profile.tabs.password.form.result.success"
 						}
 					}
 				},
