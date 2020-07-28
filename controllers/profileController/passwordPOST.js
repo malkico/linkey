@@ -111,12 +111,18 @@ const passwordPOST = [
             },{
                 runValidators : true
             }).then(result => {
-                console.log("result => %s",result)
-                res.locals.result = helpers.translate("dashboard.profile.tabs.password.form.result.success")
-                res.locals.influencer.password = res.locals.hashed_pass
-                console.log(res.locals.result)
-                res.locals.success = true
-                next()
+                if(result.nModified){
+                    console.log("result => %s",result)
+                    res.locals.result = helpers.translate("dashboard.profile.tabs.password.form.result.success")
+                    res.locals.influencer.password = res.locals.hashed_pass
+                    console.log(res.locals.result)
+                    res.locals.success = true
+                    next()
+                } else {
+                    res.locals.ressult = "The password has not been modified"
+                    res.render(page)
+                    return
+                }
             }).catch(err => {
                 console.log(err)
                 res.locals.ressult = "Error! %s",err
