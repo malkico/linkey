@@ -17,9 +17,9 @@ exports.checkPassword = (value, min, max) => {
     errors.forEach(err => {
         switch (err) {
             case "min":
-                throw new Error(helper.translate("generals.errors.password.min|@|" + min))
+                throw new Error(helper.translate("generals.errors.password.min|@|" + (min || 4)))
             case "max":
-                throw new Error(helper.translate("generals.errors.password.max|@|" + max))
+                throw new Error(helper.translate("generals.errors.password.max|@|" + (max || 30)))
             case "uppercase":
                 throw new Error(helper.translate("generals.errors.password.uppercase"))
             case "lowercase":

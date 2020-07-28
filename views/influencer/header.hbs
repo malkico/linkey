@@ -28,7 +28,7 @@
           src="https://res.cloudinary.com/mhmd/image/upload/v1556074849/avatar-1_tcnd60.png" alt="..." width="65"
           class="mr-3 rounded-circle img-thumbnail shadow-sm">
         <div class="media-body">
-          <h4 class="m-0">Jason Doe</h4>
+          <h4 class="m-0"> <!-- {{ influencer.last_name}} --> {{influencer.subscriber.first_name}} </h4>
           <p class="font-weight-light text-muted mb-0">{{ influencer.login}}</p>
         </div>
       </div>
@@ -38,31 +38,31 @@
 
     <ul class="nav flex-column bg-white mb-0">
       <li class="nav-item">
-        <a href="./profile" class="nav-link text-dark font-italic  {{ternaryIf (iff page '==' 'profile') 'bg-light' ''}}">
+        <a href="/dashboard/profile" class="nav-link text-dark font-italic  {{ternaryIf (iff page '==' 'profile') 'bg-light' ''}}">
           <i class="fa fa-cubes mr-3 text-primary fa-fw"></i>
           {{ translate "dashboard.menu.profile" }} 
         </a>
       </li>
       <li class="nav-item">
-        <a href="./add-link" class="nav-link text-dark font-italic {{ternaryIf (iff page '==' 'add-link') 'bg-light' ''}}">
+        <a href="/dashboard/add-link" class="nav-link text-dark font-italic {{ternaryIf (iff page '==' 'add-link') 'bg-light' ''}}">
           <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
           {{ translate "dashboard.menu.add_link" }} 
         </a>
       </li>
       <li class="nav-item">
-        <a href="./contact-list" class="nav-link text-dark font-italic {{ternaryIf (iff page '==' 'contact-list') 'bg-light' ''}}">
+        <a href="/dashboard/contact-list" class="nav-link text-dark font-italic {{ternaryIf (iff page '==' 'contact-list') 'bg-light' ''}}">
           <i class="fa fa-address-card mr-3 text-primary fa-fw"></i>
            {{ translate "dashboard.menu.contact_list" }} 
         </a>
       </li>
       <li class="nav-item">
-        <a href="./all-my-links" class="nav-link text-dark font-italic {{ternaryIf (iff page '==' 'all-my-links') 'bg-light' ''}}">
+        <a href="/dashboard/all-my-links" class="nav-link text-dark font-italic {{ternaryIf (iff page '==' 'all-my-links') 'bg-light' ''}}">
           <i class="fa fa-cubes mr-3 text-primary fa-fw"></i>
           {{ translate "dashboard.menu.all_links" }} 
         </a>
       </li>
       <li class="nav-item">
-        <a href="./logout" class="nav-link text-dark font-italic" >
+        <a href="/dashboard/logout" class="nav-link text-dark font-italic" >
           <i class="fa fa-cubes mr-3 text-primary fa-fw"></i>
           {{ translate "dashboard.menu.logout" }} 
         </a>

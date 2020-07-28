@@ -499,6 +499,53 @@
 					"profile": "Profile details",
 					"password": "Password details",
 					"email": "Email"
+				},
+				"profile": {
+					"form": {
+						"first_name": {
+							"libelle": "First name"
+						},
+						"last_name": {
+							"libelle": "Last name"
+						},
+						"login": {
+							"libelle": "Username"
+						},
+						"niche": {
+							"libelle": "Niche"
+						},
+						"submit": "Save",
+						"result": {
+							"success": "The modifications are well done.",
+							"error": "An error occurred while modifying the data."
+						}
+					}
+				},
+				"email": {
+					"form": {
+						"email": {
+							"libelle": "Email"
+						},
+						"submit": "Change"
+					}
+				},
+				"password": {
+					"form": {
+						"new_password": {
+							"libelle": "New password"
+						},
+						"confirm_password": {
+							"libelle": "Confirm password"
+						},
+						"old_password": {
+							"libelle": "Old password"
+						},
+						"submit": "Change",
+						"result": {
+							"compare_password": "The old password is wrong!",
+							"success": "Done! The password id updated."
+						}
+					}
 				}
 			}
 		},

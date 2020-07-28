@@ -1,0 +1,85 @@
+{{> "influencer/header"}}
+
+<!-- Page content holder -->
+<div class="page-content p-2 px-md-3 pt-md-4" id="content">
+    <!-- Toggle button -->
+    <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><i
+            class="fa fa-bars mr-2"></i><small class="text-uppercase font-weight-bold">
+            {{ translate "dashboard.generals.toggle" }}
+
+        </small></button>
+
+
+    <!-- Demo content -->
+    <h3 class="display-4 text-white">{{ translate "dashboard.profile.page_title" }} </h3>
+    {{#if result}}
+    <div class="col-lg-6 alert alert-{{ternaryIf success 'success' 'danger'}} " role="alert">
+        {{result}}
+        <!-- We have sent a password reset link to your mailbox if it exists. -->
+    </div>
+    {{/if}}
+
+
+    <div class="card mb-4 py-3 border-left-success col-lg-6">
+        <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <a class="nav-item nav-link {{ternaryIf (iff tab '==' 'details') 'active' '' }}" id="nav-profile-tab" data-toggle="tab" href="#nav-profile"
+                    role="tab" aria-controls="nav-profile" aria-selected="{{ternaryIf (iff tab '==' 'details') 'true' 'false' }} ">
+                    {{ translate "dashboard.profile.tabs.head.profile" }}</a>
+                <a class="nav-item nav-link {{ternaryIf (iff tab '==' 'password') 'active' '' }}" id="nav-password-tab" data-toggle="tab" href="#nav-password" role="tab"
+                    aria-controls="nav-password" aria-selected="{{ternaryIf (iff tab '==' 'password') 'true' 'false' }} ">
+                    {{ translate "dashboard.profile.tabs.head.password" }}</a>
+                {{!-- 
+                <a class="nav-item nav-link" id="nav-email-tab" data-toggle="tab" href="#nav-email" role="tab"
+                    aria-controls="nav-email" aria-selected="false">
+                    {{ translate "dashboard.profile.tabs.head.email" }}</a>
+                --}}
+            </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+            <!-- ------------- Profile details TAB -------------------- -->
+            <div class="tab-pane {{ternaryIf (iff tab '==' 'details') 'active' '' }}" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                <div class="card-body">
+                    <form method="POST"  action="/dashboard/profile/details">
+                        {{> "influencer/profile/profile_details"}}
+                    </form>
+                </div>
+            </div>
+            <!-- ------------- passwords TAB -------------------- -->
+            <div class="tab-pane {{ternaryIf (iff tab '==' 'password') 'active' '' }}" id="nav-password" role="tabpanel" aria-labelledby="nav-password-tab">
+                <div class="card-body">
+                    <form method="POST"  action="/dashboard/profile/password">
+                        {{> "influencer/profile/password"}}
+                    </form>
+                </div>
+            </div>
+            <!-- ------------- Email TAB -------------------- -->
+            {{!--
+            <div class="tab-pane fade" id="nav-email" role="tabpanel" aria-labelledby="nav-email-tab">
+                <div class="card-body">
+                    <form method="POST"  action="/email">
+                        {{> "influencer/profile/email"}}
+                    </form>
+                </div>
+            </div>
+             --}}
+        </div>
+
+    </div>
+
+
+
+    <p class="lead text-white mb-0">Build a fixed sidebar using Bootstrap 4 vertical navigation and media objects.</p>
+    <p class="lead text-white">Snippet by <a href="https://bootstrapious.com/snippets" class="text-white">
+            <u>Bootstrapious</u></a>
+    </p>
+    <div class="separator"></div>
+
+</div>
+<!-- End demo content -->
+
+{{> "influencer/footer"}}
+
+</body>
+
+</html>

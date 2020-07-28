@@ -72,6 +72,8 @@ exports.loginIn = [
                     $match: {
                         "subscriber.email": res.locals.influencer.email
                     }
+                },{
+                    $unwind: {"path":"$subscriber"}
                 }
             ])
             .then(influencers => {
@@ -130,10 +132,10 @@ exports.loginIn = [
                     res.render(page)
                     return
                 } else {
-                    res.cookie("token", token, {
+                    res.cookie(process.env.influencer_token, token, {
                         secure: false
                     })
-                    req.headers.authorization = req.cookies.token
+                    req.headers.authorization = req.cookies[process.env.influencer_token]
                     console.log("redirect to dashboard")
                     res.redirect("/dashboard/")
                     return
