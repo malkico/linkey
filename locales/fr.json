@@ -276,7 +276,9 @@
 		},
 		"reset_password": {
 			"result": {
-				"password_sent": "account_page.reset_password.result.password_sent"
+				"password_sent": "account_page.reset_password.result.password_sent",
+				"success": "account_page.reset_password.result.success",
+				"password_reset": "account_page.reset_password.result.password_reset"
 			},
 			"form": {
 				"header": {
@@ -517,6 +519,11 @@
 	"github": "github",
 	"+whichList[key]+": "+whichList[key]+",
 	"mailer": {
-		"welcome": "mailer.welcome"
+		"welcome": "mailer.welcome",
+		"reset_password": {
+			"1": "mailer.reset_password.1",
+			"2": "mailer.reset_password.2",
+			"3": "mailer.reset_password.3"
+		}
 	}
 }

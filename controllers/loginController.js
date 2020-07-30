@@ -17,7 +17,8 @@ exports.getPage = function (req, res, next) {
 
 exports.loginIn = [
     /* ************************************** middlwares to check all my fields  */
-    check("email").isEmail().normalizeEmail().withMessage(() => {
+    // check("email").isEmail().normalizeEmail().withMessage(() => {
+    check("email").isEmail().withMessage(() => {
         return helper.translate("generals.errors.valid_email");
     }),
     check("password").trim().custom(specialFns.checkSpecialChars),
