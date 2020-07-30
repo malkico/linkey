@@ -56,22 +56,22 @@ exports.send = async (subscriber, influencer, confirm_code, next) => {
 }
 
 /* ************************** SEND RESET PASSWORD LINK  *************** */
-exports.resetPass = async (subscriber, res, next, page) => {
+exports.resetPass = async (influencer, res, next, page) => {
     const generator = require('generate-password');
     const password = generator.generate({
         length: 10,
         numbers: true
     });
 
-    await init(subscriber);
+    await init(influencer.subscriber);
 
-    const reset_URL = process.env.domain + "/reset-password/" + password +"/"+subscriber._id
-    console.log("confirmation_URL %s ==> %s ",subscriber.first_name, reset_URL)
+    const reset_URL = process.env.domain + "/reset-password/" + password +"/"+influencer._id
+    console.log("confirmation_URL %s ==> %s ",influencer.subscriber.first_name, reset_URL)
     const mailOptions = {
-        to: subscriber.email,
+        to: influencer.subscriber.email,
         // to : "khkjhkjkjh@hgj.ih",
         subject: 'Password reset request | ' + process.env.plateform_name,
-        html: "<pre>" + helper.translate("mailer.reset_password.1", subscriber.first_name) + "<b>" + password + "</b>" +
+        html: "<pre>" + helper.translate("mailer.reset_password.1", influencer.subscriber.first_name) + "<b>" + password + "</b>" +
             "\n\n" + helper.translate("mailer.reset_password.2", reset_URL) +
             "\n\n" +
             helper.translate("mailer.reset_password.3") +

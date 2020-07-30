@@ -15,7 +15,7 @@ exports.post = [
     (req, res, next) => {
         res.locals.form = {
             influencer: {
-                subscriber : {
+                subscriber: {
                     ...req.body
                 }
             }
@@ -60,8 +60,10 @@ exports.post = [
                     $match: {
                         "subscriber.email": res.locals.form.influencer.subscriber.email
                     }
-                },{
-                    $unwind: {"path":"$subscriber"}
+                }, {
+                    $unwind: {
+                        "path": "$subscriber"
+                    }
                 }
             ])
             .then(influencers => {
@@ -71,9 +73,10 @@ exports.post = [
                     const influencerFound = influencers[0]
                     console.log("influencer found in DB=> %s", influencers.length)
                     console.log("influencerFound => %s", influencerFound)
-                    res.locals.form.influencer.subscriber = {
+                    /* res.locals.form.influencer.subscriber = {
                         ...influencerFound.subscriber
-                    }
+                    } */
+                    res.locals.form.influencer = influencerFound
                     next()
                 } else {
                     console.log("Can't find an influencer with this email")
@@ -88,13 +91,65 @@ exports.post = [
             })
     }, (req, res, next) => {
         const mailer = require("../middlwares/mailer")
-        mailer.resetPass(res.locals.form.influencer.subscriber, res, next, page)
+        mailer.resetPass(res.locals.form.influencer, res, next, page)
     },
     (req, res, next) => {
         res.render(page)
     }
 ]
 
-exports.get =  (req, res, next) => {
+/* **************************** ROUTE: Change the password on DB *****************/
+exports.changePassword = [
+
+    /* ********************** middleware to hashing my password */
+    (req, res, next) => {
+        const bcrypt = require("bcrypt")
+        console.log("password to hash : %s", req.params.pass)
+        bcrypt.hash(req.params.pass, 10)
+            .then((hashed) => {
+                res.locals.hashed_pass = hashed
+                next()
+            })
+            .catch((err) => {
+                const msg = 'An error was generated while hashing the password'
+                console.log("%s => %s", msg, err)
+                res.locals.myErrors = {}
+                res.locals.result = msg
+                res.render(page)
+                return
+            })
+
+    /* ********** changing the password on DB *************/
+    },    (req, res, next) => {
+        Influencer.updateOne({
+            _id: require("mongoose").Types.ObjectId(req.params.influencer_id)
+        }, {
+            password: res.locals.hashed_pass
+        }, {
+            runValidators: true
+        }).then(result => {
+            /* if(result.nbModified){
+
+            } */
+            console.log("result => %s", result)
+            res.locals.result = helpers.translate('account_page.reset_password.result.password_reset')
+            res.locals.success = true
+            next()
+
+        }).catch(err => {
+            console.log("err => %s", err)
+            res.locals.result = "An error occurred while modifying the password, Please try again"
+            res.render(page)
+            return
+        })
+
+    },
+    (req, res, next) => {
+        res.render(page)
+    }
+]
+
+
+exports.get = (req, res, next) => {
     res.render(page)
 }
