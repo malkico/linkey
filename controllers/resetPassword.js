@@ -128,13 +128,16 @@ exports.changePassword = [
         }, {
             runValidators: true
         }).then(result => {
-            /* if(result.nbModified){
-
-            } */
-            console.log("result => %s", result)
-            res.locals.result = helpers.translate('account_page.reset_password.result.password_reset')
-            res.locals.success = true
-            next()
+            if(result.nModified){
+                console.log("result => %s", result)
+                res.locals.result = helpers.translate('account_page.reset_password.result.password_reset')
+                res.locals.success = true
+                next()
+            } else{
+                res.locals.result = "Can't change the password with this link"
+                res.render(page)
+                return
+            }
 
         }).catch(err => {
             console.log("err => %s", err)
