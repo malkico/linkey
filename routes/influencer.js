@@ -23,6 +23,9 @@ router.post("/profile/details",profileCtrl.postDetails)
 router.post("/profile/password",profileCtrl.postPassword)
 
 router.get("/all-my-links",allLinksCtr.get)
+router.post("/all-my-links/on_main",allLinksCtr.on_main)
+router.post("/all-my-links/remove",allLinksCtr.remove)
+router.get("/links/update/:link_id",allLinksCtr.update)
 
 router.get('/logout', (req, res, next) => {
     res.clearCookie("token")

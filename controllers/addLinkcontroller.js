@@ -9,12 +9,13 @@ const {
     check,
     validationResult
 } = require('express-validator');
-const specialFncs = require('../config/specialFunctions')
-const page = "influencer/add-link"
+const specialFncs = require('../config/specialFunctions');
+const page = "influencer/form-link"
 
 // Console.log(Link.link_type[0]);
 exports.get = function (req, res, next) {
     res.locals.page = "add-link"
+    res.locals.page_title = helper.translate("dashboard.add_link.page_title")
     res.render(page, {
         link_type: linkConf.link_type
     })

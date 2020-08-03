@@ -11,11 +11,11 @@
 
     <!-- Demo content -->
     <h3 class="display-4 text-white">{{ translate "dashboard.all_links.page_title" }}</h3>
-  {{#if result}}
-  <div class="alert alert-{{ternaryIf success 'success' 'danger'}} result" role="alert">
-    {{result}}
-  </div>
-  {{/if}}
+    {{#if result}}
+    <div class="alert alert-{{ternaryIf success 'success' 'danger'}} result" role="alert">
+        {{result}}
+    </div>
+    {{/if}}
 
     <div class="card mb-4 p-0 p-md-1 col-12">
         <div class="card-body">
@@ -34,11 +34,11 @@
                     </thead>
                     <tbody>
                         {{#each links }}
-                        <tr class="bnlabla">
-                            <td >
+                        <tr class="link" data-id="{{this._id}}">
+                            <td>
                                 <div class="d-flex align-items-center">
-                                <i class="fab fa-slack-hash fa-2x mr-3 " aria-hidden="true"></i>
-                                <a href="{{this.url}}" class="align-middle">{{this.title}}</a>
+                                    <i class="fab fa-slack-hash fa-2x mr-3 " aria-hidden="true"></i>
+                                    <a href="{{this.url}}" class="align-middle">{{this.title}}</a>
 
                                 </div>
 
@@ -46,19 +46,22 @@
                             <td><span class="badge bg-dark text-white">{{this.KEY}}</span></td>
                             <td>{{dateFormat this.date_added "DD-MM-YYYY"}}</td>
                             <td style="min-width: 6.5rem;">
-                                    <div class="custom-control custom-switch ">
-                                        <input type="checkbox" name="main" class="custom-control-input" id="customSwitch-{{this._id}}">
-                                        <label class="custom-control-label" for="customSwitch-{{this._id}}">{{ translate "dashboard.all_links.table.link.main"}} {{!-- make it <br> on main --}}</label>
-                                    </div>
+                                <div class="custom-control custom-switch ">
+                                    <input type="checkbox" name="main" class="custom-control-input"
+                                        id="customSwitch-{{this._id}}" {{ternaryIf this.main "checked" ""}}>
+                                    <label class="custom-control-label"
+                                        for="customSwitch-{{this._id}}">{{ translate "dashboard.all_links.table.link.main"}}
+                                        {{!-- make it <br> on main --}}</label>
+                                </div>
                             </td>
                             <td>
-                                <div class='d-flex flex-column ml-3 float-right'>
-                                        <i class="fas fa-pen fa-1x mb-2"></i>
-                                        <i class="fas fa-trash-alt fa-1x "></i>
+                                <div class='actions d-flex flex-column ml-3 float-right'>
+                                    <a href="{{domain}}/dashboard/links/update/{{this._id}}"><i class="fas fa-pen fa-1x mb-2"></i></a>
+                                    <span class="remove"><i class="fas fa-trash-alt fa-1x "></i></span>
                                 </div>
 
                             </td>
-                        </tr>            
+                        </tr>
                         {{/each }}
                     </tbody>
                 </table>
@@ -87,20 +90,22 @@
 
 <script>
     $(document).ready(function () {
+
+        /* ******************* DataTable ********************** */
         $('#myTable').DataTable({
-            "language": {
-                "emptyTable": "{{ translate "dashboard.all_links.table.DataTable.emptyTable" }}",
-                "info": "{{ translate "dashboard.all_links.table.DataTable.info" }}",
-                "lengthMenu": "{{ translate "dashboard.all_links.table.DataTable.lengthMenu" }}",
-                "infoEmpty": "{{ translate "dashboard.all_links.table.DataTable.infoEmpty" }}",
-                "infoFiltered": "{{ translate "dashboard.all_links.table.DataTable.infoFiltered" }}",
-                zeroRecords:    "{{ translate "dashboard.all_links.table.DataTable.zeroRecords" }}",
-                search:         "{{ translate "dashboard.all_links.table.DataTable.search" }}",
-                "paginate": {
-                    "first":      "{{ translate "dashboard.all_links.table.DataTable.paginate.first" }}",
-                    "previous":   "{{ translate "dashboard.all_links.table.DataTable.paginate.previous" }}",
-                    "next":       "{{ translate "dashboard.all_links.table.DataTable.paginate.next" }}",
-                    "last":       "{{ translate "dashboard.all_links.table.DataTable.paginate.last" }}"
+            language: {
+                emptyTable: "{{ translate 'dashboard.all_links.table.DataTable.emptyTable' }}",
+                info: "{{ translate 'dashboard.all_links.table.DataTable.info' }}",
+                lengthMenu: "{{ translate 'dashboard.all_links.table.DataTable.lengthMenu' }}",
+                infoEmpty: "{{ translate 'dashboard.all_links.table.DataTable.infoEmpty' }}",
+                infoFiltered: "{{ translate 'dashboard.all_links.table.DataTable.infoFiltered' }}",
+                zeroRecords: "{{ translate 'dashboard.all_links.table.DataTable.zeroRecords' }}",
+                search: "{{ translate 'dashboard.all_links.table.DataTable.search' }}",
+                paginate: {
+                    first: "{{ translate 'dashboard.all_links.table.DataTable.paginate.first' }}",
+                    previous: "{{ translate 'dashboard.all_links.table.DataTable.paginate.previous' }}",
+                    next: "{{ translate 'dashboard.all_links.table.DataTable.paginate.next' }}",
+                    last: "{{ translate 'dashboard.all_links.table.DataTable.paginate.last' }}"
                 }
             }
         });
@@ -108,7 +113,70 @@
         $("#myTable").wrap("<div class='overflow-auto w-100'></div>")
 
 
+        /* ************* make it on main **********************/
+        $(".link input[name='main']").change(function (event) {
+            console.log("change main settings of %s",$(this).parents(".link").data('id'))
+            fetch('{{domain}}/dashboard/all-my-links/on_main', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        link_id: $(this).parents(".link").data('id'),
+                        main: $(this).prop('checked')
+                    })
+                })
+
+                .then((response) => {
+                    return response.json()
+                })
+                .then(response => {
+                    console.log("link settings changing...")
+                    console.log(response.message)
+                })
+                .catch(error => console.log(error));
+
+        })
     });
+
+
+    /* ****************** remove a Link ******************* */  
+    $(".remove").click( function(event){
+        var link_tr;
+        const fadeLink = () => {
+            console.log("deleting...")
+            link_tr = $(this).parents("tr.link")
+            link_tr.find("td").removeClass("sorting_1")
+            link_tr.animate({
+                'background-color': '#fb6c6c'
+            }, 300);
+            return fetch('{{domain}}/dashboard/all-my-links/remove', {
+                    method: "POST",
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-type': 'application/json'
+                    },
+                    body : JSON.stringify({
+                        link_id: link_tr.data('id')
+                    })
+            })
+        }
+
+        fadeLink()
+        .then(response => response.json())
+        .then(response => {
+            console.log(response.message)
+            if(response.success){
+                link_tr.fadeOut()
+            }
+        })
+        .catch(err => {
+            console.log("error => %s ",err)
+        })
+    })
+    
+
 </script>
 
 </body>

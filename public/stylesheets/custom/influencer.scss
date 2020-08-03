@@ -95,9 +95,16 @@ label{
 
   .custom-switch{
     margin-right: auto;
+    * {
+      cursor: pointer;
+    }
     label {
       white-space: pre-line;
     }
+  }
+
+  .actions {
+    cursor: pointer;
   }
 }
 
