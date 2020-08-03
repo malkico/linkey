@@ -119,7 +119,8 @@ app.engine('hbs', exphbs({
     objIsEmpty: registerHelper.objIsEmpty,
     json: registerHelper.json,
     // t: registerHelper.t,
-    translate: registerHelper.translate
+    translate: registerHelper.translate,
+    dateFormat: require('handlebars-dateformat')
   }
 }))
 app.set('view engine', 'hbs');

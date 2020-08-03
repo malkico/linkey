@@ -11,6 +11,11 @@
 
     <!-- Demo content -->
     <h3 class="display-4 text-white">{{ translate "dashboard.all_links.page_title" }}</h3>
+  {{#if result}}
+  <div class="alert alert-{{ternaryIf success 'success' 'danger'}} result" role="alert">
+    {{result}}
+  </div>
+  {{/if}}
 
     <div class="card mb-4 p-0 p-md-1 col-12">
         <div class="card-body">
@@ -24,29 +29,37 @@
                             <th>{{ translate "dashboard.all_links.table.head.KEY" }} </th>
                             <th>{{ translate "dashboard.all_links.table.head.created" }}</th>
                             <th></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="">
-                            <td class="d-flex align-items-center ">
+                        {{#each links }}
+                        <tr class="bnlabla">
+                            <td >
+                                <div class="d-flex align-items-center">
                                 <i class="fab fa-slack-hash fa-2x mr-3 " aria-hidden="true"></i>
-                                <a href="#">jk hoihohohhoh oiuhuih uihuih iuhui hiui uig</a>
+                                <a href="{{this.url}}" class="align-middle">{{this.title}}</a>
+
+                                </div>
+
                             </td>
-                            <td><span class="badge bg-dark text-white">646</span></td>
-                            <td>01-02-2020</td>
-                            <td>
-                                <div class="d-flex justify-content-center align-items-center">
-                                    <div class="custom-control custom-switch mr-3">
-                                        <input type="checkbox" class="custom-control-input" id="customSwitch1">
-                                        <label class="custom-control-label" for="customSwitch1">{{ translate "dashboard.all_links.table.link.main" }}</label>
+                            <td><span class="badge bg-dark text-white">{{this.KEY}}</span></td>
+                            <td>{{dateFormat this.date_added "DD-MM-YYYY"}}</td>
+                            <td style="min-width: 6.5rem;">
+                                    <div class="custom-control custom-switch ">
+                                        <input type="checkbox" name="main" class="custom-control-input" id="customSwitch-{{this._id}}">
+                                        <label class="custom-control-label" for="customSwitch-{{this._id}}">{{ translate "dashboard.all_links.table.link.main"}} {{!-- make it <br> on main --}}</label>
                                     </div>
-                                    <div class='d-flex flex-column'>
+                            </td>
+                            <td>
+                                <div class='d-flex flex-column ml-3 float-right'>
                                         <i class="fas fa-pen fa-1x mb-2"></i>
                                         <i class="fas fa-trash-alt fa-1x "></i>
-                                    </div>
                                 </div>
+
                             </td>
-                        </tr>
+                        </tr>            
+                        {{/each }}
                     </tbody>
                 </table>
             </div>
