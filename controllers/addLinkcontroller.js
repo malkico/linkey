@@ -1,14 +1,9 @@
 const linkConf = require("../models/config/linkConf")
-const Link = require('../models/link')
 const Influencer = require("../models/influencer")
 const async = require("async")
 const ObjectId = require('mongoose').Types.ObjectId;
 const helper = require("../config/registerHelper")
 
-const {
-    check,
-    validationResult
-} = require('express-validator');
 const specialFncs = require('../config/specialFunctions');
 const page = "influencer/form-link"
 
@@ -16,6 +11,7 @@ const page = "influencer/form-link"
 exports.get = function (req, res, next) {
     res.locals.page = "add-link"
     res.locals.page_title = helper.translate("dashboard.add_link.page_title")
+    res.locals.submit = helper.translate("dashboard.add_link.form.submit")
     res.render(page, {
         link_type: linkConf.link_type
     })
@@ -26,55 +22,11 @@ exports.post = [
     /* *********************** middleware to initale my page **********/
     (req, res, next) => {
         res.locals.page = "add-link"
-        res.locals.link_type = linkConf.link_type
+        res.locals.page_title = helper.translate("dashboard.add_link.page_title")
+        res.locals.submit = helper.translate("dashboard.add_link.form.submit")
         next()
     },
-
-    /* *********************** middlewares to check my fields **********/
-    check("URL").trim().isURL().withMessage(() => {
-        return helper.translate("dashboard.add_link.form.URL.errors.valid")
-    }),
-    check("title").trim().custom(specialFncs.checkSpecialChars),
-    check("KEY").trim(),
-
-    /* ********************** middleware to initialise all my form with req.body. fields */
-    (req, res, next) => {
-        console.log("initialise all my form")
-        res.locals.link = new Link({
-            URL: req.body.URL,
-            title: req.body.title,
-            KEY: req.body.KEY,
-            main: (typeof (req.body.main) !== "undefined"),
-            link_type: req.body.link_type
-        })
-        console.log("my form is initalised => %s", res.locals.link)
-
-        next()
-    },
-
-    /* ********************** middleware to check if there are any errors found on the form */
-    (req, res, next) => {
-        res.locals.myErrors = {}
-        res.locals.result = null
-        console.log("check if there are any errors")
-        const errors = validationResult(req).array()
-        errors.forEach(err => {
-            res.locals.myErrors[err.param] = err.msg
-        });
-
-        if (errors.lenght) {
-            res.locals.result = "Please check for errors produced"
-            res.render(page)
-            console.log(res.locals.result)
-            return
-        } else
-            next()
-
-    },
-
-    /* ***************** middlwares to escape all my fields ****************/
-    check("title").escape(),
-
+    require("./manageLinks/init_middlwares_aLink"),
     /* ***************** middlwares to save the new link ****************/
     (req, res, next) => {
         console.log("save the new link")

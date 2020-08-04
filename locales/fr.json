@@ -475,6 +475,12 @@
 				"sucess_email_confirmation": "dashboard.index.result.sucess_email_confirmation",
 				"success_email_confirmation": "dashboard.index.result.success_email_confirmation"
 			}
+		},
+		"update_link": {
+			"page_title": "dashboard.update_link.page_title",
+			"form": {
+				"submit": "dashboard.update_link.form.submit"
+			}
 		}
 	},
 	"follower_page": {

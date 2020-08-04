@@ -554,6 +554,12 @@
 			"result": {
 				"success_email_confirmation": "Congratulations! You have confirmed your email"
 			}
+		},
+		"update_link": {
+			"page_title": "Update the link",
+			"form": {
+				"submit": "Update"
+			}
 		}
 	},
 	"mailer": {
@@ -565,56 +571,6 @@
 			"1": "Dear %s, \n\nA new password has been reset for you : ",
 			"2": "Please follow the link to set your password. \n%s",
 			"3": "If you didn't request your password to be reset, please ignore this email, and no changes will be made. \n\nThanks! \nThe LINKEY Team"
-		}
-	},
-	"\r\n            dashboard": {
-		"all_links": {
-			"table": {
-				"DataTable": {
-					"emptyTable ": "\r\n            dashboard.all_links.table.DataTable.emptyTable ",
-					"info ": "\r\n            dashboard.all_links.table.DataTable.info ",
-					"lengthMenu ": "\r\n            dashboard.all_links.table.DataTable.lengthMenu ",
-					"infoEmpty ": "\r\n            dashboard.all_links.table.DataTable.infoEmpty ",
-					"infoFiltered ": "\r\n            dashboard.all_links.table.DataTable.infoFiltered ",
-					"zeroRecords ": "\r\n            dashboard.all_links.table.DataTable.zeroRecords ",
-					"search ": "\r\n            dashboard.all_links.table.DataTable.search "
-				}
-			}
-		}
-	},
-	"\r\n                dashboard": {
-		"all_links": {
-			"table": {
-				"DataTable": {
-					"paginate": {
-						"first ": "\r\n                dashboard.all_links.table.DataTable.paginate.first ",
-						"previous ": "\r\n                dashboard.all_links.table.DataTable.paginate.previous ",
-						"next ": "\r\n                dashboard.all_links.table.DataTable.paginate.next ",
-						"last ": "\r\n                dashboard.all_links.table.DataTable.paginate.last "
-					},
-					"emptyTable ": "\r\n                dashboard.all_links.table.DataTable.emptyTable ",
-					"info ": "\r\n                dashboard.all_links.table.DataTable.info ",
-					"lengthMenu ": "\r\n                dashboard.all_links.table.DataTable.lengthMenu ",
-					"infoEmpty ": "\r\n                dashboard.all_links.table.DataTable.infoEmpty ",
-					"infoFiltered ": "\r\n                dashboard.all_links.table.DataTable.infoFiltered ",
-					"zeroRecords ": "\r\n                dashboard.all_links.table.DataTable.zeroRecords ",
-					"search ": "\r\n                dashboard.all_links.table.DataTable.search "
-				}
-			}
-		}
-	},
-	"\r\n                    dashboard": {
-		"all_links": {
-			"table": {
-				"DataTable": {
-					"paginate": {
-						"first ": "\r\n                    dashboard.all_links.table.DataTable.paginate.first ",
-						"previous ": "\r\n                    dashboard.all_links.table.DataTable.paginate.previous ",
-						"next ": "\r\n                    dashboard.all_links.table.DataTable.paginate.next ",
-						"last ": "\r\n                    dashboard.all_links.table.DataTable.paginate.last "
-					}
-				}
-			}
 		}
 	}
 }
