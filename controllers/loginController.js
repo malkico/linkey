@@ -17,7 +17,8 @@ exports.getPage = function (req, res, next) {
 
 exports.loginIn = [
     /* ************************************** middlwares to check all my fields  */
-    check("email").isEmail().normalizeEmail().withMessage(() => {
+    // check("email").isEmail().normalizeEmail().withMessage(() => {
+    check("email").isEmail().withMessage(() => {
         return helper.translate("generals.errors.valid_email");
     }),
     check("password").trim().custom(specialFns.checkSpecialChars),
@@ -72,6 +73,8 @@ exports.loginIn = [
                     $match: {
                         "subscriber.email": res.locals.influencer.email
                     }
+                },{
+                    $unwind: {"path":"$subscriber"}
                 }
             ])
             .then(influencers => {
@@ -130,10 +133,10 @@ exports.loginIn = [
                     res.render(page)
                     return
                 } else {
-                    res.cookie("token", token, {
+                    res.cookie(process.env.influencer_token, token, {
                         secure: false
                     })
-                    req.headers.authorization = req.cookies.token
+                    req.headers.authorization = req.cookies[process.env.influencer_token]
                     console.log("redirect to dashboard")
                     res.redirect("/dashboard/")
                     return

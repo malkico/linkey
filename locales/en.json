@@ -376,7 +376,8 @@
 		},
 		"reset_password": {
 			"result": {
-				"password_sent": "We have sent a password reset link to your mailbox if it exists."
+				"password_sent": "We have sent a password reset link to your mailbox if it exists.",
+				"password_reset": "Your password has been reset"
 			},
 			"form": {
 				"header": {
@@ -447,7 +448,7 @@
 					"created": "Created at"
 				},
 				"link": {
-					"main": "Make it on main"
+					"main": "Make it\non main"
 				},
 				"DataTable": {
 					"emptyTable": "No data available in table",
@@ -499,6 +500,53 @@
 					"profile": "Profile details",
 					"password": "Password details",
 					"email": "Email"
+				},
+				"profile": {
+					"form": {
+						"first_name": {
+							"libelle": "First name"
+						},
+						"last_name": {
+							"libelle": "Last name"
+						},
+						"login": {
+							"libelle": "Username"
+						},
+						"niche": {
+							"libelle": "Niche"
+						},
+						"submit": "Save",
+						"result": {
+							"success": "The modifications are well done.",
+							"error": "An error occurred while modifying the data."
+						}
+					}
+				},
+				"email": {
+					"form": {
+						"email": {
+							"libelle": "Email"
+						},
+						"submit": "Change"
+					}
+				},
+				"password": {
+					"form": {
+						"new_password": {
+							"libelle": "New password"
+						},
+						"confirm_password": {
+							"libelle": "Confirm password"
+						},
+						"old_password": {
+							"libelle": "Old password"
+						},
+						"submit": "Change",
+						"result": {
+							"compare_password": "The old password is wrong!",
+							"success": "Done! The password id updated."
+						}
+					}
 				}
 			}
 		},
@@ -506,12 +554,28 @@
 			"result": {
 				"success_email_confirmation": "Congratulations! You have confirmed your email"
 			}
+		},
+		"update_link": {
+			"page_title": "Update the link",
+			"form": {
+				"submit": "Update",
+				"result": {
+					"cant_update": "Can't update the link, Please try again",
+					"success": "The link has been successfully modified",
+					"not_yours": "You're not the owner of this link!"
+				}
+			}
 		}
 	},
 	"mailer": {
 		"welcome": {
 			"1": "Dear %s,\n\nThank you for your confidence in LINKEY, you will find below your authentication details \nLogin: %s \nPassword: %s \n\nYou must also confirm your account by clicking on this link below\n",
 			"2": "\n\nWe wish you a very good experience with us."
+		},
+		"reset_password": {
+			"1": "Dear %s, \n\nA new password has been reset for you : ",
+			"2": "Please follow the link to set your password. \n%s",
+			"3": "If you didn't request your password to be reset, please ignore this email, and no changes will be made. \n\nThanks! \nThe LINKEY Team"
 		}
 	}
 }

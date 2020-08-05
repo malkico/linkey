@@ -28,8 +28,9 @@ router.get("/log-in", loginCtrl.getPage)
 router.post("/log-in", loginCtrl.loginIn)
 router.use("/log-in",loginCtrl.error)
 
-router.get("/reset-password", function(req, res, next){
-    res.render("account/reset-password")
-})
+const resetPassword = require("../controllers/resetPassword")
+router.get("/reset-password/:pass/:influencer_id", resetPassword.changePassword)
+router.get("/reset-password", resetPassword.get)
+router.post("/reset-password", resetPassword.post)
 
 module.exports = router;

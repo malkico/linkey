@@ -143,6 +143,13 @@
 			},
 			"email_status": {
 				"required": "models.influencer.email_status.required"
+			},
+			"last_name": {
+				"minlength": "models.influencer.last_name.minlength"
+			},
+			"login": {
+				"required": "models.influencer.login.required",
+				"minlength": "models.influencer.login.minlength"
 			}
 		},
 		"link": {
@@ -269,7 +276,9 @@
 		},
 		"reset_password": {
 			"result": {
-				"password_sent": "account_page.reset_password.result.password_sent"
+				"password_sent": "account_page.reset_password.result.password_sent",
+				"success": "account_page.reset_password.result.success",
+				"password_reset": "account_page.reset_password.result.password_reset"
 			},
 			"form": {
 				"header": {
@@ -394,6 +403,69 @@
 					"profile": "dashboard.profile.tabs.head.profile",
 					"password": "dashboard.profile.tabs.head.password",
 					"email": "dashboard.profile.tabs.head.email"
+				},
+				"profile": {
+					"form": {
+						"first_name": {
+							"libelle": "dashboard.profile.tabs.profile.form.first_name.libelle"
+						},
+						"last_name": {
+							"libelle": "dashboard.profile.tabs.profile.form.last_name.libelle"
+						},
+						"email": {
+							"libelle": "dashboard.profile.tabs.profile.form.email.libelle"
+						},
+						"submit": "dashboard.profile.tabs.profile.form.submit",
+						"niche": {
+							"libelle": "dashboard.profile.tabs.profile.form.niche.libelle"
+						},
+						"login": {
+							"libelle": "dashboard.profile.tabs.profile.form.login.libelle"
+						},
+						"password": {
+							"libelle": "dashboard.profile.tabs.profile.form.password.libelle"
+						},
+						"result": {
+							"success": "dashboard.profile.tabs.profile.form.result.success",
+							"error": "dashboard.profile.tabs.profile.form.result.error"
+						}
+					}
+				},
+				"email": {
+					"form": {
+						"email": {
+							"libelle": "dashboard.profile.tabs.email.form.email.libelle"
+						},
+						"submit": "dashboard.profile.tabs.email.form.submit"
+					}
+				},
+				"password": {
+					"form": {
+						"password": {
+							"libelle": "dashboard.profile.tabs.password.form.password.libelle"
+						},
+						"submit": "dashboard.profile.tabs.password.form.submit",
+						"new_password": {
+							"libelle": "dashboard.profile.tabs.password.form.new_password.libelle"
+						},
+						"confirm_password": {
+							"libelle": "dashboard.profile.tabs.password.form.confirm_password.libelle"
+						},
+						"old_password": {
+							"libelle": "dashboard.profile.tabs.password.form.old_password.libelle"
+						},
+						"result": {
+							"compare_password": "dashboard.profile.tabs.password.form.result.compare_password",
+							"success": "dashboard.profile.tabs.password.form.result.success"
+						}
+					}
+				},
+				"old_password": {
+					"form": {
+						"old_password": {
+							"libelle": "dashboard.profile.tabs.old_password.form.old_password.libelle"
+						}
+					}
 				}
 			}
 		},
@@ -402,6 +474,17 @@
 				"confirmation": "dashboard.index.result.confirmation",
 				"sucess_email_confirmation": "dashboard.index.result.sucess_email_confirmation",
 				"success_email_confirmation": "dashboard.index.result.success_email_confirmation"
+			}
+		},
+		"update_link": {
+			"page_title": "dashboard.update_link.page_title",
+			"form": {
+				"submit": "dashboard.update_link.form.submit",
+				"result": {
+					"cant_update": "dashboard.update_link.form.result.cant_update",
+					"success": "dashboard.update_link.form.result.success",
+					"not_yours": "dashboard.update_link.form.result.not_yours"
+				}
 			}
 		}
 	},
@@ -447,6 +530,61 @@
 	"github": "github",
 	"+whichList[key]+": "+whichList[key]+",
 	"mailer": {
-		"welcome": "mailer.welcome"
+		"welcome": "mailer.welcome",
+		"reset_password": {
+			"1": "mailer.reset_password.1",
+			"2": "mailer.reset_password.2",
+			"3": "mailer.reset_password.3"
+		}
+	},
+	"\r\n            dashboard": {
+		"all_links": {
+			"table": {
+				"DataTable": {
+					"emptyTable ": "\r\n            dashboard.all_links.table.DataTable.emptyTable ",
+					"info ": "\r\n            dashboard.all_links.table.DataTable.info ",
+					"lengthMenu ": "\r\n            dashboard.all_links.table.DataTable.lengthMenu ",
+					"infoEmpty ": "\r\n            dashboard.all_links.table.DataTable.infoEmpty ",
+					"infoFiltered ": "\r\n            dashboard.all_links.table.DataTable.infoFiltered ",
+					"zeroRecords ": "\r\n            dashboard.all_links.table.DataTable.zeroRecords ",
+					"search ": "\r\n            dashboard.all_links.table.DataTable.search "
+				}
+			}
+		}
+	},
+	"\r\n                dashboard": {
+		"all_links": {
+			"table": {
+				"DataTable": {
+					"paginate": {
+						"first ": "\r\n                dashboard.all_links.table.DataTable.paginate.first ",
+						"previous ": "\r\n                dashboard.all_links.table.DataTable.paginate.previous ",
+						"next ": "\r\n                dashboard.all_links.table.DataTable.paginate.next ",
+						"last ": "\r\n                dashboard.all_links.table.DataTable.paginate.last "
+					},
+					"emptyTable ": "\r\n                dashboard.all_links.table.DataTable.emptyTable ",
+					"info ": "\r\n                dashboard.all_links.table.DataTable.info ",
+					"lengthMenu ": "\r\n                dashboard.all_links.table.DataTable.lengthMenu ",
+					"infoEmpty ": "\r\n                dashboard.all_links.table.DataTable.infoEmpty ",
+					"infoFiltered ": "\r\n                dashboard.all_links.table.DataTable.infoFiltered ",
+					"zeroRecords ": "\r\n                dashboard.all_links.table.DataTable.zeroRecords ",
+					"search ": "\r\n                dashboard.all_links.table.DataTable.search "
+				}
+			}
+		}
+	},
+	"\r\n                    dashboard": {
+		"all_links": {
+			"table": {
+				"DataTable": {
+					"paginate": {
+						"first ": "\r\n                    dashboard.all_links.table.DataTable.paginate.first ",
+						"previous ": "\r\n                    dashboard.all_links.table.DataTable.paginate.previous ",
+						"next ": "\r\n                    dashboard.all_links.table.DataTable.paginate.next ",
+						"last ": "\r\n                    dashboard.all_links.table.DataTable.paginate.last "
+					}
+				}
+			}
+		}
 	}
 }

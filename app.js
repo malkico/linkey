@@ -52,6 +52,25 @@ i18n.configure({
 });
 app.use(i18n.init);
 
+app.set('trust proxy', 1) // trust first proxy
+app.use(cookieParser());
+app.use(cookieSession({
+  name: 'session',
+  keys: ['key1', 'key2']
+}))
+
+/* 
+app.use(require('express-session')({
+  secret: 'keyboard_cat',
+  resave: true,
+  saveUninitialized: true, 
+  cookie: { secure: false,        
+  httpOnly: true,
+  maxAge  : 60 * 60 * 1000 
+ }
+})) 
+ */
+
 const indexRouter = require('./routes/main');
 const followerRouter = require('./routes/follower');
 const influencerRouter = require("./routes/influencer")
@@ -81,21 +100,6 @@ app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist'));
 app.use('/popper.js', express.static(__dirname + '/node_modules/popper.js/dist/umd'));
 app.use('/fontawesome', express.static(__dirname + '/node_modules/@fortawesome/fontawesome-free'));
 
-app.set('trust proxy', 1) // trust first proxy
-app.use(cookieParser());
-app.use(cookieSession({
-  name: 'session',
-  keys: ['key1', 'key2']
-}))
-
-/* 
-app.use(session({
-  secret: 'keyboard_cat',
-  resave: false,
-  saveUninitialized: true, 
-  cookie: { secure: true }
-})) */
-
 // view engine setup
 // app.set('views', path.join(__dirname, 'views'));
 app.engine('hbs', exphbs({
@@ -115,7 +119,8 @@ app.engine('hbs', exphbs({
     objIsEmpty: registerHelper.objIsEmpty,
     json: registerHelper.json,
     // t: registerHelper.t,
-    translate: registerHelper.translate
+    translate: registerHelper.translate,
+    dateFormat: require('handlebars-dateformat')
   }
 }))
 app.set('view engine', 'hbs');
