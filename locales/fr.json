@@ -479,7 +479,12 @@
 		"update_link": {
 			"page_title": "dashboard.update_link.page_title",
 			"form": {
-				"submit": "dashboard.update_link.form.submit"
+				"submit": "dashboard.update_link.form.submit",
+				"result": {
+					"cant_update": "dashboard.update_link.form.result.cant_update",
+					"success": "dashboard.update_link.form.result.success",
+					"not_yours": "dashboard.update_link.form.result.not_yours"
+				}
 			}
 		}
 	},
