@@ -65,6 +65,8 @@ body {
   background: linear-gradient(to right, #599fd9, #c2e59c); */
   min-height: 100vh;
   overflow-x: hidden;
+  line-height: 1.2rem;
+
 }
 
 .separator {
@@ -89,6 +91,20 @@ label{
 .all-links{
   .card {
     padding-top: 0 ;
+  }
+
+  .custom-switch{
+    margin-right: auto;
+    * {
+      cursor: pointer;
+    }
+    label {
+      white-space: pre-line;
+    }
+  }
+
+  .actions {
+    cursor: pointer;
   }
 }
 

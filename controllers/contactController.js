@@ -18,7 +18,7 @@ const initialPage = (req, res, next) => {
     res.locals.page = "contact-list"
     res.locals.whichList = {}
     Object.keys(contactConf.which).forEach(key => {
-      res.locals.whichList[key] = helper.translate(contactConf.which[key])
+        res.locals.whichList[key] = helper.translate(contactConf.which[key])
     })
     next()
 }
@@ -81,7 +81,7 @@ exports.post = [
         })
         next()
     },
-    
+
     /* **************** initialise my contacts list **********************/
     getMyContactList,
 

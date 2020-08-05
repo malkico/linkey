@@ -475,6 +475,17 @@
 				"sucess_email_confirmation": "dashboard.index.result.sucess_email_confirmation",
 				"success_email_confirmation": "dashboard.index.result.success_email_confirmation"
 			}
+		},
+		"update_link": {
+			"page_title": "dashboard.update_link.page_title",
+			"form": {
+				"submit": "dashboard.update_link.form.submit",
+				"result": {
+					"cant_update": "dashboard.update_link.form.result.cant_update",
+					"success": "dashboard.update_link.form.result.success",
+					"not_yours": "dashboard.update_link.form.result.not_yours"
+				}
+			}
 		}
 	},
 	"follower_page": {
@@ -524,6 +535,56 @@
 			"1": "mailer.reset_password.1",
 			"2": "mailer.reset_password.2",
 			"3": "mailer.reset_password.3"
+		}
+	},
+	"\r\n            dashboard": {
+		"all_links": {
+			"table": {
+				"DataTable": {
+					"emptyTable ": "\r\n            dashboard.all_links.table.DataTable.emptyTable ",
+					"info ": "\r\n            dashboard.all_links.table.DataTable.info ",
+					"lengthMenu ": "\r\n            dashboard.all_links.table.DataTable.lengthMenu ",
+					"infoEmpty ": "\r\n            dashboard.all_links.table.DataTable.infoEmpty ",
+					"infoFiltered ": "\r\n            dashboard.all_links.table.DataTable.infoFiltered ",
+					"zeroRecords ": "\r\n            dashboard.all_links.table.DataTable.zeroRecords ",
+					"search ": "\r\n            dashboard.all_links.table.DataTable.search "
+				}
+			}
+		}
+	},
+	"\r\n                dashboard": {
+		"all_links": {
+			"table": {
+				"DataTable": {
+					"paginate": {
+						"first ": "\r\n                dashboard.all_links.table.DataTable.paginate.first ",
+						"previous ": "\r\n                dashboard.all_links.table.DataTable.paginate.previous ",
+						"next ": "\r\n                dashboard.all_links.table.DataTable.paginate.next ",
+						"last ": "\r\n                dashboard.all_links.table.DataTable.paginate.last "
+					},
+					"emptyTable ": "\r\n                dashboard.all_links.table.DataTable.emptyTable ",
+					"info ": "\r\n                dashboard.all_links.table.DataTable.info ",
+					"lengthMenu ": "\r\n                dashboard.all_links.table.DataTable.lengthMenu ",
+					"infoEmpty ": "\r\n                dashboard.all_links.table.DataTable.infoEmpty ",
+					"infoFiltered ": "\r\n                dashboard.all_links.table.DataTable.infoFiltered ",
+					"zeroRecords ": "\r\n                dashboard.all_links.table.DataTable.zeroRecords ",
+					"search ": "\r\n                dashboard.all_links.table.DataTable.search "
+				}
+			}
+		}
+	},
+	"\r\n                    dashboard": {
+		"all_links": {
+			"table": {
+				"DataTable": {
+					"paginate": {
+						"first ": "\r\n                    dashboard.all_links.table.DataTable.paginate.first ",
+						"previous ": "\r\n                    dashboard.all_links.table.DataTable.paginate.previous ",
+						"next ": "\r\n                    dashboard.all_links.table.DataTable.paginate.next ",
+						"last ": "\r\n                    dashboard.all_links.table.DataTable.paginate.last "
+					}
+				}
+			}
 		}
 	}
 }

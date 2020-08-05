@@ -5,6 +5,7 @@ const addLinkCtrl = require("../controllers/addLinkcontroller")
 const dashboardCtrl = require("../controllers/dashboardController")
 const socialMediaCtrl = require("../controllers/contactController")
 const profileCtrl = require("../controllers/profileController")
+const allLinksCtr = require("../controllers/allLinksController")
 
 router.get("/",dashboardCtrl.get)
 router.get("/add-link",addLinkCtrl.get)
@@ -21,9 +22,11 @@ router.get("/profile",profileCtrl.get)
 router.post("/profile/details",profileCtrl.postDetails)
 router.post("/profile/password",profileCtrl.postPassword)
 
-router.get("/all-my-links",function(req, res, next){
-    res.render("influencer/all-my-links")
-})
+router.get("/all-my-links",allLinksCtr.get)
+router.post("/all-my-links/on_main",allLinksCtr.on_main)
+router.post("/all-my-links/remove",allLinksCtr.remove)
+router.get("/links/update/:link_id",allLinksCtr.update.get)
+router.post("/links/update/:link_id",allLinksCtr.update.post)
 
 router.get('/logout', (req, res, next) => {
     res.clearCookie("token")

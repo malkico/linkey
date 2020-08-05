@@ -448,7 +448,7 @@
 					"created": "Created at"
 				},
 				"link": {
-					"main": "Make it on main"
+					"main": "Make it\non main"
 				},
 				"DataTable": {
 					"emptyTable": "No data available in table",
@@ -553,6 +553,17 @@
 		"index": {
 			"result": {
 				"success_email_confirmation": "Congratulations! You have confirmed your email"
+			}
+		},
+		"update_link": {
+			"page_title": "Update the link",
+			"form": {
+				"submit": "Update",
+				"result": {
+					"cant_update": "Can't update the link, Please try again",
+					"success": "The link has been successfully modified",
+					"not_yours": "You're not the owner of this link!"
+				}
 			}
 		}
 	},
