@@ -11,7 +11,6 @@ const registerHelper = require("./config/registerHelper")
 const dotenv = require("dotenv");
 dotenv.config();
 const Handlebars = require('handlebars')
-const auth = require("./middlwares/auth")
 const changeLang = require("./middlwares/changeLang")
 const {
   allowInsecurePrototypeAccess
@@ -140,7 +139,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/u', followerRouter);
 app.get("/account/confirmation/:code",require("./controllers/confirmationEmailController").get)
-app.use("/dashboard/", auth, influencerRouter)
+app.use("/dashboard/", influencerRouter)
 
 
 // catch 404 and forward to error handler

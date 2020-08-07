@@ -19,5 +19,18 @@
       $('#sidebar, #content').toggleClass('active');
     });
 
+    //  ---------------------- Scraping from instagram ------>
+    if($(".infos_influencer").data('influencerInstaUrl')){
+      $.get("https://www.instagram.com/" + $(".infos_influencer").data('influencerInstaUrl') + "/?__a=1")
+      // $.get("https://www.instagram.com/malki_hi/?__a=1")
+          .done(function (data) {
+              // getting the url
+              if (Object.keys(data).length) {
+                  const photoURL = data["graphql"]["user"]["profile_pic_url_hd"];
+                  $(".infos_influencer img").attr("src", photoURL)
+              }
+          })
+    }
+
   });
 </script>
