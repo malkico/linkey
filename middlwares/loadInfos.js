@@ -3,7 +3,7 @@ const Influencer = require("../models/influencer")
 /* *********************** Find influencer ******************/
     module.exports = (req, res, next) => {
         Influencer.findOne({
-                login: res.locals.influencer.login
+                _id: res.locals.influencer._id
             }).populate("contacts")
             .then(result => {
                 if (Object.keys(result).length) {

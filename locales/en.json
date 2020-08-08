@@ -403,11 +403,16 @@
 		},
 		"menu": {
 			"main": "Main",
-			"add_link": "Add a link",
-			"contact_list": "Contact list",
-			"all_links": "All my links",
-			"logout": "Log out",
-			"profile": "Profile"
+			"add_link": "Add a Link",
+			"contact_list": "Contact List",
+			"all_links": "All My Links",
+			"logout": "Log Out",
+			"profile": "Profile",
+			"coming_soon": "Coming soon",
+			"subscribers": "Subscribers List",
+			"stats": "Link Tracking & Stats",
+			"themes": "Pre-designed Themes",
+			"home": "Home"
 		},
 		"add_link": {
 			"page_title": "Add a link",
@@ -563,6 +568,19 @@
 					"cant_update": "Can't update the link, Please try again",
 					"success": "The link has been successfully modified",
 					"not_yours": "You're not the owner of this link!"
+				}
+			}
+		},
+		"home": {
+			"welcome": {
+				"0": "Dear %s, Thank you for your confidence in LINKEY; \nWe would like to receive your comments and suggestions to improve our services. ",
+				"1": "To contact us, please send us an email at the address"
+			},
+			"link": {
+				"ready": "Your own link is ready to share in your social networks.",
+				"create": {
+					"insta": "To get your own link, please add your instagram account",
+					"here": "here"
 				}
 			}
 		}

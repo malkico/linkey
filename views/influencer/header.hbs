@@ -20,6 +20,16 @@
 </head>
 
 <body>
+<!-- 
+  <div class="navbar navbar-default navbar-fixed-top custom-header float-right" role="navigation">
+    <div class="container">
+      	<a class="navbar-brand" href="https://127.0.0.1:3000">
+          LINKEY
+          <img src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" width="40" alt="Page Logo"> 
+          </a>
+  	</div>
+    
+</div> -->
 
   <!-- Vertical navbar -->
   <div class="vertical-nav bg-white infos_influencer" data-influencer-insta-url="{{influencer_insta.URL}}" id="sidebar">
@@ -29,7 +39,11 @@
           class="mr-3 rounded-circle img-thumbnail shadow-sm">
         <div class="media-body">
           <h4 class="m-0"> <!-- {{ influencer.last_name}} --> {{influencer.subscriber.first_name}} </h4>
-          <p class="font-weight-light text-muted mb-0">{{ influencer.login}}</p>
+          <p class="font-weight-light mb-0">
+            <a class="text-muted" target="new_blank" href="http://127.0.0.1:3000/u/{{influencer.login}}">
+            {{ influencer.login}}
+            </a>
+          </p>
         </div>
       </div>
     </div>
@@ -38,8 +52,14 @@
 
     <ul class="nav flex-column bg-white mb-0">
       <li class="nav-item">
-        <a href="/dashboard/profile" class="nav-link text-dark font-italic  {{ternaryIf (iff page '==' 'profile') 'bg-light' ''}}">
+        <a href="/dashboard/" class="nav-link text-dark font-italic  {{ternaryIf (iff page '==' 'home') 'bg-light' ''}}">
           <i class="fa fa-cubes mr-3 text-primary fa-fw"></i>
+          {{ translate "dashboard.menu.home" }} 
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/dashboard/profile" class="nav-link text-dark font-italic  {{ternaryIf (iff page '==' 'profile') 'bg-light' ''}}">
+          <i class="fa fa-user mr-3 text-primary fa-fw"></i>
           {{ translate "dashboard.menu.profile" }} 
         </a>
       </li>
@@ -67,40 +87,29 @@
           {{ translate "dashboard.menu.logout" }} 
         </a>
       </li>
-
-      <li class="nav-item">
-        <a href="#" class="nav-link text-dark font-italic">
-          <i class="fa fa-picture-o mr-3 text-primary fa-fw"></i>
-          Gallery
-        </a>
-      </li>
     </ul>
 
-    <p class="text-gray font-weight-bold text-uppercase px-3 small py-4 mb-0">Charts</p>
+    <p class="text-gray font-weight-bold text-uppercase px-3 small py-4 mb-0">
+          {{ translate "dashboard.menu.coming_soon" }} 
+      </p>
 
     <ul class="nav flex-column bg-white mb-0">
       <li class="nav-item">
         <a href="#" class="nav-link text-dark font-italic">
           <i class="fa fa-area-chart mr-3 text-primary fa-fw"></i>
-          Area charts
+          {{ translate "dashboard.menu.subscribers" }} 
         </a>
       </li>
       <li class="nav-item">
         <a href="#" class="nav-link text-dark font-italic">
-          <i class="fa fa-bar-chart mr-3 text-primary fa-fw"></i>
-          Bar charts
+          <i class="fa fa-area-chart mr-3 text-primary fa-fw"></i>
+          {{ translate "dashboard.menu.stats" }} 
         </a>
       </li>
       <li class="nav-item">
         <a href="#" class="nav-link text-dark font-italic">
-          <i class="fa fa-pie-chart mr-3 text-primary fa-fw"></i>
-          Pie charts
-        </a>
-      </li>
-      <li class="nav-item">
-        <a href="#" class="nav-link text-dark font-italic">
-          <i class="fa fa-line-chart mr-3 text-primary fa-fw"></i>
-          Line charts
+          <i class="fa fa-area-chart mr-3 text-primary fa-fw"></i>
+          {{ translate "dashboard.menu.themes" }} 
         </a>
       </li>
     </ul>
