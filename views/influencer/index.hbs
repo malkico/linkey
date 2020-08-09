@@ -14,8 +14,8 @@
   <div class="col-lg-12 alert alert-{{ternaryIf influencer_insta.URL 'info' 'danger'}} welcome" role="alert">
     {{#if influencer_insta.URL}}
     {{translate "dashboard.home.link.ready" }} 
-      <a class="" target="new_blank" href="http://127.0.0.1:3000/u/{{influencer.login}}">
-        http://127.0.0.1:3000/u/{{influencer.login}}
+      <a class="" target="new_blank" href="/u/{{influencer.login}}">
+        {{env.domain}}/u/{{influencer.login}}
       </a>
     {{else}}
     {{translate "dashboard.home.link.create.insta" }} 
