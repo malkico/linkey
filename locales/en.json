@@ -405,7 +405,7 @@
 			"main": "Main",
 			"add_link": "Add a Link",
 			"contact_list": "Contact List",
-			"all_links": "All My Links",
+			"all_links": "My Links",
 			"logout": "Log Out",
 			"profile": "Profile",
 			"coming_soon": "Coming soon",
@@ -445,7 +445,7 @@
 			}
 		},
 		"all_links": {
-			"page_title": "All my links",
+			"page_title": "My links",
 			"table": {
 				"head": {
 					"link": "Link",
