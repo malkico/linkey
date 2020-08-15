@@ -322,7 +322,13 @@
 			"create_mine": "follower_page.menu.create_mine"
 		},
 		"influencer": {
-			"find": "follower_page.influencer.find"
+			"find": {
+				"character": {
+					"person": "follower_page.influencer.find.character.person",
+					"group": "follower_page.influencer.find.character.group"
+				},
+				"label": "follower_page.influencer.find.label"
+			}
 		},
 		"footer": {
 			"made": {

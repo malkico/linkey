@@ -273,7 +273,13 @@
 			"create_mine": "CREATE %s OWN SEARCH ENGINE"
 		},
 		"influencer": {
-			"find": "Find us"
+			"find": {
+				"character": {
+					"person": "me",
+					"group": "us"
+				},
+				"label": "Find %s"
+			}
 		},
 		"footer": {
 			"made": {

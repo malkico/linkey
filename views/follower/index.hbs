@@ -25,7 +25,11 @@
         </div>
       </div>
       <div class="social-media">
-        <i class="text-c-light">{{ translate "follower_page.influencer.find"}}</i>
+        <i class="text-c-light">{{ translate "follower_page.influencer.find.label" 
+          (ternaryIf (iff influencer.character "==" "person") 
+          (translate "follower_page.influencer.find.character.person")
+          (translate "follower_page.influencer.find.character.group")
+           )}}</i>
         {{#each influencer.contacts}}
         <a href="{{this.full_URL}}"><i class="{{this.icone}}"></i></a>
         {{/each}}
