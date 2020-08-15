@@ -53,7 +53,7 @@
     <ul class="nav flex-column bg-white mb-0">
       <li class="nav-item">
         <a href="/dashboard/" class="nav-link text-dark font-italic  {{ternaryIf (iff page '==' 'home') 'bg-light' ''}}">
-          <i class="fa fa-cubes mr-3 text-primary fa-fw"></i>
+          <i class="fas fa-home mr-3 text-primary fa-fw"></i>
           {{ translate "dashboard.menu.home" }} 
         </a>
       </li>
@@ -65,8 +65,14 @@
       </li>
       <li class="nav-item">
         <a href="/dashboard/add-link" class="nav-link text-dark font-italic {{ternaryIf (iff page '==' 'add-link') 'bg-light' ''}}">
-          <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
+          <i class="fas fa-link mr-3 text-primary fa-fw"></i>
           {{ translate "dashboard.menu.add_link" }} 
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/dashboard/all-my-links" class="nav-link text-dark font-italic {{ternaryIf (iff page '==' 'all-my-links') 'bg-light' ''}}">
+          <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
+          {{ translate "dashboard.menu.all_links" }} 
         </a>
       </li>
       <li class="nav-item">
@@ -75,15 +81,10 @@
            {{ translate "dashboard.menu.contact_list" }} 
         </a>
       </li>
-      <li class="nav-item">
-        <a href="/dashboard/all-my-links" class="nav-link text-dark font-italic {{ternaryIf (iff page '==' 'all-my-links') 'bg-light' ''}}">
-          <i class="fa fa-cubes mr-3 text-primary fa-fw"></i>
-          {{ translate "dashboard.menu.all_links" }} 
-        </a>
-      </li>
+    
       <li class="nav-item">
         <a href="/dashboard/logout" class="nav-link text-dark font-italic" >
-          <i class="fa fa-cubes mr-3 text-primary fa-fw"></i>
+          <i class="fa fa-power-off mr-3 text-primary fa-fw"></i>
           {{ translate "dashboard.menu.logout" }} 
         </a>
       </li>
