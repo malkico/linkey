@@ -323,18 +323,6 @@
 				"incorrect": "Incorrect email or password"
 			}
 		},
-		"footer": {
-			"menu": {
-				"contact": "account_page.footer.menu.contact",
-				"terms_use": "account_page.footer.menu.terms_use",
-				"privacy": "account_page.footer.menu.privacy"
-			},
-			"made": {
-				"1": "account_page.footer.made.1",
-				"2": "account_page.footer.made.2"
-			},
-			"copyright": "account_page.footer.copyright"
-		},
 		"signup": {
 			"form": {
 				"first_name": {
@@ -394,6 +382,18 @@
 					"return": "Return to the login screen"
 				}
 			}
+		},
+		"footer": {
+			"menu": {
+				"contact": "account_page.footer.menu.contact",
+				"terms_use": "account_page.footer.menu.terms_use",
+				"privacy": "account_page.footer.menu.privacy"
+			},
+			"made": {
+				"1": "account_page.footer.made.1",
+				"2": "account_page.footer.made.2"
+			},
+			"copyright": "account_page.footer.copyright"
 		}
 	},
 	"dashboard": {

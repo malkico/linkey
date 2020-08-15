@@ -30,9 +30,9 @@ i18n.configure({
   directory: __dirname + '/locales',
   objectNotation: true,
   // setting of log level DEBUG - default to require('debug')('i18n:debug')
-  logDebugFn: function (msg) {
+  /* logDebugFn: function (msg) {
     console.log('debug', msg);
-  },
+  }, */ 
 
   // setting of log level WARN - default to require('debug')('i18n:warn')
   logWarnFn: function (msg) {
@@ -43,7 +43,7 @@ i18n.configure({
   logErrorFn: function (msg) {
     console.log('error', msg);
   },
-  api: {
+  api: { 
     '__': 't', //now req.__ becomes req.t
     '__n': 'tn' //and req.__n can be called as req.tn
   },
