@@ -43,6 +43,15 @@ const InfluencerSchema = new Schema({
             message : "models.influencer.niche.enum.message"
         }
     },
+    character: {
+        type: String,
+        required: [true,"models.errors.required"],
+        default : "person",
+        enum: {
+            values: Object.keys(influencerCong.characters),
+            message : "models.influencer.character.enum.message"
+        }
+    },
     contacts: [{
         type: Schema.Types.ObjectId,
         ref: 'Contact',

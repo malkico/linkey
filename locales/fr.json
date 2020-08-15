@@ -151,6 +151,15 @@
 			"login": {
 				"required": "models.influencer.login.required",
 				"minlength": "models.influencer.login.minlength"
+			},
+			"character": {
+				"enum": {
+					"values": {
+						"person": "models.influencer.character.enum.values.person",
+						"group": "models.influencer.character.enum.values.group"
+					},
+					"message": "models.influencer.character.enum.message"
+				}
 			}
 		},
 		"link": {
@@ -434,6 +443,9 @@
 						"result": {
 							"success": "dashboard.profile.tabs.profile.form.result.success",
 							"error": "dashboard.profile.tabs.profile.form.result.error"
+						},
+						"character": {
+							"libelle": "dashboard.profile.tabs.profile.form.character.libelle"
 						}
 					}
 				},

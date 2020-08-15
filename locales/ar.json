@@ -244,6 +244,15 @@
 			},
 			"email_status": {
 				"required": "models.influencer.email_status.required"
+			},
+			"character": {
+				"enum": {
+					"values": {
+						"person": "models.influencer.character.enum.values.person",
+						"group": "models.influencer.character.enum.values.group"
+					},
+					"message": "models.influencer.character.enum.message"
+				}
 			}
 		},
 		"minlength": "models.minlength",
@@ -582,6 +591,9 @@
 						"result": {
 							"success": "dashboard.profile.tabs.profile.form.result.success",
 							"error": "dashboard.profile.tabs.profile.form.result.error"
+						},
+						"character": {
+							"libelle": "dashboard.profile.tabs.profile.form.character.libelle"
 						}
 					}
 				},

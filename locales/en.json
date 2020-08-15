@@ -112,6 +112,15 @@
 			},
 			"email_status": {
 				"required": "The email status is required"
+			},
+			"character": {
+				"enum": {
+					"values": {
+						"person": "Person",
+						"group": "Group/Company"
+					},
+					"message": "Please check what you have chosen"
+				}
 			}
 		},
 		"link": {
@@ -512,6 +521,9 @@
 						"result": {
 							"success": "The modifications are well done.",
 							"error": "An error occurred while modifying the data."
+						},
+						"character": {
+							"libelle": "I'm a"
 						}
 					}
 				},
