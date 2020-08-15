@@ -2,16 +2,11 @@
 
 <!-- Page content holder -->
 <div class="page-content p-2 px-md-3 pt-md-4" id="content">
-  <!-- Toggle button -->
-  <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><i
-      class="fa fa-bars mr-2"></i><small class="text-uppercase font-weight-bold">
-        {{ translate "dashboard.generals.toggle" }} 
-
-      </small></button>
+{{> "influencer/menu_toggle"}}
 
 
   <!-- Demo content -->
-  <h3 class="display-4 text-white">{{ page_title }} </h3>
+  <h2 class="text-white">{{ page_title }} </h2>
   {{#if result}}
   <div class="col-lg-6 alert alert-{{ternaryIf success 'success' 'danger'}} " role="alert">
     {{result}}
@@ -85,10 +80,6 @@
 
 
 
-  <p class="lead text-white mb-0">Build a fixed sidebar using Bootstrap 4 vertical navigation and media objects.</p>
-  <p class="lead text-white">Snippet by <a href="https://bootstrapious.com/snippets" class="text-white">
-      <u>Bootstrapious</u></a>
-  </p>
   <div class="separator"></div>
 
 </div>

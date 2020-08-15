@@ -458,7 +458,12 @@
 			"all_links": "dashboard.menu.all_links",
 			"toggle": "dashboard.menu.toggle",
 			"logout": "dashboard.menu.logout",
-			"profile": "dashboard.menu.profile"
+			"profile": "dashboard.menu.profile",
+			"coming_soon": "dashboard.menu.coming_soon",
+			"subscribers": "dashboard.menu.subscribers",
+			"stats": "dashboard.menu.stats",
+			"themes": "dashboard.menu.themes",
+			"home": "dashboard.menu.home"
 		},
 		"add_link": {
 			"page_title": "dashboard.add_link.page_title",
@@ -633,6 +638,19 @@
 					"cant_update": "dashboard.update_link.form.result.cant_update",
 					"success": "dashboard.update_link.form.result.success",
 					"not_yours": "dashboard.update_link.form.result.not_yours"
+				}
+			}
+		},
+		"home": {
+			"welcome": {
+				"0": "dashboard.home.welcome.0",
+				"1": "dashboard.home.welcome.1"
+			},
+			"link": {
+				"ready": "dashboard.home.link.ready",
+				"create": {
+					"insta": "dashboard.home.link.create.insta",
+					"here": "dashboard.home.link.create.here"
 				}
 			}
 		}

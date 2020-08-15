@@ -11,7 +11,6 @@ const registerHelper = require("./config/registerHelper")
 const dotenv = require("dotenv");
 dotenv.config();
 const Handlebars = require('handlebars')
-const auth = require("./middlwares/auth")
 const changeLang = require("./middlwares/changeLang")
 const {
   allowInsecurePrototypeAccess
@@ -31,9 +30,9 @@ i18n.configure({
   directory: __dirname + '/locales',
   objectNotation: true,
   // setting of log level DEBUG - default to require('debug')('i18n:debug')
-  logDebugFn: function (msg) {
+  /* logDebugFn: function (msg) {
     console.log('debug', msg);
-  },
+  }, */ 
 
   // setting of log level WARN - default to require('debug')('i18n:warn')
   logWarnFn: function (msg) {
@@ -44,7 +43,7 @@ i18n.configure({
   logErrorFn: function (msg) {
     console.log('error', msg);
   },
-  api: {
+  api: { 
     '__': 't', //now req.__ becomes req.t
     '__n': 'tn' //and req.__n can be called as req.tn
   },
@@ -140,7 +139,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/u', followerRouter);
 app.get("/account/confirmation/:code",require("./controllers/confirmationEmailController").get)
-app.use("/dashboard/", auth, influencerRouter)
+app.use("/dashboard/", influencerRouter)
 
 
 // catch 404 and forward to error handler
