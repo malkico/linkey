@@ -112,6 +112,15 @@
 			},
 			"email_status": {
 				"required": "The email status is required"
+			},
+			"character": {
+				"enum": {
+					"values": {
+						"person": "Person",
+						"group": "Group/Company"
+					},
+					"message": "Please check what you have chosen"
+				}
 			}
 		},
 		"link": {
@@ -264,7 +273,13 @@
 			"create_mine": "CREATE %s OWN SEARCH ENGINE"
 		},
 		"influencer": {
-			"find": "Find us"
+			"find": {
+				"character": {
+					"person": "me",
+					"group": "us"
+				},
+				"label": "Find %s"
+			}
 		},
 		"footer": {
 			"made": {
@@ -441,7 +456,9 @@
 					"created": "Created at"
 				},
 				"link": {
-					"main": "Make it\non main"
+					"main": "Make it\non main",
+					"delete_btn": "Remove this",
+					"edit_btn": "Edit this"
 				},
 				"DataTable": {
 					"emptyTable": "No data available in table",
@@ -512,6 +529,9 @@
 						"result": {
 							"success": "The modifications are well done.",
 							"error": "An error occurred while modifying the data."
+						},
+						"character": {
+							"libelle": "I'm a"
 						}
 					}
 				},

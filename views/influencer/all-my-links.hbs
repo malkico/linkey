@@ -2,7 +2,7 @@
 
 <!-- Page content holder -->
 <div class="page-content p-2 px-md-3 pt-md-4 all-links" id="content">
-{{> "influencer/menu_toggle"}}
+    {{> "influencer/menu_toggle"}}
 
     <!-- Demo content -->
     <h2 class=" text-white">{{ translate "dashboard.all_links.page_title" }}</h2>
@@ -51,8 +51,14 @@
                             </td>
                             <td>
                                 <div class='actions d-flex flex-column ml-3 float-right'>
-                                    <a href="{{domain}}/dashboard/links/update/{{this._id}}"><i class="fas fa-pen fa-1x mb-2"></i></a>
-                                    <span class="remove"><i class="fas fa-trash-alt fa-1x "></i></span>
+                                    <a href="{{domain}}/dashboard/links/update/{{this._id}}" class="edit"
+                                        data-toggle="tooltip" data-placement="top"
+                                        title="{{translate "dashboard.all_links.table.link.edit_btn"}}">
+                                        <i class="fas fa-pen fa-1x mb-2"></i></a>
+                                    <span class="remove" data-toggle="tooltip" data-placement="top"
+                                        title="{{translate "dashboard.all_links.table.link.delete_btn"}}">
+                                        <i class="fas fa-trash-alt fa-1x "></i>
+                                    </span>
                                 </div>
 
                             </td>
@@ -104,7 +110,7 @@
 
         /* ************* make it on main **********************/
         $(".link input[name='main']").change(function (event) {
-            console.log("change main settings of %s",$(this).parents(".link").data('id'))
+            console.log("change main settings of %s", $(this).parents(".link").data('id'))
             fetch('{{domain}}/dashboard/all-my-links/on_main', {
                     method: 'POST',
                     headers: {
@@ -130,8 +136,10 @@
     });
 
 
-    /* ****************** remove a Link ******************* */  
-    $(".remove").click( function(event){
+    /* ****************** remove a Link ******************* */
+    $('.remove').tooltip()
+    $('.edit').tooltip()
+    $(".remove").click(function (event) {
         var link_tr;
         const fadeLink = () => {
             console.log("deleting...")
@@ -141,31 +149,29 @@
                 'background-color': '#fb6c6c'
             }, 300);
             return fetch('{{domain}}/dashboard/all-my-links/remove', {
-                    method: "POST",
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-type': 'application/json'
-                    },
-                    body : JSON.stringify({
-                        link_id: link_tr.data('id')
-                    })
+                method: "POST",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify({
+                    link_id: link_tr.data('id')
+                })
             })
         }
 
         fadeLink()
-        .then(response => response.json())
-        .then(response => {
-            console.log(response.message)
-            if(response.success){
-                link_tr.fadeOut()
-            }
-        })
-        .catch(err => {
-            console.log("error => %s ",err)
-        })
+            .then(response => response.json())
+            .then(response => {
+                console.log(response.message)
+                if (response.success) {
+                    link_tr.fadeOut()
+                }
+            })
+            .catch(err => {
+                console.log("error => %s ", err)
+            })
     })
-    
-
 </script>
 
 </body>

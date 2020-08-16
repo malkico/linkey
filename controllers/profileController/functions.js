@@ -32,6 +32,8 @@ exports.initPage = (req, res, next) => {
     res.locals.influencer_form = clone(res.locals.influencer)
     // res.locals.influencer_form.subscriber.first_name = "test22"
     res.locals.page = "profile"
-    res.locals.niches = require("../../models/config/influencerConf").niches
+    const influencerConf = require("../../models/config/influencerConf")
+    res.locals.niches = influencerConf.niches
+    res.locals.characters = influencerConf.characters
     next()
 }

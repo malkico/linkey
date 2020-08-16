@@ -8,7 +8,7 @@
         </li>
         <li class="nav-item bg-dark rounded-left">
           <a class="nav-link active small text-white bg-dark " href="/">
-          {{ translate "follower_page.menu.create_mine|@|MY"}}</a>
+            {{ translate "follower_page.menu.create_mine|@|MY"}}</a>
         </li>
       </ul>
     </div>
@@ -25,7 +25,13 @@
         </div>
       </div>
       <div class="social-media">
-        <i class="text-c-light">{{ translate "follower_page.influencer.find"}}</i>
+        <i class="text-c-light">
+          {{ translate "follower_page.influencer.find.label" 
+          ( ternaryIf (iff influencer.character "==" "person") 
+          (translate "follower_page.influencer.find.character.person")
+          (translate "follower_page.influencer.find.character.group") )
+           }}
+        </i>
         {{#each influencer.contacts}}
         <a href="{{this.full_URL}}"><i class="{{this.icone}}"></i></a>
         {{/each}}
@@ -56,7 +62,8 @@
         </div>
       </div>
       <div class="result col-12">
-        <p class="text-center" data-nothing-found="{{ translate "follower_page.search_form.result.nothing_found"}}">Default message.</p>
+        <p class="text-center" data-nothing-found="{{ translate "follower_page.search_form.result.nothing_found"}}">
+          Default message.</p>
       </div>
 
       <div class="links col-12 offset-sm-1 col-sm-10">
@@ -131,10 +138,12 @@
             <!--Copyright-->
             <p class="row">
               <span class="col-12">
-                {{ translate "follower_page.footer.made.1"}} <i class="fa fa-heart pulse"></i> {{ translate "follower_page.footer.made.2"}}<strong><a href="https://instagram.com/malki_hi"
+                {{ translate "follower_page.footer.made.1"}} <i class="fa fa-heart pulse"></i>
+                {{ translate "follower_page.footer.made.2"}}<strong><a href="https://instagram.com/malki_hi"
                     class='text-dark'>
                     malki_co</a> </strong></span>
-              <span class="col-12"><u><a class="text-white" href="/">LINKEY</a></u> © 2020 {{ translate "follower_page.footer.copyright"}}</span>
+              <span class="col-12"><u><a class="text-white" href="/">LINKEY</a></u> © 2020
+                {{ translate "follower_page.footer.copyright"}}</span>
             </p>
 
           </div>

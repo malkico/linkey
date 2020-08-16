@@ -151,6 +151,15 @@
 			"login": {
 				"required": "models.influencer.login.required",
 				"minlength": "models.influencer.login.minlength"
+			},
+			"character": {
+				"enum": {
+					"values": {
+						"person": "models.influencer.character.enum.values.person",
+						"group": "models.influencer.character.enum.values.group"
+					},
+					"message": "models.influencer.character.enum.message"
+				}
 			}
 		},
 		"link": {
@@ -357,7 +366,9 @@
 					"created": "dashboard.all_links.table.head.created"
 				},
 				"link": {
-					"main": "dashboard.all_links.table.link.main"
+					"main": "dashboard.all_links.table.link.main",
+					"delete_btn": "dashboard.all_links.table.link.delete_btn",
+					"edit_btn": "dashboard.all_links.table.link.edit_btn"
 				},
 				"DataTable": {
 					"emptyTable": "dashboard.all_links.table.DataTable.emptyTable",
@@ -434,6 +445,9 @@
 						"result": {
 							"success": "dashboard.profile.tabs.profile.form.result.success",
 							"error": "dashboard.profile.tabs.profile.form.result.error"
+						},
+						"character": {
+							"libelle": "dashboard.profile.tabs.profile.form.character.libelle"
 						}
 					}
 				},
@@ -513,7 +527,13 @@
 			"create_mine": "follower_page.menu.create_mine"
 		},
 		"influencer": {
-			"find": "follower_page.influencer.find"
+			"find": {
+				"character": {
+					"person": "follower_page.influencer.find.character.person",
+					"group": "follower_page.influencer.find.character.group"
+				},
+				"label": "follower_page.influencer.find.label"
+			}
 		},
 		"search_form": {
 			"keyword": "follower_page.search_form.keyword",

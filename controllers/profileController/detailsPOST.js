@@ -7,7 +7,7 @@ const {
 } = require("express-validator")
 const specialFns = require("../../config/specialFunctions")
 const Influencer = require("../../models/influencer")
-const Subscriber = require("../../models/subscriber")
+const Subscriber = require("../../models/subscriber") 
 const mongoose = require("mongoose")
 const async = require("async")
 const helpers = require("../../config/registerHelper")
@@ -22,6 +22,7 @@ const helpers = require("../../config/registerHelper")
     check("last_name").trim().custom(specialFns.checkSpecialChars),
     check("login").trim().custom(specialFns.checkSpecialChars),
     check("niche").trim().custom(specialFns.checkSpecialChars),
+    check("character").trim().custom(specialFns.checkSpecialChars),
 
     /* *************************** initiale form *********/
     (req, res, next) => {
@@ -32,7 +33,8 @@ const helpers = require("../../config/registerHelper")
             },
             last_name: req.body.last_name,
             login: req.body.login,
-            niche: req.body.niche
+            niche: req.body.niche,
+            character: req.body.character
         }
 
         next()
@@ -65,13 +67,18 @@ const helpers = require("../../config/registerHelper")
     (req, res, next) => {
         async.parallel({
             updateInfluencer: callback => {
+                
+                if(req.body.last_name === "")
+                    req.body.last_name = null
+                
                 Influencer.findOneAndUpdate({
                         _id: mongoose.Types.ObjectId(res.locals.influencer._id),
                     }, {
                         $set: {
                             last_name: req.body.last_name,
                             login: req.body.login,
-                            niche: req.body.niche
+                            niche: req.body.niche,
+                            character: req.body.character
                         }
 
                         // ...req.boy
