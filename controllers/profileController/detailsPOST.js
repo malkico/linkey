@@ -67,6 +67,10 @@ const helpers = require("../../config/registerHelper")
     (req, res, next) => {
         async.parallel({
             updateInfluencer: callback => {
+                
+                if(req.body.last_name === "")
+                    req.body.last_name = null
+                
                 Influencer.findOneAndUpdate({
                         _id: mongoose.Types.ObjectId(res.locals.influencer._id),
                     }, {
