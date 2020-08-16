@@ -456,7 +456,9 @@
 					"created": "Created at"
 				},
 				"link": {
-					"main": "Make it\non main"
+					"main": "Make it\non main",
+					"delete_btn": "Remove this",
+					"edit_btn": "Edit this"
 				},
 				"DataTable": {
 					"emptyTable": "No data available in table",

@@ -366,7 +366,9 @@
 					"created": "dashboard.all_links.table.head.created"
 				},
 				"link": {
-					"main": "dashboard.all_links.table.link.main"
+					"main": "dashboard.all_links.table.link.main",
+					"delete_btn": "dashboard.all_links.table.link.delete_btn",
+					"edit_btn": "dashboard.all_links.table.link.edit_btn"
 				},
 				"DataTable": {
 					"emptyTable": "dashboard.all_links.table.DataTable.emptyTable",
