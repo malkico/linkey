@@ -377,7 +377,7 @@
 			},
 			"page_title": "Sign up"
 		},
-		"reset_password": {
+				"reset_password": {
 			"result": {
 				"password_sent": "We have sent a password reset link to your mailbox if it exists.",
 				"password_reset": "Your password has been reset"
