@@ -17,7 +17,7 @@ exports.get = [
     (req, res, next) => {
         Influencer.findOne({
                 login: req.params.login
-            }).populate("links").populate("contacts")
+            }).populate("links","",null,{sort:{date_modification: -1}}).populate("contacts")
             .then(result => {
                 if (Object.keys(result).length) {
                     res.locals.influencer = result

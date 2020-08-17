@@ -7,7 +7,8 @@ module.exports = [
         Link.updateOne({
             _id: ObjectId(req.body.link_id)
         }, {
-            main: req.body.main
+            main: req.body.main,
+            date_modification: new Date().toISOString()
         }, {
             runValidators: true
         }).then(result => {

@@ -102,7 +102,8 @@ exports.post = [
                         main: res.locals.link.main,
                         KEY: res.locals.link.KEY,
                         title: res.locals.link.title,
-                        URL: res.locals.link.URL
+                        URL: res.locals.link.URL,
+                        date_modification: new Date().toISOString()
                     }
                 }, {
                     new: false,
