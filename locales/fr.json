@@ -625,5 +625,17 @@
 				}
 			}
 		}
+	},
+	"contact_page": {
+		"title": "contact_page.title",
+		"contact": {
+			"send_email": "contact_page.contact.send_email",
+			"other_ways": "contact_page.contact.other_ways"
+		},
+		"founder": {
+			"title": "contact_page.founder.title",
+			"desc": "contact_page.founder.desc",
+			"button": "contact_page.founder.button"
+		}
 	}
 }
