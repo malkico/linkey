@@ -25,7 +25,7 @@
       {{/if}}
 
       <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-        <form method="POST">
+        <form method="POST" action="/sign-up">
           <div class="form-row">
             <div class="col-12 mb-md-0 ">
               <input name="first_name" value="{{ subscriber.first_name }}" type="text" autocomplete='given-name'
@@ -51,7 +51,7 @@
       <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
         <ul class="list-inline mb-2">
           <li class="list-inline-item">
-            <a href="mailto:hichamlmalki@gmail.com"> {{ translate "main_page.footer.menu.contact"}} </a>
+            <a href="contact"> {{ translate "main_page.footer.menu.contact"}} </a>
           </li>
           <li class="list-inline-item">⋅</li>
           <li class="list-inline-item">

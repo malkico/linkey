@@ -23,6 +23,7 @@ router.get('/privacy-policy', function(req, res, next) {
   res.render('main/privacy-policy');
 });
 
+router.get("/contact", require("../controllers/contactUscontroller"))
 
 router.get("/log-in", loginCtrl.getPage)
 router.post("/log-in", loginCtrl.loginIn)

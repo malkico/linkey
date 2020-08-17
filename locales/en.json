@@ -397,6 +397,18 @@
 					"return": "Return to the login screen"
 				}
 			}
+		},
+		"footer": {
+			"menu": {
+				"contact": "account_page.footer.menu.contact",
+				"terms_use": "account_page.footer.menu.terms_use",
+				"privacy": "account_page.footer.menu.privacy"
+			},
+			"made": {
+				"1": "account_page.footer.made.1",
+				"2": "account_page.footer.made.2"
+			},
+			"copyright": "account_page.footer.copyright"
 		}
 	},
 	"dashboard": {
@@ -602,6 +614,18 @@
 			"1": "Dear %s, \n\nA new password has been reset for you : ",
 			"2": "Please follow the link to set your password. \n%s",
 			"3": "If you didn't request your password to be reset, please ignore this email, and no changes will be made. \n\nThanks! \nThe LINKEY Team"
+		}
+	},
+	"contact_page": {
+		"title": "Our team is here to help",
+		"contact": {
+			"send_email": "Send us an",
+			"other_ways": "Other ways to connect"
+		},
+		"founder": {
+			"title": "The founder",
+			"desc": "I need your advices and suggestions, to improve our service.",
+			"button": "Contact me"
 		}
 	}
 }
