@@ -22,6 +22,7 @@ const getController = (req, res) => {
 
 const postController = [
     (req, res, next) => {
+        console.log("post Ctrl");
         res.locals.niches = influencerCong.niches
         res.locals.subscriber_signin = req.session.subscriber_signin
         next()
@@ -187,7 +188,7 @@ const postController = [
         })
 
     }, (req, res, next) => {
-        mailer.send(res.locals.subscriber, res.locals.influencer,confirm_code, next)
+        mailer.send(res.locals.subscriber, res.locals.influencer, confirm_code, next)
     },
     (req, res) => {
         console.log("influencer and saved! new client yéeeey")
