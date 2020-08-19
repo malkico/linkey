@@ -95,6 +95,7 @@ http.listen(3000, "127.0.0.1");
 
 
 app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist'));
+app.use('/mdbootstrap', express.static(__dirname + '/node_modules/mdbootstrap'));
 app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist'));
 app.use('/popper.js', express.static(__dirname + '/node_modules/popper.js/dist/umd'));
 app.use('/fontawesome', express.static(__dirname + '/node_modules/@fortawesome/fontawesome-free'));
