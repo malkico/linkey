@@ -21,7 +21,7 @@
         <div class="form-group">
           <label for="URL">{{ translate "dashboard.add_link.form.URL.label" }}</label>
           <input name="URL" value="{{link.URL}}" class="{{ternaryIf myErrors.URL 'is-invalid' ''}} form-control"
-            placeholder="{{ translate "dashboard.add_link.form.URL.placeholder" }}" id="URL" type="url" autocomplete="on" aria-describedby="urlHelp">
+            placeholder="{{ translate "dashboard.add_link.form.URL.placeholder" }}" id="URL" type="text" autocomplete="on" aria-describedby="urlHelp">
           {{#if myErrors.URL }}
           <small id="urlHelp" class="form-text text-danger">{{ myErrors.URL }}</small>
           {{/if}}

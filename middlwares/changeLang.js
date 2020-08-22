@@ -1,7 +1,8 @@
 const i18n = require("i18n")
 module.exports = (req, res, next) => {
     let lang;
-    const lang_allowed = ['en', 'fr', 'ar', 'es']
+    // const lang_allowed = ['en', 'fr']
+    const lang_allowed = ['en']
     const lang_cookie = "i18n_lang_2"
     lang = req.acceptsLanguages(lang_allowed);
     

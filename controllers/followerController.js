@@ -9,6 +9,7 @@ exports.get = [
     /* ************************** INITIALISE ****************/
     (req, res, next) => {
         console.log("follower_id : %s",req.cookies.follower_id)
+        res.locals.env = process.env
         res.setHeader("Content-type", "text/html");
         next()
     },
