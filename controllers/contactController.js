@@ -13,6 +13,7 @@ const ObjectId = require("mongoose").Types.ObjectId
 
 const initialPage = (req, res, next) => {
     console.log("initiale the page")
+    console.log(helper.translate("dashboard.contact_list.form.URL.placeholder.username"))
     res.locals.preURL = contactConf.preURL
     res.locals.icone = contactConf.icone
     res.locals.page = "contact-list"
@@ -170,7 +171,7 @@ exports.post = [
 
     /* ************************** The LAST middleware ***************/
     (req, res) => {
-        res.locals.result = helper.translate("dashboard.contact_list.form.result.success ")
+        res.locals.result = helper.translate("dashboard.contact_list.form.result.success")
         res.locals.success = true
         res.render(page)
         return

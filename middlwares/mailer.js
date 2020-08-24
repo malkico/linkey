@@ -38,10 +38,10 @@ exports.send = async (subscriber, influencer, confirm_code, next) => {
     console.log("confirmation_URL ==> %s ", confirmation_URL)
     const mailOptions = {
         to: subscriber.email,
-        subject: 'Sending Email using Node.js',
-        html: "<pre>" + helper.translate("mailer.welcome.1", subscriber.first_name, influencer.login, influencer.password) +
+        subject: helper.translate("mailer.welcome.title"),
+        html: "<pre>" + helper.translate("mailer.welcome.1", subscriber.first_name, subscriber.email, influencer.password) +
             "<a href='" + confirmation_URL + "'>" + confirmation_URL + "</a>" +
-            helper.translate("mailer.welcome.2") +
+            helper.translate("mailer.welcome.2") + "." +
             "</pre>"
     };
 
@@ -72,7 +72,7 @@ exports.resetPass = async (influencer, res, next, page) => {
         // to : "khkjhkjkjh@hgj.ih",
         subject: 'Password reset request | ' + process.env.plateform_name,
         html: "<pre>" + helper.translate("mailer.reset_password.1", influencer.subscriber.first_name) + "<b>" + password + "</b>" +
-            "\n\n" + helper.translate("mailer.reset_password.2", reset_URL) +
+            "\n\n" + helper.translate("mailer.reset_password.2", ) + ". \n" + reset_URL +
             "\n\n" +
             helper.translate("mailer.reset_password.3") +
             "</pre>"
