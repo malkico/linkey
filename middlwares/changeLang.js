@@ -1,9 +1,10 @@
 const i18n = require("i18n")
 module.exports = (req, res, next) => {
+    res.locals.env = process.env
     let lang;
     const lang_allowed = ['en', 'fr']
     // const lang_allowed = ['en']
-    const lang_cookie = "i18n_lang_2"
+    const lang_cookie = process.env.prefix + "lang"
     lang = req.acceptsLanguages(lang_allowed);
     
     if (req.query.lang && lang_allowed.filter(v => v === req.query.lang).length) {

@@ -21,9 +21,6 @@ const customize_footer = function(){
     }
 }
 
-// console.log("follower cookie => %s", getCookie("follower_id"))
-console.log("i18n_lang cookie => %s", getCookie("i18n_lang_2"))
-
 $(() => {
 
     // *************************** customize_footer ***************
@@ -134,7 +131,7 @@ $(() => {
         // customize_footerrrr()
         socket.emit("search", {
                 keyword: form.find("input").val(),
-                follower_id: getCookie("follower_id"),
+                follower_id: getCookie($("body").data("prefix")+"follower_id"),
                 influencer_id: $("body").data('influencerId')
             },
             (data) => {
@@ -214,7 +211,7 @@ $(() => {
 
         socket.emit('click', {
             link_id: $(this).data("id"),
-            follower_id: getCookie("follower_id"),
+            follower_id: getCookie($("body").data("prefix")+"follower_id"),
             search_id: $("form input").data("id")
         }, data => {
             if (data.confirm) {

@@ -23,7 +23,7 @@ i18n.configure({
   defaultLocale: 'en',
   queryParameter: 'switch_lang',
   // fallbacks : "en",
-  cookie: 'i18n_lang',
+  cookie: process.env.prefix + 'i18n_lang',
   updateFiles: true, // default true :: if I use some word don't exist on my files local, it will create automatically
   syncFiles: true, // default false
   autoReload: true, // defeaul false
@@ -54,7 +54,7 @@ app.use(i18n.init);
 app.set('trust proxy', 1) // trust first proxy
 app.use(cookieParser());
 app.use(cookieSession({
-  name: 'session',
+  name: process.env.prefix + 'session',
   keys: ['key1', 'key2']
 }))
 

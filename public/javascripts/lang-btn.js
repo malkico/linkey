@@ -17,7 +17,7 @@ const getCookie = (name) => {
     $(".bootstrap-select .dropdown-toggle").css("padding",'0 0.4rem').addClass("auto-my").css("border-color","#9a9da0")
 
     // *********************** SET icon for the currect langage
-    switch(getCookie("i18n_lang_2")){
+    switch(getCookie($("body").data("prefix")+"lang")){
       case 'en' :
         $(".bootstrap-select .dropdown-toggle .flag").addClass("united states")
         console.log("lang button en")

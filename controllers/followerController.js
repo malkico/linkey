@@ -8,7 +8,7 @@ const follower_page = "follower/index"
 exports.get = [
     /* ************************** INITIALISE ****************/
     (req, res, next) => {
-        console.log("follower_id : %s",req.cookies.follower_id)
+        console.log("follower_id : %s",req.cookies[process.env.prefix+"follower_id"])
         res.locals.env = process.env
         res.setHeader("Content-type", "text/html");
         next()
@@ -58,7 +58,7 @@ exports.get = [
                 console.log("follower not saved!")
                 res.render(follower_page)
             } else {
-                res.cookie("follower_id", result._id.toString(),{SameSite : "Strict"})
+                res.cookie(process.env.prefix+"follower_id", result._id.toString(),{SameSite : "Strict"})
                 res.locals.follower = result
                 console.log("This follower => %s",result)
                 next()

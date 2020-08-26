@@ -560,7 +560,8 @@
 					}
 				},
 				"result": {
-					"success ": "dashboard.contact_list.form.result.success "
+					"success ": "dashboard.contact_list.form.result.success ",
+					"success": "dashboard.contact_list.form.result.success"
 				}
 			},
 			"all": {
