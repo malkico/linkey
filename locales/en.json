@@ -38,7 +38,9 @@
 						"store": "Store",
 						"portfolio": "Portfolio",
 						"website": "Personal/Company Website",
-						"other": "Other"
+						"other": "Other",
+						"medium": "Medium",
+						"vk": "Vk"
 					},
 					"message": "If you didn't find your social media, you can choose other"
 				}

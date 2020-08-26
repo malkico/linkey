@@ -38,7 +38,9 @@
 						"store": "Boutique",
 						"portfolio": "Portfolio",
 						"website": "Site Web Personnel/Entreprise",
-						"other": "Autre"
+						"other": "Autre",
+						"medium": "Medium",
+						"vk": "Vk"
 					},
 					"message": "Si vous n'avez pas trouvé votre réseau social, choisissez autre"
 				}

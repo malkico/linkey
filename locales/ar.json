@@ -160,7 +160,9 @@
 						"store": "models.contact.which.enum.values.store",
 						"portfolio": "models.contact.which.enum.values.portfolio",
 						"website": "models.contact.which.enum.values.website",
-						"other": "models.contact.which.enum.values.other"
+						"other": "models.contact.which.enum.values.other",
+						"medium": "models.contact.which.enum.values.medium",
+						"vk": "models.contact.which.enum.values.vk"
 					},
 					"message": "models.contact.which.enum.message"
 				}
