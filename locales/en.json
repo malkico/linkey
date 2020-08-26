@@ -594,9 +594,9 @@
 	},
 	"mailer": {
 		"welcome": {
-			"title" : "Welcome! the 7linky Team",
 			"1": "Dear %s,\n\nThank you for your confidence in 7linKy, you will find below your authentication details \nEmail: %s \nPassword: %s \n\nYou must also confirm your account by clicking on this link below\n",
-			"2": "\n\nWe wish you a very good experience with us"
+			"2": "\n\nWe wish you a very good experience with us",
+			"title": "Welcome! the 7linky Team"
 		},
 		"reset_password": {
 			"1": "Dear %s, \n\nA new password has been reset for you : ",
