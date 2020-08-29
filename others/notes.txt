@@ -1,0 +1,69 @@
+#Profile
+#password
+# details
+
+# reinitialisation password
+# send confirm code to email
+
+# All links
+
+# modify link
+
+# index page admin
+
+# Analytics (page en cours de construction)
+
+# signup(soon)
+
+
+
+
+
+# logo
+# translate
+# left menu assenseur
+# process.env domain
+# admin menu icons
+
+
+# contact page
+# contact us on pro plan index page + coming soon on newsletter
+# they looking for.pri ?? on index page
+# me or us (maybe you should remove it)
+# title on all links (delete this and edit this)
+
+# last name can be null
+# find us
+# find me
+
+# demo user
+
+# links order by updated_date
+# sign-in form always go to action page !!
+# the new name 	
+# translate to frensh
+# translate button
+#cookies prefix
+# Add medium social media
+#two database on mongoDb
+
+recognize folders + add requetes utiles
+maid to send to influencers
+post ideas on my social networs
+keep calm and use 
+
+Apostrophe {{}} maybe just on javascript
+change email + verification
+
+
+create facebook, linkedin + instagram page
+email on contact
+email on controller (mailer)
+Google Analytics
+contact adsense and facebook Ads
+
+check browsers + insta
+
+
+
+https://geekflare.com/nodejs-security-scanner/

@@ -40,7 +40,8 @@
 						"website": "Personal/Company Website",
 						"other": "Other",
 						"medium": "Medium",
-						"vk": "Vk"
+						"vk": "Vk",
+						"patreon": "Patreon"
 					},
 					"message": "If you didn't find your social media, you can choose other"
 				}

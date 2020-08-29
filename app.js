@@ -77,6 +77,7 @@ const influencerRouter = require("./routes/influencer")
 /* ************************** create connection */
 const mongoose = require("mongoose")
 const mongoDB = "mongodb+srv://root:root@cluster0-6qetu.gcp.mongodb.net/linkey?retryWrites=true&w=majority"
+// const mongoDB = "mongodb+srv://root:root@cluster0-6qetu.gcp.mongodb.net/7linKy_test?retryWrites=true&w=majority"
 mongoose.connect(mongoDB, {
   useNewUrlParser: true,
   useUnifiedTopology: true,

@@ -11,6 +11,7 @@ exports.which = {
     'medium' : "models.contact.which.enum.values.medium",
     'behance' : "models.contact.which.enum.values.behance",
     'twitch' : "models.contact.which.enum.values.twitch",
+    'patreon' : "models.contact.which.enum.values.patreon",
     'email' : "models.contact.which.enum.values.email",
     'whatsapp' : "models.contact.which.enum.values.whatsapp",
     'blog' : "models.contact.which.enum.values.blog",
@@ -53,6 +54,7 @@ exports.preURL = {
     'medium' : 'https://medium.com/@',
     'behance': 'https://www.behance.net/',
     'twitch': 'https://www.twitch.tv/',
+    'patreon' : "https://www.patreon.com/",
     'email': 'mailto:',
     'whatsapp' : 'tel:'
 }
@@ -70,6 +72,7 @@ exports.icone = {
     'medium' : 'fab fa-medium-m',
     'behance' : 'fab fa-behance',
     'twitch' : 'fab fa-twitch',
+    'patreon' : "fab fa-patreon",
     'email' : 'fas fa-at at-icone',
     'whatsapp' : 'fab fa-whatsapp',
     'blog' : 'fab fa-blogger-b',

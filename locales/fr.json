@@ -40,7 +40,8 @@
 						"website": "Site Web Personnel/Entreprise",
 						"other": "Autre",
 						"medium": "Medium",
-						"vk": "Vk"
+						"vk": "Vk",
+						"patreon": "Patreon"
 					},
 					"message": "Si vous n'avez pas trouvé votre réseau social, choisissez autre"
 				}
