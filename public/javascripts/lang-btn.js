@@ -12,8 +12,8 @@ const getCookie = (name) => {
     $('.bootstrap-select button').css("width", "max-content")
     $('.bootstrap-select .dropdown-menu').css("background-color", "rgba(0, 0, 0, 0)")
     .css("padding-bottom",0)
-    .css("width", $('.bootstrap-select button').css("width"))
-    $('.bootstrap-select .dropdown-menu div.inner').css("width", "max-content").css("background-color","#fff")
+    // .css("width", $('.bootstrap-select button').css("width"))
+    $('.bootstrap-select .dropdown-menu div.inner').css("width", "100%") .css("background-color","#fff")
     $(".bootstrap-select .dropdown-toggle").css("padding",'0 0.4rem').addClass("auto-my").css("border-color","#9a9da0")
 
     // *********************** SET icon for the currect langage
@@ -31,9 +31,10 @@ const getCookie = (name) => {
     // *********************** change lang
     let dropdown_item = false
     $(".bootstrap-select .dropdown-toggle").click( function(){
+      $('.bootstrap-select .dropdown-item').removeClass("active")
       if(!dropdown_item){
         $('.bootstrap-select .dropdown-item .flag').css("margin","0rem")
-        $('.bootstrap-select .dropdown-item').removeClass("active").css("padding","0 0.5rem")
+        $('.bootstrap-select .dropdown-item').css("padding","0 0.5rem")
 
         $('.bootstrap-select a.dropdown-item').click(function() {
           console.log("change lang ....")
