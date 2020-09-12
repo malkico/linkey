@@ -1,5 +1,7 @@
 const Subscriber = require("../models/subscriber")
 const Influencer = require("../models/influencer")
+const InfluencerDao = require("../Dao/InfluencerDao")
+const SubscriberDao = require("../Dao/SubscriberDao")
 const influencerCong = require("../models/config/influencerConf")
 const specialFns = require("../config/specialFunctions")
 const bcrypt = require("bcrypt")
@@ -109,23 +111,21 @@ const postController = [
     (req, res, next) => {
 
         console.log("check and find the subscriber in database")
-        Subscriber.findOne({
-            _id: res.locals.subscriber._id,
-            email: res.locals.subscriber.email
-        }, (err, subscriber) => {
-            // if the  query don't find the subscriber
-            if (err) {
-                res.locals.myErrors["email"] = "An unexpected error has occurred, please return to the previous page and try again"
-                next(err)
-            } else if (subscriber)
-                next()
-            else {
-                res.locals.myErrors["email"] = "Something is wrong with your email, please contact us"
-                next(new Error(res.locals.myErrors["email"]))
-                console.log(res.locals.subscriber_id)
-            }
+        SubscriberDao.CheckisExist(res.locals.subscriber)
+            .exec((err, subscriber) => {
+                // if the  query don't find the subscriber
+                if (err) {
+                    res.locals.myErrors["email"] = "An unexpected error has occurred, please return to the previous page and try again"
+                    next(err)
+                } else if (subscriber)
+                    next()
+                else {
+                    res.locals.myErrors["email"] = "Something is wrong with your email, please contact us"
+                    next(new Error(res.locals.myErrors["email"]))
+                    console.log(res.locals.subscriber_id)
+                }
 
-        })
+            })
 
     },
     /* ********************** middleware to hashing my password */
@@ -147,11 +147,12 @@ const postController = [
     /* *************** middlware to save the email_status ********/
     (req, res, next) => {
         const Email_status = require("../models/email_status")
+        const EmailStatusDao = require("../Dao/EmailStatusDao")
         const email_status = new Email_status({
             email: res.locals.subscriber.email
         })
 
-        email_status.save().then(result => {
+        EmailStatusDao.saveOne(email_status).then(result => {
             if (Object.keys(result).length) {
                 confirm_code = result._id
                 next()
@@ -175,24 +176,24 @@ const postController = [
         influencerToSave.password = res.locals.hashed_pass
         console.log("influencerToSave => %s", influencerToSave)
         console.log("influencer form => %s", res.locals.influencer)
-        influencerToSave.save((err) => {
-            if (err) {
-                specialFns.catchErrors(err.errors, res.locals.myErrors)
-                // res.locals.result = "An error was produced during your registration, please contact us"
-                next(err)
-            } else {
-                req.session.influencer = influencerToSave
-                next()
-            }
+        InfluencerDao.signUp(influencerToSave, (err) => {
+                if (err) {
+                    specialFns.catchErrors(err.errors, res.locals.myErrors)
+                    // res.locals.result = "An error was produced during your registration, please contact us"
+                    next(err)
+                } else {
+                    req.session.influencer = influencerToSave
+                    next()
+                }
 
-        })
+            })
 
     }, (req, res, next) => {
         mailer.send(res.locals.subscriber, res.locals.influencer, confirm_code, next)
     },
     (req, res) => {
         console.log("influencer and saved! new client yéeeey")
-        res.clearCookie(process.env.prefix+'token')
+        res.clearCookie(process.env.prefix + 'token')
         res.redirect("/dashboard/")
     }
 ]

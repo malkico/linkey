@@ -47,10 +47,15 @@
 # Add medium social media
 #two database on mongoDb
 
-recognize folders + add requetes utiles
-maid to send to influencers
-post ideas on my social networs
-keep calm and use 
+# recognize folders + add requetes utiles
+# mail to send to influencers
+# post ideas on my social networs
+# keep calm and use 
+
+compare SubscriberDao.CheckisExist with old commit 
+
+emogis on links follower page
+Check click and search on follower page
 
 Apostrophe {{}} maybe just on javascript
 change email + verification
@@ -61,9 +66,15 @@ email on contact
 email on controller (mailer)
 Google Analytics
 contact adsense and facebook Ads
+mongodb on local
 
 check browsers + insta
 
+https://www.paypal.com/us/smarthelp/article/how-do-i-create-and-manage-paypal-subscriptions-faq4175?app=searchAutoComplete
 
 
 https://geekflare.com/nodejs-security-scanner/
+
+
+https://www.namecheap.com/support/knowledgebase/article.aspx/794/67/how-do-i-activate-an-ssl-certificate
+firewalld

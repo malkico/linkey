@@ -4,7 +4,8 @@ const helpers = require("../../config/registerHelper")
 const page = "influencer/profile"
 const bcrypt = require("bcrypt")
 
-const {    check,
+const {
+    check,
     validationResult
 } = require("express-validator")
 require
@@ -62,7 +63,7 @@ const passwordPOST = [
     /* ******************* middleware to compare the hashing password ****************/
     (req, res, next) => {
         console.log("compare the hashing password")
-        bcrypt.compare(res.locals.form.old_password, res.locals.influencer.password )
+        bcrypt.compare(res.locals.form.old_password, res.locals.influencer.password)
             .then(isEqual => {
                 if (isEqual) {
                     next()
@@ -88,7 +89,7 @@ const passwordPOST = [
         bcrypt.hash(res.locals.form.new_password, 10)
             .then((hashed) => {
                 res.locals.hashed_pass = hashed
-                console.log("%s => %s",res.locals.form.new_password,res.locals.hashed_pass)
+                console.log("%s => %s", res.locals.form.new_password, res.locals.hashed_pass)
                 next()
             })
             .catch((err) => {
@@ -103,16 +104,11 @@ const passwordPOST = [
     /* ******************* UPDATE the influencer *****************/
     (req, res, next) => {
 
-        const Influencer = require("../../models/influencer")
-        Influencer.updateOne({
-            _id : require("mongoose").Types.ObjectId(res.locals.influencer._id)
-            },{
-                password : res.locals.hashed_pass
-            },{
-                runValidators : true
-            }).then(result => {
-                if(result.nModified){
-                    console.log("result => %s",result)
+        const InfluencerDao = require("../../Dao/InfluencerDao")
+        InfluencerDao.changePassword(res.locals.influencer, res.locals.hashed_pass)
+            .then(result => {
+                if (result.nModified) {
+                    console.log("result => %s", result)
                     res.locals.result = helpers.translate("dashboard.profile.tabs.password.form.result.success")
                     res.locals.influencer.password = res.locals.hashed_pass
                     console.log(res.locals.result)
@@ -125,7 +121,7 @@ const passwordPOST = [
                 }
             }).catch(err => {
                 console.log(err)
-                res.locals.ressult = "Error! %s",err
+                res.locals.ressult = "Error! %s", err
                 res.render(page)
                 return
             })
@@ -136,7 +132,7 @@ const passwordPOST = [
     },
 
     (req, res, next) => {
-        console.log("influencer => %s" ,res.locals.influencer)
+        console.log("influencer => %s", res.locals.influencer)
         res.render(page)
     }
 ]

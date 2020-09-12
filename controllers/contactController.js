@@ -1,6 +1,7 @@
 const contactConf = require("../models/config/contactConf")
 const Contact = require("../models/contact")
-const Influencer = require("../models/influencer")
+const ContactDao = require("../Dao/ContactDao")
+const InfluencerDao = require("../Dao/InfluencerDao")
 const page = "influencer/contact-list"
 const helper = require("../config/registerHelper")
 const {
@@ -9,7 +10,6 @@ const {
 } = require("express-validator")
 const specialFncs = require("../config/specialFunctions")
 const async = require("async")
-const ObjectId = require("mongoose").Types.ObjectId
 
 const initialPage = (req, res, next) => {
     console.log("initiale the page")
@@ -26,7 +26,7 @@ const initialPage = (req, res, next) => {
 
 const getMyContactList = (req, res, next) => {
     console.log("getMyContactList")
-    Influencer.findById(res.locals.influencer._id).sort({}).populate("contacts")
+    InfluencerDao.getProfiles(res.locals.influencer)
         .then(result => {
             if (result) {
                 const not_allowed = []
@@ -114,7 +114,7 @@ exports.post = [
     (req, res, next) => {
         async.series({
             addContact: (callback) => {
-                res.locals.contact.save()
+                ContactDao.addOne(res.locals.contact)
                     .then(result => {
                         if (Object.keys(result).length)
                             callback(null, true)
@@ -131,26 +131,21 @@ exports.post = [
                     )
             },
             pushToInfluencer: (callback) => {
-                Influencer.updateOne({
-                    _id: res.locals.influencer._id
-                }, {
-                    $push: {
-                        contacts: res.locals.contact
-                    }
-                }).then(result => {
-                    if (Object.keys(result).length) {
-                        res.locals.contacts.push(res.locals.contact)
-                        console.log("filter my contact list on <select>")
-                        delete res.locals.which[res.locals.contact.which]
-                        callback(null, true)
-                    } else {
-                        res.locals.result = "Can't update your account, please try again"
-                        res.render(page)
-                        return
-                    }
-                }).catch(err => {
-                    callback(err, null)
-                })
+                InfluencerDao.addSocialProfile(res.locals.influencer, res.locals.contact)
+                    .then(result => {
+                        if (Object.keys(result).length) {
+                            res.locals.contacts.push(res.locals.contact)
+                            console.log("filter my contact list on <select>")
+                            delete res.locals.which[res.locals.contact.which]
+                            callback(null, true)
+                        } else {
+                            res.locals.result = "Can't update your account, please try again"
+                            res.render(page)
+                            return
+                        }
+                    }).catch(err => {
+                        callback(err, null)
+                    })
 
             }
         }, (err, results) => {
@@ -196,32 +191,25 @@ exports.delete = (req, res) => {
     async.series({
         removeFromInfluencer: (callback) => {
             console.log("removeFromInfluencer = %s", idContact)
-            Influencer.updateOne({
-                _id: res.locals.influencer._id
-            }, {
-                $pull: {
-                    contacts: ObjectId(idContact)
-                }
-            }).then(result => {
-                if (result.nModified) {
-                    console.log("The contact is pulled from your account")
-                    callback(null, true)
-                } else {
-                    message = "Can't pull the contact from your account"
-                    console.log(message)
-                    res.status(202).json({
-                        message: message
-                    })
-                }
-            }).catch(err => {
-                callback(err, null)
-            })
+            InfluencerDao.removeSocialProfile(res.locals.influencer, idContact)
+                .then(result => {
+                    if (result.nModified) {
+                        console.log("The contact is pulled from your account")
+                        callback(null, true)
+                    } else {
+                        message = "Can't pull the contact from your account"
+                        console.log(message)
+                        res.status(202).json({
+                            message: message
+                        })
+                    }
+                }).catch(err => {
+                    callback(err, null)
+                })
 
         },
         removeContact: (callback) => {
-            Contact.deleteOne({
-                    _id: idContact
-                })
+            ContactDao.deleteById(idContact)
                 .then(result => {
                     if (result.deletedCount) {
                         console.log("contact removed!")

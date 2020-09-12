@@ -12,12 +12,10 @@ const setConfirmationCookie = (res, message, success) => {
     })
 }
 
-const Email_status = require("../models/email_status")
+const EmailStatusDao = require("../Dao/EmailStatusDao")
 exports.get = [
     (req, res, next) => {
-        Email_status.findByIdAndUpdate(req.params.code, {
-            status: true
-        }).then(result => {
+            EmailStatusDao.setTrue(req.params.code).then(result => {
             if (Object.keys(result).length)
                 next()
             else {

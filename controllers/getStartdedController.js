@@ -1,6 +1,6 @@
-
 const Subscriber = require("../models/subscriber")
-const Influencer = require("../models/influencer")
+const InfluencerDao = require("../Dao/InfluencerDao")
+const SubsciberDao = require('../Dao/SubscriberDao')
 // const influencerCong = require("../models/config/influencerConf")
 const specialFns = require("../config/specialFunctions")
 
@@ -18,7 +18,7 @@ exports.postController = [
     // check('email').isEmail().normalizeEmail().withMessage("generals.errors.valid_email"),
     check('email').isEmail().withMessage(() => {
         return helper.translate("generals.errors.valid_email");
-      }),
+    }),
     /* .custom(value => {
         return Subscriber.findOne({
             email: value
@@ -75,58 +75,39 @@ exports.postController = [
     /* ********************** middleware to find an influencer with this email */
     (req, res, next) => {
         console.log("find an influencer")
-        Influencer.aggregate([{
-                    $lookup: {
-                        from: 'subscribers',
-                        localField: 'subscriber',
-                        foreignField: '_id',
-                        as: 'subscriber'
-                    }
-                },
-                {
-                    $match: {
-                        'subscriber.email': res.locals.subscriber.email
-                    }
+        InfluencerDao.findEmail(res.locals.subscriber)
+            .exec((err, influencers) => {
+                if (err) {
+                    res.locals.myErrors["email"] = "Something is wrong with your email, please contact us."
+                    next(err)
+                } else if (influencers.length) {
+                    res.locals.myErrors["email"] = helper.translate("sign_up.form.errors.email_taken")
+                    next(new Error(res.locals.myErrors["email"]))
+                    // next()
+                } else {
+                    next()
                 }
-            ]
-
-        ).exec((err, influencers) => {
-            if (err) {
-                res.locals.myErrors["email"] = "Something is wrong with your email, please contact us."
-                next(err)
-            } else if (influencers.length) {
-                res.locals.myErrors["email"] = helper.translate("sign_up.form.errors.email_taken")
-                next(new Error(res.locals.myErrors["email"]))
-                // next()
-            } else {
-                next()
-            }
-        })
+            })
 
     },
 
-    /* ***************** middlwares to update the subscribe if found ****************/
+    /* ***************** middlwares to update the subscriber if found ****************/
     (req, res, next) => {
         console.log("update the subscribe if found")
-        Subscriber.findOneAndUpdate({
-            email: res.locals.subscriber.email
-        }, {
-            first_name: res.locals.subscriber.first_name
-        }, {
-            runValidators: true
-        }, (err, subscriber) => {
-            if (err) {
-                specialFns.catchErrors(err.errors, res.locals.myErrors)
-                // res.locals.result = "An error was produced during your registration, please contact us"
-                next(err)
-            } else if (subscriber) {
-                res.locals.subscriber._id = subscriber._id
-                res.locals.subscriber_isUpdated = true
-                next()
-            } else {
-                next()
-            }
-        })
+        SubsciberDao.changeFirstNameByEmail(res.locals.subscriber)
+            .exec((err, subscriber) => {
+                if (err) {
+                    specialFns.catchErrors(err.errors, res.locals.myErrors)
+                    // res.locals.result = "An error was produced during your registration, please contact us"
+                    next(err)
+                } else if (subscriber) {
+                    res.locals.subscriber._id = subscriber._id
+                    res.locals.subscriber_isUpdated = true
+                    next()
+                } else {
+                    next()
+                }
+            })
     },
     /* ********************** middleware to save the subscriber in the data base */
     (req, res, next) => {
@@ -134,10 +115,10 @@ exports.postController = [
         console.log(res.locals.subscriber)
 
         if (res.locals.subscriber_isUpdated !== true) {
-            res.locals.subscriber.save(function (err) {
+            SubsciberDao.saveOne(res.locals.subscriber, function (err) {
                 if (err) {
                     console.log(err.stack)
-                    specialFns.catchErrors(err.errors,res.locals.myErrors)
+                    specialFns.catchErrors(err.errors, res.locals.myErrors)
                     // res.locals.result = "An error was produced during your registration, please contact us"
 
                     next(err)

@@ -1,5 +1,5 @@
 const specialFns = require("../config/specialFunctions")
-const Influencer = require("../models/influencer")
+const InfluencerDao = require("../Dao/InfluencerDao")
 const jwt = require('jsonwebtoken');
 const {
     check,
@@ -60,8 +60,8 @@ exports.loginIn = [
 
     /* ************ middleware to find a influencer ***********************/
     (req, res, next) => {
-        console.log("find a influencer")
-        Influencer.aggregate([{
+        console.log("find an influencer")
+        /* Influencer.aggregate([{
                     $lookup: {
                         from: "subscribers",
                         localField: "subscriber",
@@ -76,7 +76,8 @@ exports.loginIn = [
                 },{
                     $unwind: {"path":"$subscriber"}
                 }
-            ])
+            ]) */
+            InfluencerDao.findEmail( res.locals.subscriber)
             .then(influencers => {
                 if (influencers.length) {
                     influencerFound = influencers[0]
