@@ -77,7 +77,7 @@ exports.loginIn = [
                     $unwind: {"path":"$subscriber"}
                 }
             ]) */
-            InfluencerDao.findEmail( res.locals.subscriber)
+            InfluencerDao.findEmail( res.locals.influencer)
             .then(influencers => {
                 if (influencers.length) {
                     influencerFound = influencers[0]

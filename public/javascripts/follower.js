@@ -66,7 +66,7 @@ $(() => {
             span_key = "<span class='badge badge-c-dark'>KEY: " + key + "</span>"
         }
         return "<a href='" + url + "' class='text-dark filtred' data-id='" + _id + "'>" +
-            "<div class='alink list-group-item d-flex pr-0 pl-0 row pt-0'>" +
+            "<div class='alink d-flex pr-0 pl-0 row pt-0'>" +
             "<div class='d-flex offset-1 col-10 border-bottom pb-2 max-with'>" +
             "<p class='mb-0'><i class='fab fa-slack-hash fa-2x mr-4' aria-hidden='true'></i>" +
             "<div class='my-auto'>" +
@@ -93,7 +93,7 @@ $(() => {
                 allFilter = true;
             }
         })
-        return (link.key == parseInt(keywords, 10) || allFilter)
+        return (link.KEY == parseInt(keywords, 10) || allFilter)
     }
 
     // ++++++++++++++++ make keywords on bold style
@@ -115,8 +115,8 @@ $(() => {
         $(".all-links").fadeOut()
         $('.filtred').remove()
         founds.forEach(v => {
-            $(".links .list-group-flush").append(link_filtered(v.url, boldingKeyword(v.title, val),
-                v.key, v._id))
+            $(".links .list-group-flush").append(link_filtered(v.URL, boldingKeyword(v.title, val),
+                v.KEY, v._id))
         })
         return founds
     }
@@ -221,6 +221,7 @@ $(() => {
             }
 
             location.href = $(this).attr("href")
+            console.log("goto : "+$(this).attr("href"))
         });
     })
 

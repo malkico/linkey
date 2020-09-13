@@ -107,7 +107,7 @@ const getLinks = (login) => {
 }
 exports.getLinks = getLinks
 
-const findEmail = (subscriber) => {
+const findEmail = (influencer) => {
     const obj = [{
             $lookup: {
                 from: 'subscribers',
@@ -118,7 +118,7 @@ const findEmail = (subscriber) => {
         },
         {
             $match: {
-                "subscriber.email": subscriber.email
+                "subscriber.email": influencer.email
             }
         }, {
             $unwind: {
