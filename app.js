@@ -8,12 +8,12 @@ const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
 const exphbs = require('express-handlebars');
 const registerHelper = require("./config/registerHelper")
-const dotenv = require("dotenv");
-dotenv.config();
+const dotenv = require("dotenv"); 
+dotenv.config({ path: true });
+require('custom-env').env(true)
 const Handlebars = require('handlebars')
-const auth = require("./middlwares/auth")
 const changeLang = require("./middlwares/changeLang")
-const {
+const { 
   allowInsecurePrototypeAccess
 } = require('@handlebars/allow-prototype-access')
 
@@ -24,16 +24,16 @@ i18n.configure({
   defaultLocale: 'en',
   queryParameter: 'switch_lang',
   // fallbacks : "en",
-  cookie: 'i18n_lang',
+  cookie: process.env.prefix + 'i18n_lang',
   updateFiles: true, // default true :: if I use some word don't exist on my files local, it will create automatically
   syncFiles: true, // default false
   autoReload: true, // defeaul false
   directory: __dirname + '/locales',
   objectNotation: true,
   // setting of log level DEBUG - default to require('debug')('i18n:debug')
-  logDebugFn: function (msg) {
+  /* logDebugFn: function (msg) {
     console.log('debug', msg);
-  },
+  }, */ 
 
   // setting of log level WARN - default to require('debug')('i18n:warn')
   logWarnFn: function (msg) {
@@ -44,7 +44,7 @@ i18n.configure({
   logErrorFn: function (msg) {
     console.log('error', msg);
   },
-  api: {
+  api: { 
     '__': 't', //now req.__ becomes req.t
     '__n': 'tn' //and req.__n can be called as req.tn
   },
@@ -55,7 +55,7 @@ app.use(i18n.init);
 app.set('trust proxy', 1) // trust first proxy
 app.use(cookieParser());
 app.use(cookieSession({
-  name: 'session',
+  name: process.env.prefix + 'session',
   keys: ['key1', 'key2']
 }))
 
@@ -78,6 +78,7 @@ const influencerRouter = require("./routes/influencer")
 /* ************************** create connection */
 const mongoose = require("mongoose")
 const mongoDB = "mongodb+srv://root:root@cluster0-6qetu.gcp.mongodb.net/linkey?retryWrites=true&w=majority"
+// const mongoDB = "mongodb+srv://root:root@cluster0-6qetu.gcp.mongodb.net/7linKy_test?retryWrites=true&w=majority"
 mongoose.connect(mongoDB, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -96,6 +97,7 @@ http.listen(3000, "127.0.0.1");
 
 
 app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist'));
+app.use('/mdbootstrap', express.static(__dirname + '/node_modules/mdbootstrap'));
 app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist'));
 app.use('/popper.js', express.static(__dirname + '/node_modules/popper.js/dist/umd'));
 app.use('/fontawesome', express.static(__dirname + '/node_modules/@fortawesome/fontawesome-free'));
@@ -140,7 +142,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/u', followerRouter);
 app.get("/account/confirmation/:code",require("./controllers/confirmationEmailController").get)
-app.use("/dashboard/", auth, influencerRouter)
+app.use("/dashboard/", influencerRouter)
 
 
 // catch 404 and forward to error handler
@@ -155,7 +157,7 @@ app.use(function (err, req, res) {
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
-  res.status(err.status || 500);
+  res.status(err.status || 500);  
   res.render('error');
 });
 
@@ -171,3 +173,6 @@ module.exports = app;
 
 // i18n.setLocale("en")
 // console.log(registerHelper.translate("models.link.URL.minlength|@|2"))
+
+console.log("Env : "+process.env.NODE_ENV) 
+console.log("host : "+process.env.domain )

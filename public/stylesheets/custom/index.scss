@@ -4,6 +4,7 @@ nav.navbar {
     top: 0;
     z-index: 10;
     width: 100%;
+
 }
 
 .pricing {
@@ -14,6 +15,10 @@ nav.navbar {
 
     .getpaid {
         text-decoration: line-through;
+    }
+
+    a:hover{
+        text-decoration: none;
     }
 }
 
@@ -52,5 +57,11 @@ header {
 form{
     .err{
           color: #c51244;
+    }
+}
+
+#contact-us{
+    img{
+        border-radius: 50%;
     }
 }

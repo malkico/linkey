@@ -6,14 +6,12 @@ const {
     validationResult
 } = require("express-validator")
 const specialFns = require("../../config/specialFunctions")
-const Influencer = require("../../models/influencer")
-const Subscriber = require("../../models/subscriber")
-const mongoose = require("mongoose")
+const InfluencerDao = require("../../Dao/InfluencerDao")
 const async = require("async")
 const helpers = require("../../config/registerHelper")
 
 
- const postDetails = [
+const postDetails = [
     (req, res, next) => {
         res.locals.tab = "details"
         profileFncs.initPage(req, res, next)
@@ -22,6 +20,7 @@ const helpers = require("../../config/registerHelper")
     check("last_name").trim().custom(specialFns.checkSpecialChars),
     check("login").trim().custom(specialFns.checkSpecialChars),
     check("niche").trim().custom(specialFns.checkSpecialChars),
+    check("character").trim().custom(specialFns.checkSpecialChars),
 
     /* *************************** initiale form *********/
     (req, res, next) => {
@@ -32,7 +31,8 @@ const helpers = require("../../config/registerHelper")
             },
             last_name: req.body.last_name,
             login: req.body.login,
-            niche: req.body.niche
+            niche: req.body.niche,
+            character: req.body.character
         }
 
         next()
@@ -65,21 +65,12 @@ const helpers = require("../../config/registerHelper")
     (req, res, next) => {
         async.parallel({
             updateInfluencer: callback => {
-                Influencer.findOneAndUpdate({
-                        _id: mongoose.Types.ObjectId(res.locals.influencer._id),
-                    }, {
-                        $set: {
-                            last_name: req.body.last_name,
-                            login: req.body.login,
-                            niche: req.body.niche
-                        }
 
-                        // ...req.boy
-                    }, {
-                        new: false,
-                        runValidators: true
-                    },
-                    (err, result) => {
+                if (req.body.last_name === "")
+                    req.body.last_name = null
+
+                InfluencerDao.changeDetails(res.locals.influencer, req.body)
+                    .exec((err, result) => {
                         if (err) {
                             specialFns.catchErrors(err.errors, res.locals.myErrors)
                             console.log("some errors %s", err)
@@ -95,24 +86,20 @@ const helpers = require("../../config/registerHelper")
             updateSubscriber: callback => {
                 console.log("subscriber id => ", res.locals.influencer.subscriber._id)
                 console.log("update the subscriber")
-                Subscriber.findOneAndUpdate({
-                    _id: mongoose.Types.ObjectId(res.locals.influencer.subscriber._id)
-                }, {
-                    first_name: req.body.first_name
-                }, {
-                    runValidators: true
-                }, (err, result) => {
-                    if (result) {
-                        callback(null, true)
-                    } else {
-                        if (err)
-                            specialFns.catchErrors(err.errors, res.locals.myErrors)
-                        console.log("can't update the subscriber %s ", result)
-                        res.locals.result = helpers.translate("dashboard.profile.tabs.profile.form.result.error")
-                        res.render(page)
-                        return
-                    }
-                })
+                const SubscriberDao = require("../../Dao/SubscriberDao")
+                SubscriberDao.changeFirstNameById(res.locals.influencer.subscriber, req.body.first_name)
+                    .exec((err, result) => {
+                        if (result) {
+                            callback(null, true)
+                        } else {
+                            if (err)
+                                specialFns.catchErrors(err.errors, res.locals.myErrors)
+                            console.log("can't update the subscriber %s ", result)
+                            res.locals.result = helpers.translate("dashboard.profile.tabs.profile.form.result.error")
+                            res.render(page)
+                            return
+                        }
+                    })
 
             }
         }, (err, results) => {

@@ -2,7 +2,7 @@
 	"models": {
 		"errors": {
 			"required": "This field is required",
-			"generated_date": "An error was generated when assigning a registration date, please check the date and time on your device."
+			"generated_date": "An error was generated when assigning a date, please check the date and time on your device"
 		},
 		"subscriber": {
 			"first_name": {
@@ -19,7 +19,7 @@
 		},
 		"contact": {
 			"which": {
-				"required": "You must choose a contact information. And please contact us if you don't find your social media",
+				"required": "You must choose a social media profile",
 				"enum": {
 					"values": {
 						"instagram": "Instagram",
@@ -38,24 +38,27 @@
 						"store": "Store",
 						"portfolio": "Portfolio",
 						"website": "Personal/Company Website",
-						"other": "Other"
+						"other": "Other",
+						"medium": "Medium",
+						"vk": "Vk",
+						"patreon": "Patreon"
 					},
-					"message": "If you didn't find your contact information, you can choose other, and please contact us"
+					"message": "If you didn't find your social media, you can choose other"
 				}
 			},
 			"URL": {
 				"required": "The URL is required",
-				"minlength": "The email is shorter than the minimum allowed length (%s)",
-				"maxlength": "The email is longer than the maximum allowed length (%s)"
+				"minlength": "The URL is shorter than the minimum allowed length (%s)",
+				"maxlength": "The URL is longer than the maximum allowed length (%s)"
 			}
 		},
 		"influencer": {
 			"subscriber": {
 				"required": "Are you sure that you already enter your email and your first name !",
-				"unique": "This influencer is diplicated!"
+				"unique": "This influencer is duplicated!"
 			},
 			"niche": {
-				"required": "You must choose your niche, if you did not find the right niche, you can choose other, and please contact us",
+				"required": "You must choose your niche",
 				"enum": {
 					"values": {
 						"humor_memes": "Humor & Memes",
@@ -89,17 +92,17 @@
 						"cats": "Cats",
 						"other": "Other"
 					},
-					"message": "If you didn't find the right niche, you can choose other, and please contact us"
+					"message": "If you didn't find your niche, you can choose other"
 				}
 			},
 			"contacts": {
-				"required": "You should link your account with at least one contact information"
+				"required": "You should link your account with at least one social media profile"
 			},
 			"login": {
-				"unique": "This login is already taken",
-				"required": "The login is required",
-				"minlength": "The email is shorter than the minimum allowed length (%s)",
-				"maxlength": "The email is longer than the maximum allowed length (%s)"
+				"unique": "This username is already taken",
+				"required": "The username is required",
+				"minlength": "The username is shorter than the minimum allowed length (%s)",
+				"maxlength": "The username is longer than the maximum allowed length (%s)"
 			},
 			"password": {
 				"required": "The password is required",
@@ -112,6 +115,15 @@
 			},
 			"email_status": {
 				"required": "The email status is required"
+			},
+			"character": {
+				"enum": {
+					"values": {
+						"person": "Person",
+						"group": "Group/Company"
+					},
+					"message": "Please check what you have chosen"
+				}
 			}
 		},
 		"link": {
@@ -130,8 +142,8 @@
 				"maxlength": "The title is longer than the maximum allowed length (%s)"
 			},
 			"KEY": {
-				"min": "The KEY is shorter than the minimum allowed length (%s)",
-				"max": "The KEY is longer than the maximum allowed length (%s)"
+				"min": "The KEY only accepts a minimum 3-digit number",
+				"max": "The KEY only accepts a maximum 4-digit number"
 			},
 			"description": {
 				"minlength": "The description is shorter than the minimum allowed length (%s)",
@@ -193,26 +205,22 @@
 		"how_it_works": {
 			"1": {
 				"title": "Several links! No problem",
-				"description": {
-					"1": "Add your links, each one with a unique",
-					"2": "KEY."
-				}
+				"description": "Add your links, each one with a unique <strong>KEY</strong>"
 			},
 			"2": {
 				"title": "With a unique URL",
-				"description": " Retrieve your unique URL, put it on in your #bio"
+				"description": "Retrieve your unique URL, put it on in your #bio"
 			},
 			"3": {
 				"title": "Track your followers",
-				"description": "Understand your audience and what they looking for."
+				"description": "Understand your audience interests and what they are really looking for"
 			},
 			"understand": {
-				"1": "To more understand",
-				"2": "This is a",
-				"demo": "Demo account"
+				"1": "To find out more",
+				"2": "Here is a",
+				"demo": "Demo user"
 			},
 			"pricing": {
-				"description": "Quickly build an effective pricing table for your potential customers with this Bootstrap example.It 's built with default Bootstrap components and utilities with little customization.",
 				"free": {
 					"sign_up": "Sign up for free",
 					"title": "Free",
@@ -253,18 +261,24 @@
 		"form": {
 			"first_name": "First name",
 			"email": "Email",
-			"submit": "Sign up!",
+			"submit": "Sign up",
 			"errors": {
-				"email_taken": "this email is already taken by another influencer"
+				"email_taken": "This email is already registered in our database"
 			}
 		}
 	},
 	"follower_page": {
 		"menu": {
-			"create_mine": "CREATE %s OWN SEARCH ENGINE"
+			"create_mine": "CREATE MY OWN SEARCH ENGINE"
 		},
 		"influencer": {
-			"find": "Find us"
+			"find": {
+				"character": {
+					"person": "me",
+					"group": "us"
+				},
+				"label": "Find %s"
+			}
 		},
 		"footer": {
 			"made": {
@@ -284,16 +298,16 @@
 	},
 	"generals": {
 		"errors": {
-			"special_chars": "It does not allow special characters like < > ' \" \\ /",
-			"special_chars_URL": "It does not allow special characters like < > ' \" \\",
+			"special_chars": "This field does not allow special characters like < > ' \" \\ /",
+			"special_chars_URL": "This field does not allow special characters like < > ' \" \\",
 			"valid_email": "Please enter a valid email address",
 			"password": {
 				"min": "The password is shorter than the minimum allowed length (%s)",
 				"max": "The password is longer than the maximum allowed length (%s)",
 				"uppercase": "Must include at least one upper case letter",
 				"lowercase": "Must include at least one lower case letter",
-				"digits": "Must include at least one numeric character",
-				"spaces": "It does not allow blank spaces",
+				"digits": "The password must be alphanumeric",
+				"spaces": "The password does not allow blank spaces",
 				"valid": "Please enter a valid password"
 			}
 		}
@@ -315,25 +329,14 @@
 				}
 			},
 			"errors": {
-				"authenticated_first": "You must be authenticated first"
+				"_authenticated_first": "You must first authenticate",
+				"authenticated_first": "Please login to your account"
 			},
 			"page_title": "Log in",
 			"result": {
 				"email_not_found": "Cannot find an influencer with this email",
 				"incorrect": "Incorrect email or password"
 			}
-		},
-		"footer": {
-			"menu": {
-				"contact": "account_page.footer.menu.contact",
-				"terms_use": "account_page.footer.menu.terms_use",
-				"privacy": "account_page.footer.menu.privacy"
-			},
-			"made": {
-				"1": "account_page.footer.made.1",
-				"2": "account_page.footer.made.2"
-			},
-			"copyright": "account_page.footer.copyright"
 		},
 		"signup": {
 			"form": {
@@ -352,16 +355,16 @@
 				"confirm_password": {
 					"label": "Confirm password",
 					"valid": "Please enter a valid password",
-					"identical": "The two passwords must be identical...."
+					"identical": "Both passwords must be identical"
 				},
 				"agree": {
 					"label": {
 						"agree": "Agree to the",
 						"privacy": "Privacy Policy",
 						"and": ", and",
-						"terms": "Terms and Conditions of Use."
+						"terms": "Terms and Conditions of Use"
 					},
-					"you_should": "Sorry but you have to"
+					"you_should": "You need to accept our terms before proceeding"
 				},
 				"submit": "SIGN UP",
 				"footer": {
@@ -376,7 +379,7 @@
 		},
 		"reset_password": {
 			"result": {
-				"password_sent": "We have sent a password reset link to your mailbox if it exists.",
+				"password_sent": "If the email you entered exists, you will find a password reset link in your mailbox",
 				"password_reset": "Your password has been reset"
 			},
 			"form": {
@@ -403,11 +406,16 @@
 		},
 		"menu": {
 			"main": "Main",
-			"add_link": "Add a link",
-			"contact_list": "Contact list",
-			"all_links": "All my links",
-			"logout": "Log out",
-			"profile": "Profile"
+			"add_link": "Add a Link",
+			"contact_list": "Social media",
+			"all_links": "My Links",
+			"logout": "Log Out",
+			"profile": "Profile",
+			"coming_soon": "Coming soon",
+			"subscribers": "Newsletter subscribers",
+			"stats": "Link Tracking & Stats",
+			"themes": "Pre-designed Themes",
+			"home": "Home"
 		},
 		"add_link": {
 			"page_title": "Add a link",
@@ -425,22 +433,22 @@
 				"KEY": {
 					"label": "KEY",
 					"errors": {
-						"Duplicated": "Duplicated key!"
+						"Duplicated": "Duplicated KEY!"
 					}
 				},
 				"main": {
-					"label": "Make it on my main page"
+					"label": "Put it on my main page"
 				},
 				"submit": "Add my link",
 				"result": {
-					"KEY": "Please enter another key",
+					"KEY": "Please enter another KEY",
 					"cant_add": "Can't add the link in dataBase, Please try again",
 					"success": "link successfully added"
 				}
 			}
 		},
 		"all_links": {
-			"page_title": "All my links",
+			"page_title": "My links",
 			"table": {
 				"head": {
 					"link": "Link",
@@ -448,7 +456,12 @@
 					"created": "Created at"
 				},
 				"link": {
-					"main": "Make it\non main"
+					"main": {
+						"with": "6.5",
+						"label": "Put it\non main"
+					},
+					"delete_btn": "Remove this",
+					"edit_btn": "Edit this"
 				},
 				"DataTable": {
 					"emptyTable": "No data available in table",
@@ -463,17 +476,17 @@
 						"last": "Last"
 					},
 					"search": "Search:",
-					"zeroRecords": "No matching records found"
+					"zeroRecords": "No matching links found"
 				}
 			}
 		},
 		"contact_list": {
-			"page_title": "My contact list",
+			"page_title": "My social media profiles",
 			"link": {
 				"label": "Link"
 			},
 			"form": {
-				"submit": "Add my contact information",
+				"submit": "Add my profile",
 				"URL": {
 					"placeholder": {
 						"email": "Your email",
@@ -483,12 +496,12 @@
 					}
 				},
 				"result": {
-					"success ": "A new contact added succesfuly"
+					"success": "A new profile has been added successfully"
 				}
 			},
 			"all": {
 				"result": {
-					"removed": "removed succesfuly! "
+					"removed": "Removed successfully! "
 				},
 				"delete_btn": "Delete this"
 			}
@@ -517,8 +530,11 @@
 						},
 						"submit": "Save",
 						"result": {
-							"success": "The modifications are well done.",
-							"error": "An error occurred while modifying the data."
+							"success": "The modifications are well done",
+							"error": "An error occurred while modifying the data"
+						},
+						"character": {
+							"libelle": "I'm a"
 						}
 					}
 				},
@@ -544,7 +560,7 @@
 						"submit": "Change",
 						"result": {
 							"compare_password": "The old password is wrong!",
-							"success": "Done! The password id updated."
+							"success": "Done! The password is updated"
 						}
 					}
 				}
@@ -565,17 +581,43 @@
 					"not_yours": "You're not the owner of this link!"
 				}
 			}
+		},
+		"home": {
+			"welcome": {
+				"0": "Dear %s, Thank you for your confidence in 7linKy; \nWe would like to receive your comments and suggestions to improve our services",
+				"1": "To contact us, please send us an email at the address"
+			},
+			"link": {
+				"ready": "Your own link is ready to share in your social networks",
+				"create": {
+					"insta": "To get your own link, please add your instagram account",
+					"here": "here"
+				}
+			}
 		}
 	},
 	"mailer": {
 		"welcome": {
-			"1": "Dear %s,\n\nThank you for your confidence in LINKEY, you will find below your authentication details \nLogin: %s \nPassword: %s \n\nYou must also confirm your account by clicking on this link below\n",
-			"2": "\n\nWe wish you a very good experience with us."
+			"1": "Dear %s,\n\nThank you for your confidence in 7linKy, you will find below your authentication details \nEmail: %s \nPassword: %s \n\nYou must also confirm your account by clicking on this link below\n",
+			"2": "\n\nWe wish you a very good experience with us",
+			"title": "Welcome! the 7linky Team"
 		},
 		"reset_password": {
 			"1": "Dear %s, \n\nA new password has been reset for you : ",
-			"2": "Please follow the link to set your password. \n%s",
-			"3": "If you didn't request your password to be reset, please ignore this email, and no changes will be made. \n\nThanks! \nThe LINKEY Team"
+			"2": "Please follow the link to set your password",
+			"3": "If you didn't request your password to be reset, please ignore this email, and no changes will be made. \n\nThanks! \nThe 7linKy Team"
+		}
+	},
+	"contact_page": {
+		"title": "Our team is here to help",
+		"contact": {
+			"send_email": "Send us an email",
+			"other_ways": "Other ways to connect"
+		},
+		"founder": {
+			"title": "The founder",
+			"desc": "I need your advices and suggestions, to improve our service",
+			"button": "Contact me"
 		}
 	}
 }

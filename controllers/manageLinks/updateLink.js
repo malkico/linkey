@@ -1,9 +1,9 @@
 const page = "influencer/form-link"
 const helpers = require("../../config/registerHelper")
 const Link = require("../../models/link")
-const Influencer = require("../../models/influencer")
+const LinkDao = require("../../Dao/LinkDao")
+const InfluencerDao = require("../../Dao/InfluencerDao")
 const specialFncs = require('../../config/specialFunctions')
-const ObjectId = require("mongoose").Types.ObjectId
 
 exports.get = [
     /* ********************* initiale page ************* */
@@ -14,7 +14,8 @@ exports.get = [
         next()
     },
     (req, res, next) => {
-        Link.findById(req.params.link_id)
+
+        LinkDao.findById(req.params.link_id)
             .then(result => {
                 console.log(result)
                 if (result) {
@@ -50,64 +51,40 @@ exports.post = [
         // ** ***************** check if the influencer have already this link ***************
         console.log("influencer => %s", res.locals.influencer._id)
         console.log("link => %s", req.params.link_id)
-        Influencer.aggregate([{
-                $lookup: {
-                    from: "links",
-                    localField: "links",
-                    foreignField: "_id",
-                    as: "links"
-                }
-            }, {
-                $match: {
-                    _id: ObjectId(res.locals.influencer._id),
-                    "links._id": ObjectId(req.params.link_id)
-                }
-            }]
-
-        ).then((result) => {
-            // console.log("check a result: %s", JSON.stringify(result))
-            if (!Object.keys(result).length) {
-                res.locals.result = helpers.translate("dashboard.update_link.form.result.not_yours")
-                res.render(page)
-                return
-            } else {
-                const myOtherLinks = result[0].links.filter(link => link._id != req.params.link_id)
-                const findKEY = myOtherLinks.filter(link => link.KEY == req.body.KEY)
-
-                // ******** Check if the influencer has already use this KEY ******
-                if (findKEY.length) {
-                    res.locals.result = helpers.translate("dashboard.add_link.form.result.KEY")
-                    res.locals.myErrors.KEY = helpers.translate("dashboard.add_link.form.KEY.errors.Duplicated")
+        InfluencerDao.checkLink(res.locals.influencer, req.params.link_id)
+            .then((result) => {
+                // console.log("check a result: %s", JSON.stringify(result))
+                if (!Object.keys(result).length) {
+                    res.locals.result = helpers.translate("dashboard.update_link.form.result.not_yours")
                     res.render(page)
                     return
-                } else
-                    next()
-            }
+                } else {
+                    const myOtherLinks = result[0].links.filter(link => link._id != req.params.link_id)
+                    const findKEY = myOtherLinks.filter(link => link.KEY == req.body.KEY)
 
-        }).catch(err => {
-            res.locals.result = "Error! Cannot check the link id"
-            console.log("errors => %s", err)
-            res.render(page)
-            return
-        })
+                    // ******** Check if the influencer has already use this KEY ******
+                    if (findKEY.length) {
+                        res.locals.result = helpers.translate("dashboard.add_link.form.result.KEY")
+                        res.locals.myErrors.KEY = helpers.translate("dashboard.add_link.form.KEY.errors.Duplicated")
+                        res.render(page)
+                        return
+                    } else
+                        next()
+                }
+
+            }).catch(err => {
+                res.locals.result = "Error! Cannot check the link id"
+                console.log("errors => %s", err)
+                res.render(page)
+                return
+            })
 
     },
 
     /* ***************** middlwares to update the link ****************/
     (req, res, next) => {
         console.log("update the link")
-        Link.findByIdAndUpdate(
-                ObjectId(req.params.link_id), {
-                    $set: {
-                        main: res.locals.link.main,
-                        KEY: res.locals.link.KEY,
-                        title: res.locals.link.title,
-                        URL: res.locals.link.URL
-                    }
-                }, {
-                    new: false,
-                    runValidators: true
-                })
+        LinkDao.update(req.params.link_id, res.locals.link)
             .then(result => {
                 if (!result) {
                     res.locals.result = "Cant't find the link you just updated in DB"

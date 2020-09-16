@@ -1,28 +1,26 @@
 const requestIp = require('request-ip');
-const Influencer = require("../models/influencer")
+const InfluencerDao = require("../Dao/InfluencerDao")
 const Visit = require("../models/visit")
-const Follower = require("../models/follower")
 const main_page = 'main'
 const follower_page = "follower/index"
 
 exports.get = [
     /* ************************** INITIALISE ****************/
     (req, res, next) => {
-        console.log("follower_id : %s",req.cookies.follower_id)
+        console.log("follower_id : %s", req.cookies[process.env.prefix + "follower_id"])
+        res.locals.env = process.env
         res.setHeader("Content-type", "text/html");
         next()
     },
 
     /* *********************** Find influencer ******************/
     (req, res, next) => {
-        Influencer.findOne({
-                login: req.params.login
-            }).populate("links").populate("contacts")
+        InfluencerDao.getLinks(req.params.login)
             .then(result => {
                 if (Object.keys(result).length) {
                     res.locals.influencer = result
                     res.locals.influencer_insta = res.locals.influencer.contacts.find(contact => contact.which == 'instagram')
-                    res.locals.title = "follower_page.title|@|"+res.locals.influencer.login
+                    res.locals.title = "follower_page.title|@|" + res.locals.influencer.login
                     next()
                 } else {
                     console.log("influencer not found")
@@ -45,21 +43,19 @@ exports.get = [
 
         console.log("trying to save the follower")
 
+        const FollowerDao = require("../Dao/FollowerDao")
+
         // Insert a follower with the new adress ip if not exist
-        Follower.findOneAndUpdate({
-            ip_adress: ip
-        }, {}, {
-            upsert: true,
-            new: true,
-            setDefaultsOnInsert: true
-        }).then(result => {
+        FollowerDao.addFollower(ip).then(result => {
             if (!Object.keys(result).length) {
                 console.log("follower not saved!")
                 res.render(follower_page)
             } else {
-                res.cookie("follower_id", result._id.toString(),{SameSite : "Strict"})
+                res.cookie(process.env.prefix + "follower_id", result._id.toString(), {
+                    SameSite: "Strict"
+                })
                 res.locals.follower = result
-                console.log("This follower => %s",result)
+                console.log("This follower => %s", result)
                 next()
             }
 
@@ -71,13 +67,13 @@ exports.get = [
 
     /* ************************ Save the visit ***************************/
     (req, res, next) => {
-
+        const VisitDao = require("../Dao/VisitDao")
         const visit = new Visit({
             follower: res.locals.follower,
             influencer: res.locals.influencer
         })
 
-        visit.save().then((result) => {
+        VisitDao.saveOne(visit).then((result) => {
             if (!Object.keys(result).length) {
                 console.log("No visit saved!")
                 res.render(follower_page)

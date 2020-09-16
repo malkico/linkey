@@ -30,3 +30,8 @@ exports.niches = {
     'cats': "models.influencer.niche.enum.values.cats",
     'other': "models.influencer.niche.enum.values.other"
 }
+
+exports.characters = {
+    'person': "models.influencer.character.enum.values.person",
+    'group': "models.influencer.character.enum.values.group"
+}

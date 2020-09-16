@@ -6,7 +6,11 @@ const dashboardCtrl = require("../controllers/dashboardController")
 const socialMediaCtrl = require("../controllers/contactController")
 const profileCtrl = require("../controllers/profileController")
 const allLinksCtr = require("../controllers/allLinksController")
+const auth = require("../middlwares/auth")
+const loadInfos = require("../middlwares/loadInfos")
 
+
+router.use("/",auth , loadInfos)
 router.get("/",dashboardCtrl.get)
 router.get("/add-link",addLinkCtrl.get)
 router.post("/add-link", addLinkCtrl.post)
@@ -29,7 +33,7 @@ router.get("/links/update/:link_id",allLinksCtr.update.get)
 router.post("/links/update/:link_id",allLinksCtr.update.post)
 
 router.get('/logout', (req, res, next) => {
-    res.clearCookie("token")
+    res.clearCookie(process.env.influencer_token)
     res.redirect("/")
 })
 

@@ -9,15 +9,37 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
   integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js">
-</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+<script src="/javascripts/lang-btn.js"></script>
 
 <script>
   $(function () {
+    // ++++++++++++++++++++ Cookie follower_id 
+    const getCookie = (name) => {
+        var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+        if (match) return match[2];
+    }
+
     // Sidebar toggle behavior
     $('#sidebarCollapse').on('click', function () {
       $('#sidebar, #content').toggleClass('active');
     });
+
+    //  ---------------------- Scraping from instagram ------>
+    if($(".infos_influencer").data('influencerInstaUrl')){
+      $.get("https://www.instagram.com/" + $(".infos_influencer").data('influencerInstaUrl') + "/?__a=1")
+      // $.get("https://www.instagram.com/malki_hi/?__a=1")
+          .done(function (data) {
+              // getting the url
+              if (Object.keys(data).length) {
+                  const photoURL = data["graphql"]["user"]["profile_pic_url_hd"];
+                  $(".infos_influencer img").attr("src", photoURL)
+              }
+          })
+    }
+
+    $('.bootstrap-select button').css("background-color","#fff")
 
   });
 </script>

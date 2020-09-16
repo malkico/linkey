@@ -63,8 +63,3 @@ exports.catchErrors = (errors, myErrors) => {
         })
     }
 }
-
-/*
- exports.updateCookies = (res.cookie, res.locals.cookies) => {
-     res.cookie("follower_id", result._id)
- } */

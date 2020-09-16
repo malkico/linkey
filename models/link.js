@@ -72,7 +72,8 @@ let LinkSchema = new Schema({
     },
     date_modification: {
         type: Date,
-        required: false,
+        required: [true,'models.errors.generated_date'],
+        default: Date.now
     }
 
 })

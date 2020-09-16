@@ -1,7 +1,5 @@
 const async = require("async")
-const Influencer = require("../../models/influencer")
-const ObjectId = require("mongoose").Types.ObjectId
-const Link = require("../../models/link")
+const InfluencerDao = require("../../Dao/InfluencerDao")
 
 module.exports = (req, res, next) => {
     console.log("deleting a contact information...")
@@ -11,33 +9,26 @@ module.exports = (req, res, next) => {
     async.series({
         removeFromInfluencer: (callback) => {
             console.log("removeFromInfluencer = %s", link_id)
-            Influencer.updateOne({
-                _id: res.locals.influencer._id
-            }, {
-                $pull: {
-                    links: ObjectId(link_id)
-                }
-            }).then(result => {
-                if (result.nModified) {
-                    console.log("The link is pulled from your account")
-                    callback(null, true)
-                } else {
-                    message = "Can't pull the link from your account"
-                    console.log(message)
-                    res.status(202).json({
-                        message: message
-                    })
-                }
-            }).catch(err => {
-                callback(err, null)
-            })
+            InfluencerDao.removeLink(res.locals.influencer, link_id)
+                .then(result => {
+                    if (result.nModified) {
+                        console.log("The link is pulled from your account")
+                        callback(null, true)
+                    } else {
+                        message = "Can't pull the link from your account"
+                        console.log(message)
+                        res.status(202).json({
+                            message: message
+                        })
+                    }
+                }).catch(err => {
+                    callback(err, null)
+                })
 
         },
         removeContact: (callback) => {
-            Link.deleteOne({
-                    _id: link_id
-                })
-                .then(result => {
+            const LinkDao = require("../../Dao/LinkDao")
+            LinkDao.deleteById(link_id).then(result => {
                     if (result.deletedCount) {
                         console.log("link removed!")
                         callback(null, true)
