@@ -3,7 +3,7 @@ const helper = require("../config/registerHelper")
 // http://127.0.0.1:3000/account/confirmation/5ee935ae7c8c2f751821facc
 
 const setConfirmationCookie = (res, message, success) => {
-    res.cookie("success_email_confirmation", {
+    res.cookie(process.env.prefix+"success_email_confirmation", {
         message: message,
         success: success
     }, {
@@ -12,12 +12,10 @@ const setConfirmationCookie = (res, message, success) => {
     })
 }
 
-const Email_status = require("../models/email_status")
+const EmailStatusDao = require("../Dao/EmailStatusDao")
 exports.get = [
     (req, res, next) => {
-        Email_status.findByIdAndUpdate(req.params.code, {
-            status: true
-        }).then(result => {
+            EmailStatusDao.setTrue(req.params.code).then(result => {
             if (Object.keys(result).length)
                 next()
             else {

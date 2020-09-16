@@ -4,7 +4,7 @@ const {
 } = require("express-validator")
 const helpers = require('../config/registerHelper')
 const page = "account/reset-password"
-const Influencer = require("../models/influencer")
+const InfluencerDao = require("../Dao/InfluencerDao")
 
 exports.post = [
     check("email").isEmail().withMessage(() => {
@@ -48,24 +48,7 @@ exports.post = [
     /* ************ middleware to find an influencer ***********************/
     (req, res, next) => {
         console.log("find a influencer")
-        Influencer.aggregate([{
-                    $lookup: {
-                        from: "subscribers",
-                        localField: "subscriber",
-                        foreignField: "_id",
-                        as: "subscriber"
-                    }
-                },
-                {
-                    $match: {
-                        "subscriber.email": res.locals.form.influencer.subscriber.email
-                    }
-                }, {
-                    $unwind: {
-                        "path": "$subscriber"
-                    }
-                }
-            ])
+        InfluencerDao.findEmail(res.locals.form.influencer.subscriber)
             .then(influencers => {
                 res.locals.result = helpers.translate('account_page.reset_password.result.password_sent')
                 res.locals.success = true
@@ -119,32 +102,31 @@ exports.changePassword = [
                 return
             })
 
-    /* ********** changing the password on DB *************/
-    },    (req, res, next) => {
-        Influencer.updateOne({
-            _id: require("mongoose").Types.ObjectId(req.params.influencer_id)
-        }, {
-            password: res.locals.hashed_pass
-        }, {
-            runValidators: true
-        }).then(result => {
-            if(result.nModified){
-                console.log("result => %s", result)
-                res.locals.result = helpers.translate('account_page.reset_password.result.password_reset')
-                res.locals.success = true
-                next()
-            } else{
-                res.locals.result = "Can't change the password with this link"
+        /* ********** changing the password on DB *************/
+    }, (req, res, next) => {
+        InfluencerDao.changePassword({
+                    _id: req.params.influencer_id
+                },
+                res.locals.hashed_pass
+            )
+            .then(result => {
+                if (result.nModified) {
+                    console.log("result => %s", result)
+                    res.locals.result = helpers.translate('account_page.reset_password.result.password_reset')
+                    res.locals.success = true
+                    next()
+                } else {
+                    res.locals.result = "Can't change the password with this link"
+                    res.render(page)
+                    return
+                }
+
+            }).catch(err => {
+                console.log("err => %s", err)
+                res.locals.result = "An error occurred while modifying the password, Please try again"
                 res.render(page)
                 return
-            }
-
-        }).catch(err => {
-            console.log("err => %s", err)
-            res.locals.result = "An error occurred while modifying the password, Please try again"
-            res.render(page)
-            return
-        })
+            })
 
     },
     (req, res, next) => {

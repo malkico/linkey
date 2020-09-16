@@ -1,7 +1,6 @@
 const linkConf = require("../models/config/linkConf")
-const Influencer = require("../models/influencer")
+const InfluencerDao = require("../Dao/InfluencerDao")
 const async = require("async")
-const ObjectId = require('mongoose').Types.ObjectId;
 const helper = require("../config/registerHelper")
 
 const specialFncs = require('../config/specialFunctions');
@@ -34,41 +33,29 @@ exports.post = [
             checkTheKey: function (callback) {
                 // just check if the the influencer enter a KEY
                 if (res.locals.link.KEY) {
-                    Influencer.aggregate([{
-                            $lookup: {
-                                from: "links",
-                                localField: "links",
-                                foreignField: "_id",
-                                as: "links",
-                            }
-                        }, {
-                            $match: {
-                                _id: ObjectId(res.locals.influencer._id),
-                                "links.KEY": res.locals.link.KEY
-                            }
-                        }]
+                    InfluencerDao.checkKeyAlreadyExist(res.locals.influencer, res.locals.link)
+                        .then((result) => {
+                            console.log("%s - %s ", res.locals.influencer._id, res.locals.link.KEY)
+                            console.log("check a key: " + result)
+                            if (Object.keys(result).length) {
+                                res.locals.result = helper.translate("dashboard.add_link.form.result.KEY")
+                                res.locals.myErrors.KEY = helper.translate("dashboard.add_link.form.KEY.errors.Duplicated")
+                                res.render(page)
+                                return
+                            } else
+                                callback(null, true)
 
-                    ).then((result) => {
-                        console.log("%s - %s ", res.locals.influencer._id, res.locals.link.KEY)
-                        console.log("check a key: " + result)
-                        if (Object.keys(result).length) {
-                            res.locals.result = helper.translate("dashboard.add_link.form.result.KEY")
-                            res.locals.myErrors.KEY = helper.translate("dashboard.add_link.form.KEY.errors.Duplicated")
-                            res.render(page)
-                            return
-                        } else
-                            callback(null, true)
-
-                    }).catch(err => {
-                        res.locals.result = "Error! Cannot check the key"
-                        callback(err, null)
-                    })
-                } else{
+                        }).catch(err => {
+                            res.locals.result = "Error! Cannot check the key"
+                            callback(err, null)
+                        })
+                } else {
                     callback(null, true)
                 }
             },
             alink: function (callback) {
-                res.locals.link.save()
+                const LinkDao = require("../Dao/LinkDao")
+                LinkDao.saveTempOne(res.locals.link)
                     .then(newLink => {
                         if (!Object.keys(newLink).length) {
                             res.locals.result = "Cant't find the link you just added to the database"
@@ -80,21 +67,13 @@ exports.post = [
                         }
                     })
                     .catch(err => {
-                        res.locals.result =  helper.translate("dashboard.add_link.form.result.cant_add")
+                        res.locals.result = helper.translate("dashboard.add_link.form.result.cant_add")
                         callback(err, null)
                     })
             },
             toInfluencer: function (callback) {
                 console.log("update influencer links")
-                Influencer.updateOne({
-                        _id: res.locals.influencer._id
-                    }, {
-                        $push: {
-                            links: res.locals.link
-                        }
-                    }, {
-                        runValidators: true
-                    })
+                InfluencerDao.addLink(res.locals.influencer, res.locals.link)
                     .then(influencerUpdated => {
                         if (!Object.keys(influencerUpdated).length) {
                             res.locals.result = "Cant't find the link you just added to your account"

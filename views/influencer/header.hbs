@@ -13,18 +13,18 @@
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" 
     crossorigin="anonymous"> -->
   <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" crossorigin="anonymous">
-
-
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+  <link rel="stylesheet" href="/mdbootstrap/css/addons/flag.min.css" rel="stylesheet">
 
   <title>{{  translate "dashboard.generals.title" }}</title>
 </head>
 
-<body>
-<!-- 
+<body data-prefix="{{ env.prefix }}">
+  <!-- 
   <div class="navbar navbar-default navbar-fixed-top custom-header float-right" role="navigation">
     <div class="container">
       	<a class="navbar-brand" href="https://127.0.0.1:3000">
-          LINKEY
+          7linky
           <img src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" width="40" alt="Page Logo"> 
           </a>
   	</div>
@@ -32,17 +32,18 @@
 </div> -->
 
   <!-- Vertical navbar -->
-  <div class="vertical-nav bg-white infos_influencer overflow-auto scrollbar-rare-wind" data-influencer-insta-url="{{influencer_insta.URL}}" id="sidebar">
+  <div class="vertical-nav bg-white infos_influencer overflow-auto scrollbar-rare-wind"
+    data-influencer-insta-url="{{influencer_insta.URL}}" id="sidebar">
     <div class="py-4 px-3 mb-4 bg-light">
       <div class="media d-flex align-items-center">
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/1024px-User_icon_2.svg.png" alt="..." width="65"
-          class="mr-3 rounded-circle img-thumbnail shadow-sm">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/1024px-User_icon_2.svg.png"
+          alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
         <div class="media-body">
-          <h4 class="m-0"> <!-- {{ influencer.last_name}} --> {{influencer.subscriber.first_name}} </h4>
+          <h4 class="m-0">
+            <!-- {{ influencer.last_name}} --> {{influencer.subscriber.first_name}} </h4>
           <p class="font-weight-light mb-0">
             <a class="text-muted" target="new_blank" href="/u/{{influencer.login}}">
-            {{ influencer.login}}
+              {{ influencer.login}}
             </a>
           </p>
         </div>
@@ -53,65 +54,70 @@
 
     <ul class="nav flex-column bg-white mb-0">
       <li class="nav-item">
-        <a href="/dashboard/" class="nav-link text-dark font-italic  {{ternaryIf (iff page '==' 'home') 'bg-light' ''}}">
+        <a href="/dashboard/"
+          class="nav-link text-dark font-italic  {{ternaryIf (iff page '==' 'home') 'bg-light' ''}}">
           <i class="fas fa-home mr-3 text-primary fa-fw"></i>
-          {{ translate "dashboard.menu.home" }} 
+          {{ translate "dashboard.menu.home" }}
         </a>
       </li>
       <li class="nav-item">
-        <a href="/dashboard/profile" class="nav-link text-dark font-italic  {{ternaryIf (iff page '==' 'profile') 'bg-light' ''}}">
+        <a href="/dashboard/profile"
+          class="nav-link text-dark font-italic  {{ternaryIf (iff page '==' 'profile') 'bg-light' ''}}">
           <i class="fa fa-user mr-3 text-primary fa-fw"></i>
-          {{ translate "dashboard.menu.profile" }} 
+          {{ translate "dashboard.menu.profile" }}
         </a>
       </li>
       <li class="nav-item">
-        <a href="/dashboard/add-link" class="nav-link text-dark font-italic {{ternaryIf (iff page '==' 'add-link') 'bg-light' ''}}">
+        <a href="/dashboard/add-link"
+          class="nav-link text-dark font-italic {{ternaryIf (iff page '==' 'add-link') 'bg-light' ''}}">
           <i class="fas fa-link mr-3 text-primary fa-fw"></i>
-          {{ translate "dashboard.menu.add_link" }} 
+          {{ translate "dashboard.menu.add_link" }}
         </a>
       </li>
       <li class="nav-item">
-        <a href="/dashboard/all-my-links" class="nav-link text-dark font-italic {{ternaryIf (iff page '==' 'all-my-links') 'bg-light' ''}}">
+        <a href="/dashboard/all-my-links"
+          class="nav-link text-dark font-italic {{ternaryIf (iff page '==' 'all-my-links') 'bg-light' ''}}">
           <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
-          {{ translate "dashboard.menu.all_links" }} 
+          {{ translate "dashboard.menu.all_links" }}
         </a>
       </li>
       <li class="nav-item">
-        <a href="/dashboard/contact-list" class="nav-link text-dark font-italic {{ternaryIf (iff page '==' 'contact-list') 'bg-light' ''}}">
+        <a href="/dashboard/contact-list"
+          class="nav-link text-dark font-italic {{ternaryIf (iff page '==' 'contact-list') 'bg-light' ''}}">
           <i class="fa fa-address-card mr-3 text-primary fa-fw"></i>
-           {{ translate "dashboard.menu.contact_list" }} 
+          {{ translate "dashboard.menu.contact_list" }}
         </a>
       </li>
-    
+
       <li class="nav-item">
-        <a href="/dashboard/logout" class="nav-link text-dark font-italic" >
+        <a href="/dashboard/logout" class="nav-link text-dark font-italic">
           <i class="fa fa-power-off mr-3 text-primary fa-fw"></i>
-          {{ translate "dashboard.menu.logout" }} 
+          {{ translate "dashboard.menu.logout" }}
         </a>
       </li>
     </ul>
 
     <p class="text-gray font-weight-bold text-uppercase px-3 small py-4 mb-0">
-          {{ translate "dashboard.menu.coming_soon" }} 
-      </p>
+      {{ translate "dashboard.menu.coming_soon" }}
+    </p>
 
     <ul class="nav flex-column bg-white mb-0">
       <li class="nav-item">
         <a href="#" class="nav-link text-dark font-italic">
           <i class="fa fa-area-chart mr-3 text-primary fa-fw"></i>
-          {{ translate "dashboard.menu.subscribers" }} 
+          {{ translate "dashboard.menu.subscribers" }}
         </a>
       </li>
       <li class="nav-item">
         <a href="#" class="nav-link text-dark font-italic">
           <i class="fa fa-area-chart mr-3 text-primary fa-fw"></i>
-          {{ translate "dashboard.menu.stats" }} 
+          {{ translate "dashboard.menu.stats" }}
         </a>
       </li>
       <li class="nav-item">
         <a href="#" class="nav-link text-dark font-italic">
           <i class="fa fa-area-chart mr-3 text-primary fa-fw"></i>
-          {{ translate "dashboard.menu.themes" }} 
+          {{ translate "dashboard.menu.themes" }}
         </a>
       </li>
 

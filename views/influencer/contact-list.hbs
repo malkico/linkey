@@ -94,6 +94,8 @@
     /* ************** change preURL in changing from options ********/
     const changePreURL = (myInput) => {
       const preURL = JSON.parse('{{{json preURL }}}')
+      console.log("fromCharCode")
+      console.log("{{ translate "dashboard.contact_list.form.URL.placeholder.username" }}".replace(/&#x27;/,"'"))
       const which = $(myInput).val()
       if (which === "email") {
         $(".preURL").parent().hide()
@@ -109,7 +111,7 @@
         $(".preURL").parent().show()
         // $(".web_site").html(webSite[which])
         $(".preURL").html('@')
-        $("#URL").attr("placeholder", "{{ translate "dashboard.contact_list.form.URL.placeholder.username" }}")
+        $("#URL").attr("placeholder", "{{{ translate "dashboard.contact_list.form.URL.placeholder.username" }}}")
       } else {
         $(".preURL").parent().hide()
         $("#URL").attr("placeholder", "{{ translate "dashboard.contact_list.form.URL.placeholder.URL" }}")
@@ -123,7 +125,7 @@
 
     /* ************ AJAX to delete a social media *************/
     $('.remove').tooltip()
-    const whichList = JSON.parse('{{{json whichList }}}')
+    const whichList = JSON.parse('{{{ json whichList }}}')
     $(".remove").click(function (e) {
       console.log($(this).data("id"))
       const deleteBtn = $(this)

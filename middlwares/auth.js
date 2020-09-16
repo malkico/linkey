@@ -2,8 +2,6 @@ const jwt = require('jsonwebtoken');
 const helper = require("../config/registerHelper")
 
 module.exports = (req, res, next) => {
-
-    res.locals.env = process.env
     
     req.headers.authorization = req.cookies[process.env.influencer_token]
     jwt.verify(req.cookies[process.env.influencer_token], process.env.TOKEN_SECRET, (err,decoded) => {

@@ -9,7 +9,7 @@ const specialFncs = require('../../config/specialFunctions');
 const page = "influencer/form-link"
 
 module.exports = [
-    
+
     /* *********************** middleware to initale my page **********/
     (req, res, next) => {
         res.locals.link_type = linkConf.link_type

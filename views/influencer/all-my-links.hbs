@@ -40,12 +40,12 @@
                             </td>
                             <td><span class="badge bg-dark text-white">{{this.KEY}}</span></td>
                             <td>{{dateFormat this.date_added "DD-MM-YYYY"}}</td>
-                            <td style="min-width: 6.5rem;">
+                            <td style="min-width: {{ translate "dashboard.all_links.table.link.main.with"}}rem;">
                                 <div class="custom-control custom-switch ">
                                     <input type="checkbox" name="main" class="custom-control-input"
                                         id="customSwitch-{{this._id}}" {{ternaryIf this.main "checked" ""}}>
                                     <label class="custom-control-label"
-                                        for="customSwitch-{{this._id}}">{{ translate "dashboard.all_links.table.link.main"}}
+                                        for="customSwitch-{{this._id}}">{{ translate "dashboard.all_links.table.link.main.label"}}
                                         {{!-- make it <br> on main --}}</label>
                                 </div>
                             </td>

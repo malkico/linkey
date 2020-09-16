@@ -1,24 +1,13 @@
-const Influencer = require("../../models/influencer")
+const InfluencerDao = require("../../Dao/InfluencerDao")
 const page = "influencer/all-my-links"
-const ObjectId = require("mongoose").Types.ObjectId
 
 module.exports = [
     (req, res, next) => {
         res.locals.domain = process.env.domain
         res.locals.page = "all-my-links"
 
-        Influencer.aggregate([{
-            $lookup: {
-                from: "links",
-                localField: "links",
-                foreignField: "_id",
-                as: "links"
-            }
-        }, {
-            $match: {
-                _id: ObjectId(res.locals.influencer._id)
-            }
-        }]).then(results => {
+        InfluencerDao.getAllLinks(res.locals.influencer)
+        .then(results => {
             if (results.length) {
                 res.locals.links = results[0].links
                 console.log("links => %s", res.locals.links)

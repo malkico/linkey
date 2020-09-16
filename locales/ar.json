@@ -160,7 +160,10 @@
 						"store": "models.contact.which.enum.values.store",
 						"portfolio": "models.contact.which.enum.values.portfolio",
 						"website": "models.contact.which.enum.values.website",
-						"other": "models.contact.which.enum.values.other"
+						"other": "models.contact.which.enum.values.other",
+						"medium": "models.contact.which.enum.values.medium",
+						"vk": "models.contact.which.enum.values.vk",
+						"patreon": "models.contact.which.enum.values.patreon"
 					},
 					"message": "models.contact.which.enum.message"
 				}
@@ -520,7 +523,10 @@
 					"created": "dashboard.all_links.table.head.created"
 				},
 				"link": {
-					"main": "dashboard.all_links.table.link.main",
+					"main": {
+						"with": "dashboard.all_links.table.link.main.with",
+						"label": "dashboard.all_links.table.link.main.label"
+					},
 					"delete_btn": "dashboard.all_links.table.link.delete_btn",
 					"edit_btn": "dashboard.all_links.table.link.edit_btn"
 				},
@@ -557,7 +563,8 @@
 					}
 				},
 				"result": {
-					"success ": "dashboard.contact_list.form.result.success "
+					"success ": "dashboard.contact_list.form.result.success ",
+					"success": "dashboard.contact_list.form.result.success"
 				}
 			},
 			"all": {
@@ -694,7 +701,11 @@
 	"github": "github",
 	"+whichList[key]+": "+whichList[key]+",
 	"mailer": {
-		"welcome": "mailer.welcome",
+		"welcome": {
+			"1": "mailer.welcome.1",
+			"2": "mailer.welcome.2",
+			"title": "mailer.welcome.title"
+		},
 		"reset_password": {
 			"1": "mailer.reset_password.1",
 			"2": "mailer.reset_password.2",
@@ -761,6 +772,15 @@
 			"title": "contact_page.founder.title",
 			"desc": "contact_page.founder.desc",
 			"button": "contact_page.founder.button"
+		}
+	},
+	"[html]main_page": {
+		"how_it_works": {
+			"1": {
+				"description": {
+					"2": "[html]main_page.how_it_works.1.description.2"
+				}
+			}
 		}
 	}
 }

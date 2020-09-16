@@ -1,207 +1,314 @@
 {
-	"main_page": {
-		"title": "main_page.title",
-		"menu": {
-			"how_it_work": "main_page.menu.how_it_work",
-			"pricing": "main_page.menu.pricing",
-			"get_started": "main_page.menu.get_started",
-			"log_in": "main_page.menu.log_in",
-			"home": "main_page.menu.home"
-		},
-		"how_it_works": {
-			"1": {
-				"title": "main_page.how_it_works.1.title",
-				"description": {
-					"1": "main_page.how_it_works.1.description.1",
-					"2": "main_page.how_it_works.1.description.2"
-				}
-			},
-			"2": {
-				"title": "main_page.how_it_works.2.title",
-				"description": "main_page.how_it_works.2.description"
-			},
-			"3": {
-				"title": "main_page.how_it_works.3.title",
-				"description": "main_page.how_it_works.3.description"
-			},
-			"understand": {
-				"1": "main_page.how_it_works.understand.1",
-				"2": "main_page.how_it_works.understand.2",
-				"demo": "main_page.how_it_works.understand.demo"
-			},
-			"pricing": {
-				"description": "main_page.how_it_works.pricing.description",
-				"free": {
-					"title": "main_page.how_it_works.pricing.free.title",
-					"plan": {
-						"1": "main_page.how_it_works.pricing.free.plan.1",
-						"2": "main_page.how_it_works.pricing.free.plan.2",
-						"3": "main_page.how_it_works.pricing.free.plan.3",
-						"4": "main_page.how_it_works.pricing.free.plan.4",
-						"5": "main_page.how_it_works.pricing.free.plan.5",
-						"6": "main_page.how_it_works.pricing.free.plan.6",
-						"7": "main_page.how_it_works.pricing.free.plan.7"
-					},
-					"sign_up": "main_page.how_it_works.pricing.free.sign_up"
-				},
-				"pro": {
-					"title": "main_page.how_it_works.pricing.pro.title",
-					"plan": {
-						"1": "main_page.how_it_works.pricing.pro.plan.1"
-					},
-					"sign_up": "main_page.how_it_works.pricing.pro.sign_up"
-				}
-			}
-		},
-		"footer": {
-			"menu": {
-				"contact": "main_page.footer.menu.contact",
-				"terms_use": "main_page.footer.menu.terms_use",
-				"privacy": "main_page.footer.menu.privacy"
-			},
-			"made": {
-				"1": "main_page.footer.made.1",
-				"2": "main_page.footer.made.2"
-			},
-			"copyright": "main_page.footer.copyright"
-		}
-	},
-	"sign_up": {
-		"title": "sign_up.title",
-		"form": {
-			"first_name": "sign_up.form.first_name",
-			"email": "sign_up.form.email",
-			"submit": "sign_up.form.submit",
-			"errors": {
-				"email_taken": "sign_up.form.errors.email_taken"
-			}
-		}
-	},
-	"generals": {
-		"errors": {
-			"valid_email": "generals.errors.valid_email",
-			"password": {
-				"min": "generals.errors.password.min",
-				"spaces": "generals.errors.password.spaces",
-				"max": "generals.errors.password.max"
-			},
-			"special_chars": "generals.errors.special_chars",
-			"special_chars_URL": "generals.errors.special_chars_URL"
-		}
-	},
 	"models": {
+		"errors": {
+			"required": "Ce champ est requis",
+			"generated_date": "Une erreur s'est produite lors de l'attribution d'une date, veuillez vérifier la date et l'heure sur votre appareil"
+		},
 		"subscriber": {
 			"first_name": {
-				"minlength|@|2": "models.subscriber.first_name.minlength|@|2",
-				"minlength": "models.subscriber.first_name.minlength",
-				"required": "models.subscriber.first_name.required"
+				"required": "Le prénom est requis",
+				"minlength": "Le prénom ne peut pas avoir moins de %s caractères",
+				"maxlength": "Le prénom ne peut pas avoir plus de %s caractères"
 			},
 			"email": {
-				"unique": "models.subscriber.email.unique"
-			}
-		},
-		"influencer": {
-			"niche": {
-				"enum": {
-					"message": "models.influencer.niche.enum.message",
-					"values": {
-						"humor_memes": "models.influencer.niche.enum.values.humor_memes",
-						"fashion_style": "models.influencer.niche.enum.values.fashion_style",
-						"fitness": "models.influencer.niche.enum.values.fitness",
-						"quotes_texts": "models.influencer.niche.enum.values.quotes_texts",
-						"luxury_motivation": "models.influencer.niche.enum.values.luxury_motivation",
-						"cars": "models.influencer.niche.enum.values.cars",
-						"motorcycles": "models.influencer.niche.enum.values.motorcycles",
-						"nature": "models.influencer.niche.enum.values.nature",
-						"food_nutrition": "models.influencer.niche.enum.values.food_nutrition",
-						"animals": "models.influencer.niche.enum.values.animals",
-						"models": "models.influencer.niche.enum.values.models",
-						"ambassadors_influencers": "models.influencer.niche.enum.values.ambassadors_influencers",
-						"music_singers": "models.influencer.niche.enum.values.music_singers",
-						"art": "models.influencer.niche.enum.values.art",
-						"technology": "models.influencer.niche.enum.values.technology",
-						"gaming": "models.influencer.niche.enum.values.gaming",
-						"entrepreneurship": "models.influencer.niche.enum.values.entrepreneurship",
-						"architecture_interior": "models.influencer.niche.enum.values.architecture_interior",
-						"fan_accounts": "models.influencer.niche.enum.values.fan_accounts",
-						"celebrity": "models.influencer.niche.enum.values.celebrity",
-						"policy": "models.influencer.niche.enum.values.policy",
-						"makeup": "models.influencer.niche.enum.values.makeup",
-						"hair": "models.influencer.niche.enum.values.hair",
-						"nails": "models.influencer.niche.enum.values.nails",
-						"sports": "models.influencer.niche.enum.values.sports",
-						"love_romance": "models.influencer.niche.enum.values.love_romance",
-						"travel": "models.influencer.niche.enum.values.travel",
-						"dogs": "models.influencer.niche.enum.values.dogs",
-						"cats": "models.influencer.niche.enum.values.cats",
-						"other": "models.influencer.niche.enum.values.other"
-					}
-				},
-				"required": "models.influencer.niche.required"
-			},
-			"subscriber": {
-				"unique": "models.influencer.subscriber.unique"
-			},
-			"email_status": {
-				"required": "models.influencer.email_status.required"
-			},
-			"last_name": {
-				"minlength": "models.influencer.last_name.minlength"
-			},
-			"login": {
-				"required": "models.influencer.login.required",
-				"minlength": "models.influencer.login.minlength"
-			},
-			"character": {
-				"enum": {
-					"values": {
-						"person": "models.influencer.character.enum.values.person",
-						"group": "models.influencer.character.enum.values.group"
-					},
-					"message": "models.influencer.character.enum.message"
-				}
-			}
-		},
-		"link": {
-			"URL": {
-				"required": "models.link.URL.required"
-			},
-			"title": {
-				"required": "models.link.title.required"
-			},
-			"KEY": {
-				"min": "models.link.KEY.min",
-				"max": "models.link.KEY.max"
+				"required": "L'e-mail est requis",
+				"minlength": "L'e-mail ne peut pas avoir moins de %s caractères",
+				"maxlength": "L'e-mail ne peut pas avoir plus de %s caractères",
+				"unique": "Cet e-mail est déjà utilisé"
 			}
 		},
 		"contact": {
 			"which": {
+				"required": "Vous devez choisir votre profil réseau social",
 				"enum": {
 					"values": {
-						"instagram": "models.contact.which.enum.values.instagram",
-						"facebook": "models.contact.which.enum.values.facebook",
-						"twitter": "models.contact.which.enum.values.twitter",
-						"snapchat": "models.contact.which.enum.values.snapchat",
-						"tiktok": "models.contact.which.enum.values.tiktok",
-						"youtube": "models.contact.which.enum.values.youtube",
-						"linkedin": "models.contact.which.enum.values.linkedin",
-						"github": "models.contact.which.enum.values.github",
-						"behance": "models.contact.which.enum.values.behance",
-						"twitch": "models.contact.which.enum.values.twitch",
-						"email": "models.contact.which.enum.values.email",
-						"whatsapp": "models.contact.which.enum.values.whatsapp",
-						"blog": "models.contact.which.enum.values.blog",
-						"store": "models.contact.which.enum.values.store",
-						"portfolio": "models.contact.which.enum.values.portfolio",
-						"website": "models.contact.which.enum.values.website",
-						"other": "models.contact.which.enum.values.other"
+						"instagram": "Instagram",
+						"facebook": "Facebook",
+						"twitter": "Twitter",
+						"snapchat": "Snapchat",
+						"tiktok": "Tiktok",
+						"youtube": "Youtube",
+						"linkedin": "Linkedin",
+						"github": "Github",
+						"behance": "Behance",
+						"twitch": "Twitch",
+						"email": "E-mail",
+						"whatsapp": "Whatsapp",
+						"blog": "Blog",
+						"store": "Boutique",
+						"portfolio": "Portfolio",
+						"website": "Site Web Personnel/Entreprise",
+						"other": "Autre",
+						"medium": "Medium",
+						"vk": "Vk",
+						"patreon": "Patreon"
 					},
-					"message": "models.contact.which.enum.message"
+					"message": "Si vous n'avez pas trouvé votre réseau social, choisissez autre"
 				}
 			},
 			"URL": {
-				"required": "models.contact.URL.required",
-				"minlength": "models.contact.URL.minlength"
+				"required": "Le URL est requis",
+				"minlength": "Le URL ne peut pas avoir moins de %s caractères",
+				"maxlength": "Le URL ne peut pas avoir plus de %s caractères"
+			}
+		},
+		"influencer": {
+			"subscriber": {
+				"required": "Etes-vous sûr d'avoir déjà saisi votre e-mail et votre prénom!",
+				"unique": "Cet influenceur est dupliqué!"
+			},
+			"niche": {
+				"required": "Vous devez choisir votre niche",
+				"enum": {
+					"values": {
+						"humor_memes": "Humour",
+						"fashion_style": "Mode & style",
+						"fitness": "Fitness",
+						"quotes_texts": "Citations",
+						"luxury_motivation": "Luxe & motivation",
+						"cars": "Voitures",
+						"motorcycles": "Motocycles",
+						"nature": "Nature",
+						"food_nutrition": "Alimentation & nutrition",
+						"animals": "Animaux",
+						"models": "Modèles & Mannequins",
+						"ambassadors_influencers": "Ambassadeurs & influenceurs",
+						"music_singers": "Musique & chanteurs",
+						"art": "Art",
+						"technology": "Nouvelles technologies",
+						"gaming": "Jeux vidéo",
+						"entrepreneurship": "Entrepreneuriat",
+						"architecture_interior": "Architecture",
+						"fan_accounts": "comptes de fans",
+						"celebrity": "Célébrité",
+						"policy": "Politique",
+						"makeup": "Maquillage",
+						"hair": "Cheveux",
+						"nails": "Ongles",
+						"sports": "Sports",
+						"love_romance": "Amour & romance",
+						"travel": "Voyage",
+						"dogs": "Chiens",
+						"cats": "Chats",
+						"other": "Autre"
+					},
+					"message": "Si vous n'avez pas trouvé le bon niche, vous pouvez choisir autre"
+				}
+			},
+			"contacts": {
+				"required": "Vous devez associer votre compte à au moins un profil réseau social"
+			},
+			"login": {
+				"unique": "Ce nom d'utilisateur est déja pris",
+				"required": "Le nom d'utilisateur est requis",
+				"minlength": "Le nom d'utilisateur ne peut pas avoir moins de %s caractères",
+				"maxlength": "Le nom d'utilisateur ne peut pas avoir plus de %s caractères"
+			},
+			"password": {
+				"required": "Le mot de passe est requis",
+				"minlength": "Le mot de passe ne peut pas avoir moins de %s caractères",
+				"maxlength": "Le mot de passe ne peut pas avoir plus de %s caractères"
+			},
+			"last_name": {
+				"minlength": "Le nom ne peut pas avoir moins de %s caractères",
+				"maxlength": "Le nom ne peut pas avoir plus de %s caractères"
+			},
+			"email_status": {
+				"required": "Le statut de l'e-mail est requis"
+			},
+			"character": {
+				"enum": {
+					"values": {
+						"person": "Personne",
+						"group": "Groupe/Entreprise"
+					},
+					"message": "Veuillez vérifier ce que vous avez choisi"
+				}
+			}
+		},
+		"link": {
+			"priority": {
+				"min": "Veuillez saisir une priorité valide",
+				"max": "La priorité ne peut pas être supérieure à 9999"
+			},
+			"URL": {
+				"required": "Le URL est requis",
+				"minlength": "Le URL ne peut pas avoir moins de %s caractères",
+				"maxlength": "Le URL ne peut pas avoir plus de %s caractères"
+			},
+			"title": {
+				"required": "Le titre est requis",
+				"minlength": "Le titre ne peut pas avoir moins de %s caractères",
+				"maxlength": "Le titre ne peut pas avoir plus de %s caractères"
+			},
+			"KEY": {
+				"min": "La CLÉ accepte seulement un numéro à 3 chiffres au minimum",
+				"max": "La CLÉ accepte seulement un numéro à 4 chiffres au maximum"
+			},
+			"description": {
+				"minlength": "La description ne peut pas avoir moins de %s caractères",
+				"maxlength": "Le description ne peut pas avoir plus de %s caractères"
+			}
+		},
+		"search": {
+			"keyword": {
+				"required": "Nous ne pouvons pas vous aider sans savoir ce que vous recherchez",
+				"maxlength": "Le mot-clé ne peut pas avoir plus de %s caractères"
+			},
+			"influencer": {
+				"required": "L'id de l'influenceur est requis"
+			},
+			"follower": {
+				"required": "L'id de l'abonné est requis"
+			}
+		},
+		"click": {
+			"follower": {
+				"required": "L'id de l'influenceur est requis"
+			},
+			"link": {
+				"required": "L'id du lien est requis"
+			}
+		},
+		"follower": {
+			"ip_adress": {
+				"required": "Nous ne pouvons pas obtenir l'adresse IP du visiteur",
+				"unique": "Cette adresse IP est dupliquée"
+			}
+		},
+		"subscription": {
+			"influencer": {
+				"required": "L'id de l'influenceur est requis"
+			},
+			"follower": {
+				"required": "L'id de l'abonné est requis"
+			}
+		},
+		"visit": {
+			"influencer": {
+				"required": "L'id de l'influenceur est requis"
+			},
+			"follower": {
+				"required": "L'id de l'abonné est requis"
+			}
+		}
+	},
+	"main_page": {
+		"title": "Faites de votre #linkinbio un moteur de recherche!",
+		"menu": {
+			"how_it_work": "Comment ça marche",
+			"pricing": "Tarifs",
+			"get_started": "Commencer",
+			"log_in": "Se connecter",
+			"home": "Accueil"
+		},
+		"how_it_works": {
+			"1": {
+				"title": "Plusieurs liens! aucun problème",
+				"description": "Ajoutez vos liens, chacun avec une <strong>CLÉ</strong> unique"
+			},
+			"2": {
+				"title": "Avec une URL unique",
+				"description": " Récupérez votre URL unique, mettez-la dans votre #bio"
+			},
+			"3": {
+				"title": "Suivez vos abonnés",
+				"description": "comprenez les intérêts de votre audience et ce qu'ils vraiment cherchent"
+			},
+			"understand": {
+				"1": "Pour en savoir plus",
+				"2": "Voici un",
+				"demo": "Utilisateur démo"
+			},
+			"pricing": {
+				"free": {
+					"sign_up": "Inscrivez-vous gratuitement",
+					"title": "Gratuit",
+					"plan": {
+						"1": "Liens illimités",
+						"2": "Icônes pour réseaux sociaux",
+						"3": "Inscription à la newsletter",
+						"4": "Suivi des liens et statistiques",
+						"5": "Pas de pubs",
+						"6": "Thèmes préconçus",
+						"7": "Assistance par e-mail"
+					}
+				},
+				"pro": {
+					"sign_up": "Contactez nous",
+					"title": "Pro (Bientôt disponible)",
+					"plan": {
+						"1": "& plus encore"
+					}
+				}
+			}
+		},
+		"footer": {
+			"made": {
+				"1": "Fait avec",
+				"2": "par"
+			},
+			"copyright": "Droits d'auteur",
+			"menu": {
+				"contact": "Contact",
+				"terms_use": "Conditions d'utilisation",
+				"privacy": "Politique de confidentialité"
+			}
+		}
+	},
+	"sign_up": {
+		"title": "Créez votre propre moteur de recherche maintenant!",
+		"form": {
+			"first_name": "Prénom",
+			"email": "E-mail",
+			"submit": "Inscrivez-vous",
+			"errors": {
+				"email_taken": "Cet e-mail est déjà inscrit dans nos bases de données"
+			}
+		}
+	},
+	"follower_page": {
+		"menu": {
+			"create_mine": "CRÉER MON PROPRE MOTEUR DE RECHERCHE"
+		},
+		"influencer": {
+			"find": {
+				"character": {
+					"person": "moi",
+					"group": "nous"
+				},
+				"label": "Trouvez %s"
+			}
+		},
+		"footer": {
+			"made": {
+				"1": "Fait avec",
+				"2": "par"
+			},
+			"copyright": "Droits d'auteur"
+		},
+		"search_form": {
+			"keyword": "TAPEZ UNE CLÉ OU QUELQUES MOTS-CLÉS",
+			"result": {
+				"nothing_found": "On ne trouve rien!",
+				"tape_key": "Tapez une CLÉ ou quelques mots-clés pour lancer la recherche"
+			}
+		},
+		"title": "Le moteur de recherche du %s"
+	},
+	"generals": {
+		"errors": {
+			"special_chars": "Ce champ n'autorise pas les caractères spéciaux comme < > ' \" \\ /",
+			"special_chars_URL": "Ce champ n'autorise pas les caractères spéciaux comme < > ' \" \\",
+			"valid_e-mail": "Veuillez saisir une adresse e-mail valide",
+			"password": {
+				"minlength": "Le mot de passe ne peut pas avoir moins de %s caractères",
+				"maxlength": "Le mot de passe ne peut pas avoir plus de %s caractères",
+				"uppercase": "Le mot de passe doit inclure au moins une lettre majuscule",
+				"lowercase": "Le mot de passe doit inclure au moins une lettre minuscule",
+				"digits": "Le mot de passe doit être alphanumérique",
+				"spaces": "Le mot de passe n'autorise pas les espaces vides",
+				"valid": "Veuillez saisir un mot de passe valide"
 			}
 		}
 	},
@@ -209,281 +316,252 @@
 		"login": {
 			"form": {
 				"email": {
-					"label": "account_page.login.form.email.label"
+					"label": "Adresse e-mail"
 				},
 				"password": {
-					"label": "account_page.login.form.password.label"
+					"label": "Mot de passe"
 				},
-				"submit": "account_page.login.form.submit",
-				"i_forgot": "account_page.login.form.i_forgot",
+				"submit": "S'IDENTIFIER",
+				"i_forgot": "Mot de passe oublié",
 				"footer": {
-					"have_account": "account_page.login.form.footer.have_account",
-					"signup_link": "account_page.login.form.footer.signup_link"
+					"have_account": "Vous n'êtes pas encore inscrit?",
+					"signup_link": "Inscrivez-vous"
 				}
 			},
 			"errors": {
-				"authenticated_first": "account_page.login.errors.authenticated_first"
+				"_authenticated_first": "Vous devez d'abord s'authentifier",
+				"authenticated_first": "Veuillez s'authentifier à votre compte"
+				
 			},
-			"page_title": "account_page.login.page_title",
+			"page_title": "Se connecter",
 			"result": {
-				"email_not_found": "account_page.login.result.email_not_found",
-				"incorrect": "account_page.login.result.incorrect"
+				"email_not_found": "Nous ne pouvons pas trouver d'influenceur avec cet e-mail",
+				"incorrect": "E-mail ou mot de passe incorrect"
 			}
-		},
-		"footer": {
-			"menu": {
-				"contact": "account_page.footer.menu.contact",
-				"terms_use": "account_page.footer.menu.terms_use",
-				"privacy": "account_page.footer.menu.privacy"
-			},
-			"made": {
-				"1": "account_page.footer.made.1",
-				"2": "account_page.footer.made.2"
-			},
-			"copyright": "account_page.footer.copyright"
 		},
 		"signup": {
 			"form": {
 				"first_name": {
-					"label": "account_page.signup.form.first_name.label"
+					"label": "Prénom"
 				},
 				"email": {
-					"label": "account_page.signup.form.email.label"
+					"label": "Adresse e-mail"
 				},
 				"niche": {
-					"label": "account_page.signup.form.niche.label"
+					"label": "Niche"
 				},
 				"password": {
-					"label": "account_page.signup.form.password.label"
+					"label": "Mot de passe"
 				},
 				"confirm_password": {
-					"label": "account_page.signup.form.confirm_password.label",
-					"valid": "account_page.signup.form.confirm_password.valid",
-					"identical": "account_page.signup.form.confirm_password.identical"
+					"label": "Confirmez le mot de passe",
+					"valid": "Veuillez saisir un mot de passe valide",
+					"identical": "Les deux mots de passe doivent être identiques"
 				},
 				"agree": {
 					"label": {
-						"agree": "account_page.signup.form.agree.label.agree",
-						"and": "account_page.signup.form.agree.label.and",
-						"terms": "account_page.signup.form.agree.label.terms",
-						"privacy": "account_page.signup.form.agree.label.privacy"
+						"agree": "J'accepte",
+						"privacy": "la Politique de confidentialité",
+						"and": ", et",
+						"terms": "les termes et les conditions d'utilisation"
 					},
-					"you_should": "account_page.signup.form.agree.you_should"
+					"you_should": "Vous devez accepter nos conditions avant de continuer"
 				},
-				"submit": "account_page.signup.form.submit",
+				"submit": "S'INSCRIRE",
 				"footer": {
-					"have_account": "account_page.signup.form.footer.have_account",
-					"login": "account_page.signup.form.footer.login"
+					"have_account": "Vous êtes déja inscrit ?",
+					"login": "Se connecter"
 				},
 				"result": {
-					"check_fields": "account_page.signup.form.result.check_fields"
-				},
-				"agreement": {
-					"you_should": "account_page.signup.form.agreement.you_should"
+					"check_fields": "Veuillez vérifier que tous les champs sont valides"
 				}
 			},
-			"page_title": "account_page.signup.page_title"
+			"page_title": "S'inscrire"
 		},
 		"reset_password": {
 			"result": {
-				"password_sent": "account_page.reset_password.result.password_sent",
-				"success": "account_page.reset_password.result.success",
-				"password_reset": "account_page.reset_password.result.password_reset"
+				"password_sent": "Si l'e-mail que vous avez saisi existe, vous trouverez un lien de réinitialisation du mot de passe dans votre boîte mail",
+				"password_reset": "Votre mot de passe a été bien réinitialisé"
 			},
 			"form": {
 				"header": {
-					"title": "account_page.reset_password.form.header.title"
+					"title": "Réinitialiser mon mot de passe"
 				},
 				"email": {
-					"label": "account_page.reset_password.form.email.label"
+					"label": "Adresse e-mail"
 				},
 				"login": {
-					"label": "account_page.reset_password.form.login.label"
+					"label": "Nom d'utilisateur"
 				},
-				"submit": "account_page.reset_password.form.submit",
+				"submit": "RÉINITIALISER MON MOT DE PASSE",
 				"footer": {
-					"return": "account_page.reset_password.form.footer.return"
+					"return": "Retour à l'écran de connexion"
 				}
 			}
 		}
 	},
 	"dashboard": {
 		"generals": {
-			"title": "dashboard.generals.title",
-			"toggle": "dashboard.generals.toggle"
+			"title": "Tableau de bord influenceur",
+			"toggle": "Basculer"
 		},
 		"menu": {
-			"main": "dashboard.menu.main",
-			"add_link": "dashboard.menu.add_link",
-			"contact_list": "dashboard.menu.contact_list",
-			"all_links": "dashboard.menu.all_links",
-			"toggle": "dashboard.menu.toggle",
-			"logout": "dashboard.menu.logout",
-			"profile": "dashboard.menu.profile",
-			"coming_soon": "dashboard.menu.coming_soon",
-			"subscribers": "dashboard.menu.subscribers",
-			"stats": "dashboard.menu.stats",
-			"themes": "dashboard.menu.themes",
-			"home": "dashboard.menu.home"
+			"main": "Principale",
+			"add_link": "Ajouter un lien",
+			"contact_list": "Réseaux sociaux",
+			"all_links": "Mes liens",
+			"logout": "Se déconnecter",
+			"profile": "Profil",
+			"coming_soon": "Bientôt disponible",
+			"subscribers": "Abonnés à la newsletter",
+			"stats": "Suivi des liens et statistiques",
+			"themes": "Thèmes préconçus",
+			"home": "Accueil"
 		},
 		"add_link": {
-			"page_title": "dashboard.add_link.page_title",
+			"page_title": "Ajouter un lien",
 			"form": {
 				"URL": {
-					"label": "dashboard.add_link.form.URL.label",
-					"placeholder": "dashboard.add_link.form.URL.placeholder",
+					"label": "URL",
+					"placeholder": "https://exemple.com/",
 					"errors": {
-						"valid": "dashboard.add_link.form.URL.errors.valid"
+						"valid": "Veuillez saisir une URL valide"
 					}
 				},
 				"title": {
-					"label": "dashboard.add_link.form.title.label"
+					"label": "Titre"
 				},
 				"KEY": {
-					"label": "dashboard.add_link.form.KEY.label",
+					"label": "CLÉ",
 					"errors": {
-						"Duplicated": "dashboard.add_link.form.KEY.errors.Duplicated"
+						"Duplicated": "CLÉ en double!"
 					}
 				},
 				"main": {
-					"label": "dashboard.add_link.form.main.label"
+					"label": "Met-le sur ma page principale"
 				},
-				"submit": "dashboard.add_link.form.submit",
+				"submit": "Ajouter mon lien",
 				"result": {
-					"key": "dashboard.add_link.form.result.key",
-					"KEY": "dashboard.add_link.form.result.KEY",
-					"cant_add": "dashboard.add_link.form.result.cant_add",
-					"success": "dashboard.add_link.form.result.success"
+					"KEY": "Veuillez saisir une autre CLÉ",
+					"cant_add": "Nous ne pouvons pas ajouter le lien dans la base de données, veuillez réessayer",
+					"success": "Lien ajouté avec succès"
 				}
 			}
 		},
 		"all_links": {
-			"page_title": "dashboard.all_links.page_title",
+			"page_title": "Mes liens",
 			"table": {
 				"head": {
-					"link": "dashboard.all_links.table.head.link",
-					"KEY": "dashboard.all_links.table.head.KEY",
-					"created": "dashboard.all_links.table.head.created"
+					"link": "Lien",
+					"KEY": "CLÉ",
+					"created": "Créé le"
 				},
 				"link": {
-					"main": "dashboard.all_links.table.link.main",
-					"delete_btn": "dashboard.all_links.table.link.delete_btn",
-					"edit_btn": "dashboard.all_links.table.link.edit_btn"
+					"main": {
+						"with": "9.5",
+						"label": "Met-le sur ma\npage principale"
+					},
+					"delete_btn": "Supprimer ceci",
+					"edit_btn": "Modifier ceci"
 				},
 				"DataTable": {
-					"emptyTable": "dashboard.all_links.table.DataTable.emptyTable",
-					"info": "dashboard.all_links.table.DataTable.info",
-					"lengthMenu": "dashboard.all_links.table.DataTable.lengthMenu",
-					"infoEmpty": "dashboard.all_links.table.DataTable.infoEmpty",
-					"infoFiltered": "dashboard.all_links.table.DataTable.infoFiltered",
+					"emptyTable": "Aucune donnée disponible",
+					"info": "Affichage de _START_ à _END_ of _TOTAL_ liens",
+					"lengthMenu": "Afficher _MENU_ liens",
+					"infoEmpty": "Affichage de 0 à 0 parmi 0 liens",
+					"infoFiltered": "(Filtrée de _MAX_ liens au total)",
 					"paginate": {
-						"first": "dashboard.all_links.table.DataTable.paginate.first",
-						"previous": "dashboard.all_links.table.DataTable.paginate.previous",
-						"next": "dashboard.all_links.table.DataTable.paginate.next",
-						"last": "dashboard.all_links.table.DataTable.paginate.last"
+						"first": "Premiere",
+						"previous": "Précédente",
+						"next": "Suivante",
+						"last": "Derniére"
 					},
-					"search": "dashboard.all_links.table.DataTable.search",
-					"zeroRecords": "dashboard.all_links.table.DataTable.zeroRecords"
+					"search": "Rechercher:",
+					"zeroRecords": "Aucun lien correspondant trouvé"
 				}
 			}
 		},
 		"contact_list": {
-			"page_title": "dashboard.contact_list.page_title",
+			"page_title": "Mes profils réseaux sociaux",
 			"link": {
-				"label": "dashboard.contact_list.link.label"
+				"label": "Lien"
 			},
 			"form": {
-				"submit": "dashboard.contact_list.form.submit",
+				"submit": "Ajouter mon profil",
 				"URL": {
 					"placeholder": {
-						"email": "dashboard.contact_list.form.URL.placeholder.email",
-						"number": "dashboard.contact_list.form.URL.placeholder.number",
-						"username": "dashboard.contact_list.form.URL.placeholder.username",
-						"URL": "dashboard.contact_list.form.URL.placeholder.URL"
+						"email": "Votre adresse e-mail",
+						"number": "Votre numéro",
+						"username": "Votre nom d'utilisateur",
+						"URL": "Votre URL"
 					}
 				},
 				"result": {
-					"success ": "dashboard.contact_list.form.result.success "
+					"success": "Un nouveau profil a été ajouté avec succès"
 				}
 			},
 			"all": {
 				"result": {
-					"removed": "dashboard.contact_list.all.result.removed"
+					"removed": "Supprimé avec succès"
 				},
-				"delete_btn": "dashboard.contact_list.all.delete_btn"
+				"delete_btn": "Supprimer ceci"
 			}
 		},
 		"profile": {
-			"page_title": "dashboard.profile.page_title",
+			"page_title": "Mon profile",
 			"tabs": {
 				"head": {
-					"profile": "dashboard.profile.tabs.head.profile",
-					"password": "dashboard.profile.tabs.head.password",
-					"email": "dashboard.profile.tabs.head.email"
+					"profile": "Détails du profil",
+					"password": "Détails du mot de passe",
+					"email": "E-mail"
 				},
 				"profile": {
 					"form": {
 						"first_name": {
-							"libelle": "dashboard.profile.tabs.profile.form.first_name.libelle"
+							"libelle": "Prénom"
 						},
 						"last_name": {
-							"libelle": "dashboard.profile.tabs.profile.form.last_name.libelle"
-						},
-						"email": {
-							"libelle": "dashboard.profile.tabs.profile.form.email.libelle"
-						},
-						"submit": "dashboard.profile.tabs.profile.form.submit",
-						"niche": {
-							"libelle": "dashboard.profile.tabs.profile.form.niche.libelle"
+							"libelle": "Nom"
 						},
 						"login": {
-							"libelle": "dashboard.profile.tabs.profile.form.login.libelle"
+							"libelle": "Nom d'utilisateur"
 						},
-						"password": {
-							"libelle": "dashboard.profile.tabs.profile.form.password.libelle"
+						"niche": {
+							"libelle": "Niche"
 						},
+						"submit": "Sauvegarder",
 						"result": {
-							"success": "dashboard.profile.tabs.profile.form.result.success",
-							"error": "dashboard.profile.tabs.profile.form.result.error"
+							"success": "Les modifications sont bien faites",
+							"error": "Une erreur s'est produite lors de la modification des données"
 						},
 						"character": {
-							"libelle": "dashboard.profile.tabs.profile.form.character.libelle"
+							"libelle": "Je suis"
 						}
 					}
 				},
 				"email": {
 					"form": {
 						"email": {
-							"libelle": "dashboard.profile.tabs.email.form.email.libelle"
+							"libelle": "E-mail"
 						},
-						"submit": "dashboard.profile.tabs.email.form.submit"
+						"submit": "Changer"
 					}
 				},
 				"password": {
 					"form": {
-						"password": {
-							"libelle": "dashboard.profile.tabs.password.form.password.libelle"
-						},
-						"submit": "dashboard.profile.tabs.password.form.submit",
 						"new_password": {
-							"libelle": "dashboard.profile.tabs.password.form.new_password.libelle"
+							"libelle": "Nouveau mot de passe"
 						},
 						"confirm_password": {
-							"libelle": "dashboard.profile.tabs.password.form.confirm_password.libelle"
+							"libelle": "Confirmez le mot de passe"
 						},
 						"old_password": {
-							"libelle": "dashboard.profile.tabs.password.form.old_password.libelle"
+							"libelle": "Ancien mot de passe"
 						},
+						"submit": "Changer",
 						"result": {
-							"compare_password": "dashboard.profile.tabs.password.form.result.compare_password",
-							"success": "dashboard.profile.tabs.password.form.result.success"
-						}
-					}
-				},
-				"old_password": {
-					"form": {
-						"old_password": {
-							"libelle": "dashboard.profile.tabs.old_password.form.old_password.libelle"
+							"compare_password": "L'ancien mot de passe est erroné",
+							"success": "C'est fait! Le mot de passe est mis à jour"
 						}
 					}
 				}
@@ -491,151 +569,56 @@
 		},
 		"index": {
 			"result": {
-				"confirmation": "dashboard.index.result.confirmation",
-				"sucess_email_confirmation": "dashboard.index.result.sucess_email_confirmation",
-				"success_email_confirmation": "dashboard.index.result.success_email_confirmation"
+				"success_e-mail_confirmation": "Félicitations, vous avez confirmé votre e-mail"
 			}
 		},
 		"update_link": {
-			"page_title": "dashboard.update_link.page_title",
+			"page_title": "Mettre à jour du lien",
 			"form": {
-				"submit": "dashboard.update_link.form.submit",
+				"submit": "Modifier",
 				"result": {
-					"cant_update": "dashboard.update_link.form.result.cant_update",
-					"success": "dashboard.update_link.form.result.success",
-					"not_yours": "dashboard.update_link.form.result.not_yours"
+					"cant_update": "Nous ne pouvons pas mettre à jour le lien, veuillez réessayer",
+					"success": "Le lien a été modifié avec succès",
+					"not_yours": "Vous n'êtes pas le propriétaire de ce lien!"
 				}
 			}
 		},
 		"home": {
 			"welcome": {
-				"0": "dashboard.home.welcome.0",
-				"1": "dashboard.home.welcome.1"
+				"0": "Chér(e) %s, Merci pour votre confiance en 7linKy; \nNous aimerions bien recevoir vos remarques et suggestions pour améliorer nos services",
+				"1": "Pour nous contacter, merci de nous envoyer un e-mail à l'adresse"
 			},
 			"link": {
-				"ready": "dashboard.home.link.ready",
+				"ready": "Votre propre lien est prêt à partager dans vos réseaux sociaux",
 				"create": {
-					"insta": "dashboard.home.link.create.insta",
-					"here": "dashboard.home.link.create.here"
+					"insta": "Pour obtenir votre propre lien, veuillez ajouter votre compte instagram",
+					"here": "par ici"
 				}
 			}
 		}
 	},
-	"follower_page": {
-		"title": "follower_page.title",
-		"menu": {
-			"create_mine": "follower_page.menu.create_mine"
-		},
-		"influencer": {
-			"find": {
-				"character": {
-					"person": "follower_page.influencer.find.character.person",
-					"group": "follower_page.influencer.find.character.group"
-				},
-				"label": "follower_page.influencer.find.label"
-			}
-		},
-		"search_form": {
-			"keyword": "follower_page.search_form.keyword",
-			"result": {
-				"nothing_found": "follower_page.search_form.result.nothing_found",
-				"tape_key": "follower_page.search_form.result.tape_key"
-			}
-		},
-		"footer": {
-			"made": {
-				"1": "follower_page.footer.made.1",
-				"2": "follower_page.footer.made.2"
-			},
-			"copyright": "follower_page.footer.copyright"
-		}
-	},
-	"instagram": "instagram",
-	"whatsapp": "whatsapp",
-	"behance": "behance",
-	"twitch": "twitch",
-	"email": "email",
-	"blog": "blog",
-	"store": "store",
-	"portfolio": "portfolio",
-	"website": "website",
-	"other": "other",
-	"facebook": "facebook",
-	"twitter": "twitter",
-	"snapchat": "snapchat",
-	"tiktok": "tiktok",
-	"youtube": "youtube",
-	"linkedin": "linkedin",
-	"github": "github",
-	"+whichList[key]+": "+whichList[key]+",
 	"mailer": {
-		"welcome": "mailer.welcome",
+		"welcome": {
+			"1": "Chér(e) %s, \n\nMerci pour votre confiance en 7linKy, vous trouverez ci-dessous vos détails d'authentification \ne-mail: %s \nMot de passe: %s \n\nVous devez également confirmer votre compte en cliquant sur ce lien ci-dessous \n",
+			"2": "\n\nNous vous souhaitons une très bonne expérience avec nous",
+			"title": "Bienvenue! L'équipe 7linky"
+		},
 		"reset_password": {
-			"1": "mailer.reset_password.1",
-			"2": "mailer.reset_password.2",
-			"3": "mailer.reset_password.3"
-		}
-	},
-	"\r\n            dashboard": {
-		"all_links": {
-			"table": {
-				"DataTable": {
-					"emptyTable ": "\r\n            dashboard.all_links.table.DataTable.emptyTable ",
-					"info ": "\r\n            dashboard.all_links.table.DataTable.info ",
-					"lengthMenu ": "\r\n            dashboard.all_links.table.DataTable.lengthMenu ",
-					"infoEmpty ": "\r\n            dashboard.all_links.table.DataTable.infoEmpty ",
-					"infoFiltered ": "\r\n            dashboard.all_links.table.DataTable.infoFiltered ",
-					"zeroRecords ": "\r\n            dashboard.all_links.table.DataTable.zeroRecords ",
-					"search ": "\r\n            dashboard.all_links.table.DataTable.search "
-				}
-			}
-		}
-	},
-	"\r\n                dashboard": {
-		"all_links": {
-			"table": {
-				"DataTable": {
-					"paginate": {
-						"first ": "\r\n                dashboard.all_links.table.DataTable.paginate.first ",
-						"previous ": "\r\n                dashboard.all_links.table.DataTable.paginate.previous ",
-						"next ": "\r\n                dashboard.all_links.table.DataTable.paginate.next ",
-						"last ": "\r\n                dashboard.all_links.table.DataTable.paginate.last "
-					},
-					"emptyTable ": "\r\n                dashboard.all_links.table.DataTable.emptyTable ",
-					"info ": "\r\n                dashboard.all_links.table.DataTable.info ",
-					"lengthMenu ": "\r\n                dashboard.all_links.table.DataTable.lengthMenu ",
-					"infoEmpty ": "\r\n                dashboard.all_links.table.DataTable.infoEmpty ",
-					"infoFiltered ": "\r\n                dashboard.all_links.table.DataTable.infoFiltered ",
-					"zeroRecords ": "\r\n                dashboard.all_links.table.DataTable.zeroRecords ",
-					"search ": "\r\n                dashboard.all_links.table.DataTable.search "
-				}
-			}
-		}
-	},
-	"\r\n                    dashboard": {
-		"all_links": {
-			"table": {
-				"DataTable": {
-					"paginate": {
-						"first ": "\r\n                    dashboard.all_links.table.DataTable.paginate.first ",
-						"previous ": "\r\n                    dashboard.all_links.table.DataTable.paginate.previous ",
-						"next ": "\r\n                    dashboard.all_links.table.DataTable.paginate.next ",
-						"last ": "\r\n                    dashboard.all_links.table.DataTable.paginate.last "
-					}
-				}
-			}
+			"1": "Chér(e) %s, \n\nUn nouveau mot de passe a été réinitialisé pour vous : ",
+			"2": "Veuillez suivre le lien pour approuver votre mot de passe",
+			"3": "Si vous n'avez pas demandé la réinitialisation de votre mot de passe, veuillez ignorer cet e-mail et aucune modification ne sera apportée. \n\nMerci! \nL'équipe 7linKy"
 		}
 	},
 	"contact_page": {
-		"title": "contact_page.title",
+		"title": "Notre équipe est là pour vous aider",
 		"contact": {
-			"send_email": "contact_page.contact.send_email",
-			"other_ways": "contact_page.contact.other_ways"
+			"send_email": "Envoyez-nous un e-mail",
+			"other_ways": "D'autres façons de se connecter"
 		},
 		"founder": {
-			"title": "contact_page.founder.title",
-			"desc": "contact_page.founder.desc",
-			"button": "contact_page.founder.button"
+			"title": "Le fondateur",
+			"desc": "J'ai besoin de vos conseils et suggestions pour améliorer notre service",
+			"button": "Contactez moi"
 		}
 	}
 }
