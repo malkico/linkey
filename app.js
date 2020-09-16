@@ -8,11 +8,12 @@ const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
 const exphbs = require('express-handlebars');
 const registerHelper = require("./config/registerHelper")
-const dotenv = require("dotenv");
-dotenv.config();
+const dotenv = require("dotenv"); 
+dotenv.config({ path: true });
+require('custom-env').env(true)
 const Handlebars = require('handlebars')
 const changeLang = require("./middlwares/changeLang")
-const {
+const { 
   allowInsecurePrototypeAccess
 } = require('@handlebars/allow-prototype-access')
 
@@ -156,7 +157,7 @@ app.use(function (err, req, res) {
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
-  res.status(err.status || 500);
+  res.status(err.status || 500);  
   res.render('error');
 });
 
@@ -172,3 +173,6 @@ module.exports = app;
 
 // i18n.setLocale("en")
 // console.log(registerHelper.translate("models.link.URL.minlength|@|2"))
+
+console.log("Env : "+process.env.NODE_ENV) 
+console.log("host : "+process.env.domain )

@@ -701,7 +701,11 @@
 	"github": "github",
 	"+whichList[key]+": "+whichList[key]+",
 	"mailer": {
-		"welcome": "mailer.welcome",
+		"welcome": {
+			"1": "mailer.welcome.1",
+			"2": "mailer.welcome.2",
+			"title": "mailer.welcome.title"
+		},
 		"reset_password": {
 			"1": "mailer.reset_password.1",
 			"2": "mailer.reset_password.2",

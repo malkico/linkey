@@ -329,7 +329,8 @@
 				}
 			},
 			"errors": {
-				"authenticated_first": "You must first authenticate"
+				"_authenticated_first": "You must first authenticate",
+				"authenticated_first": "Please login to your account"
 			},
 			"page_title": "Log in",
 			"result": {

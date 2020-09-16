@@ -217,7 +217,7 @@ const changeDetails = (influencer, data) => {
 }
 exports.changeDetails = changeDetails
 
-const chagePassword = (influencer, password) => {
+const changePassword = (influencer, password) => {
     const obj = {
         where: {
             _id: ObjectId(influencer._id)
@@ -230,10 +230,10 @@ const chagePassword = (influencer, password) => {
         }
     }
 
-    console.log("InfluencerDao.changePassword => %s", obj)
+    console.log("InfluencerDao.changePassword => ", obj)
     return Influencer.updateOne(obj.where, obj.set, obj.options)
 }
-exports.chagePassword = chagePassword
+exports.changePassword = changePassword
 
 const signUp = (influencer, callback) => {
     console.log("Influencer.signUp => %s", influencer)

@@ -329,7 +329,9 @@
 				}
 			},
 			"errors": {
-				"authenticated_first": "Vous devez d'abord s'authentifier"
+				"_authenticated_first": "Vous devez d'abord s'authentifier",
+				"authenticated_first": "Veuillez s'authentifier à votre compte"
+				
 			},
 			"page_title": "Se connecter",
 			"result": {

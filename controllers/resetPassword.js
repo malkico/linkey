@@ -105,10 +105,10 @@ exports.changePassword = [
         /* ********** changing the password on DB *************/
     }, (req, res, next) => {
         InfluencerDao.changePassword({
-                influencer: {
                     _id: req.params.influencer_id
-                }
-            })
+                },
+                res.locals.hashed_pass
+            )
             .then(result => {
                 if (result.nModified) {
                     console.log("result => %s", result)

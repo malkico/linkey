@@ -5,21 +5,23 @@
     <div class="row mt-5 mb-5">
         <div class="col-lg-6 text-center my-auto ">
                 <h4>{{ translate "contact_page.contact.send_email" }} </h4>
-                <p class="text-dark">hichamlmalki@gmail.com</p>
+                <p>
+                    <a href="mailto:{{env.email}}" class="text-dark">{{env.email}}</a>
+                </p>
                 <h4>{{ translate "contact_page.contact.other_ways" }}</h4>
                 <ul class="list-inline mt-3">
                     <li class="list-inline-item mr-3">
-                        <a href="#">
+                        <a href="https://www.facebook.com/7linky">
                             <i class="fab fa-facebook fa-2x fa-fw"></i>
                         </a>
                     </li>
                     <li class="list-inline-item mr-3">
-                        <a href="#">
-                            <i class="fab fa-twitter-square fa-2x fa-fw"></i>
+                        <a href="https://www.linkedin.com/company/7linky">
+                            <i class="fab fa-linkedin fa-2x fa-fw"></i>
                         </a>
                     </li>
                     <li class="list-inline-item">
-                        <a href="#">
+                        <a href="https://www.instagram.com/7linky">
                             <i class="fab fa-instagram fa-2x fa-fw"></i>
                         </a>
                     </li>
@@ -34,7 +36,7 @@
             <div class="row justify-content-center">
             <p class="col-sm-8  text-dark">{{ translate "contact_page.founder.desc" }}.</p>
             </div>
-            <a href="https://www.linkedin.com/in/malki-hicham-032ba570/"><button type="button" class="btn btn-dark">{{ translate "contact_page.founder.button" }}</button></a>
+            <a href="https://www.linkedin.com/in/hicham-malki-032ba570/"><button type="button" class="btn btn-dark">{{ translate "contact_page.founder.button" }}</button></a>
 
             </div>
         </div>
