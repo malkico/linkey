@@ -60,9 +60,13 @@
 # email on controller (mailer)
 # change email + verification
 
-rename facebook page
+instal on server
 Google Analytics
 mongodb on local (maybe ask the support)
+
+rotate and keyboard probleme in mobile
+rename facebook page
+
 
 Apostrophe {{}} maybe just on javascript
 check all features

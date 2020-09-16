@@ -10,7 +10,7 @@ const init = async (subscriber) => {
     console.log("sending mail to %s ", subscriber.email)
 
     // if (process.env.NODE_ENV == "production" || 1 == 1 ) {
-    if (process.env.NODE_ENV == "production" || 1 == 1 ) {
+    if (process.env.NODE_ENV == "production") {
         console.log("Sending from %s ...",myEmail)
         transporter = nodemailer.createTransport({
             service: 'gmail',
@@ -20,7 +20,7 @@ const init = async (subscriber) => {
             requireTLS: true,
             auth: {
                 user: myEmail,
-                pass: 'Fiat1685@'
+                pass: process.env.email_password
             },
             rejectUnauthorized: false
         });
