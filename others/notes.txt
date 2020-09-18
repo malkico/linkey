@@ -60,6 +60,8 @@
 # email on controller (mailer)
 # change email + verification
 
+change set with export and application name
+
 instal on server
 Google Analytics
 mongodb on local (maybe ask the support)

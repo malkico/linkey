@@ -8,12 +8,14 @@ const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
 const exphbs = require('express-handlebars');
 const registerHelper = require("./config/registerHelper")
-const dotenv = require("dotenv"); 
-dotenv.config({ path: true });
+const dotenv = require("dotenv");
+dotenv.config({
+  path: true
+});
 require('custom-env').env(true)
 const Handlebars = require('handlebars')
 const changeLang = require("./middlwares/changeLang")
-const { 
+const {
   allowInsecurePrototypeAccess
 } = require('@handlebars/allow-prototype-access')
 
@@ -33,7 +35,7 @@ i18n.configure({
   // setting of log level DEBUG - default to require('debug')('i18n:debug')
   /* logDebugFn: function (msg) {
     console.log('debug', msg);
-  }, */ 
+  }, */
 
   // setting of log level WARN - default to require('debug')('i18n:warn')
   logWarnFn: function (msg) {
@@ -44,7 +46,7 @@ i18n.configure({
   logErrorFn: function (msg) {
     console.log('error', msg);
   },
-  api: { 
+  api: {
     '__': 't', //now req.__ becomes req.t
     '__n': 'tn' //and req.__n can be called as req.tn
   },
@@ -78,7 +80,6 @@ const influencerRouter = require("./routes/influencer")
 /* ************************** create connection */
 const mongoose = require("mongoose")
 const mongoDB = "mongodb+srv://root:root@cluster0-6qetu.gcp.mongodb.net/linkey?retryWrites=true&w=majority"
-// const mongoDB = "mongodb+srv://root:root@cluster0-6qetu.gcp.mongodb.net/7linKy_test?retryWrites=true&w=majority"
 mongoose.connect(mongoDB, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -90,10 +91,15 @@ mongoose.connect(mongoDB, {
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'Erreur de connexion MongoDB:'));
 
-var http = require("http").Server(app);
+let http
+if (process.env.NODE_ENV == "production") {
+  http = require("https").Server(app);
+} else if (process.env.NODE_ENV == "development") {
+  http = require("http").Server(app);
+}
 
 var io = require("socket.io")(http);
-http.listen(3000, "127.0.0.1");
+// http.listen(process.env.PORT || '3000', "127.0.0.1");
 
 
 app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist'));
@@ -141,7 +147,7 @@ app.use(sassMiddleware({
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/u', followerRouter);
-app.get("/account/confirmation/:code",require("./controllers/confirmationEmailController").get)
+app.get("/account/confirmation/:code", require("./controllers/confirmationEmailController").get)
 app.use("/dashboard/", influencerRouter)
 
 
@@ -157,7 +163,7 @@ app.use(function (err, req, res) {
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
-  res.status(err.status || 500);  
+  res.status(err.status || 500);
   res.render('error');
 });
 
@@ -174,5 +180,5 @@ module.exports = app;
 // i18n.setLocale("en")
 // console.log(registerHelper.translate("models.link.URL.minlength|@|2"))
 
-console.log("Env : "+process.env.NODE_ENV) 
-console.log("host : "+process.env.domain )
+console.log("Env : " + process.env.NODE_ENV)
+console.log("host : " + process.env.domain)

@@ -1,5 +1,5 @@
 {
-  "name": "linkey",
+  "name": "7linky",
   "version": "0.1.3",
   "description": "make your link a search engine",
   "private": true,
@@ -8,12 +8,14 @@
     "sassbootstrap": "sass public/stylesheets/custom:public/stylesheets/min --watch  --style compressed",
     "devstart": "nodemon -e js,json,hbs ./bin/www --trace-sync-io",
     "start_dev": "SET NODE_ENV=development&& npm run devstart",
-    "start_prod": "SET NODE_ENV=production&& npm run devstart",
+    "start_prod": "export NODE_ENV=production&& pm2 start ./bin/www --watch -i max",
+    "stop_prod": "pm2 stop ./bin/www --watch",
     "build": "webpack"
   },
   "keywords": [
     "instagram",
-    "linkinbio"
+    "linkinbio",
+    "search engine"
   ],
   "author": "malki_hi",
   "license": "ISC",
