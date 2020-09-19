@@ -91,7 +91,7 @@ mongoose.connect(mongoDB, {
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'Erreur de connexion MongoDB:'));
 
-let http
+let http 
 if (process.env.NODE_ENV == "production") {
   http = require("https").Server(app);
 } else if (process.env.NODE_ENV == "development") {
