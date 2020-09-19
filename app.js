@@ -91,20 +91,14 @@ mongoose.connect(mongoDB, {
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'Erreur de connexion MongoDB:'));
 
-let http 
-if (process.env.NODE_ENV == "production") {
-  http = require("https").Server(app);
-} else if (process.env.NODE_ENV == "development") {
-  http = require("http").Server(app);
-}
-
-var io = require("socket.io")(http);
-http.listen(process.env.PORT, "127.0.0.1");
+var io = require("socket.io")();
+app.io = io
 const socketCtrl = require("./sockets/get")
 io.on("connection", function (socket) {
   console.log("un nouveau client est connecté");
   socketCtrl(socket)
 })
+
 
 app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist'));
 app.use('/mdbootstrap', express.static(__dirname + '/node_modules/mdbootstrap'));
