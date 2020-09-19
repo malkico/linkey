@@ -46,14 +46,8 @@ server.on('listening', onListening);
  * Configure io socket ************
  */
 
-/* 
-const socketCtrl = require("../sockets/get")
-var io = require("socket.io")(http);
-io.on("connection", function (socket) {
-  console.log("un nouveau client est connecté");
-  socketCtrl(socket)
-})
-*/
+var io     = app.io
+io.attach( server );
 
 /**
  * Normalize a port into a number, string, or false.
