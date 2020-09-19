@@ -1,7 +1,7 @@
 module.exports = {
   apps : [{
     name: '7linky',
-    script: '/bin/www',
+    script: './bin/www',
     watch : ".",
 
     // Options reference: https://pm2.keymetrics.io/docs/usage/application-declaration/
