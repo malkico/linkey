@@ -4,17 +4,17 @@
   "description": "make your link a search engine",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
+    "nodemon": "nodemon -e js,json,hbs ./bin/www --trace-sync-io",
+    "start_nodemon": "SET NODE_ENV=development&& npm run nodemon",
+    "start_pm2": "SET NODE_ENV=development&& pm2 start ./bin/www --watch",
+    "stop_pm2": "pm2 stop ./bin/www --watch",
     "sassbootstrap": "sass public/stylesheets/custom:public/stylesheets/min --watch  --style compressed",
-    "devstart": "nodemon -e js,json,hbs ./bin/www --trace-sync-io",
-    "start_dev": "SET NODE_ENV=development&& npm run devstart",
-    "start_prod": "export NODE_ENV=production&& pm2 start ./bin/www --watch -i max",
-    "stop_prod": "pm2 stop ./bin/www --watch",
     "build": "webpack"
   },
   "keywords": [
     "instagram",
     "linkinbio",
+    "influencer marketing",
     "search engine"
   ],
   "author": "malki_hi",

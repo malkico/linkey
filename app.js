@@ -79,7 +79,7 @@ const influencerRouter = require("./routes/influencer")
 
 /* ************************** create connection */
 const mongoose = require("mongoose")
-const mongoDB = "mongodb+srv://root:root@cluster0-6qetu.gcp.mongodb.net/linkey?retryWrites=true&w=majority"
+const mongoDB = process.env.mongoDB
 mongoose.connect(mongoDB, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -99,8 +99,12 @@ if (process.env.NODE_ENV == "production") {
 }
 
 var io = require("socket.io")(http);
-// http.listen(process.env.PORT || '3000', "127.0.0.1");
-
+http.listen(process.env.PORT, "127.0.0.1");
+const socketCtrl = require("./sockets/get")
+io.on("connection", function (socket) {
+  console.log("un nouveau client est connecté");
+  socketCtrl(socket)
+})
 
 app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist'));
 app.use('/mdbootstrap', express.static(__dirname + '/node_modules/mdbootstrap'));
@@ -166,12 +170,6 @@ app.use(function (err, req, res) {
   res.status(err.status || 500);
   res.render('error');
 });
-
-const socketCtrl = require("./sockets/get")
-io.on("connection", function (socket) {
-  // console.log("un nouveau client est connecté");
-  socketCtrl(socket)
-})
 
 /// mongoose.connection.close();
 
