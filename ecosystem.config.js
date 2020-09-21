@@ -1,11 +1,11 @@
 module.exports = {
-  apps : [{
+  apps: [{
     name: '7linky',
     script: './bin/www',
 
     // Options reference: https://pm2.keymetrics.io/docs/usage/application-declaration/
-    instances : "max",
-    exec_mode : "cluster",
+    instances: "max",
+    exec_mode: "cluster",
     watch: false,
     // ignore_watch : ["node_modules", "client/img"],
     autorestart: true,
@@ -21,16 +21,16 @@ module.exports = {
     }
   }],
 
-  deploy : {
-    production : {
-      user : 'root',
-      host : '192.236.147.41',
-      ref  : 'origin/main',
-      repo : 'git@github.com:malkico/linkey.git',
-      path : '/var/www/7linky',
+  deploy: {
+    production: {
+      user: 'root',
+      host: '192.236.147.41',
+      ref: 'origin/main',
+      repo: 'git@github.com:malkico/linkey.git',
+      path: '/var/www/7linky',
       'pre-setup': '',
       'pre-deploy-local': '',
-      'post-deploy' : 'npm install && pm2 reload ecosystem.config.js --env production',
+      'post-deploy': 'npm install && pm2 reload ecosystem.config.js --env production',
       "post-setup": ""
     }
   }

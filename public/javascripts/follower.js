@@ -42,7 +42,7 @@ $(() => {
     });
 
     //  ---------------------- Scraping from instagram ------>
-    const socket = io.connect('127.0.0.1:3000');
+    const socket = io.connect($("body").data("domain"));
     $.get("https://www.instagram.com/" + $("body").data('influencerInstaUrl') + "/?__a=1")
         .done(function (data) {
             // getting the url
