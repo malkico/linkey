@@ -195,6 +195,7 @@
 	},
 	"main_page": {
 		"title": "Make your #linkinbio a search engine!",
+		"description" : "Several links! No problem, With a unique URL Track your followers: 1-Add your links, each one with a unique KEY; 2-Retrieve your unique URL, put it on in your #bio; 3-Understand your audience interests and what they are really looking for",
 		"menu": {
 			"how_it_work": "How it works",
 			"pricing": "Pricing",

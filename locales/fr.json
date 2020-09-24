@@ -195,6 +195,7 @@
 	},
 	"main_page": {
 		"title": "Faites de votre #linkinbio un moteur de recherche!",
+		"description" : "Plusieurs liens! aucun problème, Avec une URL unique Suivez vos abonnés: 1-Ajoutez vos liens, chacun avec une CLÉ unique; 2-Récupérez votre URL unique, mettez-la dans votre #bio; 3-Comprenez les intérêts de votre audience et ce qu'ils vraiment cherchent",
 		"menu": {
 			"how_it_work": "Comment ça marche",
 			"pricing": "Tarifs",
@@ -213,7 +214,7 @@
 			},
 			"3": {
 				"title": "Suivez vos abonnés",
-				"description": "comprenez les intérêts de votre audience et ce qu'ils vraiment cherchent"
+				"description": "Comprenez les intérêts de votre audience et ce qu'ils vraiment cherchent"
 			},
 			"understand": {
 				"1": "Pour en savoir plus",
