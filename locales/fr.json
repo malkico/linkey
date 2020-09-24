@@ -291,7 +291,7 @@
 			"keyword": "CHERCHEZ UNE CLÉ, UN LIEN...",
 			"result": {
 				"nothing_found": "On ne trouve rien!",
-				"tape_key": "Tapez une CLÉ ou quelques mots-clés pour lancer la recherche"
+				"tape_key": "Tapez une CLÉ ou des mots-clés pour lancer la recherche"
 			}
 		},
 		"title": "Le moteur de recherche du %s"
@@ -300,6 +300,7 @@
 		"errors": {
 			"special_chars": "Ce champ n'autorise pas les caractères spéciaux comme < > ' \" \\ /",
 			"special_chars_URL": "Ce champ n'autorise pas les caractères spéciaux comme < > ' \" \\",
+			"special_chars_search": "Veuillez ne pas utiliser des caractères spéciaux comme < > \" \\ / dans votre recherche",
 			"valid_e-mail": "Veuillez saisir une adresse e-mail valide",
 			"password": {
 				"minlength": "Le mot de passe ne peut pas avoir moins de %s caractères",
@@ -331,7 +332,6 @@
 			"errors": {
 				"_authenticated_first": "Vous devez d'abord s'authentifier",
 				"authenticated_first": "Veuillez s'authentifier à votre compte"
-				
 			},
 			"page_title": "Se connecter",
 			"result": {

@@ -291,7 +291,7 @@
 			"keyword": "SEARCH KEY, LINK...",
 			"result": {
 				"nothing_found": "Can't find nothing!",
-				"tape_key": "Please tape a KEY or some keywords to start searching"
+				"tape_key": "Please tape a KEY or keywords to start searching"
 			}
 		},
 		"title": "The %s's Search Engine"
@@ -300,6 +300,7 @@
 		"errors": {
 			"special_chars": "This field does not allow special characters like < > ' \" \\ /",
 			"special_chars_URL": "This field does not allow special characters like < > ' \" \\",
+			"special_chars_search": "Please don't use a special characters like < > \" \\ / in your search",
 			"valid_email": "Please enter a valid email address",
 			"password": {
 				"min": "The password is shorter than the minimum allowed length (%s)",
