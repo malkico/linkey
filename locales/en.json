@@ -288,7 +288,7 @@
 			"copyright": "Copyright"
 		},
 		"search_form": {
-			"keyword": "TAPE KEY OR SOME KEYWORDS",
+			"keyword": "SEARCH KEY, LINK...",
 			"result": {
 				"nothing_found": "Can't find nothing!",
 				"tape_key": "Please tape a KEY or some keywords to start searching"
@@ -442,7 +442,7 @@
 				"submit": "Add my link",
 				"result": {
 					"KEY": "Please enter another KEY",
-					"cant_add": "Can't add the link in dataBase, Please try again",
+					"cant_add": "An error has occurred. Please try again",
 					"success": "link successfully added"
 				}
 			}

@@ -66,8 +66,9 @@
 # logo f la page contact
 # rename facebook page
 # Google Analytics
-rotate and keyboard probleme in mobile
+instagram posts ++
 
+rotate and keyboard probleme in mobile
 
 Apostrophe {{}} maybe just on javascript
 check all features

@@ -39,10 +39,12 @@ $(() => {
             $(".ads").show();
             $(".influencer").show();
         }
+        customize_footer()
     });
 
     //  ---------------------- Scraping from instagram ------>
     const socket = io.connect($("body").data("domain"));
+    // const socket = io.connect("https://7linky.com");
     $.get("https://www.instagram.com/" + $("body").data('influencerInstaUrl') + "/?__a=1")
         .done(function (data) {
             // getting the url

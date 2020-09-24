@@ -104,8 +104,6 @@ const postController = [
             next(new Error("There are some errors in your email and first name "))
         })
 
-        console.log(" errors lenght 222 : ")
-
     },
     // check and find the subscriber in database
     (req, res, next) => {

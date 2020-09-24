@@ -42,6 +42,15 @@ exports.checkSpecialChars = (field) => {
 
     return true
 }
+
+exports.checkSpecialCharsSearch = (field) => {
+    // eslint-disable-next-line no-useless-escape
+    if (/[\<\>\/\\\"]/.exec(field))
+        throw new Error("pojopj")
+
+    return true
+}
+
 exports.checkSpecialCharsURL = (field) => {
     // eslint-disable-next-line no-useless-escape
     if (/[\<\>\\\'\"]/.exec(field))

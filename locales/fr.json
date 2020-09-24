@@ -288,7 +288,7 @@
 			"copyright": "Droits d'auteur"
 		},
 		"search_form": {
-			"keyword": "TAPEZ UNE CLÉ OU QUELQUES MOTS-CLÉS",
+			"keyword": "CHERCHEZ UNE CLÉ, UN LIEN...",
 			"result": {
 				"nothing_found": "On ne trouve rien!",
 				"tape_key": "Tapez une CLÉ ou quelques mots-clés pour lancer la recherche"
@@ -443,7 +443,7 @@
 				"submit": "Ajouter mon lien",
 				"result": {
 					"KEY": "Veuillez saisir une autre CLÉ",
-					"cant_add": "Nous ne pouvons pas ajouter le lien dans la base de données, veuillez réessayer",
+					"cant_add": "Une erreur s'est produite, veuillez réessayer",
 					"success": "Lien ajouté avec succès"
 				}
 			}
