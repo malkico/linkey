@@ -28,7 +28,16 @@ if (process.env.NODE_ENV == "production") {
     cert: certificate
   };
   http = require("https")
+
+  const forceDomain = require('forcedomain');
+  app.use(forceDomain({
+    hostname: '7linky.com',
+    port: 443,
+    protocol: 'https'
+
+  }));
   server = http.createServer(credentials, app);
+  
 } else if (process.env.NODE_ENV == "development") {
   http = require("http")
   server = http.createServer(app);
@@ -46,8 +55,8 @@ server.on('listening', onListening);
  * Configure io socket ************
  */
 
-var io     = app.io
-io.attach( server );
+var io = app.io
+io.attach(server);
 
 /**
  * Normalize a port into a number, string, or false.
