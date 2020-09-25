@@ -9,6 +9,8 @@ const sassMiddleware = require('node-sass-middleware');
 const exphbs = require('express-handlebars');
 const registerHelper = require("./config/registerHelper")
 const dotenv = require("dotenv");
+var favicon = require('serve-favicon')
+
 dotenv.config({
   path: true
 });
@@ -143,6 +145,7 @@ app.use(sassMiddleware({
   sourceMap: true
 }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(favicon(path.join(__dirname, 'public/images/favicon_io', 'favicon.ico')))
 app.use('/', indexRouter);
 app.use('/u', followerRouter);
 app.get("/account/confirmation/:code", require("./controllers/confirmationEmailController").get)
