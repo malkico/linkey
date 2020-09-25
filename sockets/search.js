@@ -10,7 +10,7 @@ module.exports = (data, callback) => {
         return
     }
     try {
-        specialFuncts.checkSpecialChars(data.keyword)
+        specialFuncts.checkSpecialCharsSearch(data.keyword)
     } catch (err) {
         callback({
             message: err.message

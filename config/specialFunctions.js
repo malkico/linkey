@@ -42,6 +42,15 @@ exports.checkSpecialChars = (field) => {
 
     return true
 }
+
+exports.checkSpecialCharsSearch = (field) => {
+    // eslint-disable-next-line no-useless-escape
+    if (/[\<\>\/\\\"]/.exec(field))
+        throw new Error(helper.translate("generals.errors.special_chars_search"))
+
+    return true
+}
+
 exports.checkSpecialCharsURL = (field) => {
     // eslint-disable-next-line no-useless-escape
     if (/[\<\>\\\'\"]/.exec(field))

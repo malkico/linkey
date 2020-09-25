@@ -195,6 +195,7 @@
 	},
 	"main_page": {
 		"title": "Make your #linkinbio a search engine!",
+		"description" : "Several links! No problem, With a unique URL Track your followers: 1-Add your links, each one with a unique KEY; 2-Retrieve your unique URL, put it on in your #bio; 3-Understand your audience interests and what they are really looking for",
 		"menu": {
 			"how_it_work": "How it works",
 			"pricing": "Pricing",
@@ -288,10 +289,10 @@
 			"copyright": "Copyright"
 		},
 		"search_form": {
-			"keyword": "TAPE KEY OR SOME KEYWORDS",
+			"keyword": "SEARCH KEY, LINK...",
 			"result": {
 				"nothing_found": "Can't find nothing!",
-				"tape_key": "Please tape a KEY or some keywords to start searching"
+				"tape_key": "Please tape a KEY or keywords to start searching"
 			}
 		},
 		"title": "The %s's Search Engine"
@@ -300,6 +301,7 @@
 		"errors": {
 			"special_chars": "This field does not allow special characters like < > ' \" \\ /",
 			"special_chars_URL": "This field does not allow special characters like < > ' \" \\",
+			"special_chars_search": "Please don't use a special characters like < > \" \\ / in your search",
 			"valid_email": "Please enter a valid email address",
 			"password": {
 				"min": "The password is shorter than the minimum allowed length (%s)",
@@ -442,7 +444,7 @@
 				"submit": "Add my link",
 				"result": {
 					"KEY": "Please enter another KEY",
-					"cant_add": "Can't add the link in dataBase, Please try again",
+					"cant_add": "An error has occurred. Please try again",
 					"success": "link successfully added"
 				}
 			}

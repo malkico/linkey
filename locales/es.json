@@ -359,7 +359,8 @@
 				"spaces": "generals.errors.password.spaces",
 				"max": "generals.errors.password.max"
 			},
-			"special_chars_URL": "generals.errors.special_chars_URL"
+			"special_chars_URL": "generals.errors.special_chars_URL",
+			"special_chars_search": "generals.errors.special_chars_search"
 		}
 	},
 	"account_page": {

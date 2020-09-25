@@ -48,8 +48,8 @@ module.exports = [
             res.locals.myErrors[err.param] = err.msg
         });
 
-        if (errors.lenght) {
-            res.locals.result = "Please check for errors produced"
+        if (errors.length) {
+            res.locals.result = helper.translate("dashboard.add_link.form.result.cant_add")
             res.render(page)
             console.log(res.locals.result)
             return
