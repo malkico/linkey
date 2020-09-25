@@ -148,7 +148,6 @@ app.use('/u', followerRouter);
 app.get("/account/confirmation/:code", require("./controllers/confirmationEmailController").get)
 app.use("/dashboard/", influencerRouter)
 
-
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));

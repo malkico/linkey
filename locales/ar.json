@@ -76,7 +76,8 @@
 				"terms_use": "main_page.footer.menu.terms_use",
 				"privacy": "main_page.footer.menu.privacy"
 			}
-		}
+		},
+		"description": "main_page.description"
 	},
 	"title": "title",
 	"test": "test",

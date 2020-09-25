@@ -12,11 +12,11 @@
   <link rel="stylesheet" href="/stylesheets/min/index.css" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
     crossorigin="anonymous">
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
-    <link rel="stylesheet" href="/mdbootstrap/css/addons/flag.min.css" rel="stylesheet">
-
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+  <link rel="stylesheet" href="/mdbootstrap/css/addons/flag.min.css" rel="stylesheet">
+    <link rel="icon" href="/favicon.ico">
   <title>{{ translate "main_page.title" }}</title>
+    <meta name="description" content="{{ translate "main_page.description" }}"> <!-- Meta Description -->
 </head>
 
 <body>
@@ -31,10 +31,14 @@
     <div class="collapse navbar-collapse " id="navbarNav">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item my-md-auto mt-2 mr-2">
-            <select id="selectFlag" data-show-content="true" class="">
-                <option value="fr" data-content="<i data-lang='fr' class='france flag'></i> <span class='lang_txt d-none'>fr</span>"></option>
-                <option value="en" data-content="<i data-lang='en' class='united states flag'></i> <span class='lang_txt d-none'>en</span>"></option>
-            </select>
+          <select id="selectFlag" data-show-content="true" class="">
+            <option value="fr"
+              data-content="<i data-lang='fr' class='france flag'></i> <span class='lang_txt d-none'>fr</span>">
+            </option>
+            <option value="en"
+              data-content="<i data-lang='en' class='united states flag'></i> <span class='lang_txt d-none'>en</span>">
+            </option>
+          </select>
         </li>
         <li class="nav-item">
           <a class="nav-link howitworks-btn text-uppercase" href="/">{{ translate "main_page.menu.home"}}</a>
