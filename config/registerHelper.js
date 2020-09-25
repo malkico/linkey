@@ -23,7 +23,7 @@ exports.log = function(something) {
   return console.log(something);
 }
 
-exports.idCond = function (v1, v2, options) {
+exports.ifCond = function (v1, v2, options) {
   if (v1 === v2) {
     return options.fn(this);
   }

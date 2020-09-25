@@ -120,7 +120,7 @@ app.engine('hbs', exphbs({
     math: registerHelper.math,
     format_currency: registerHelper.format_currency,
     log: registerHelper.log,
-    idCond: registerHelper.idCond,
+    ifCond: registerHelper.ifCond,
     ternaryIf: registerHelper.ternaryIf,
     iff: registerHelper.iff,
     get: registerHelper.get,
