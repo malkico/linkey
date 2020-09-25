@@ -66,9 +66,15 @@
 # logo f la page contact
 # rename facebook page
 # Google Analytics
-instagram posts ++
 
-rotate and keyboard probleme in mobile
+# rotate and keyboard probleme in mobile
+
+# description in head
+# https force
+
+# change data_base to 7linky
+instagram posts ++
+contact influencers
 
 Apostrophe {{}} maybe just on javascript
 check all features
