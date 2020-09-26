@@ -22,8 +22,8 @@ let ContactSchema = new Schema({
 })
 
 ContactSchema.virtual("full_URL").get(function () {
-    let preURL = ""
-    if(contactConf.preURL[this.which] !== "undefined")
+    let preURL = "//"
+    if(typeof(contactConf.preURL[this.which]) != "undefined")
         preURL = contactConf.preURL[this.which]
     return preURL+this.URL
 })

@@ -76,7 +76,8 @@
 				"terms_use": "main_page.footer.menu.terms_use",
 				"privacy": "main_page.footer.menu.privacy"
 			}
-		}
+		},
+		"description": "main_page.description"
 	},
 	"title": "title",
 	"test": "test",
@@ -566,7 +567,8 @@
 				"result": {
 					"success ": "dashboard.contact_list.form.result.success ",
 					"success": "dashboard.contact_list.form.result.success"
-				}
+				},
+				"fullURL": "dashboard.contact_list.form.fullURL"
 			},
 			"all": {
 				"result": {

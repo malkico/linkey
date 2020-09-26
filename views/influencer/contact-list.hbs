@@ -40,7 +40,9 @@
             <input name="URL" value="{{contact.URL}}" class="{{ternaryIf myErrors.URL 'is-invalid' ''}} form-control"
               type="text" id="URL" autocomplete="on" aria-describedby="URLHelp">
           </div>
-
+          <span class="buildURL badge">{{ translate 'dashboard.contact_list.form.fullURL' }}
+            <a href="" target="_blank"></a>
+          </span>
           {{#if myErrors.URL }}
           <small id="URLHelp" class="form-text text-danger">{{ myErrors.URL }}</small>
           {{/if}}
@@ -91,12 +93,37 @@
 
 <script>
   $(() => {
+
+    const preURL = JSON.parse('{{{json preURL }}}')
+
+    /* *********** Build the link **************/
+    const buildURL = () => {
+      const input = $("#URL").val()
+      if(input != ""){
+        const which = preURL[$("#which").val()]
+        let buildURL = ""
+        let preURL_str = ""
+        let href = "//"
+        if(typeof(which) != "undefined"){
+          if(/^http/.exec(which))
+            preURL_str = which
+          href= which
+        }
+
+        $(".buildURL a").text(preURL_str+input)
+        $(".buildURL a").attr("href",href+input)
+         $(".buildURL").show()
+      } else
+         $(".buildURL").hide()
+    }
+    buildURL()
+    
     /* ************** change preURL in changing from options ********/
     const changePreURL = (myInput) => {
-      const preURL = JSON.parse('{{{json preURL }}}')
       console.log("fromCharCode")
       console.log("{{ translate "dashboard.contact_list.form.URL.placeholder.username" }}".replace(/&#x27;/,"'"))
       const which = $(myInput).val()
+      // $("#URL").data("preURL",preURL[which])
       if (which === "email") {
         $(".preURL").parent().hide()
         $("#URL").attr("placeholder", "{{ translate "dashboard.contact_list.form.URL.placeholder.email" }} ")
@@ -111,6 +138,7 @@
         $(".preURL").parent().show()
         // $(".web_site").html(webSite[which])
         $(".preURL").html('@')
+        // $(".preURL").html(preURL[which])
         $("#URL").attr("placeholder", "{{{ translate "dashboard.contact_list.form.URL.placeholder.username" }}}")
       } else {
         $(".preURL").parent().hide()
@@ -118,9 +146,13 @@
       }
     }
 
+    $("#URL").keyup( function(e){
+      buildURL()
+    })
     changePreURL("#which");
     $("#which").change(function () {
       changePreURL(this)
+      buildURL()
     })
 
     /* ************ AJAX to delete a social media *************/

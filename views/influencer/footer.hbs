@@ -1,12 +1,19 @@
+{{#if (iff env.NODE_ENV "==" "production")}}
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-L0T7L3YQCG"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+
+  function gtag() {
+    dataLayer.push(arguments);
+  }
   gtag('js', new Date());
 
   gtag('config', 'G-L0T7L3YQCG');
 </script>
+
+{{/if}}
+
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
