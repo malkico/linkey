@@ -178,7 +178,7 @@ app.use(function (err, req, res) {
 
 module.exports = app;
 
-// i18n.setLocale("en")
+// i18n.setLocale("en") 
 // console.log(registerHelper.translate("models.link.URL.minlength|@|2"))
 
 console.log("Env : " + process.env.NODE_ENV)

@@ -83,6 +83,7 @@ check browsers + insta
 Paypal
 contact adsense and facebook Ads
 generate KEY
+generate whatsapp link wa.me
 
 
 https://www.paypal.com/us/smarthelp/article/how-do-i-create-and-manage-paypal-subscriptions-faq4175?app=searchAutoComplete
