@@ -22,7 +22,7 @@ let LinkSchema = new Schema({
         type: String,
         required: [true, "models.link.URL.required"],
         minlength: [2,"models.link.URL.minlength|@|2"],
-        maxlength: [180,"models.link.URL.maxlength|@|180"]
+        maxlength: [720,"models.link.URL.maxlength|@|720"]
     },
     KEY:{
         type: Number,
