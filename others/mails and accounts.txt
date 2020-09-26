@@ -1,5 +1,5 @@
 mail: linkey.insta@gmail.com
-insta : linkey.insta
+insta : 7linky
 
 mail: linkey.demo.acc@gmail.com
-insta: linkey.demo
+insta: 7linky.demo
