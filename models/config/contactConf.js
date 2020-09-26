@@ -56,8 +56,7 @@ exports.preURL = {
     'twitch': 'https://www.twitch.tv/',
     'patreon' : "https://www.patreon.com/",
     'email': 'mailto:',
-    'whatsapp' : 'tel:',
-    'store' : ""
+    'whatsapp' : 'tel:'
 }
 
 exports.icone = {
