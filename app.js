@@ -132,6 +132,13 @@ app.engine('hbs', exphbs({
   }
 }))
 app.set('view engine', 'hbs');
+app.use(function (request, response, next) {
+  if (process.env.NODE_ENV == 'production' && !request.secure) {
+    console.log("redirecting to https...")
+    return response.redirect(301,"https://" + request.headers.host + request.url)
+  }
+  next()
+})
 app.use(changeLang)
 app.use(logger('dev'));
 app.use(express.json());
