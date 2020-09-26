@@ -49,14 +49,15 @@ exports.preURL = {
     'tiktok': 'https://www.tiktok.com/@',
     'vk' : 'https://vk.com/',
     'youtube': 'https://www.youtube.com/channel/',
-    'linkedin': 'https://www.linkedin.com/in/',
+    'linkedin': 'https://www.linkedin.com/',
     'github': 'https://github.com/',
     'medium' : 'https://medium.com/@',
     'behance': 'https://www.behance.net/',
     'twitch': 'https://www.twitch.tv/',
     'patreon' : "https://www.patreon.com/",
     'email': 'mailto:',
-    'whatsapp' : 'tel:'
+    'whatsapp' : 'tel:',
+    'store' : ""
 }
 
 exports.icone = {
